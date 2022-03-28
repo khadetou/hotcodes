@@ -29,7 +29,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 
     console.log(userEmail);
     if (!userEmail) {
-      console.log('creating user');
       const user = await this.authService.createUserWithGoogle(
         name.givenName,
         name.familyName,
