@@ -6,20 +6,21 @@ import { PassportModule } from '@nestjs/passport';
 import { userInfo } from 'os';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { User, UserSchema } from './schema/user.schema';
 
 @Module({
   imports: [
-    // ConfigModule,
-    // PassportModule.register({ defaultStrategy: 'jwt' }),
-    // JwtModule.registerAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     secret: configService.get('JWT_SECRET'),
-    //     signOptions: { expiresIn: '1h' },
-    //   }),
-    // }),
-    // MongooseModule.forFeature([{name: User.name, schema: UserSchema }])
+    ConfigModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('JWT_SECRET'),
+        signOptions: { expiresIn: '1h' },
+      }),
+    }),
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [AuthController],
   providers: [AuthService],
