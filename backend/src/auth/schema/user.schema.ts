@@ -7,9 +7,9 @@ export class User {
   @Prop({ type: String })
   googleId?: string;
   @Prop({ required: true, type: String })
-  firstname: string;
+  firstName: string;
   @Prop({ required: true, type: String })
-  lastname: string;
+  lastName: string;
   @Prop({ required: true, type: String })
   email: string;
   @Prop({ type: Number, default: 0 })
