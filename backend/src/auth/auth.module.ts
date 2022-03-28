@@ -6,6 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { userInfo } from 'os';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { GoogleStrategy } from './google.strategy';
 import { User, UserSchema } from './schema/user.schema';
 
 @Module({
@@ -23,6 +24,6 @@ import { User, UserSchema } from './schema/user.schema';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, GoogleStrategy],
 })
 export class AuthModule {}
