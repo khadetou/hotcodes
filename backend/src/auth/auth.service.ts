@@ -1,4 +1,5 @@
 import {
+  ConflictException,
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
@@ -10,6 +11,7 @@ import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { User, UserDocument } from './schema/user.schema';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from './jwt-payload.interface';
+import { AuthUpdateCredentialsDto } from './dto/update-user-credentials.dto';
 
 @Injectable()
 export class AuthService {
@@ -57,22 +59,46 @@ export class AuthService {
     const { firstName, lastName, email, phone, password } = authCredentialsDto;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
-
-    const user = new this.userModel({
-      firstName,
-      lastName,
-      email,
-      phone,
-      password: hashedPassword,
-    });
-    try {
-      return await user.save();
-    } catch (err) {
-      if (err.code === 11000) {
-        throw new Error('User already exists');
-      } else {
+    let user = await this.userModel.findOne({ email }).exec();
+    if (!user) {
+      user = new this.userModel({
+        firstName,
+        lastName,
+        email,
+        phone,
+        password: hashedPassword,
+      });
+      try {
+        return await user.save();
+      } catch (err) {
         throw new InternalServerErrorException(err);
       }
+    } else {
+      throw new ConflictException('User already exists');
+    }
+  }
+
+  //UPDATE USER CREDENTIALS
+  async updateUser(authUpdateCredentialsDto: AuthUpdateCredentialsDto) {
+    const { firstName, lastName, email, phone, password } =
+      authUpdateCredentialsDto;
+    const user = await this.userModel.findOne({ email }).exec();
+    if (user) {
+      if (password) {
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(password, salt);
+        user.password = hashedPassword;
+      }
+      user.firstName = firstName || user.firstName;
+      user.lastName = lastName || user.lastName;
+      user.phone = phone || user.phone;
+      try {
+        return await user.save();
+      } catch (err) {
+        throw new InternalServerErrorException(err);
+      }
+    } else {
+      throw new UnauthorizedException('User with that email not found');
     }
   }
 

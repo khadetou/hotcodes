@@ -25,10 +25,12 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     done: VerifyCallback,
   ): Promise<any> {
     const { id, emails, name } = profile;
-    let user = await this.authService.findUserByGoogleId(id);
     let userEmail = await this.authService.findUserByEmail(emails[0].value);
-    if (!user || !userEmail) {
-      user = await this.authService.createUserWithGoogle(
+
+    console.log(userEmail);
+    if (!userEmail) {
+      console.log('creating user');
+      const user = await this.authService.createUserWithGoogle(
         name.givenName,
         name.familyName,
         emails[0].value,
@@ -36,7 +38,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       );
       done(null, { user, accessToken });
     } else {
-      done(null, { user, accessToken });
+      done(null, { accessToken });
     }
   }
 }
