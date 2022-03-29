@@ -6,4 +6,7 @@ export const configValidationSchema = Joi.object({
   JWT_SECRET: Joi.string().required(),
   GOOGLE_CLIENT_SECRET: Joi.string().required(),
   GOOGLE_CLIENT_ID: Joi.string().required(),
+  MAIL_HOST: Joi.string().required(),
+  MAIL_USER: Joi.string().required(),
+  REFRESH_TOKEN: Joi.string().required(),
 });

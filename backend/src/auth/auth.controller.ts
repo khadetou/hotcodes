@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Put,
   Req,
@@ -49,5 +50,21 @@ export class AuthController {
     @Body('password') password: string,
   ): Promise<{ accessToken: string }> {
     return await this.authService.signIn(email, password);
+  }
+
+  //FORGOT PASSWORD
+  @Post('/forgot-password')
+  async forgotPassword(
+    @Body('email') email: string,
+  ): Promise<{ message: string }> {
+    return await this.authService.forgotPassword(email);
+  }
+
+  @Put('/confirm-email/:token')
+  async resetPassword(
+    @Body('password') password: string,
+    @Param('token') token: string,
+  ): Promise<User> {
+    return await this.authService.resetPassword(token, password);
   }
 }
