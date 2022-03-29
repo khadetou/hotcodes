@@ -126,8 +126,6 @@ export class AuthService {
     if (user) {
       const resetToken = crypto.randomBytes(20).toString('hex');
 
-      console.log('resetToken forget pass: ', resetToken);
-
       user.resetPasswordToken = crypto
         .createHash('sha256')
         .update(resetToken)
@@ -138,7 +136,7 @@ export class AuthService {
 
       try {
         await this.mailService.sendUserConfirmation(user, resetToken);
-        return { message: 'Email sent' };
+        return { message: 'Email Sent successfully' };
       } catch (error) {
         throw new InternalServerErrorException(error.message);
       }
@@ -149,7 +147,6 @@ export class AuthService {
 
   //RESET PASSWORD
   async resetPassword(resetToken: string, password: string): Promise<User> {
-    console.log('resetToken reset pass:', resetToken);
     const resetPasswordToken = crypto
       .createHash('sha256')
       .update(resetToken)
