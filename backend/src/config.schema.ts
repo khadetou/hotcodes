@@ -9,4 +9,7 @@ export const configValidationSchema = Joi.object({
   MAIL_HOST: Joi.string().required(),
   MAIL_USER: Joi.string().required(),
   REFRESH_TOKEN: Joi.string().required(),
+  CLOUDINARY_CLOUD_NAME: Joi.string().required(),
+  CLOUDINARY_API_KEY: Joi.string().required(),
+  CLOUDINARY_API_SECRET: Joi.string().required(),
 });
