@@ -24,8 +24,18 @@ export class OrderDesign {
   moodBoard: string;
   @Prop({ type: String })
   wireframe: string;
-  @Prop({ type: String })
-  design: string;
+  @Prop({
+    type: [
+      {
+        public_id: { type: String, required: true },
+        url: { type: String, required: true },
+      },
+    ],
+  })
+  design: {
+    public_id: string;
+    url: string;
+  }[];
   @Prop({ type: [String] })
   functionnality: [string];
 }

@@ -23,9 +23,5 @@ export class CreateWebdevDto {
 
   @IsString()
   @IsNotEmpty()
-  design: string;
-
-  @IsString()
-  @IsNotEmpty()
   functionnality: string;
 }

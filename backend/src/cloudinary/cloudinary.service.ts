@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { UploadApiResponse, UploadApiErrorResponse, v2 } from 'cloudinary';
 import toStream = require('buffer-to-stream');
 
@@ -13,6 +13,21 @@ export class CloudinaryService {
         resolve(result);
       });
       toStream(file.buffer).pipe(upload);
+    });
+  }
+
+  async uploadImages(file: Express.Multer.File): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const upload = v2.uploader.upload_stream(
+        {
+          folder: 'hotcodes/orders',
+        },
+        (error, result) => {
+          if (error) return reject(error);
+          return resolve(result);
+        },
+      );
+      file.buffer && toStream(file.buffer).pipe(upload);
     });
   }
 }

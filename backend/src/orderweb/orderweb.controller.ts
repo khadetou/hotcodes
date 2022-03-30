@@ -7,7 +7,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { ExpressAdapter, FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import path from 'path';
 import { GetUser } from 'src/auth/get-user-decorator';
@@ -16,17 +16,21 @@ import { OrderwebService } from './orderweb.service';
 import { OrderWeb } from './schema/orderweb.schema';
 
 @Controller('orderweb')
-// @UseGuards(AuthGuard(['jwt', 'google']))
+@UseGuards(AuthGuard(['jwt', 'google']))
 export class OrderwebController {
   constructor(private readonly orderwebService: OrderwebService) {}
 
   //CREATE ORDERWEB
   @Post()
+  @UseInterceptors(FileInterceptor('file'))
   async create(
     @Body() createWebdevDto: CreateWebdevDto,
     @GetUser() user: any,
-  ): Promise<OrderWeb> {
-    return await this.orderwebService.create(createWebdevDto, user);
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<void | OrderWeb> {
+    console.log(file);
+    console.log(createWebdevDto);
+    return await this.orderwebService.create(createWebdevDto, user, file);
   }
 
   //UPLOAD IMAGE

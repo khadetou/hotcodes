@@ -17,12 +17,36 @@ export class OrderwebService {
   ) {}
 
   //CREATE ORDERWEB
-  async create(createWebdevDto: CreateWebdevDto, user: any): Promise<OrderWeb> {
-    const { Goal, description, design, functionnality, plateform, typeapp } =
+  async create(
+    createWebdevDto: CreateWebdevDto,
+    user: any,
+    file: Express.Multer.File,
+  ): Promise<OrderWeb> {
+    const { Goal, description, functionnality, plateform, typeapp } =
       createWebdevDto;
 
     let goalSplits: string[];
     let funcSplits: string[];
+    let designLinks: [
+      {
+        public_id: string;
+        url: string;
+      },
+    ] = [
+      {
+        public_id: '',
+        url: '',
+      },
+    ];
+
+    const result = await this.cloudinaryService.uploadImages(file);
+
+    for (let i = 0; i < designLinks.length; i++) {
+      designLinks[i].public_id = result.public_id;
+      designLinks[i].url = result.secure_url;
+    }
+
+    console.log(designLinks);
 
     if (Goal) {
       goalSplits = Goal.split(',').map((s) => s.trim());
@@ -38,9 +62,11 @@ export class OrderwebService {
       appName: description && description,
       description: description && description,
       Goal: Goal && goalSplits,
-      design: design && design,
+      design: designLinks && designLinks,
       functionnality: functionnality && funcSplits,
     };
+
+    orderwebFields.design = designLinks;
 
     let orderweb = await this.orderwebModel.findOne({ user: user._id });
     if (orderweb) {
