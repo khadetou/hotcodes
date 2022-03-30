@@ -7,9 +7,11 @@ import { MailModule } from './mail/mail.module';
 import { OrderwebModule } from './orderweb/orderweb.module';
 import { OrdermobileModule } from './ordermobile/ordermobile.module';
 import { OrderdesignModule } from './orderdesign/orderdesign.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
+    CloudinaryModule,
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${process.env.STAGE}`, '.env'],
       validationSchema: configValidationSchema,

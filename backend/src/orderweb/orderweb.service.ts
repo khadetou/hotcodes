@@ -1,13 +1,19 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { OrderWeb } from './schema/orderweb.schema';
 import { Model } from 'mongoose';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class OrderwebService {
   constructor(
     @InjectModel(OrderWeb.name) private readonly orderwebModel: Model<OrderWeb>,
+    private cloudinaryService: CloudinaryService,
   ) {}
 
   //CREATE ORDERWEB
@@ -52,5 +58,12 @@ export class OrderwebService {
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
+  }
+
+  //Upload image to cloudinary
+  async uploadImage(file: Express.Multer.File) {
+    return await this.cloudinaryService.uploadImage(file).catch(() => {
+      throw new BadRequestException('Invalid file type');
+    });
   }
 }
