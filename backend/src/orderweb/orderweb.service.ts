@@ -67,8 +67,6 @@ export class OrderwebService {
       functionnality: functionnality && funcSplits,
     };
 
-    orderwebFields.design = designLinks;
-
     let orderweb = await this.orderwebModel.findOne({ user: user._id });
     if (orderweb) {
       orderweb = await this.orderwebModel.findOneAndUpdate(
