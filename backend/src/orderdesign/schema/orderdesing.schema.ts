@@ -29,12 +29,14 @@ export class OrderDesign {
       {
         public_id: { type: String, required: true },
         url: { type: String, required: true },
+        format: { type: String, required: true },
       },
     ],
   })
   design: {
     public_id: string;
     url: string;
+    format: string;
   }[];
   @Prop({ type: [String] })
   functionnality: [string];

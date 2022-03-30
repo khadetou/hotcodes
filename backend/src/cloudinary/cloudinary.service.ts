@@ -16,11 +16,11 @@ export class CloudinaryService {
     });
   }
 
-  async uploadImages(file: Express.Multer.File): Promise<any> {
+  async uploadImages(file: Express.Multer.File, user: any): Promise<any> {
     return new Promise((resolve, reject) => {
       const upload = v2.uploader.upload_stream(
         {
-          folder: 'hotcodes/orders',
+          folder: `hotcodes/orders/${user.lastName}/${user._id}`,
         },
         (error, result) => {
           if (error) return reject(error);
