@@ -8,13 +8,15 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import path from 'path';
 import { GetUser } from 'src/auth/get-user-decorator';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
 import { OrderwebService } from './orderweb.service';
 import { OrderWeb } from './schema/orderweb.schema';
 
 @Controller('orderweb')
-@UseGuards(AuthGuard(['jwt', 'google']))
+// @UseGuards(AuthGuard(['jwt', 'google']))
 export class OrderwebController {
   constructor(private readonly orderwebService: OrderwebService) {}
 
@@ -31,6 +33,7 @@ export class OrderwebController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadImage(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
     return this.orderwebService.uploadImage(file);
   }
 }
