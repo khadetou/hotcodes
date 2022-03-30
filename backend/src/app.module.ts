@@ -4,7 +4,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { configValidationSchema } from './config.schema';
 import { MailModule } from './mail/mail.module';
-import { OrdersModule } from './orders/orders.module';
+import { OrderwebModule } from './orderweb/orderweb.module';
+import { OrdermobileModule } from './ordermobile/ordermobile.module';
+import { OrderdesignModule } from './orderdesign/orderdesign.module';
 
 @Module({
   imports: [
@@ -21,15 +23,9 @@ import { OrdersModule } from './orders/orders.module';
     }),
     AuthModule,
     MailModule,
-    OrdersModule,
+    OrderwebModule,
+    OrdermobileModule,
+    OrderdesignModule,
   ],
 })
 export class AppModule {}
-
-// MongooseModule.forRootAsync({
-//   imports: [ConfigModule],
-//   inject: [ConfigService],
-//   useFactory: async (configService: ConfigService) => ({
-//     uri: configService.get('MONGO_URI'),
-//   }),
-// }),
