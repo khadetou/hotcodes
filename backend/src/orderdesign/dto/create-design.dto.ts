@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateDesignDto {
+export class CreateOrderDesignDto {
   @IsString()
   @IsNotEmpty()
   plateform: string;
@@ -32,10 +32,6 @@ export class CreateDesignDto {
   @IsString()
   @IsNotEmpty()
   wireframe: string;
-
-  @IsString()
-  @IsNotEmpty()
-  design: string;
 
   @IsString()
   @IsNotEmpty()
