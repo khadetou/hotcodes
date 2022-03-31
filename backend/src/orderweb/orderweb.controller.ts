@@ -7,9 +7,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ExpressAdapter, FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import path from 'path';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { GetUser } from 'src/auth/get-user-decorator';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
 import { OrderwebService } from './orderweb.service';
