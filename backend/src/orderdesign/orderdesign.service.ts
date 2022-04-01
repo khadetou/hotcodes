@@ -13,6 +13,21 @@ export class OrderdesignService {
     private cloudinaryService: CloudinaryService,
   ) {}
 
+  //GET ALL ORDER DESIGN
+  async getAll(): Promise<OrderDesign[]> {
+    return await this.orderwebModel.find().exec();
+  }
+
+  //GET ORDER DESIGN BY ID
+  async getById(id: string): Promise<OrderDesign> {
+    return await this.orderwebModel.findById(id).exec();
+  }
+
+  //DELETE ORDER DESIGN
+  async delete(id: string): Promise<OrderDesign> {
+    return await this.orderwebModel.findByIdAndDelete(id).exec();
+  }
+
   //CREATE ORDERDESIGN
   async create(
     createOrderDesignDto: CreateOrderDesignDto,
