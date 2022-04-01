@@ -51,6 +51,13 @@ export class OrderdesignController {
     return await this.orderdesignService.getMyOrderDesigns(user);
   }
 
+  //DELET MY ORDER DESIGN
+  @Delete('/my/:id')
+  @Auth(Role.User)
+  async deleteMyOrderDesign(id: string, user: User): Promise<OrderDesign> {
+    return await this.orderdesignService.deleteMyOrderDesign(id, user);
+  }
+
   //CREATE ORDERDESIGN
   @Post()
   @UseInterceptors(FileInterceptor('file'))

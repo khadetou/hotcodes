@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { OrderDesign } from './schema/orderdesing.schema';
 import { Model } from 'mongoose';
@@ -32,6 +36,15 @@ export class OrderdesignService {
   //GET MY ORDER DESIGNS
   async getMyOrderDesigns(user: any): Promise<OrderDesign[]> {
     return await this.orderwebModel.find({ user: user._id }).exec();
+  }
+
+  //DELET MY ORDER DESIGN
+  async deleteMyOrderDesign(id: string, user: any): Promise<OrderDesign> {
+    const orderdesign = await this.orderwebModel.findById(id).exec();
+    if (orderdesign.user.toString() !== user._id.toString()) {
+      throw new UnauthorizedException('You are not authorized');
+    }
+    return await this.orderwebModel.findByIdAndDelete(id).exec();
   }
 
   //CREATE ORDERDESIGN
