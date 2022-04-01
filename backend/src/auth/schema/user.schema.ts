@@ -16,6 +16,8 @@ export class User {
   phone: number;
   @Prop({ type: String })
   password?: string;
+  @Prop({ type: [String], enum: ['admin', 'user'], default: ['user'] })
+  roles: string[];
   @Prop({ type: String })
   resetPasswordToken?: string;
   @Prop({ type: Date })

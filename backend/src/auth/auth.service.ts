@@ -23,6 +23,21 @@ export class AuthService {
     private mailService: MailService,
   ) {}
 
+  //GET ALL USERS
+  async getAllUsers(): Promise<User[]> {
+    return await this.userModel.find().exec();
+  }
+
+  //GET USER BY ID
+  async getUserById(id: string): Promise<User> {
+    return await this.userModel.findById(id).exec();
+  }
+
+  //DELTE USER
+  async deleteUser(id: string): Promise<User> {
+    return await this.userModel.findByIdAndDelete(id).exec();
+  }
+
   //FIND USER BY EMAIL
   async findUserByEmail(email: string): Promise<User> {
     return await this.userModel.findOne({ email }).exec();
