@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseGuards,
@@ -32,7 +33,7 @@ export class OrderwebController {
   //GET ORDERWEB BY ID
   @Get(':id')
   @Auth(Role.Admin)
-  async getOrderWebById(id: string): Promise<OrderWeb> {
+  async getOrderWebById(@Param('id') id: string): Promise<OrderWeb> {
     return await this.orderwebService.getOrderWebById(id);
   }
 
@@ -46,13 +47,16 @@ export class OrderwebController {
   //DELETE ORDERWEB
   @Delete('/:id')
   @Auth(Role.Admin)
-  async delete(id: string): Promise<OrderWeb> {
+  async delete(@Param('id') id: string): Promise<OrderWeb> {
     return await this.orderwebService.delete(id);
   }
 
   //DELETE MY ORDERWEB
   @Delete('/my/:id')
-  async deleteMyOrderWeb(id: string, @GetUser() user: any): Promise<OrderWeb> {
+  async deleteMyOrderWeb(
+    @Param('id') id: string,
+    @GetUser() user: any,
+  ): Promise<OrderWeb> {
     return await this.orderwebService.deleteMyOrderWeb(id, user);
   }
 

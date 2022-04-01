@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { OrderWeb } from './schema/orderweb.schema';
@@ -23,7 +24,11 @@ export class OrderwebService {
 
   //GET ORDERWEB BY ID
   async getOrderWebById(id: string): Promise<OrderWeb> {
-    return await this.orderwebModel.findById(id).exec();
+    const user = await this.orderwebModel.findById(id).exec();
+    if (!user) {
+      throw new NotFoundException('OrderWeb not found with that id');
+    }
+    return user;
   }
 
   //GET MY ORDERWEB
