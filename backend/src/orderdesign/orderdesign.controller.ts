@@ -16,6 +16,7 @@ import { OrderDesign } from './schema/orderdesing.schema';
 import { CreateOrderDesignDto } from './dto/create-design.dto';
 import { Auth } from 'src/auth/auth.decorator';
 import { Role } from 'src/auth/roles/role.enum';
+import { User } from 'src/auth/schema/user.schema';
 
 @Controller('orderdesign')
 @UseGuards(AuthGuard(['jwt', 'google']))
@@ -41,6 +42,13 @@ export class OrderdesignController {
   @Auth(Role.Admin)
   async delete(id: string): Promise<OrderDesign> {
     return await this.orderdesignService.delete(id);
+  }
+
+  //GET MY ORDER DESIGNS
+  @Get('/my')
+  @Auth(Role.User)
+  async getMyOrderDesigns(user: User): Promise<OrderDesign[]> {
+    return await this.orderdesignService.getMyOrderDesigns(user);
   }
 
   //CREATE ORDERDESIGN

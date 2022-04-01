@@ -4,6 +4,7 @@ import { OrderDesign } from './schema/orderdesing.schema';
 import { Model } from 'mongoose';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { CreateOrderDesignDto } from './dto/create-design.dto';
+import { User } from 'src/auth/schema/user.schema';
 
 @Injectable()
 export class OrderdesignService {
@@ -26,6 +27,11 @@ export class OrderdesignService {
   //DELETE ORDER DESIGN
   async delete(id: string): Promise<OrderDesign> {
     return await this.orderwebModel.findByIdAndDelete(id).exec();
+  }
+
+  //GET MY ORDER DESIGNS
+  async getMyOrderDesigns(user: any): Promise<OrderDesign[]> {
+    return await this.orderwebModel.find({ user: user._id }).exec();
   }
 
   //CREATE ORDERDESIGN
