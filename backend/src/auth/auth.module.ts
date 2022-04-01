@@ -26,7 +26,13 @@ import { JwtStrategy } from './jwt.strategy';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    GoogleStrategy,
+    JwtStrategy,
+    /* { provide: APP_GUARD, useClass: RolesGuard }, 
+    Normally should be used but it's checks the role before the user is authenticated therefore it's not needed instead use @UseGuards(AuthGuard('jwt'), RolesGuard) in our controller*/
+  ],
   exports: [PassportModule, JwtStrategy],
 })
 export class AuthModule {}

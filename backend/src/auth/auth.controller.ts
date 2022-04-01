@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -9,15 +10,43 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { Auth } from './auth.decorator';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { AuthUpdateCredentialsDto } from './dto/update-user-credentials.dto';
 import { GetUser } from './get-user-decorator';
+import { Role } from './roles/role.enum';
+import { Roles } from './roles/roles.decorator';
+import { RolesGuard } from './roles/roles.guard';
 import { User } from './schema/user.schema';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  //GET ALL USERS
+  @Get('users')
+  @Auth(Role.Admin)
+  @Roles(Role.Admin)
+  async getAllUsers(): Promise<User[]> {
+    return await this.authService.getAllUsers();
+  }
+
+  //GET USER BY ID
+  @Get('user/:id')
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(Role.Admin)
+  async getUserById(@Param('id') id: string): Promise<User> {
+    return await this.authService.getUserById(id);
+  }
+
+  //DELETE USER
+  @Delete('user/:id')
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(Role.Admin)
+  async deleteUser(@Param('id') id: string): Promise<User> {
+    return await this.authService.deleteUser(id);
+  }
 
   //GOOGLE SIGNIN
   @Get()

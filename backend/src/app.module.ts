@@ -31,6 +31,5 @@ import { RolesGuard } from './auth/roles/roles.guard';
     OrdermobileModule,
     OrderdesignModule,
   ],
-  providers: [{ provide: APP_GUARD, useClass: RolesGuard }],
 })
 export class AppModule {}
