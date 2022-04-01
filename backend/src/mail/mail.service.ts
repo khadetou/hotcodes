@@ -17,4 +17,22 @@ export class MailService {
       },
     });
   }
+
+  //Newsletter
+  async sendNewsletter(
+    users: User[],
+    subject: string,
+    text: string,
+    url: string,
+  ) {
+    await this.mailerService.sendMail({
+      to: users.map((user) => user.email),
+      subject: subject,
+      template: 'mailcompaign',
+      context: {
+        name: text,
+        url: url,
+      },
+    });
+  }
 }

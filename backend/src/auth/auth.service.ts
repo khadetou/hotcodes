@@ -193,4 +193,10 @@ export class AuthService {
       throw new UnauthorizedException('Invalid reset token');
     }
   }
+
+  //SEND MAIL TO USERS
+  async sendMails(subject: string, text: string, url: string) {
+    const users = await this.userModel.find().exec();
+    return await this.mailService.sendNewsletter(users, subject, text, url);
+  }
 }

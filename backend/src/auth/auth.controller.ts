@@ -96,4 +96,14 @@ export class AuthController {
   ): Promise<User> {
     return await this.authService.resetPassword(token, password);
   }
+
+  //SEND NEWSLETTER
+  @Post('/send-newsletter')
+  async sendNewsletter(
+    @Body('subject') subject: string,
+    @Body('text') text: string,
+    @Body('url') url: string,
+  ): Promise<void | { message: string }> {
+    return await this.authService.sendMails(subject, text, url);
+  }
 }
