@@ -25,11 +25,15 @@ export class OrdermobileService {
 
   //DELETE ORDERMOBILE
   async delete(id: string): Promise<OrderMobile> {
-    return await this.ordermobileModel.findByIdAndRemove(id).exec();
+    const user = await this.ordermobileModel.findById(id).exec();
+    if (!user) {
+      throw new InternalServerErrorException('User not found');
+    }
+    return await user.remove();
   }
 
   //GET ORDERMOBILE BY USER
-  async findByUser(user: any): Promise<OrderMobile[]> {
+  async findMyOrder(user: any): Promise<OrderMobile[]> {
     return await this.ordermobileModel.find({ user: user._id }).exec();
   }
 
