@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  Delete,
+  Get,
   Post,
   UploadedFile,
   UseGuards,
@@ -8,7 +10,9 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Auth } from 'src/auth/auth.decorator';
 import { GetUser } from 'src/auth/get-user-decorator';
+import { Role } from 'src/auth/roles/role.enum';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
 import { OrderwebService } from './orderweb.service';
 import { OrderWeb } from './schema/orderweb.schema';
@@ -17,6 +21,34 @@ import { OrderWeb } from './schema/orderweb.schema';
 @UseGuards(AuthGuard(['jwt', 'google']))
 export class OrderwebController {
   constructor(private readonly orderwebService: OrderwebService) {}
+
+  //GET ALL ORDERWEB
+  @Get()
+  @Auth(Role.Admin)
+  async getAllOrderWeb(): Promise<OrderWeb[]> {
+    return await this.orderwebService.getAllOrderWeb();
+  }
+
+  //GET ORDERWEB BY ID
+  @Get(':id')
+  @Auth(Role.Admin)
+  async getOrderWebById(id: string): Promise<OrderWeb> {
+    return await this.orderwebService.getOrderWebById(id);
+  }
+
+  //GET MY ORDERWEB
+
+  @Get('/my')
+  async getMyOrderWeb(user: any): Promise<OrderWeb[]> {
+    return await this.orderwebService.getMyOrderWeb(user);
+  }
+
+  //DELETE ORDERWEB
+  @Delete('/:id')
+  @Auth(Role.Admin)
+  async delete(id: string): Promise<OrderWeb> {
+    return await this.orderwebService.delete(id);
+  }
 
   //CREATE ORDERWEB
   @Post()

@@ -16,6 +16,31 @@ export class OrderwebService {
     private cloudinaryService: CloudinaryService,
   ) {}
 
+  //GET ALL ORDERWEB
+  async getAllOrderWeb(): Promise<OrderWeb[]> {
+    return await this.orderwebModel.find().exec();
+  }
+
+  //GET ORDERWEB BY ID
+  async getOrderWebById(id: string): Promise<OrderWeb> {
+    return await this.orderwebModel.findById(id).exec();
+  }
+
+  //GET MY ORDERWEB
+  async getMyOrderWeb(user: any): Promise<OrderWeb[]> {
+    return await this.orderwebModel.find({ user: user._id }).exec();
+  }
+
+  //DELETE ORDERWEB
+  async delete(id: string): Promise<OrderWeb> {
+    const result = await this.orderwebModel.findByIdAndRemove(id).exec();
+    console.log(result);
+    if (!result) {
+      throw new InternalServerErrorException('OrderWeb not found');
+    }
+    return result;
+  }
+
   //CREATE ORDERWEB
   async create(
     createWebdevDto: CreateWebdevDto,
