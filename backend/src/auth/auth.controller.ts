@@ -99,6 +99,7 @@ export class AuthController {
 
   //SEND NEWSLETTER
   @Post('/send-newsletter')
+  @Auth(Role.Admin)
   async sendNewsletter(
     @Body('subject') subject: string,
     @Body('text') text: string,

@@ -30,7 +30,7 @@ export class MailService {
       subject: subject,
       template: 'mailcompaign',
       context: {
-        name: text,
+        text: text,
         url: url,
       },
     });
