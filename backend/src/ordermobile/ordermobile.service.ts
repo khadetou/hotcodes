@@ -13,6 +13,26 @@ export class OrdermobileService {
     private cloudinaryService: CloudinaryService,
   ) {}
 
+  //GET ALL ORDERMOBILE
+  async findAll(): Promise<OrderMobile[]> {
+    return await this.ordermobileModel.find().exec();
+  }
+
+  //GET ORDERMOBILE BY ID
+  async findOne(id: string): Promise<OrderMobile> {
+    return await this.ordermobileModel.findById(id).exec();
+  }
+
+  //DELETE ORDERMOBILE
+  async delete(id: string): Promise<OrderMobile> {
+    return await this.ordermobileModel.findByIdAndRemove(id).exec();
+  }
+
+  //GET ORDERMOBILE BY USER
+  async findByUser(user: any): Promise<OrderMobile[]> {
+    return await this.ordermobileModel.find({ user: user._id }).exec();
+  }
+
   //CREATE ORDERMOBILE
   async create(
     createMobiledevDto: CreateMobiledevDto,
