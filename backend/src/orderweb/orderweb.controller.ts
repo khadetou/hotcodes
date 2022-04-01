@@ -50,6 +50,12 @@ export class OrderwebController {
     return await this.orderwebService.delete(id);
   }
 
+  //DELETE MY ORDERWEB
+  @Delete('/my/:id')
+  async deleteMyOrderWeb(id: string, @GetUser() user: any): Promise<OrderWeb> {
+    return await this.orderwebService.deleteMyOrderWeb(id, user);
+  }
+
   //CREATE ORDERWEB
   @Post()
   @UseInterceptors(FileInterceptor('file'))

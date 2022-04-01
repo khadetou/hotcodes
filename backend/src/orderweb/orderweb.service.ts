@@ -41,6 +41,15 @@ export class OrderwebService {
     return result;
   }
 
+  //DELETE MY ORDERWEB
+  async deleteMyOrderWeb(id: string, user: any): Promise<OrderWeb> {
+    const orderweb = await this.orderwebModel.findById(id).exec();
+    if (orderweb.user.toString() !== user._id.toString()) {
+      throw new BadRequestException('You are not authorized');
+    }
+    return await this.orderwebModel.findByIdAndDelete(id).exec();
+  }
+
   //CREATE ORDERWEB
   async create(
     createWebdevDto: CreateWebdevDto,
