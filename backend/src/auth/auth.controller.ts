@@ -48,6 +48,12 @@ export class AuthController {
     return await this.authService.deleteUser(id);
   }
 
+  @Get()
+  @UseGuards(AuthGuard(['jwt', 'google']))
+  async getUser(@GetUser() user: User): Promise<User> {
+    return user;
+  }
+
   //GOOGLE SIGNIN
   @Get()
   @UseGuards(AuthGuard('google'))
@@ -108,3 +114,4 @@ export class AuthController {
     return await this.authService.sendMails(subject, text, url);
   }
 }
+
