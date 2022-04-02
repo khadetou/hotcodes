@@ -1,13 +1,22 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useActions } from "../hooks/useActions";
-import { useTypedSelector } from "../hooks/useTypeSelector";
+import { setAuthToken } from "../utils/setAuthToken";
+import { useEffect } from "react";
+import { wrapper } from "../redux";
+import axios from "axios";
+
+typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 const Home: NextPage = () => {
-  const { LogoutUser } = useActions();
+  const { LogoutUser, LoadUser } = useActions();
   const logout = () => LogoutUser();
+
+  useEffect(() => {
+    LoadUser();
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -74,3 +83,11 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (ctx) => {
+    store.dispatch({ type: "TEST", payload: "test" });
+    return {
+      props: {},
+    };
+  });

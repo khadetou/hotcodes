@@ -1,11 +1,12 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypeSelector";
 import { useRouter } from "next/router";
+import { getCookie } from "../redux/action-creators";
 
 const Login: NextPage = () => {
-  const { SetSuccess, LoginUser } = useActions();
+  const { SetSuccess, LoginUser, LoadUser } = useActions();
   const { user, success } = useTypedSelector((state) => state.authReducer);
   const router = useRouter();
 
@@ -15,6 +16,7 @@ const Login: NextPage = () => {
   });
 
   useEffect(() => {
+    LoadUser();
     if (success) {
       SetSuccess(false);
     }
@@ -58,3 +60,18 @@ const Login: NextPage = () => {
 };
 
 export default Login;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = getCookie("token", ctx.req);
+  if (token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+};

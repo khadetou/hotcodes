@@ -1,8 +1,9 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React, { useState } from "react";
 import { useTypedSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import { useRouter } from "next/router";
+import { wrapper } from "../redux";
 
 const Register: NextPage = () => {
   const router = useRouter();

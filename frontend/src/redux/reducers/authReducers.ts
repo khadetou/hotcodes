@@ -47,6 +47,7 @@ const authReducer = (
       };
 
     case ActionType.LOGIN_FAILURE:
+    case ActionType.LOAD_USER_FAILURE:
       localStorage.removeItem("token");
       return {
         ...state,
@@ -65,6 +66,13 @@ const authReducer = (
         isAuthenticated: false,
       };
 
+    case ActionType.LOAD_USER:
+      return {
+        ...state,
+        user: action.payload.user,
+        isAuthenticated: true,
+        loading: false,
+      };
     case ActionType.SET_SUCCESS:
       return {
         ...state,

@@ -34,6 +34,18 @@ interface LoginFailureAction {
   error: string;
 }
 
+interface LoadUserSuccessAction {
+  type: ActionType.LOAD_USER;
+  payload: {
+    user: User;
+  };
+}
+
+interface LoadUserFaillureAction {
+  type: ActionType.LOAD_USER_FAILURE;
+  error: string;
+}
+
 interface LogoutSuccessAction {
   type: ActionType.LOGOUT_SUCCESS;
 }
@@ -49,4 +61,6 @@ export type Action =
   | LoginSuccessAction
   | LoginFailureAction
   | LogoutSuccessAction
+  | LoadUserSuccessAction
+  | LoadUserFaillureAction
   | SetSuccessAction;

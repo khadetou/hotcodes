@@ -3,6 +3,8 @@ import { Action, User } from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
+import cookie from "js-cookie";
+import { Router } from "next/router";
 
 interface Data {
   firstName: string;
@@ -11,6 +13,33 @@ interface Data {
   phone: string;
   password: string;
 }
+
+interface Login {
+  email: string;
+  password: string;
+}
+
+export const LoadUser = () => {
+  if (typeof localStorage !== "undefined" && localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/auth");
+      dispatch({
+        type: ActionType.LOAD_USER,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (err: any) {
+      dispatch({
+        type: ActionType.LOAD_USER_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
 
 export const RegisterUser = ({
   firstName,
@@ -53,7 +82,7 @@ export const RegisterUser = ({
   };
 };
 
-export const LoginUser = ({ email, password }: Data) => {
+export const LoginUser = ({ email, password }: Login) => {
   return async (dispatch: Dispatch<Action>) => {
     const config = {
       headers: {
@@ -72,6 +101,7 @@ export const LoginUser = ({ email, password }: Data) => {
         config
       );
 
+      setCookie("token", data.accessToken);
       dispatch({
         type: ActionType.LOGIN_SUCCESS,
         payload: {
@@ -79,9 +109,6 @@ export const LoginUser = ({ email, password }: Data) => {
           user: data.user,
         },
       });
-      if (localStorage.token) {
-        setAuthToken(localStorage.token);
-      }
     } catch (error: any) {
       dispatch({
         type: ActionType.LOGIN_FAILURE,
@@ -92,14 +119,17 @@ export const LoginUser = ({ email, password }: Data) => {
 };
 
 export const SetSuccess = (success: boolean) => {
-  return {
-    type: ActionType.SET_SUCCESS,
-    success,
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SET_SUCCESS,
+      success,
+    });
   };
 };
 
 export const LogoutUser = () => {
   return async (dispatch: Dispatch<Action>) => {
+    removeCookie("token");
     dispatch({
       type: ActionType.LOGOUT_SUCCESS,
     });
@@ -107,4 +137,45 @@ export const LogoutUser = () => {
       localStorage.removeItem("token");
     }
   };
+};
+
+export const setCookie = (key: string, value: string) => {
+  if (typeof window !== "undefined") {
+    cookie.set(key, value, {
+      expires: 1,
+      path: "/",
+    });
+  }
+};
+
+export const removeCookie = (key: string) => {
+  if (typeof window !== "undefined") {
+    cookie.remove(key, {
+      expires: 1,
+    });
+  }
+};
+const getCookieFromBrowser = (key: string) => {
+  return cookie.get(key);
+};
+
+const getCookieFromServer = (key: string, req: any) => {
+  if (!req.headers.cookie) {
+    return undefined;
+  }
+  const rawCookie = req.headers.cookie
+    .split(";")
+    .find((c: any) => c.trim().startsWith(`${key}=`));
+
+  if (!rawCookie) {
+    return undefined;
+  }
+
+  return rawCookie.split("=")[1];
+};
+
+export const getCookie = (key: string, req: any) => {
+  return typeof window !== "undefined"
+    ? getCookieFromBrowser(key)
+    : getCookieFromServer(key, req);
 };
