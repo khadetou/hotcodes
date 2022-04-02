@@ -124,12 +124,12 @@ export class AuthService {
   async signIn(
     email: string,
     password: string,
-  ): Promise<{ accessToken: string }> {
+  ): Promise<{ accessToken: string; user: any }> {
     const user = await this.userModel.findOne({ email }).exec();
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload: JwtPayload = { email };
       const accessToken = await this.jwtService.sign(payload);
-      return { accessToken };
+      return { accessToken, user };
     } else {
       throw new UnauthorizedException('Invalid credentials');
     }

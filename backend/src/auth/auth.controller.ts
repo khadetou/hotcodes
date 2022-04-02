@@ -77,7 +77,7 @@ export class AuthController {
   async signin(
     @Body('email') email: string,
     @Body('password') password: string,
-  ): Promise<{ accessToken: string }> {
+  ): Promise<{ accessToken: string; user: User }> {
     return await this.authService.signIn(email, password);
   }
 
