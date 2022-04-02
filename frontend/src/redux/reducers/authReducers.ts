@@ -15,15 +15,7 @@ const initialState: AuthState = {
   success: false,
   loading: true,
   token: "",
-  user: {
-    id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    password: "",
-    roles: [],
-  },
+  user: null,
   error: "",
 };
 
@@ -63,6 +55,22 @@ const authReducer = (
         loading: false,
         user: null,
       };
+
+    case ActionType.LOGOUT_SUCCESS:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: "",
+        user: null,
+        isAuthenticated: false,
+      };
+
+    case ActionType.SET_SUCCESS:
+      return {
+        ...state,
+        success: action.success,
+      };
+
     default:
       return state;
   }

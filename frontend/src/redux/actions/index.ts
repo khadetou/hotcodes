@@ -34,8 +34,19 @@ interface LoginFailureAction {
   error: string;
 }
 
+interface LogoutSuccessAction {
+  type: ActionType.LOGOUT_SUCCESS;
+}
+
+interface SetSuccessAction {
+  type: ActionType.SET_SUCCESS;
+  success: boolean;
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
   | LoginSuccessAction
-  | LoginFailureAction;
+  | LoginFailureAction
+  | LogoutSuccessAction
+  | SetSuccessAction;
