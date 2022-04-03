@@ -1,4 +1,5 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -81,23 +82,27 @@ const Home: NextPage = (props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(
-    (store) =>
-      async (ctx): Promise<{ props: {} | { user: any } }> => {
-        const token = getCookie("token", ctx.req);
+  wrapper.getServerSideProps((store) => async (ctx): Promise<any> => {
+    const token = getCookie("token", ctx.req);
 
-        if (token) {
-          await store.dispatch(LoadUserSsr(token));
-          const { user } = store.getState().authReducer;
-
-          return {
-            props: {
-              user,
-            },
-          };
-        }
+    if (token) {
+      await store.dispatch(LoadUserSsr(token));
+      const { user } = store.getState().authReducer;
+      if (!user?.password) {
         return {
-          props: {},
+          redirect: {
+            destination: "/me/update_profile",
+            permanent: false,
+          },
         };
       }
-  );
+      return {
+        props: {
+          user,
+        },
+      };
+    }
+    return {
+      props: {},
+    };
+  });

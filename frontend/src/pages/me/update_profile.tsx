@@ -46,32 +46,36 @@ const UpdateProfile: NextPage = () => {
 
   return (
     <div>
-      <h1>Update user profile</h1>
+      <h1>{user?.password ? "Update user profile" : "Proceed Checking"}</h1>
       <form onSubmit={(e) => onSubmit(e)}>
-        <label htmlFor="firstname">FirstName</label>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="lastname">LastName</label>
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={(e) => onChange(e)}
-        />
+        {user?.password && (
+          <>
+            <label htmlFor="firstname">FirstName</label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={(e) => onChange(e)}
+            />
+            <label htmlFor="lastname">LastName</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={(e) => onChange(e)}
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={(e) => onChange(e)}
+            />
+          </>
+        )}
         <label htmlFor="password">Password</label>
         <input
           type="password"
