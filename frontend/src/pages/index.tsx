@@ -88,14 +88,13 @@ export const getServerSideProps: GetServerSideProps =
 
         if (token) {
           await store.dispatch(LoadUserSsr(token));
-          // const { user } = store.getState().authReducer;
-          // console.log(user);
+          const { user } = store.getState().authReducer;
 
-          // return {
-          //   props: {
-          //     user,
-          //   },
-          // };
+          return {
+            props: {
+              user,
+            },
+          };
         }
         return {
           props: {},

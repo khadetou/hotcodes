@@ -1,9 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTypedSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import { useRouter } from "next/router";
-import { wrapper } from "../redux";
+import { getCookie } from "../redux/action-creators";
+import GoogleLogin from "react-google-login";
 
 const Register: NextPage = () => {
   const router = useRouter();
@@ -15,10 +16,19 @@ const Register: NextPage = () => {
     password: "",
     confirmPassword: "",
   });
-  const { error, loading, success } = useTypedSelector(
+
+  const { RegisterUser, GoogleLoginUser, LoadUser } = useActions();
+  const { error, loading, success, user } = useTypedSelector(
     (state) => state.authReducer
   );
-  const { RegisterUser } = useActions();
+
+  useEffect(() => {
+    LoadUser();
+    if (user) {
+      router.push("/");
+    }
+  }, [router, user]);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -80,9 +90,29 @@ const Register: NextPage = () => {
           onChange={(e) => onChange(e)}
         />
         <button type="submit">Register</button>
+        <GoogleLogin
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+          buttonText="Login with Google"
+          onSuccess={GoogleLoginUser}
+          onFailure={(res) => console.log(res)}
+        />
       </form>
     </div>
   );
 };
 
 export default Register;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = getCookie("token", ctx.req);
+  if (token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+};
