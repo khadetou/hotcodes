@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { Action, User } from "../actions";
+import { Action, OrderWeb, User } from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
@@ -438,4 +438,40 @@ export const getCookie = (key: string, req: any) => {
   return typeof window !== "undefined"
     ? getCookieFromBrowser(key)
     : getCookieFromServer(key, req);
+};
+
+//------------------------ORDERS------------------------
+
+//CREATE ORDER WEB
+export const CreateOrderWeb = (orderWeb: OrderWeb) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({
+      orderWeb,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/orderweb",
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.CREATE_ORDERWEB_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.CREATE_ORDERWEB_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
 };

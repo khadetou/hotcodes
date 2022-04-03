@@ -172,6 +172,18 @@ interface DeleteUserFailureAction {
   error: string;
 }
 
+interface CreateOrderWebSuccessAction {
+  type: ActionType.CREATE_ORDERWEB_SUCCESS;
+  payload: {
+    order: OrderWeb;
+  };
+}
+
+interface CreateOrderWebFailureAction {
+  type: ActionType.CREATE_ORDERWEB_FAILURE;
+  error: string;
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -192,4 +204,6 @@ export type Action =
   | GetUserSuccessByIdAction
   | GetUserFailureByIdAction
   | DeleteUserSuccessAction
-  | DeleteUserFailureAction;
+  | DeleteUserFailureAction
+  | CreateOrderWebSuccessAction
+  | CreateOrderWebFailureAction;
