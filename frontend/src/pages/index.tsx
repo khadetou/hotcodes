@@ -13,12 +13,23 @@ import {
   removeCookie,
 } from "../redux/action-creators";
 import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
-const Home: NextPage = (props) => {
+interface IProps {
+  token: string;
+}
+
+const Home: NextPage<IProps> = ({ token }) => {
   const { LogoutUser } = useActions();
   const logout = () => LogoutUser();
+
+  useEffect(() => {
+    if (token) {
+      LogoutUser();
+    }
+  }, [token]);
 
   return (
     <div className={styles.container}>
@@ -91,10 +102,14 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (ctx): Promise<any> => {
     const token = getCookie("token", ctx.req);
 
+    console.log(token);
     if (token) {
       if (jwtDecode<any>(token).exp < Date.now() / 1000) {
-        ctx.req.headers.cookie = "";
-        store.dispatch(LogoutUser());
+        return {
+          props: {
+            token,
+          },
+        };
       } else {
         await store.dispatch(LoadUserSsr(token));
         const { user } = store.getState().authReducer;

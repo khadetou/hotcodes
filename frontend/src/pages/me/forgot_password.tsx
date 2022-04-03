@@ -1,13 +1,19 @@
 import jwtDecode from "jwt-decode";
 import { GetServerSideProps, NextPage } from "next";
-import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
 import { getCookie } from "../../redux/action-creators";
+import { useRouter } from "next/router";
 
-const ForgotPassword: NextPage = () => {
-  const { SendConfirmationEmail } = useActions();
+interface IProps {
+  tokens: string;
+}
+
+const ForgotPassword: NextPage<IProps> = ({ tokens }) => {
+  const { SendConfirmationEmail, LogoutUser } = useActions();
+  const router = useRouter();
   const { token } = useTypedSelector((state) => state.authReducer);
   const [email, setEmail] = useState("");
 
@@ -16,7 +22,12 @@ const ForgotPassword: NextPage = () => {
     SendConfirmationEmail(email);
   };
 
-  console.log(token);
+  useEffect(() => {
+    if (tokens) {
+      LogoutUser();
+      router.push("/");
+    }
+  }, [tokens, router]);
 
   return (
     <div>
@@ -44,6 +55,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         redirect: {
           destination: "/",
           permanent: false,
+        },
+      };
+    } else {
+      return {
+        props: {
+          token: token,
         },
       };
     }

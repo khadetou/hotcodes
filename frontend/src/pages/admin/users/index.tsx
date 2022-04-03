@@ -1,10 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { wrapper } from "../../../redux";
-import {
-  getCookie,
-  LoadUserSsr,
-  LogoutUser,
-} from "../../../redux/action-creators";
+import { getCookie, LoadUserSsr } from "../../../redux/action-creators";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypeSelector";
 import { useEffect } from "react";
@@ -46,11 +42,9 @@ export const getServerSideProps: GetServerSideProps =
     const token = getCookie("token", ctx.req);
     if (token) {
       if (jwtDecode<any>(token).exp < Date.now() / 1000) {
-        ctx.req.headers.cookie = "";
-        await store.dispatch(LogoutUser());
         return {
           redirect: {
-            destination: "/login",
+            destination: "/",
             permanent: false,
           },
         };
