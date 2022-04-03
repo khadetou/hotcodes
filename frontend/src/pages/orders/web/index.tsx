@@ -1,6 +1,18 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypeSelector";
+import { useState } from "react";
+import { getCookie } from "../../../redux/action-creators";
+import jwtDecode from "jwt-decode";
 
 const OrderWeb: NextPage = () => {
+  const {} = useActions();
+  const {} = useTypedSelector((state) => state.orderReducer);
+  const [formData, setFormData] = useState<any>({
+    plateform: "",
+    typeOfApp: "",
+  });
+
   return (
     <div>
       <h1>Order</h1>
@@ -81,3 +93,19 @@ const OrderWeb: NextPage = () => {
 };
 
 export default OrderWeb;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = getCookie("token", ctx.req);
+  if (token) {
+    if (jwtDecode<any>(token).exp > Date.now() / 1000) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+  }
+  return {
+    props: {},
+  };
+};
