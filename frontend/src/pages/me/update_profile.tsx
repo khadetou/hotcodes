@@ -1,10 +1,15 @@
+import jwtDecode from "jwt-decode";
 import { useRouter } from "next/router";
 import { GetServerSideProps, NextPage } from "next/types";
 import { useEffect, useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
 import { wrapper } from "../../redux";
-import { getCookie, LoadUserSsr } from "../../redux/action-creators";
+import {
+  getCookie,
+  LoadUserSsr,
+  LogoutUser,
+} from "../../redux/action-creators";
 
 const UpdateProfile: NextPage = () => {
   const router = useRouter();
@@ -103,23 +108,31 @@ const UpdateProfile: NextPage = () => {
 
 export default UpdateProfile;
 export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(
-    (store) =>
-      async (ctx): Promise<{ props: {} | { user: any } }> => {
-        const token = getCookie("token", ctx.req);
+  wrapper.getServerSideProps((store) => async (ctx): Promise<any> => {
+    const token = getCookie("token", ctx.req);
 
-        if (token) {
-          await store.dispatch(LoadUserSsr(token));
-          const { user } = store.getState().authReducer;
-
-          return {
-            props: {
-              user,
-            },
-          };
-        }
+    if (token) {
+      if (jwtDecode<any>(token).exp < Date.now() / 1000) {
+        ctx.req.headers.cookie = "";
+        store.dispatch(LogoutUser());
         return {
-          props: {},
+          redirect: {
+            destination: "/login",
+            permanent: false,
+          },
+        };
+      } else {
+        await store.dispatch(LoadUserSsr(token));
+        const { user } = store.getState().authReducer;
+
+        return {
+          props: {
+            user,
+          },
         };
       }
-  );
+    }
+    return {
+      props: {},
+    };
+  });

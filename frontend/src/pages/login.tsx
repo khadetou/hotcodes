@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypeSelector";
 import { useRouter } from "next/router";
-import { getCookie } from "../redux/action-creators";
+import { getCookie, LogoutUser } from "../redux/action-creators";
 import GoogleLogin from "react-google-login";
+import jwtDecode from "jwt-decode";
 
 const Login: NextPage = () => {
   const { SetSuccess, LoginUser, LoadUser, GoogleLoginUser } = useActions();
@@ -73,12 +74,14 @@ export default Login;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = getCookie("token", ctx.req);
   if (token) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+    if (jwtDecode<any>(token).exp > Date.now() / 1000) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
   }
   return {
     props: {},

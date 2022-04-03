@@ -12,6 +12,57 @@ export type User = {
   resetPasswordExpires?: Date;
 } | null;
 
+export interface OrderDesign {
+  _id?: string;
+  userId: string;
+  platform: string;
+  typeapp: string;
+  appName: string;
+  description: string;
+  Goal: string[];
+  target: string;
+  mood: string;
+  wireframe: string;
+  design: {
+    public_id: string;
+    url: string;
+    format: string;
+  }[];
+  functionnality: [string];
+}
+
+export interface OrderWeb {
+  _id?: string;
+  userId: string;
+  platform: string;
+  typeapp: string;
+  appName: string;
+  description: string;
+  Goal: string[];
+  design: {
+    public_id: string;
+    url: string;
+    format: string;
+  }[];
+  functionnality: [string];
+}
+
+export interface OrderMobile {
+  _id?: string;
+  userId: string;
+  platform: string;
+  typeapp: string;
+  appName: string;
+  description: string;
+  Goal: string[];
+  design: {
+    public_id: string;
+    url: string;
+    format: string;
+  }[];
+  functionnality: [string];
+}
+
 interface RegisterSuccessAction {
   type: ActionType.REGISTER_SUCCESS;
 }

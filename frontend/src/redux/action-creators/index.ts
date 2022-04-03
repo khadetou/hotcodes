@@ -43,6 +43,9 @@ export const LoadUser = () => {
 
 //LOAD USER WITH SSR
 export const LoadUserSsr = (token: string) => {
+  if (typeof localStorage !== "undefined" && localStorage.token) {
+    setAuthToken("localStorage.token");
+  }
   return async (dispatch: Dispatch<Action>) => {
     const config = {
       headers: {
@@ -64,7 +67,6 @@ export const LoadUserSsr = (token: string) => {
         },
       });
     } catch (err: any) {
-      console.log({ err });
       dispatch({
         type: ActionType.LOAD_USER_FAILURE,
         error: err,
@@ -209,7 +211,7 @@ export const LogoutUser = () => {
     dispatch({
       type: ActionType.LOGOUT_SUCCESS,
     });
-    if (localStorage.token) {
+    if (typeof localStorage !== "undefined" && localStorage.token) {
       localStorage.removeItem("token");
     }
   };
@@ -412,6 +414,7 @@ export const removeCookie = (key: string) => {
     });
   }
 };
+
 const getCookieFromBrowser = (key: string) => {
   return cookie.get(key);
 };

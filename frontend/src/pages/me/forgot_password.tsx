@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 import { useState } from "react";
@@ -38,12 +39,14 @@ export default ForgotPassword;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = getCookie("token", ctx.req);
   if (token) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+    if (jwtDecode<any>(token).exp > Date.now() / 1000) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
   }
   return {
     props: {},

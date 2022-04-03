@@ -5,6 +5,7 @@ import { useTypedSelector } from "../../../hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { getCookie } from "../../../redux/action-creators";
+import jwtDecode from "jwt-decode";
 const ConfirmEmail = () => {
   const { ResetPassword } = useActions();
   const { user } = useTypedSelector((state) => state.authReducer);
@@ -58,12 +59,14 @@ export default ConfirmEmail;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = getCookie("token", ctx.req);
   if (token) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+    if (jwtDecode<any>(token).exp > Date.now() / 1000) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
   }
   return {
     props: {},

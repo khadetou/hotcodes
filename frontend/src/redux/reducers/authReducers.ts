@@ -50,10 +50,10 @@ const authReducer = (
       typeof window !== "undefined" && localStorage.removeItem("token");
       return {
         ...state,
-        error: action.error,
         token: "",
-        loading: false,
         user: null,
+        isAuthenticated: false,
+        error: action.error,
       };
 
     case ActionType.LOGOUT_SUCCESS:

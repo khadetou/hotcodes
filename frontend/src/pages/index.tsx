@@ -6,7 +6,13 @@ import styles from "../styles/Home.module.css";
 import { useActions } from "../hooks/useActions";
 import { setAuthToken } from "../utils/setAuthToken";
 import { wrapper } from "../redux";
-import { getCookie, LoadUserSsr } from "../redux/action-creators";
+import {
+  getCookie,
+  LoadUserSsr,
+  LogoutUser,
+  removeCookie,
+} from "../redux/action-creators";
+import jwtDecode from "jwt-decode";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -86,22 +92,45 @@ export const getServerSideProps: GetServerSideProps =
     const token = getCookie("token", ctx.req);
 
     if (token) {
-      await store.dispatch(LoadUserSsr(token));
-      const { user } = store.getState().authReducer;
-      if (user && !user?.password) {
+      if (jwtDecode<any>(token).exp < Date.now() / 1000) {
+        ctx.req.headers.cookie = "";
+        store.dispatch(LogoutUser());
+      } else {
+        await store.dispatch(LoadUserSsr(token));
+        const { user } = store.getState().authReducer;
+        if (user && !user?.password) {
+          return {
+            redirect: {
+              destination: "/me/update_profile",
+              permanent: false,
+            },
+          };
+        }
         return {
-          redirect: {
-            destination: "/me/update_profile",
-            permanent: false,
+          props: {
+            user,
           },
         };
       }
-      return {
-        props: {
-          user,
-        },
-      };
     }
+
+    // if (token) {
+    //   await store.dispatch(LoadUserSsr(token));
+    //   const { user } = store.getState().authReducer;
+    //   if (user && !user?.password) {
+    //     return {
+    //       redirect: {
+    //         destination: "/me/update_profile",
+    //         permanent: false,
+    //       },
+    //     };
+    //   }
+    //   return {
+    //     props: {
+    //       user,
+    //     },
+    //   };
+    // }
     return {
       props: {},
     };
