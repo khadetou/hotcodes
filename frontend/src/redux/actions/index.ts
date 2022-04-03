@@ -1,7 +1,7 @@
 import { ActionType } from "../action-types";
 
 export type User = {
-  id?: string;
+  _id?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -85,6 +85,42 @@ interface ResetPasswordFailureAction {
   error: string;
 }
 
+interface GetAllUsersSuccessAction {
+  type: ActionType.GET_ALL_USERS_SUCCESS;
+  payload: {
+    users: User[];
+  };
+}
+
+interface GetAllUsersFailureAction {
+  type: ActionType.GET_ALL_USERS_FAILURE;
+  error: string;
+}
+
+interface GetUserSuccessByIdAction {
+  type: ActionType.GET_USER_SUCCESS_BY_ID;
+  payload: {
+    user: User;
+  };
+}
+
+interface GetUserFailureByIdAction {
+  type: ActionType.GET_USER_FAILURE_BY_ID;
+  error: string;
+}
+
+interface DeleteUserSuccessAction {
+  type: ActionType.DELETE_USER_SUCCESS;
+  payload: {
+    user: User;
+  };
+}
+
+interface DeleteUserFailureAction {
+  type: ActionType.DELETE_USER_FAILURE;
+  error: string;
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -99,4 +135,10 @@ export type Action =
   | SendConfirmationEmailFailureAction
   | ResetPasswordSuccessAction
   | ResetPasswordFailureAction
-  | SetSuccessAction;
+  | SetSuccessAction
+  | GetAllUsersSuccessAction
+  | GetAllUsersFailureAction
+  | GetUserSuccessByIdAction
+  | GetUserFailureByIdAction
+  | DeleteUserSuccessAction
+  | DeleteUserFailureAction;

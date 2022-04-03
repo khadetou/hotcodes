@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps =
     if (token) {
       await store.dispatch(LoadUserSsr(token));
       const { user } = store.getState().authReducer;
-      if (!user?.password) {
+      if (user && !user?.password) {
         return {
           redirect: {
             destination: "/me/update_profile",

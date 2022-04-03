@@ -25,7 +25,7 @@ export const LoadUser = () => {
   }
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/auth");
+      const { data } = await axios.get("http://localhost:5000/auth/user");
       dispatch({
         type: ActionType.LOAD_USER,
         payload: {
@@ -52,7 +52,10 @@ export const LoadUserSsr = (token: string) => {
     };
 
     try {
-      const { data } = await axios.get("http://localhost:5000/auth", config);
+      const { data } = await axios.get(
+        "http://localhost:5000/auth/user",
+        config
+      );
 
       dispatch({
         type: ActionType.LOAD_USER,
@@ -214,6 +217,9 @@ export const LogoutUser = () => {
 
 //UPDATE USER
 export const UpdateUserProfile = (user: User) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
   return async (dispatch: Dispatch<Action>) => {
     const config = {
       headers: {
@@ -310,6 +316,78 @@ export const ResetPassword = (password: string, token: string) => {
     } catch (error: any) {
       dispatch({
         type: ActionType.RESET_PASSWORD_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//GET ALL USERS ADMIN
+export const GetAllUsers = () => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/auth/users");
+      dispatch({
+        type: ActionType.GET_ALL_USERS_SUCCESS,
+        payload: {
+          users: data,
+        },
+      });
+    } catch (error: any) {
+      console.log({ error });
+      dispatch({
+        type: ActionType.GET_ALL_USERS_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//GET USER BY ID ADMIN
+export const GetUserById = (id: string) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/auth/user/${id}`);
+      dispatch({
+        type: ActionType.GET_USER_SUCCESS_BY_ID,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_USER_FAILURE_BY_ID,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//DELETE USER ADMIN
+export const DeleteUser = (id: string) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5000/auth/user/${id}`
+      );
+      dispatch({
+        type: ActionType.DELETE_USER_SUCCESS,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.DELETE_USER_FAILURE,
         error: error.response.data.error,
       });
     }

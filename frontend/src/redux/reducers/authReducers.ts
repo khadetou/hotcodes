@@ -7,6 +7,8 @@ interface AuthState {
   loading: boolean;
   token: string;
   user: User;
+  userId: User;
+  users: User[];
   error: string;
 }
 
@@ -16,6 +18,8 @@ const initialState: AuthState = {
   loading: true,
   token: "",
   user: null,
+  userId: null,
+  users: [],
   error: "",
 };
 
@@ -40,13 +44,6 @@ const authReducer = (
         loading: false,
       };
     }
-    case ActionType.REGISTER_FAILURE:
-    case ActionType.UPDATE_USER_PROFILE_FAILURE:
-      return {
-        ...state,
-        error: action.error,
-        loading: false,
-      };
 
     case ActionType.LOGIN_FAILURE:
     case ActionType.LOAD_USER_FAILURE:
@@ -89,20 +86,49 @@ const authReducer = (
         loading: false,
       };
 
-    case ActionType.SEND_CONFIRMITION_EMAIL_FAILURE:
-    case ActionType.RESET_PASSWORD_FAILURE:
-      return {
-        ...state,
-        error: action.error,
-        loading: false,
-      };
-
     case ActionType.RESET_PASSWORD_SUCCESS:
       return {
         ...state,
         user: action.payload.user,
         loading: false,
       };
+
+    case ActionType.GET_ALL_USERS_SUCCESS:
+      return {
+        ...state,
+        users: action.payload.users,
+        loading: false,
+      };
+
+    case ActionType.GET_USER_SUCCESS_BY_ID:
+      return {
+        ...state,
+        userId: action.payload.user,
+        loading: false,
+      };
+
+    case ActionType.DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        users: state.users.filter(
+          (user) => user?._id !== action.payload.user!._id
+        ),
+        loading: false,
+      };
+
+    case ActionType.GET_ALL_USERS_FAILURE:
+    case ActionType.GET_USER_FAILURE_BY_ID:
+    case ActionType.DELETE_USER_FAILURE:
+    case ActionType.SEND_CONFIRMITION_EMAIL_FAILURE:
+    case ActionType.RESET_PASSWORD_FAILURE:
+    case ActionType.REGISTER_FAILURE:
+    case ActionType.UPDATE_USER_PROFILE_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
     default:
       return state;
   }
