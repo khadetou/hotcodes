@@ -26,7 +26,8 @@ export class AuthController {
 
   //GET ALL USERS
   @Get('users')
-  @Auth(Role.Admin)
+  // @Auth(Role.Admin)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(Role.Admin)
   async getAllUsers(): Promise<User[]> {
     return await this.authService.getAllUsers();
@@ -64,12 +65,6 @@ export class AuthController {
   // async googleCallback(@GetUser() user: User) {
   //   return user;
   // }
-
-  @Get()
-  @UseGuards(AuthGuard('jwt'))
-  async getMyProfile(@GetUser() user: User): Promise<User> {
-    return user;
-  }
 
   @Post('/google/signin')
   async signinWithGoogle(

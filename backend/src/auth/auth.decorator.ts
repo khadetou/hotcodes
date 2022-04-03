@@ -5,6 +5,6 @@ import { RolesGuard } from './roles/roles.guard';
 export function Auth(...roles: Role[]) {
   return applyDecorators(
     SetMetadata('roles', roles),
-    UseGuards(AuthGuard(['jwt', 'google']), RolesGuard),
+    UseGuards(AuthGuard(['jwt']), RolesGuard),
   );
 }
