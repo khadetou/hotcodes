@@ -14,6 +14,9 @@ import { JwtPayload } from './jwt-payload.interface';
 import { AuthUpdateCredentialsDto } from './dto/update-user-credentials.dto';
 import * as crypto from 'crypto';
 import { MailService } from 'src/mail/mail.service';
+import { OAuth2Client } from 'google-auth-library';
+import { ConfigService } from '@nestjs/config';
+import { compile } from 'joi';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +24,7 @@ export class AuthService {
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
     private jwtService: JwtService,
     private mailService: MailService,
+    private configService: ConfigService,
   ) {}
 
   //GET ALL USERS
@@ -69,6 +73,35 @@ export class AuthService {
       } else {
         throw new InternalServerErrorException(err);
       }
+    }
+  }
+
+  //LOGIN USER WITH GOOGLE AUTH
+  async signInWithGoogle(
+    token: any,
+  ): Promise<{ user: any; accessToken: string }> {
+    const client = new OAuth2Client(this.configService.get('GOOGLE_CLIENT_ID'));
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: this.configService.get('GOOGLE_CLIENT_ID'),
+    });
+    const payloads = ticket.getPayload();
+
+    const user = await this.findUserByEmail(payloads.email);
+    if (user) {
+      const payload: JwtPayload = { email: user.email };
+      const accessToken = await this.jwtService.sign(payload);
+      return { accessToken, user };
+    } else {
+      const user = await this.createUserWithGoogle(
+        payloads.name.split(' ')[0],
+        payloads.name.split(' ')[1],
+        payloads.email,
+        payloads.sub,
+      );
+      const payload: JwtPayload = { email: user.email };
+      const accessToken = await this.jwtService.sign(payload);
+      return { accessToken, user };
     }
   }
 

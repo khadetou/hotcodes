@@ -48,21 +48,34 @@ export class AuthController {
     return await this.authService.deleteUser(id);
   }
 
-  @Get()
-  @UseGuards(AuthGuard(['jwt', 'google']))
+  @Get('/user')
+  @UseGuards(AuthGuard(['jwt']))
   async getUser(@GetUser() user: User): Promise<User> {
     return user;
   }
 
   //GOOGLE SIGNIN
-  @Get()
-  @UseGuards(AuthGuard('google'))
-  async googleAuth(@Req() req) {}
+  // @Get()
+  // @UseGuards(AuthGuard('google'))
+  // async googleAuth(@Req() req) {}
 
-  @Get('redirect')
-  @UseGuards(AuthGuard('google'))
-  async googleCallback(@GetUser() user: User) {
+  // @Get('redirect')
+  // @UseGuards(AuthGuard('google'))
+  // async googleCallback(@GetUser() user: User) {
+  //   return user;
+  // }
+
+  @Get()
+  @UseGuards(AuthGuard('jwt'))
+  async getMyProfile(@GetUser() user: User): Promise<User> {
     return user;
+  }
+
+  @Post('/google/signin')
+  async signinWithGoogle(
+    @Body('token') token: string,
+  ): Promise<{ user: User; accessToken: string }> {
+    return await this.authService.signInWithGoogle(token);
   }
 
   //UPDATE USER
@@ -114,4 +127,3 @@ export class AuthController {
     return await this.authService.sendMails(subject, text, url);
   }
 }
-

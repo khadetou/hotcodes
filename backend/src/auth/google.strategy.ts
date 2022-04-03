@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config/dist/config.service';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { AuthService } from './auth.service';
+import { User } from './schema/user.schema';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
@@ -26,9 +27,10 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   ): Promise<any> {
     const { id, emails, name } = profile;
     let userEmail = await this.authService.findUserByEmail(emails[0].value);
+    let user: User;
 
     if (!userEmail) {
-      const user = await this.authService.createUserWithGoogle(
+      user = await this.authService.createUserWithGoogle(
         name.givenName,
         name.familyName,
         emails[0].value,
@@ -36,7 +38,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       );
       done(null, { user, accessToken });
     } else {
-      done(null, { accessToken });
+      done(null, { user, accessToken });
     }
   }
 }
