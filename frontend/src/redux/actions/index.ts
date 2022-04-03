@@ -34,6 +34,14 @@ interface LoginFailureAction {
   error: string;
 }
 
+interface UpdateUserProfileSuccessAction {
+  type: ActionType.UPDATE_USER_PROFILE_SUCCESS;
+}
+interface UpdateUserProfileFailureAction {
+  type: ActionType.UPDATE_USER_PROFILE_FAILURE;
+  error: string;
+}
+
 interface LoadUserSuccessAction {
   type: ActionType.LOAD_USER;
   payload: {
@@ -63,4 +71,6 @@ export type Action =
   | LogoutSuccessAction
   | LoadUserSuccessAction
   | LoadUserFaillureAction
+  | UpdateUserProfileSuccessAction
+  | UpdateUserProfileFailureAction
   | SetSuccessAction;

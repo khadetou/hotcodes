@@ -70,6 +70,7 @@ export const LoadUserSsr = (token: string) => {
   };
 };
 
+//REGISTER USER
 export const RegisterUser = ({
   firstName,
   lastName,
@@ -150,6 +151,8 @@ export const GoogleLoginUser = (googleData: any) => {
   };
 };
 
+//LOGIN USER
+
 export const LoginUser = ({ email, password }: Login) => {
   return async (dispatch: Dispatch<Action>) => {
     const config = {
@@ -195,6 +198,8 @@ export const SetSuccess = (success: boolean) => {
   };
 };
 
+//LOGOUT USER
+
 export const LogoutUser = () => {
   return async (dispatch: Dispatch<Action>) => {
     removeCookie("token");
@@ -206,6 +211,46 @@ export const LogoutUser = () => {
     }
   };
 };
+
+//UPDATE USER
+export const UpdateUserProfile = (user: User) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({
+      firstName: user!.firstName,
+      lastName: user!.lastName,
+      email: user!.email,
+      phone: user!.phone,
+      password: user!.password,
+    });
+
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/auth/update/profile`,
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.UPDATE_USER_PROFILE_SUCCESS,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.UPDATE_USER_PROFILE_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//SET COOKIE
 
 export const setCookie = (key: string, value: string) => {
   if (typeof window !== "undefined") {

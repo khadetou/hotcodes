@@ -25,6 +25,7 @@ const authReducer = (
 ): AuthState => {
   switch (action.type) {
     case ActionType.REGISTER_SUCCESS:
+    case ActionType.UPDATE_USER_PROFILE_SUCCESS:
       return {
         ...state,
         success: true,
@@ -40,6 +41,7 @@ const authReducer = (
       };
     }
     case ActionType.REGISTER_FAILURE:
+    case ActionType.UPDATE_USER_PROFILE_FAILURE:
       return {
         ...state,
         error: action.error,
