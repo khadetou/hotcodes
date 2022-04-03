@@ -16,7 +16,6 @@ import * as crypto from 'crypto';
 import { MailService } from 'src/mail/mail.service';
 import { OAuth2Client } from 'google-auth-library';
 import { ConfigService } from '@nestjs/config';
-import { compile } from 'joi';
 
 @Injectable()
 export class AuthService {
