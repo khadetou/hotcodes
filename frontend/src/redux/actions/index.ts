@@ -63,6 +63,28 @@ interface SetSuccessAction {
   success: boolean;
 }
 
+interface SendConfirmationEmailSuccessAction {
+  type: ActionType.SEND_CONFIRMITION_EMAIL_SUCCESS;
+  message: string;
+}
+
+interface SendConfirmationEmailFailureAction {
+  type: ActionType.SEND_CONFIRMITION_EMAIL_FAILURE;
+  error: string;
+}
+
+interface ResetPasswordSuccessAction {
+  type: ActionType.RESET_PASSWORD_SUCCESS;
+  payload: {
+    user: User;
+  };
+}
+
+interface ResetPasswordFailureAction {
+  type: ActionType.RESET_PASSWORD_FAILURE;
+  error: string;
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -73,4 +95,8 @@ export type Action =
   | LoadUserFaillureAction
   | UpdateUserProfileSuccessAction
   | UpdateUserProfileFailureAction
+  | SendConfirmationEmailSuccessAction
+  | SendConfirmationEmailFailureAction
+  | ResetPasswordSuccessAction
+  | ResetPasswordFailureAction
   | SetSuccessAction;

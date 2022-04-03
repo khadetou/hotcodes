@@ -250,6 +250,72 @@ export const UpdateUserProfile = (user: User) => {
   };
 };
 
+//SEND CONFIRMATION EMAIL
+export const SendConfirmationEmail = (email: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({
+      email,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/auth/forgot-password",
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.SEND_CONFIRMITION_EMAIL_SUCCESS,
+        message: data,
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.SEND_CONFIRMITION_EMAIL_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//RESET PASSWORD
+export const ResetPassword = (password: string, token: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({
+      password,
+    });
+
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/auth/confirm-email/${token}`,
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.RESET_PASSWORD_SUCCESS,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.RESET_PASSWORD_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
 //SET COOKIE
 
 export const setCookie = (key: string, value: string) => {

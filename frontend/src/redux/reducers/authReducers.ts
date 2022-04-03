@@ -81,6 +81,28 @@ const authReducer = (
         success: action.success,
       };
 
+    case ActionType.SEND_CONFIRMITION_EMAIL_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        token: action.message,
+        loading: false,
+      };
+
+    case ActionType.SEND_CONFIRMITION_EMAIL_FAILURE:
+    case ActionType.RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    case ActionType.RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+        loading: false,
+      };
     default:
       return state;
   }

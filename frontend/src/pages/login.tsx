@@ -8,7 +8,9 @@ import GoogleLogin from "react-google-login";
 
 const Login: NextPage = () => {
   const { SetSuccess, LoginUser, LoadUser, GoogleLoginUser } = useActions();
-  const { user, success } = useTypedSelector((state) => state.authReducer);
+  const { success, isAuthenticated } = useTypedSelector(
+    (state) => state.authReducer
+  );
   const router = useRouter();
 
   const [formData, setFormData] = useState<any>({
@@ -21,10 +23,10 @@ const Login: NextPage = () => {
     if (success) {
       SetSuccess(false);
     }
-    if (user) {
+    if (isAuthenticated) {
       router.push("/");
     }
-  }, [router, user, success]);
+  }, [router, isAuthenticated, success]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

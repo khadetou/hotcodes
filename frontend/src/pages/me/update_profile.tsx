@@ -93,6 +93,9 @@ const UpdateProfile: NextPage = () => {
           onChange={(e) => onChange(e)}
         />
         <button type="submit">Register</button>
+        {user?.password && (
+          <button onClick={() => router.push("/")}>Go back</button>
+        )}
       </form>
     </div>
   );
