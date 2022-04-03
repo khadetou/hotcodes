@@ -4,19 +4,15 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useActions } from "../hooks/useActions";
 import { setAuthToken } from "../utils/setAuthToken";
-import { useEffect } from "react";
 import { wrapper } from "../redux";
-import axios from "axios";
+import { getCookie, LoadUserSsr } from "../redux/action-creators";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
-const Home: NextPage = () => {
-  const { LogoutUser, LoadUser } = useActions();
+const Home: NextPage = (props) => {
+  const { LogoutUser } = useActions();
   const logout = () => LogoutUser();
 
-  useEffect(() => {
-    LoadUser();
-  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -85,9 +81,24 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps((store) => async (ctx) => {
-    store.dispatch({ type: "TEST", payload: "test" });
-    return {
-      props: {},
-    };
-  });
+  wrapper.getServerSideProps(
+    (store) =>
+      async (ctx): Promise<{ props: {} | { user: any } }> => {
+        const token = getCookie("token", ctx.req);
+
+        if (token) {
+          await store.dispatch(LoadUserSsr(token));
+          // const { user } = store.getState().authReducer;
+          // console.log(user);
+
+          // return {
+          //   props: {
+          //     user,
+          //   },
+          // };
+        }
+        return {
+          props: {},
+        };
+      }
+  );

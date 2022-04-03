@@ -4,7 +4,6 @@ import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
 import cookie from "js-cookie";
-import { Router } from "next/router";
 
 interface Data {
   firstName: string;
@@ -19,8 +18,9 @@ interface Login {
   password: string;
 }
 
+//Load user with localeStorage
 export const LoadUser = () => {
-  if (typeof localStorage !== "undefined" && localStorage.token) {
+  if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
   return async (dispatch: Dispatch<Action>) => {
@@ -33,6 +33,35 @@ export const LoadUser = () => {
         },
       });
     } catch (err: any) {
+      dispatch({
+        type: ActionType.LOAD_USER_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
+
+//LOAD USER WITH SSR
+export const LoadUserSsr = (token: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        authorization: `Bearer ${token}`,
+        contentType: "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.get("http://localhost:5000/auth", config);
+
+      dispatch({
+        type: ActionType.LOAD_USER,
+        payload: {
+          user: data,
+        },
+      });
+    } catch (err: any) {
+      console.log({ err });
       dispatch({
         type: ActionType.LOAD_USER_FAILURE,
         error: err,
@@ -77,6 +106,45 @@ export const RegisterUser = ({
       dispatch({
         type: ActionType.REGISTER_FAILURE,
         error: error.response.data.error,
+      });
+    }
+  };
+};
+
+export const GoogleLoginUser = (googleData: any) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify({
+        token: googleData.tokenId,
+      });
+
+      const { data } = await axios.post(
+        "http://localhost:5000/auth/google/signin",
+        body,
+        config
+      );
+      console.log(data);
+      setCookie("token", data.accessToken);
+      dispatch({
+        type: ActionType.LOGIN_SUCCESS,
+        payload: {
+          token: data.accessToken,
+          user: data.user,
+        },
+      });
+    } catch (err: any) {
+      dispatch({
+        type: ActionType.LOGIN_FAILURE,
+        error: err,
       });
     }
   };

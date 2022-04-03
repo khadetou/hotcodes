@@ -4,9 +4,10 @@ import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { getCookie } from "../redux/action-creators";
+import GoogleLogin from "react-google-login";
 
 const Login: NextPage = () => {
-  const { SetSuccess, LoginUser, LoadUser } = useActions();
+  const { SetSuccess, LoginUser, LoadUser, GoogleLoginUser } = useActions();
   const { user, success } = useTypedSelector((state) => state.authReducer);
   const router = useRouter();
 
@@ -55,6 +56,12 @@ const Login: NextPage = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <GoogleLogin
+        clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+        buttonText="Login with Google"
+        onSuccess={GoogleLoginUser}
+        onFailure={(res) => console.log(res)}
+      />
     </div>
   );
 };

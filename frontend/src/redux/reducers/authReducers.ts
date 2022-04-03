@@ -48,7 +48,7 @@ const authReducer = (
 
     case ActionType.LOGIN_FAILURE:
     case ActionType.LOAD_USER_FAILURE:
-      localStorage.removeItem("token");
+      typeof window !== "undefined" && localStorage.removeItem("token");
       return {
         ...state,
         error: action.error,
@@ -58,7 +58,7 @@ const authReducer = (
       };
 
     case ActionType.LOGOUT_SUCCESS:
-      localStorage.removeItem("token");
+      typeof window !== "undefined" && localStorage.removeItem("token");
       return {
         ...state,
         token: "",
