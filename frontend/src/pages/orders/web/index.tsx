@@ -36,7 +36,9 @@ const OrderWeb: NextPage = () => {
     !e.target.checked && e.target.value === "Other" && setOther(false);
 
     e.target.checked && e.target.value !== "Other"
-      ? (formData.functionnality += e.target.value + ",")
+      ? formData.functionnality !== ""
+        ? (formData.functionnality += "," + e.target.value)
+        : (formData.functionnality = e.target.value)
       : (formData.functionnality = formData.functionnality.replace(
           e.target.value + ",",
           ""
