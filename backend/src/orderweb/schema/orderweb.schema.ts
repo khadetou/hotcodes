@@ -13,11 +13,11 @@ export class OrderWeb {
   @Prop({ type: String })
   typeapp: string;
   @Prop({ type: String })
-  appName: string;
+  appname: string;
   @Prop({ type: String })
   description: string;
   @Prop({ type: [String] })
-  Goal: [string];
+  goal: [string];
   @Prop({
     type: [
       {
@@ -27,7 +27,7 @@ export class OrderWeb {
       },
     ],
   })
-  design: {
+  design?: {
     public_id: string;
     url: string;
     format: string;

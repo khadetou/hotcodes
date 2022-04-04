@@ -61,9 +61,10 @@ export class OrderwebService {
     user: any,
     file: Express.Multer.File,
   ): Promise<OrderWeb> {
-    const { Goal, description, functionnality, plateform, typeapp } =
+    const { goal, description, functionnality, plateform, typeapp } =
       createWebdevDto;
 
+    console.log(goal);
     let goalSplits: string[];
     let funcSplits: string[];
     let designLinks: [
@@ -80,16 +81,19 @@ export class OrderwebService {
       },
     ];
 
-    const result = await this.cloudinaryService.uploadImages(file, user);
+    const result =
+      file && (await this.cloudinaryService.uploadImages(file, user));
 
-    for (let i = 0; i < designLinks.length; i++) {
-      designLinks[i].public_id = result.public_id;
-      designLinks[i].url = result.secure_url;
-      designLinks[i].format = result.format;
+    if (result) {
+      for (let i = 0; i < designLinks.length; i++) {
+        designLinks[i].public_id = result.public_id;
+        designLinks[i].url = result.secure_url;
+        designLinks[i].format = result.format;
+      }
     }
 
-    if (Goal) {
-      goalSplits = Goal.split(',').map((s) => s.trim());
+    if (goal) {
+      goalSplits = goal.split(',').map((s) => s.trim());
     }
 
     if (functionnality) {
@@ -101,8 +105,8 @@ export class OrderwebService {
       typeapp: typeapp && typeapp,
       appName: description && description,
       description: description && description,
-      Goal: Goal && goalSplits,
-      design: designLinks && designLinks,
+      goal: goal && goalSplits,
+      design: result && designLinks,
       functionnality: functionnality && funcSplits,
     };
 

@@ -11,7 +11,7 @@ export class CreateWebdevDto {
 
   @IsString()
   @IsNotEmpty()
-  appName: string;
+  appname: string;
 
   @IsString()
   @IsNotEmpty()
@@ -19,7 +19,7 @@ export class CreateWebdevDto {
 
   @IsString()
   @IsNotEmpty()
-  Goal: string;
+  goal: string;
 
   @IsString()
   @IsNotEmpty()
