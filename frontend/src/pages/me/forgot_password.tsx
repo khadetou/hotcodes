@@ -21,6 +21,7 @@ const ForgotPassword: NextPage<IProps> = ({ tokens }) => {
     e.preventDefault();
     SendConfirmationEmail(email);
   };
+  console.log(tokens);
 
   useEffect(() => {
     if (tokens) {
@@ -49,6 +50,7 @@ export default ForgotPassword;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = getCookie("token", ctx.req);
+  console.log(token);
   if (token) {
     if (jwtDecode<any>(token).exp > Date.now() / 1000) {
       return {
@@ -60,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     } else {
       return {
         props: {
-          token: token,
+          tokens: token,
         },
       };
     }

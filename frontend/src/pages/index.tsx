@@ -6,12 +6,7 @@ import styles from "../styles/Home.module.css";
 import { useActions } from "../hooks/useActions";
 import { setAuthToken } from "../utils/setAuthToken";
 import { wrapper } from "../redux";
-import {
-  getCookie,
-  LoadUserSsr,
-  LogoutUser,
-  removeCookie,
-} from "../redux/action-creators";
+import { getCookie, LoadUserSsr } from "../redux/action-creators";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 
@@ -102,7 +97,6 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (ctx): Promise<any> => {
     const token = getCookie("token", ctx.req);
 
-    console.log(token);
     if (token) {
       if (jwtDecode<any>(token).exp < Date.now() / 1000) {
         return {
