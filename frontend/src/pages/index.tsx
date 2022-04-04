@@ -123,23 +123,6 @@ export const getServerSideProps: GetServerSideProps =
       }
     }
 
-    // if (token) {
-    //   await store.dispatch(LoadUserSsr(token));
-    //   const { user } = store.getState().authReducer;
-    //   if (user && !user?.password) {
-    //     return {
-    //       redirect: {
-    //         destination: "/me/update_profile",
-    //         permanent: false,
-    //       },
-    //     };
-    //   }
-    //   return {
-    //     props: {
-    //       user,
-    //     },
-    //   };
-    // }
     return {
       props: {},
     };

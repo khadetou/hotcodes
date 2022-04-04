@@ -1,13 +1,16 @@
 import { NextPage } from "next";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypeSelector";
-import React, { useState } from "react";
-import Select from "../../../components/orders/select/select";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { plateforms, goal, typeApp, checkbox } from "../lists";
+import Select from "../../../components/form/select/select";
 
 const OrderWeb: NextPage = () => {
-  const {} = useActions();
+  const { CreateOrderWeb, LoadUser } = useActions();
   const {} = useTypedSelector((state) => state.orderReducer);
+  const { isAuthenticated } = useTypedSelector((state) => state.authReducer);
+  const router = useRouter();
   const [formData, setFormData] = useState<any>({
     plateform: "",
     typeapp: "",
@@ -20,14 +23,18 @@ const OrderWeb: NextPage = () => {
   const [other, setOther] = useState(false);
   const [otherTypeApp, setOtherTypeApp] = useState(false);
   const [otherGoal, setOtherGoal] = useState(false);
+
   const onChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    LoadUser();
+  }, []);
   const onCheckboxChange = (e: any) => {
-    e.target.checked && e.target.value === "Other"
-      ? setOther(true)
-      : setOther(false);
+    e.target.checked && e.target.value === "Other" && setOther(true);
+    !e.target.checked && e.target.value === "Other" && setOther(false);
+
     e.target.checked && e.target.value !== "Other"
       ? (formData.functionnality += e.target.value + ",")
       : (formData.functionnality = formData.functionnality.replace(
@@ -37,12 +44,22 @@ const OrderWeb: NextPage = () => {
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
   };
 
-  console.log(formData);
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      CreateOrderWeb(formData);
+    } else {
+      router.push({
+        pathname: "/login",
+        query: { from: router.pathname },
+      });
+    }
+  };
 
   return (
     <div>
       <h1>Order</h1>
-      <form action="">
+      <form onSubmit={onSubmit}>
         <Select
           options={plateforms}
           selected="plateform"

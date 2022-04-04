@@ -103,7 +103,7 @@ export const RegisterUser = ({
         body,
         config
       );
-      console.log(data);
+
       dispatch({
         type: ActionType.REGISTER_SUCCESS,
         success: true,
@@ -138,7 +138,7 @@ export const GoogleLoginUser = (googleData: any) => {
         body,
         config
       );
-      console.log(data);
+
       setCookie("token", data.accessToken);
       dispatch({
         type: ActionType.LOGIN_SUCCESS,
@@ -451,8 +451,24 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
       },
     };
 
+    const {
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
+    } = orderWeb;
+
     const body = JSON.stringify({
-      orderWeb,
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
     });
 
     try {
@@ -468,6 +484,7 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
         },
       });
     } catch (error: any) {
+      console.log(error);
       dispatch({
         type: ActionType.CREATE_ORDERWEB_FAILURE,
         error: error.response.data.error,

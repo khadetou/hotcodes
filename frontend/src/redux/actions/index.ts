@@ -38,8 +38,8 @@ export interface OrderWeb {
   typeapp: string;
   appName: string;
   description: string;
-  Goal: string[];
-  design: {
+  goal: string[];
+  design?: {
     public_id: string;
     url: string;
     format: string;

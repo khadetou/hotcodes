@@ -13,7 +13,7 @@ const Login: NextPage = () => {
     (state) => state.authReducer
   );
   const router = useRouter();
-
+  console.log(router);
   const [formData, setFormData] = useState<any>({
     email: "",
     password: "",
@@ -25,7 +25,11 @@ const Login: NextPage = () => {
       SetSuccess(false);
     }
     if (isAuthenticated) {
-      router.push("/");
+      if (router.query && router.query.from) {
+        router.push(router.query.from as string);
+      } else {
+        router.push("/");
+      }
     }
   }, [router, isAuthenticated, success]);
 
