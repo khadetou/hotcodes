@@ -15,10 +15,11 @@ import Upload from "./uploads";
 
 interface FormProps {
   title: string;
+  Action: (order?: any) => (dispatch: any) => Promise<void>;
 }
 
-const Form: FC<FormProps> = ({ title }) => {
-  const { CreateOrderWeb, LoadUser } = useActions();
+const Form: FC<FormProps> = ({ title, Action }) => {
+  const { LoadUser } = useActions();
   const {} = useTypedSelector((state) => state.orderReducer);
   const { isAuthenticated } = useTypedSelector((state) => state.authReducer);
   const router = useRouter();
@@ -60,7 +61,7 @@ const Form: FC<FormProps> = ({ title }) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
     if (isAuthenticated) {
-      CreateOrderWeb(formData);
+      Action(formData);
     } else {
       router.push({
         pathname: "/login",
