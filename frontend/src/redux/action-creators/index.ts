@@ -484,7 +484,7 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
         },
       });
     } catch (error: any) {
-      console.log(error);
+      console.log({ error });
       dispatch({
         type: ActionType.CREATE_ORDERWEB_FAILURE,
         error: error.response.data.error,

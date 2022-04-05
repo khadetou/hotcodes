@@ -1,12 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Upload = () => {
+interface UploadProps {
+  onChange: (e: any) => void;
+}
+const Upload: FC<UploadProps> = ({ onChange }) => {
   return (
-    <form action="">
+    <>
       <label htmlFor="">Uplaod file</label>
-      <input type="file" />
-      <button type="submit">Submit</button>
-    </form>
+      <input type="file" name="design" multiple onChange={onChange} />
+    </>
   );
 };
 

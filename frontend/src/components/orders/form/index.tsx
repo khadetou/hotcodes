@@ -2,7 +2,7 @@ import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypeSelector";
 import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 import Select from "../../../components/orders/form/select/select";
 import {
   plateforms,
@@ -19,10 +19,14 @@ interface FormProps {
 }
 
 const Form: FC<FormProps> = ({ title, Action }) => {
+  //USE ACTIONS-------------------------------------------
   const { LoadUser } = useActions();
-  const {} = useTypedSelector((state) => state.orderReducer);
   const { isAuthenticated } = useTypedSelector((state) => state.authReducer);
+
+  //USE ROUTER-------------------------------------------------------------
   const router = useRouter();
+
+  //USE STATES--------------------------------------
   const [formData, setFormData] = useState<any>({
     plateform: "",
     typeapp: "",
@@ -35,14 +39,19 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const [other, setOther] = useState(false);
   const [otherTypeApp, setOtherTypeApp] = useState(false);
   const [otherGoal, setOtherGoal] = useState(false);
+  const [previewImages, setPreviewImages] = useState<any>([]);
+  const [images, setImages] = useState<any>([]);
 
+  //USE EFFECTS--------------------------------------
+  useEffect(() => {
+    LoadUser();
+  }, []);
+
+  //HANDLE CHANGES-------------------------------------------------------------
   const onChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    LoadUser();
-  }, []);
   const onCheckboxChange = (e: any) => {
     e.target.checked && e.target.value === "Other" && setOther(true);
     !e.target.checked && e.target.value === "Other" && setOther(false);
@@ -58,9 +67,35 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
   };
 
+  const onChangeImage = (e: any) => {
+    const files = Array.from(e.target.files);
+    setImages([]);
+    setPreviewImages([]);
+
+    files.forEach((file: any) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImages((oldArray: any) => [...oldArray, reader.result]);
+          setPreviewImages((oldArray: any) => [...oldArray, reader.result]);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   const onSubmit = (e: any) => {
     e.preventDefault();
+
     if (isAuthenticated) {
+      const order = {
+        ...formData,
+        design: images,
+      };
+      if (images.length !== 0) {
+        console.log(order);
+        Action(order);
+      }
       Action(formData);
     } else {
       router.push({
@@ -69,6 +104,8 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       });
     }
   };
+
+  //JSX RETURN-------------------------------------------------------------
 
   return (
     <div>
@@ -166,11 +203,22 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             />
           </>
         )}
+        <Upload onChange={onChangeImage} />
         <button type="submit">Submit</button>
       </form>
       <button>Download Invoice</button>
       <h1>You already have a design share it with us</h1>
-      <Upload />
+
+      {previewImages.length > 0 &&
+        previewImages.map((image: any, idx: any) => (
+          <Image
+            key={idx}
+            src={image}
+            alt="Images preview"
+            width={55}
+            height={55}
+          />
+        ))}
 
       <form action="">
         <label htmlFor="">Figma link</label>
