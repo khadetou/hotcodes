@@ -93,7 +93,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         design: images,
       };
       if (images.length !== 0) {
-        console.log(order);
         Action(order);
       }
       Action(formData);
@@ -203,29 +202,35 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             />
           </>
         )}
+
+        <h1>You already have a design share it with us</h1>
         <Upload onChange={onChangeImage} />
-        <button type="submit">Submit</button>
-      </form>
-      <button>Download Invoice</button>
-      <h1>You already have a design share it with us</h1>
 
-      {previewImages.length > 0 &&
-        previewImages.map((image: any, idx: any) => (
-          <Image
-            key={idx}
-            src={image}
-            alt="Images preview"
-            width={55}
-            height={55}
-          />
-        ))}
+        {previewImages.length > 0 &&
+          previewImages.map((image: any, idx: any) => (
+            <Image
+              key={idx}
+              src={image}
+              alt="Images preview"
+              width={55}
+              height={55}
+            />
+          ))}
 
-      <form action="">
         <label htmlFor="">Figma link</label>
-        <input type="text" />
+        <Input
+          type="text"
+          name="link"
+          value="link"
+          onChange={() => {
+            console.log("display links");
+          }}
+        />
+
         <button type="submit">Submit</button>
+        <button>I DONT HAVE A DESIGN </button>
+        <button>Download Invoice</button>
       </form>
-      <button>I DONT HAVE A DESIGN </button>
     </div>
   );
 };
