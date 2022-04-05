@@ -16,7 +16,7 @@ export class CreateWebdevDto {
   @IsString()
   @IsNotEmpty()
   description: string;
-
+  design: string[];
   @IsString()
   @IsNotEmpty()
   goal: string;

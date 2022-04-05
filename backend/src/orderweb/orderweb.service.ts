@@ -9,6 +9,7 @@ import { OrderWeb } from './schema/orderweb.schema';
 import { Model } from 'mongoose';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { v2 } from 'cloudinary';
 
 @Injectable()
 export class OrderwebService {
@@ -39,7 +40,7 @@ export class OrderwebService {
   //DELETE ORDERWEB
   async delete(id: string): Promise<OrderWeb> {
     const result = await this.orderwebModel.findByIdAndRemove(id).exec();
-    console.log(result);
+
     if (!result) {
       throw new InternalServerErrorException('OrderWeb not found');
     }
@@ -61,10 +62,9 @@ export class OrderwebService {
     user: any,
     file: Express.Multer.File,
   ): Promise<OrderWeb> {
-    const { goal, description, functionnality, plateform, typeapp } =
+    const { goal, description, functionnality, plateform, typeapp, design } =
       createWebdevDto;
 
-    console.log(goal);
     let goalSplits: string[];
     let funcSplits: string[];
     let designLinks: [
@@ -92,6 +92,18 @@ export class OrderwebService {
       }
     }
 
+    if (design) {
+      for (let i = 0; i < design.length; i++) {
+        const upload = await v2.uploader.upload(design[i], {
+          folder: `hotcodes/orders/${user.lastName}/${user._id}`,
+        });
+
+        designLinks[i].public_id = upload.public_id;
+        designLinks[i].url = upload.secure_url;
+        designLinks[i].format = upload.format;
+      }
+    }
+
     if (goal) {
       goalSplits = goal.split(',').map((s) => s.trim());
     }
@@ -107,7 +119,7 @@ export class OrderwebService {
       appName: description && description,
       description: description && description,
       goal: goal && goalSplits,
-      design: result && designLinks,
+      design: (result && designLinks) || (design && designLinks),
       functionnality: functionnality && funcSplits,
     };
 

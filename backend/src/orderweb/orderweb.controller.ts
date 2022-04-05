@@ -68,7 +68,6 @@ export class OrderwebController {
     @GetUser() user: any,
     @UploadedFile() file: Express.Multer.File,
   ): Promise<void | OrderWeb> {
-    console.log(createWebdevDto);
     return await this.orderwebService.create(createWebdevDto, user, file);
   }
 
