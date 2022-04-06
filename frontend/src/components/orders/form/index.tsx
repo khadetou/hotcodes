@@ -1,6 +1,6 @@
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-import React, { useState, useEffect, FC, useRef } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Select from "@/components/orders/form/select/select";
@@ -37,9 +37,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const [otherGoal, setOtherGoal] = useState(false);
   const [previewImages, setPreviewImages] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
-  const [checked, setChecked] = useState(false);
-
-  //USE REF--------------------------------------
 
   //LOCAL STORAGE ITEMS--------------------------------------
 
@@ -49,7 +46,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     formData.appName ||
     formData.goal
   ) {
-    setFormData({ ...formData, functionnality: "" });
     const stringFormData = JSON.stringify(formData);
     typeof localStorage !== "undefined" &&
       localStorage.setItem("formData", stringFormData);
@@ -71,10 +67,8 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   };
 
   const onCheckboxChange = (e: any) => {
-    setChecked(e.target.checked);
     e.target.checked && e.target.value === "Other" && setOther(true);
     !e.target.checked && e.target.value === "Other" && setOther(false);
-
     if (e.target.checked && e.target.value !== "Other") {
       if (formData.functionnality !== "") {
         formData.functionnality += "," + e.target.value;
@@ -98,7 +92,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         ""
       );
     }
-
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
   };
 
@@ -222,8 +215,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               type="checkbox"
               name="functionnality"
               value={title}
-              data={formData.functionnality}
-              checked={checked}
               id={id}
               onChange={onCheckboxChange}
             />

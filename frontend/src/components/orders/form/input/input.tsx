@@ -4,11 +4,8 @@ interface InputProps {
   type: string;
   name: string;
   value: string;
-  data?: any;
   id?: string;
-  checked?: boolean;
   placeholder?: string;
-
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,8 +15,6 @@ const Input: FC<InputProps> = ({
   value,
   id,
   placeholder,
-  data,
-  checked,
   onChange,
 }) => {
   return (
@@ -29,7 +24,6 @@ const Input: FC<InputProps> = ({
         name={name}
         value={value}
         id={id}
-        // checked={checked}
         placeholder={placeholder}
         onChange={onChange}
       />
