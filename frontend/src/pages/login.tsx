@@ -13,7 +13,7 @@ const Login: NextPage = () => {
     (state) => state.authReducer
   );
   const router = useRouter();
-  console.log(router);
+
   const [formData, setFormData] = useState<any>({
     email: "",
     password: "",

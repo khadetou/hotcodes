@@ -38,10 +38,29 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const [previewImages, setPreviewImages] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
 
+  //LOCAL STORAGE ITEMS--------------------------------------
+
+  if (
+    formData.plateform ||
+    formData.typeapp ||
+    formData.appName ||
+    formData.goal ||
+    formData.functionnality
+  ) {
+    const stringFormData = JSON.stringify(formData);
+    typeof localStorage !== "undefined" &&
+      localStorage.setItem("formData", stringFormData);
+  }
+
   //USE EFFECTS--------------------------------------
   useEffect(() => {
     LoadUser();
-  }, []);
+    if (isAuthenticated) {
+      typeof localStorage !== "undefined" &&
+        localStorage.formData &&
+        setFormData(JSON.parse(localStorage.getItem("formData") as string));
+    }
+  }, [isAuthenticated, typeof localStorage !== "undefined" && localStorage]);
 
   //HANDLE CHANGES-------------------------------------------------------------
   const onChange = (e: any) => {
@@ -93,6 +112,8 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       } else {
         Action(formData);
       }
+      typeof localStorage !== "undefined" &&
+        localStorage.removeItem("formData");
     } else {
       router.push({
         pathname: "/login",
