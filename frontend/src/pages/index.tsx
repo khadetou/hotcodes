@@ -2,11 +2,11 @@ import type { GetServerSideProps, NextPage } from "next";
 
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { useActions } from "../hooks/useActions";
-import { setAuthToken } from "../utils/setAuthToken";
-import { wrapper } from "../redux";
-import { getCookie, LoadUserSsr } from "../redux/action-creators";
+import styles from "@/styles/Home.module.css";
+import { useActions } from "@/hooks/useActions";
+import { setAuthToken } from "@/utils/setAuthToken";
+import { wrapper } from "@/redux/index";
+import { getCookie, LoadUserSsr } from "@/redux/action-creators";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 

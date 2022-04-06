@@ -1,15 +1,11 @@
-import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypeSelector";
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Select from "../../../components/orders/form/select/select";
-import {
-  plateforms,
-  goal,
-  typeApp,
-  checkbox,
-} from "../../../pages/orders/lists";
+import Select from "@/components/orders/form/select/select";
+
+import { plateforms, goal, typeApp, checkbox } from "@/pages/orders/lists";
 import Input from "./input/input";
 import Upload from "./uploads";
 
@@ -94,8 +90,9 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       };
       if (images.length !== 0) {
         Action(order);
+      } else {
+        Action(formData);
       }
-      Action(formData);
     } else {
       router.push({
         pathname: "/login",
@@ -103,7 +100,12 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       });
     }
   };
-
+  //EASYINVOICE-------------------------------------------------------------
+  const downloadInvoic = async () => {
+    const data = {
+      documentTitle: "",
+    };
+  };
   //JSX RETURN-------------------------------------------------------------
 
   return (

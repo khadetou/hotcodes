@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useState, useEffect } from "react";
-import { useTypedSelector } from "../hooks/useTypeSelector";
-import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
+import { useActions } from "@/hooks/useActions";
 import { useRouter } from "next/router";
-import { getCookie } from "../redux/action-creators";
+import { getCookie } from "@/redux/action-creators";
 import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
 
