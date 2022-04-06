@@ -47,9 +47,9 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     formData.plateform ||
     formData.typeapp ||
     formData.appName ||
-    formData.goal ||
-    formData.functionnality
+    formData.goal
   ) {
+    setFormData({ ...formData, functionnality: "" });
     const stringFormData = JSON.stringify(formData);
     typeof localStorage !== "undefined" &&
       localStorage.setItem("formData", stringFormData);
