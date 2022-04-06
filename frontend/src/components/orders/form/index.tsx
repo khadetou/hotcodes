@@ -1,6 +1,6 @@
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, useRef } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Select from "@/components/orders/form/select/select";
@@ -37,6 +37,9 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const [otherGoal, setOtherGoal] = useState(false);
   const [previewImages, setPreviewImages] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
+  const [checked, setChecked] = useState(false);
+
+  //USE REF--------------------------------------
 
   //LOCAL STORAGE ITEMS--------------------------------------
 
@@ -68,17 +71,34 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   };
 
   const onCheckboxChange = (e: any) => {
+    setChecked(e.target.checked);
     e.target.checked && e.target.value === "Other" && setOther(true);
     !e.target.checked && e.target.value === "Other" && setOther(false);
 
-    e.target.checked && e.target.value !== "Other"
-      ? formData.functionnality !== ""
-        ? (formData.functionnality += "," + e.target.value)
-        : (formData.functionnality = e.target.value)
-      : (formData.functionnality = formData.functionnality.replace(
-          e.target.value + ",",
-          ""
-        ));
+    if (e.target.checked && e.target.value !== "Other") {
+      if (formData.functionnality !== "") {
+        formData.functionnality += "," + e.target.value;
+      } else {
+        formData.functionnality = e.target.value;
+      }
+    } else if (
+      formData.functionnality.indexOf(",") === -1 &&
+      formData.functionnality.includes(e.target.value)
+    ) {
+      formData.functionnality = formData.functionnality.replace(
+        e.target.value,
+        ""
+      );
+    } else if (
+      formData.functionnality.includes(e.target.value) &&
+      !e.target.checked
+    ) {
+      formData.functionnality = formData.functionnality.replace(
+        "," + e.target.value,
+        ""
+      );
+    }
+
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
   };
 
@@ -121,14 +141,8 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       });
     }
   };
-  //EASYINVOICE-------------------------------------------------------------
-  const downloadInvoic = async () => {
-    const data = {
-      documentTitle: "",
-    };
-  };
-  //JSX RETURN-------------------------------------------------------------
 
+  //JSX RETURN-----------------------------------------------------------------
   return (
     <div>
       <h1>{title}</h1>
@@ -208,6 +222,8 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               type="checkbox"
               name="functionnality"
               value={title}
+              data={formData.functionnality}
+              checked={checked}
               id={id}
               onChange={onCheckboxChange}
             />
