@@ -1,9 +1,18 @@
 import "@/styles/globals.css";
+import "rc-drawer/assets/index.css";
 import type { AppProps } from "next/app";
 import { wrapper } from "@/redux/index";
+import Layout from "@/components/Layout";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Layout setIsOpen={setOpen} isOpen={open}>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 export default wrapper.withRedux(MyApp);

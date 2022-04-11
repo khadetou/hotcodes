@@ -139,6 +139,10 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   return (
     <div>
       <h1>{title}</h1>
+      {/* <a href="https://api.whatsapp.com/send/?phone=+221786004564&text&app_absent=0">
+        Call me
+      </a> */}
+
       <form onSubmit={onSubmit}>
         <Select
           options={plateforms}
