@@ -24,6 +24,7 @@
     "postcss-import": "^14.1.0",
     "rc-drawer": "^4.4.3",
     "rc-dropdown": "^3.4.1",
+    "rc-menu": "^9.5.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-google-login": "^5.2.2",

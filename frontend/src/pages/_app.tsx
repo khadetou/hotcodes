@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 import "rc-drawer/assets/index.css";
+import "rc-dropdown/assets/index.css";
+import "flag-icons/css/flag-icons.min.css";
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { wrapper } from "@/redux/index";
