@@ -1,10 +1,14 @@
 import React, { FC } from "react";
 import DropDown from "./dropdown";
 
-const Lang: FC = () => {
+interface LangProps {
+  path: string;
+}
+
+const Lang: FC<LangProps> = ({ path }) => {
   return (
     <div>
-      <DropDown />
+      <DropDown path={path} />
     </div>
   );
 };

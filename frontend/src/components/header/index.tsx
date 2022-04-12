@@ -42,7 +42,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
             </Link>
           ))}
         </nav>
-        <Lang />
+        <Lang path="/" />
         <AiOutlineLogin className="text-primary text-2xl cursor-pointer text-black" />
         <Button outline={false} rounded="rounded-full" />
         <MobileDrawer />

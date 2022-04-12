@@ -1,29 +1,43 @@
 import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import Menu, { Item as MenuItem } from "rc-menu";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { FC } from "react";
 
-const DropDown = () => {
+interface DropDownProps {
+  path?: string;
+}
+
+const DropDown: FC<DropDownProps> = ({ path }) => {
+  const { locale, push } = useRouter();
+
   const onSelect = ({ key }: any) => {
-    // console.log(key);
+    // push(`${path}${key}`);
   };
   const onVisibleChange = (visible: boolean) => {
     // console.log(visible);
   };
   const menu = (
     <Menu onSelect={onSelect} className="bg-black text-white rounded-lg w-32 ">
-      <MenuItem key="1" className="text-white hover:bg-red-600">
-        {" "}
-        1st menu item
+      <MenuItem key="fr" className="text-white hover:bg-red-600">
+        <Link href={path!} locale={"fr"}>
+          <div>
+            <span className="fi fi-fr mr-2"></span> French
+          </div>
+        </Link>
       </MenuItem>
-      <MenuItem key="2">
-        <span className="fi fi-us mr-2"></span>2nd menu item
+      <MenuItem key="en">
+        <Link href={path!} locale={"en"}>
+          <div>
+            <span className="fi fi-us mr-2"></span> English
+          </div>
+        </Link>
       </MenuItem>
-      <Divider />
-      <MenuItem key="3">3rd menu item</MenuItem>
     </Menu>
   );
   return (
     <Dropdown
-      trigger={["click"]}
+      trigger={["hover"]}
       overlay={menu}
       animation="slide-up"
       onVisibleChange={onVisibleChange}
@@ -31,6 +45,10 @@ const DropDown = () => {
       <button className="text-black">Lang</button>
     </Dropdown>
   );
+};
+
+DropDown.defaultProps = {
+  path: "/",
 };
 
 export default DropDown;
