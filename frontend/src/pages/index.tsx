@@ -1,4 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useActions } from "@/hooks/useActions";
 import { setAuthToken } from "@/utils/setAuthToken";
 import { wrapper } from "@/redux/index";
@@ -30,11 +31,12 @@ export default Home;
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (ctx): Promise<any> => {
     const token = getCookie("token", ctx.req);
-
+    const { locale } = ctx;
     if (token) {
       if (jwtDecode<any>(token).exp < Date.now() / 1000) {
         return {
           props: {
+            ...(await serverSideTranslations(locale!, ["common", "header"])),
             token,
           },
         };
@@ -51,6 +53,7 @@ export const getServerSideProps: GetServerSideProps =
         }
         return {
           props: {
+            ...(await serverSideTranslations(locale!, ["common", "header"])),
             user,
           },
         };
@@ -58,6 +61,8 @@ export const getServerSideProps: GetServerSideProps =
     }
 
     return {
-      props: {},
+      props: {
+        ...(await serverSideTranslations(locale!, ["common", "header"])),
+      },
     };
   });

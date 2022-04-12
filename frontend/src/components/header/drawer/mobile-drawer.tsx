@@ -1,11 +1,21 @@
 import { FaBars, FaTimes } from "react-icons/fa";
-import { menuItem } from "../data";
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import Drawer from "./drawer";
 import Link from "next/link";
 
 const MobileDrawer = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation("header");
+  const menues = [
+    { title: t("home"), path: "/" },
+    { title: t("about"), path: "/about" },
+    { title: t("services"), path: "/services" },
+    { title: t("work"), path: "/work" },
+    { title: t("products"), path: "/products" },
+    { title: t("career"), path: "/career" },
+    { title: t("blogs"), path: "/blogs" },
+  ];
   return (
     <Drawer
       width="320px"
@@ -22,8 +32,8 @@ const MobileDrawer = () => {
     >
       <div className="w-full h-full flex flex-col pt-[100px] pb-[40px] px-[30px]">
         <div className="w-full flex flex-col menu">
-          {menuItem.map(({ title, url }, key) => (
-            <Link key={key} href={url}>
+          {menues.map(({ title, path }, key) => (
+            <Link key={key} href={path}>
               <a className="block px-4 py-2 text-gray-700 hover:bg-gray-200 hover:text-gray-900">
                 {title}
               </a>
