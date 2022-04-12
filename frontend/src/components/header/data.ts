@@ -16,7 +16,7 @@ export const menuItem = [
     url: "/work",
   },
   {
-    products: "Products",
+    title: "Products",
     url: "/products",
   },
   {
@@ -26,18 +26,5 @@ export const menuItem = [
   {
     title: "Blogs",
     url: "/blogs",
-  },
-  {
-    title: "Contact Us",
-    url: "/contact",
-  },
-
-  {
-    title: "Login",
-    url: "/login",
-  },
-  {
-    title: "Register",
-    url: "/register",
   },
 ];

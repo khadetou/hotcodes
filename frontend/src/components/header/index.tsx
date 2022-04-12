@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
+import { AiOutlineLogin } from "react-icons/ai";
+import Button from "../button/Button";
 import { menuItem } from "./data";
 import MobileDrawer from "./drawer/mobile-drawer";
 
@@ -12,7 +14,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
     <header
       className={`text-white py-5 w-full absolute min-w-0 top-0 left-0 transition-all ease-in duration-[0.4s] ${className}`}
     >
-      <div className="flex justify-between items-center max-w-full w-full px-5 sm:px-[30px] md:max-w-[780px] lg:max-w-[1020px] mx-auto">
+      <div className="flex justify-between items-center max-w-full w-full px-5 sm:px-[30px] md:max-w-[1020px] lg:max-w-[1300px] mx-auto">
         <div className="text-black">Logo</div>
         <nav className="mx-auto hidden lg:flex nav">
           {menuItem.map(({ title, url }, key) => (
@@ -23,7 +25,10 @@ const Header: FC<HeaderProps> = ({ className }) => {
             </Link>
           ))}
         </nav>
-        <button>icons</button>
+
+        <AiOutlineLogin className="text-primary text-2xl cursor-pointer text-black" />
+
+        <Button outline={false} rounded="rounded-full" />
         <MobileDrawer />
       </div>
     </header>
