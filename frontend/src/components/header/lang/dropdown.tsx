@@ -18,18 +18,22 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
     // console.log(visible);
   };
   const menu = (
-    <Menu onSelect={onSelect} className="bg-black text-white rounded-lg w-32 ">
-      <MenuItem key="fr" className="text-white hover:bg-red-600">
+    <Menu
+      onSelect={onSelect}
+      activeKey={locale}
+      className="bg-black text-white rounded-lg w-32  "
+    >
+      <MenuItem key="fr" className="cursor-pointer">
         <Link href={path!} locale={"fr"}>
-          <div>
-            <span className="fi fi-fr mr-2"></span> French
+          <div className="cursor-pointer text-black font-medium">
+            <span className="fi fi-fr mr-2 "></span> French (Fr)
           </div>
         </Link>
       </MenuItem>
-      <MenuItem key="en">
+      <MenuItem key="en" className="cursor-pointer">
         <Link href={path!} locale={"en"}>
-          <div>
-            <span className="fi fi-us mr-2"></span> English
+          <div className="cursor-pointer text-black font-medium">
+            <span className="fi fi-us w-6 mr-2"></span> English (En)
           </div>
         </Link>
       </MenuItem>
@@ -37,12 +41,16 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
   );
   return (
     <Dropdown
-      trigger={["hover"]}
+      trigger={["click"]}
       overlay={menu}
       animation="slide-up"
       onVisibleChange={onVisibleChange}
     >
-      <button className="text-black">Lang</button>
+      <button className="text-black">
+        <span
+          className={locale === "fr" ? `fi fi-${locale}` : "fi fi-us"}
+        ></span>
+      </button>
     </Dropdown>
   );
 };

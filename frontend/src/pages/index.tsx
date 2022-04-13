@@ -6,6 +6,8 @@ import { wrapper } from "@/redux/index";
 import { getCookie, LoadUserSsr } from "@/redux/action-creators";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
+import SEO from "@/components/Seo";
+import Banner from "@/components/landing/Banner";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -23,7 +25,13 @@ const Home: NextPage<IProps> = ({ token }) => {
     }
   }, [token]);
 
-  return <div className="">hello world</div>;
+  return (
+    <>
+      <SEO />
+      <Banner />
+      <div className="">hello world</div>
+    </>
+  );
 };
 
 export default Home;

@@ -1,6 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  @apply m-0 p-0 box-border;
+}
+
+html,
+body {
+  @apply font-Inter;
+}
+
+.rc-dropdown-menu > .rc-dropdown-menu-item:hover,
+.rc-dropdown-menu > .rc-dropdown-menu-item-selected {
+  @apply bg-light-pink !important;
+}
+
+.rc-dropdown-menu > .rc-dropdown-menu-item-active {
+  @apply bg-dark-pink !important;
+}
+
+.rc-dropdown-menu li {
+  @apply h-1/2 flex items-center !important;
+}
+
+.rc-dropdown-menu ul {
+  @apply h-20 !important;
+}
+
+.containers {
+  @apply max-w-full w-full px-5 sm:px-[30px] md:max-w-[1020px] lg:max-w-[1300px] mx-auto;
+}
+
+.blend {
+  background-blend-mode: overlay, color, overlay, difference, color-dodge,
+    difference, normal;
+}
+
 .nav {
   a {
-    @apply font-medium text-[1rem] px-6 leading-[1.2] transition-all duration-[0.15s] cursor-pointer;
+    @apply font-medium text-xl px-2 leading-none transition-all duration-[0.15s] cursor-pointer;
     &:hover {
     }
     &.active {

@@ -21,7 +21,7 @@ const MobileDrawer = () => {
       width="320px"
       drawerHandler={
         <div className="flex items-center justify-center shrink-0 w-[26px] lg:hidden">
-          <FaBars size="26px" color="#000" />
+          <FaBars size="26px" color="#fff" />
         </div>
       }
       open={open}
@@ -34,7 +34,7 @@ const MobileDrawer = () => {
         <div className="w-full flex flex-col menu">
           {menues.map(({ title, path }, key) => (
             <Link key={key} href={path}>
-              <a className="block px-4 py-2 text-gray-700 hover:bg-gray-200 hover:text-gray-900">
+              <a className="block text-gray-700 hover:bg-gray-200 hover:text-gray-900">
                 {title}
               </a>
             </Link>

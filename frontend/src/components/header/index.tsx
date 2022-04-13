@@ -1,19 +1,18 @@
 import Link from "next/link";
 import { FC } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
-import { useRouter } from "next/router";
 import Button from "../button/Button";
 import MobileDrawer from "./drawer/mobile-drawer";
 import Lang from "./lang/Lang";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
+import Logo from "/public/images/hotcodes.svg";
 
 interface HeaderProps {
   className?: string;
 }
 
 const Header: FC<HeaderProps> = ({ className }) => {
-  const router = useRouter();
-  const { locale } = router;
   const { t } = useTranslation("header");
   const menues = [
     { title: t("home"), path: "/" },
@@ -27,25 +26,40 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
   return (
     <header
-      className={`text-white py-5 w-full absolute min-w-0 top-0 left-0 transition-all ease-in duration-[0.4s] ${className}`}
-      id="app"
+      className={`text-white w-full absolute min-w-0 top-0 left-0 transition-all ease-in duration-[0.4s] ${className}`}
     >
-      <div className="flex justify-between items-center max-w-full w-full px-5 sm:px-[30px] md:max-w-[1020px] lg:max-w-[1300px] mx-auto">
-        <div className="text-black">Logo</div>
-        <nav className="mx-auto hidden lg:flex nav">
-          <p>{t("arr")}</p>
-          {menues.map(({ title, path }, key) => (
-            <Link key={key} href={path}>
-              <a className="block px-4 py-2 text-gray-700 hover:bg-gray-200 hover:text-gray-900">
-                {title}
-              </a>
-            </Link>
-          ))}
-        </nav>
-        <Lang path="/" />
-        <AiOutlineLogin className="text-primary text-2xl cursor-pointer text-black" />
-        <Button outline={false} rounded="rounded-full" />
-        <MobileDrawer />
+      <div className="w-full bg-header h-11 flex items-center">
+        <div className="flex justify-between  items-center containers">
+          <div className="w-[95px] flex items-center xl:w-[115px]">
+            <Image src={Logo} />
+          </div>
+          <nav className="mx-auto hidden lg:flex nav">
+            {menues.map(({ title, path }, key) => (
+              <Link key={key} href={path}>
+                <a className="block px-1 mx-1 my-1 py-1 xl:px-1  xl:py-1 xl:text-xl text-white font-Inter font-normal leading-none text-[0.95rem] hover:underline hover:text-gray-500 transition-all duration-500 ease-linear">
+                  {title}
+                </a>
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center">
+            <Lang path="/" />
+            <AiOutlineLogin
+              size="29px"
+              className="text-primary cursor-pointer text-white mr-3 ml-5 lg:mr-[30px] lg:ml-[50px]"
+            />
+            <Button
+              outline={false}
+              border="border-white border-2"
+              outlText="white"
+              rounded="rounded-full"
+              value={t("signup")}
+              px="px-4"
+              mr="mr-3"
+            />
+            <MobileDrawer />
+          </div>
+        </div>
       </div>
     </header>
   );

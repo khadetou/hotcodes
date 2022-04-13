@@ -10,7 +10,12 @@ interface ButtonProps {
   outline?: boolean;
   border?: string;
   outlText?: string;
+  leading?: string;
   value?: string;
+  mx?: string;
+  my?: string;
+  mr?: string;
+  ml?: string;
 }
 const Button: FC<ButtonProps> = ({
   py,
@@ -23,13 +28,18 @@ const Button: FC<ButtonProps> = ({
   border,
   outlText,
   value,
+  mx,
+  my,
+  ml,
+  mr,
+  leading,
 }) => {
   return (
     <button
       className={
         outline
-          ? `py-${py}  px-${px} ${bg} text-${text} text-${size} ${rounded}`
-          : `py-${py}  px-${px} ${border}  text-${outlText} text-${size} ${rounded}`
+          ? `${py}  ${mx} ${my} ${leading}  ${px} ${bg} text-${text} text-base xl:text-${size} ${rounded}`
+          : `${py} ${mx} ${my}  ${leading} ${mr} ${px} ${border}  text-${outlText} text-base xl:text-${size} ${rounded}`
       }
     >
       {value}
@@ -38,15 +48,16 @@ const Button: FC<ButtonProps> = ({
 };
 
 Button.defaultProps = {
-  px: "5",
-  py: "[16px]",
+  px: "px-6",
+  py: "py-[5px]",
   bg: "bg-black",
-  size: "md",
+  size: "xl",
   text: "white",
   rounded: "rounded-md",
   outline: true,
   border: "border-black border-2",
   outlText: "black",
+  leading: "leading-none",
   value: "Button",
 };
 

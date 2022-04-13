@@ -2,18 +2,18 @@ import Head from "next/head";
 import { FC } from "react";
 
 interface SeoProps {
-  description: string;
-  author: string;
-  meta: any[];
-  title: string;
-  lang: string;
+  description?: string;
+  author?: string;
+  meta?: any[];
+  title?: string;
+  lang?: string;
 }
 
 const SEO: FC<SeoProps> = ({
   description = "Hotcodes landing page",
   author = "Khadetou Dianifabe",
   meta,
-  title = "Hotcodes title",
+  title = "Hotcodes",
 }) => {
   const metaData = [
     {
