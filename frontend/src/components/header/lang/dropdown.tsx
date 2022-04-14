@@ -11,9 +11,7 @@ interface DropDownProps {
 const DropDown: FC<DropDownProps> = ({ path }) => {
   const { locale, push } = useRouter();
 
-  const onSelect = ({ key }: any) => {
-    // push(`${path}${key}`);
-  };
+  const onSelect = ({ key }: any) => {};
   const onVisibleChange = (visible: boolean) => {
     // console.log(visible);
   };
@@ -25,14 +23,14 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
     >
       <MenuItem key="fr" className="cursor-pointer">
         <Link href={path!} locale={"fr"}>
-          <div className="cursor-pointer text-black font-medium">
+          <div className="cursor-pointer px-3 py-2 text-black font-medium">
             <span className="fi fi-fr mr-2 "></span> French (Fr)
           </div>
         </Link>
       </MenuItem>
       <MenuItem key="en" className="cursor-pointer">
         <Link href={path!} locale={"en"}>
-          <div className="cursor-pointer text-black font-medium">
+          <div className="cursor-pointer px-3 py-2 text-black font-medium">
             <span className="fi fi-us w-6 mr-2"></span> English (En)
           </div>
         </Link>

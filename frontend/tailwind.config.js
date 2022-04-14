@@ -1,14 +1,24 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs: "383px",
+      xsm: "540px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         header: "rgba(0,0,0,0.45)",
         "light-pink": "#ECB9DD",
         "dark-pink": "#EA007D",
+        primary: "#440052",
+      },
+      boxShadow: {
+        btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",
       },
       backgroundImage: {
         "grad-back":

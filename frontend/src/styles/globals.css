@@ -19,7 +19,7 @@ body {
 }
 
 .rc-dropdown-menu li {
-  @apply h-1/2 flex items-center !important;
+  @apply h-1/2 flex items-center p-0 !important;
 }
 
 .rc-dropdown-menu ul {

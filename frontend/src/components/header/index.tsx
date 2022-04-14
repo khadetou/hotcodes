@@ -26,7 +26,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
   return (
     <header
-      className={`text-white w-full absolute min-w-0 top-0 left-0 transition-all ease-in duration-[0.4s] ${className}`}
+      className={`text-white w-full absolute z-20 min-w-0 top-0 left-0 transition-all ease-in duration-[0.4s] ${className}`}
     >
       <div className="w-full bg-header h-11 flex items-center">
         <div className="flex justify-between  items-center containers">
@@ -46,7 +46,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
             <Lang path="/" />
             <AiOutlineLogin
               size="29px"
-              className="text-primary cursor-pointer text-white mr-3 ml-5 lg:mr-[30px] lg:ml-[50px]"
+              className="cursor-pointer text-white mr-3 ml-5 lg:mr-[30px] lg:ml-[50px]"
             />
             <Button
               outline={false}
