@@ -20,7 +20,7 @@ const Banner = () => {
           </p>
           <div className="flex md:mt-6">
             <Button
-              className="text-[11px] px-[8px] py-[10px] xs:text-[15px] md:text-[18px] md:px-[19px]"
+              className="text-[11px] px-[18px] py-[10px] xs:text-[15px] md:text-[18px] md:px-[19px]"
               rounded="rounded-full"
               bg="bg-white"
               text="text-primary"
@@ -28,7 +28,7 @@ const Banner = () => {
               shadow="shadow-btn"
               font="font-bold"
             />
-            <div className="xs:ml-6 ml-2">
+            <div className="md:ml-6 ml-[7px]">
               <Circular className="rounded-full xs:px-4 xs:py-4 p-2 bg-white text-primary shadow-btn" />
               <span className="text-white text-[11px] md:text-base xs:text-[14px] font-normal ml-[10px] uppercase">
                 {t("banner.video")}
@@ -36,7 +36,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="w-[276px] md:w-[228px] -mb-[65px] md:mb-0 lg:w-[1000px] xs:w-[326px] mt-[10px] ">
+        <div className="w-[276px] md:w-[228px] -mb-[65px] md:mb-0 lg:w-[1000px] xs:w-[370px] mt-[10px] ">
           <div className="absolute lg:top-1/2 lg:translate-y-[-36%]  ">
             <Image src={sideImage} />
           </div>
