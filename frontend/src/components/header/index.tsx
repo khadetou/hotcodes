@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
 import Button from "../button/Button";
 import MobileDrawer from "./drawer/mobile-drawer";
 import Lang from "./lang/Lang";
@@ -44,12 +45,14 @@ const Header: FC<HeaderProps> = ({ className }) => {
           </nav>
           <div className="flex items-center">
             <Lang path="/" />
+            <FaUser className="text-white text-[20px] sm:text-[26px] mx-[15px] sm:mx-[30px] text-xl block lg:hidden" />
+
             <AiOutlineLogin
               size="29px"
-              className="cursor-pointer text-white mr-3 ml-5 lg:mr-[30px] lg:ml-[50px]"
+              className="cursor-pointer hidden lg:block text-white mr-3 ml-5 lg:mx-[30px] "
             />
             <Button
-              className="leading-loose"
+              className="leading-loose hidden lg:block"
               outline={false}
               border="border-white border-2"
               outlText="white"

@@ -9,7 +9,7 @@ interface DropDownProps {
 }
 
 const DropDown: FC<DropDownProps> = ({ path }) => {
-  const { locale, push } = useRouter();
+  const { locale } = useRouter();
 
   const onSelect = ({ key }: any) => {};
   const onVisibleChange = (visible: boolean) => {
@@ -24,14 +24,15 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
       <MenuItem key="fr" className="cursor-pointer">
         <Link href={path!} locale={"fr"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">
-            <span className="fi fi-fr mr-2 "></span> French (Fr)
+            <span className="fi fi-fr mr-2 lg:text-base "></span> French (Fr)
           </div>
         </Link>
       </MenuItem>
       <MenuItem key="en" className="cursor-pointer">
         <Link href={path!} locale={"en"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">
-            <span className="fi fi-us w-6 mr-2"></span> English (En)
+            <span className="fi fi-us w-6 mr-2 lg:text-base"></span> English
+            (En)
           </div>
         </Link>
       </MenuItem>
@@ -44,9 +45,13 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
       animation="slide-up"
       onVisibleChange={onVisibleChange}
     >
-      <button className="text-black">
+      <button className="text-black flex items-center">
         <span
-          className={locale === "fr" ? `fi fi-${locale}` : "fi fi-us"}
+          className={
+            locale === "fr"
+              ? `fi fi-${locale} text-[20px] sm:text-[25px]`
+              : "fi fi-us text-[20px] sm:text-[25px]"
+          }
         ></span>
       </button>
     </Dropdown>

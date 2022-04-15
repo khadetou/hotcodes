@@ -15,7 +15,7 @@ body {
 }
 
 .rc-dropdown-menu > .rc-dropdown-menu-item-active {
-  @apply bg-dark-pink !important;
+  @apply bg-dark-pink text-white !important;
 }
 
 .rc-dropdown-menu li {
