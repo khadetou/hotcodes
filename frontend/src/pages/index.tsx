@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import SEO from "@/components/Seo";
 import Banner from "@/components/landing/Banner";
+import Services from "@/components/landing/Services";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -29,6 +30,7 @@ const Home: NextPage<IProps> = ({ token }) => {
     <>
       <SEO />
       <Banner />
+      <Services />
       <div className="">hello world</div>
     </>
   );
