@@ -31,9 +31,11 @@ const Header: FC<HeaderProps> = ({ className }) => {
     >
       <div className="w-full bg-header h-11 flex items-center">
         <div className="flex justify-between  items-center containers">
-          <div className="w-[95px] flex items-center xl:w-[115px]">
-            <Image src={Logo} />
-          </div>
+          <Link href="/">
+            <a className="w-[95px] flex items-center xl:w-[115px]">
+              <Image src={Logo} />
+            </a>
+          </Link>
           <nav className="mx-auto hidden lg:flex nav">
             {menues.map(({ title, path }, key) => (
               <Link key={key} href={path}>
