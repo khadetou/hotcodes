@@ -45,22 +45,34 @@ const Header: FC<HeaderProps> = ({ className }) => {
           </nav>
           <div className="flex items-center">
             <Lang path="/" />
-            <FaUser className="text-white text-[20px] sm:text-[26px] mx-[15px] sm:mx-[30px] text-xl block lg:hidden" />
+            <Link href="/login">
+              <a>
+                <FaUser className="text-white text-[20px] sm:text-[26px] mx-[15px] sm:mx-[30px] text-xl block lg:hidden" />
+              </a>
+            </Link>
 
-            <AiOutlineLogin
-              size="29px"
-              className="cursor-pointer hidden lg:block text-white mr-3 ml-5 lg:mx-[30px] "
-            />
-            <Button
-              className="leading-loose hidden lg:block"
-              outline={false}
-              border="border-white border-2"
-              outlText="white"
-              rounded="rounded-full"
-              value={t("signup")}
-              px="px-4"
-              mr="mr-3"
-            />
+            <Link href="/login">
+              <a>
+                <AiOutlineLogin
+                  size="29px"
+                  className="cursor-pointer hidden lg:block text-white mr-3 ml-5 lg:mx-[30px] "
+                />
+              </a>
+            </Link>
+            <Link href="/register">
+              <a>
+                <Button
+                  className="leading-loose hidden lg:block"
+                  outline={false}
+                  border="border-white border-2"
+                  outlText="white"
+                  rounded="rounded-full"
+                  value={t("signup")}
+                  px="px-4"
+                  mr="mr-3"
+                />
+              </a>
+            </Link>
             <MobileDrawer />
           </div>
         </div>
