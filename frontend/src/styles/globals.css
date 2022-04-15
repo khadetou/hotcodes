@@ -37,7 +37,7 @@ body {
 
 .nav {
   a {
-    @apply font-medium text-xl px-2 leading-none transition-all duration-[0.15s] cursor-pointer;
+    @apply font-medium lg:text-base xl:text-xl px-2 leading-none transition-all duration-[0.15s] cursor-pointer;
     &:hover {
     }
     &.active {

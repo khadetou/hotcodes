@@ -8,7 +8,7 @@ interface CircularProps {
 const Circular: FC<CircularProps> = ({ className }) => {
   return (
     <button className={className}>
-      <FaPlay className="xs:text-base text-xs" />
+      <FaPlay className="xs:text-base lg:text-2xl text-xs" />
     </button>
   );
 };

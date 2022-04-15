@@ -36,7 +36,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
           <nav className="mx-auto hidden lg:flex nav">
             {menues.map(({ title, path }, key) => (
               <Link key={key} href={path}>
-                <a className="block px-1 mx-1 my-1 py-1 xl:px-1  xl:py-1 xl:text-xl text-white font-Inter font-normal leading-none text-[0.95rem] hover:underline hover:text-gray-500 transition-all duration-500 ease-linear">
+                <a className="block px-1 mx-1 my-1 py-1 xl:px-1  xl:py-1 xl:text-xl text-white font-Inter font-normal leading-none text-[0.95rem] hover:underline lg:text-base hover:text-gray-500 transition-all duration-500 ease-linear">
                   {title}
                 </a>
               </Link>
@@ -49,6 +49,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
               className="cursor-pointer text-white mr-3 ml-5 lg:mr-[30px] lg:ml-[50px]"
             />
             <Button
+              className="leading-loose"
               outline={false}
               border="border-white border-2"
               outlText="white"
