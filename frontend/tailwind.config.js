@@ -29,7 +29,7 @@ module.exports = {
         "grad-text-1":
           " linear-gradient(90deg, rgba(57,0,77,1) 0%, rgba(3,0,155,1) 100%)",
         "grad-text-2":
-          "linear-gradient(160deg, rgba(255,0,128,1) 0%, rgba(121,40,202,1) 100%)",
+          "linear-gradient(160deg, rgba(255, 0, 128, 1) 50%, rgba(121, 40, 202, 1) 100%)",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
