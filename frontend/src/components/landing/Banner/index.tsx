@@ -4,6 +4,9 @@ import { useTranslation } from "next-i18next";
 import Button from "@/components/button/Button";
 import sideImage from "/public/images/sideimage.png";
 import Circular from "@/components/button/circular";
+import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import * as fs from "fs";
 
 const Banner = () => {
   const { t } = useTranslation("common");

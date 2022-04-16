@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     screens: {
-      xxs: "282px",
+      xxs: "321px",
       xs: "372px",
       xsm: "540px",
       ...defaultTheme.screens,
@@ -17,7 +17,7 @@ module.exports = {
         "light-pink": "#ECB9DD",
         "dark-pink": "#EA007D",
         primary: "#440052",
-        dark: "#525251",
+        dark: "#393938",
       },
       boxShadow: {
         btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",

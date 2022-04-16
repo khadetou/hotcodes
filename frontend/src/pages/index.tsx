@@ -55,6 +55,9 @@ export const getServerSideProps: GetServerSideProps =
         const { user } = store.getState().authReducer;
         if (user && !user?.password) {
           return {
+            props: {
+              ...(await serverSideTranslations(locale!, ["common", "header"])),
+            },
             redirect: {
               destination: "/me/update_profile",
               permanent: false,
