@@ -48,16 +48,16 @@ const Header: FC<HeaderProps> = ({ className }) => {
           <div className="flex items-center">
             <Lang path="/" />
             <Link href="/login">
-              <a>
-                <FaUser className="text-white text-[20px] sm:text-[26px] mx-[15px] sm:mx-[30px] text-xl block lg:hidden" />
+              <a className="mx-[15px] sm:mx-[30px] lg:mx-0">
+                <FaUser className="text-white text-[20px] sm:text-[26px]  text-xl block lg:hidden" />
               </a>
             </Link>
 
             <Link href="/login">
-              <a>
+              <a className="m-0 lg:mx-[30px] ">
                 <AiOutlineLogin
                   size="29px"
-                  className="cursor-pointer hidden lg:block text-white mr-3 ml-5 lg:mx-[30px] "
+                  className="cursor-pointer hidden lg:block text-white "
                 />
               </a>
             </Link>

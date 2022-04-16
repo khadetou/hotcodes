@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Select from "@/components/orders/form/select/select";
 
-import { plateforms, goal, typeApp, checkbox } from "@/pages/orders/lists";
+import { plateforms, goal, typeApp, checkbox } from "@/components/orders/lists";
 import Input from "./input/input";
 import Upload from "./uploads";
 

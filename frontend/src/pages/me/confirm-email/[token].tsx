@@ -4,7 +4,7 @@ import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
-import { getCookie } from "../../../redux/action-creators";
+import { getCookie } from "../../../store/action-creators";
 import jwtDecode from "jwt-decode";
 const ConfirmEmail = () => {
   const { ResetPassword } = useActions();

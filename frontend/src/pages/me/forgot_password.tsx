@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
-import { getCookie } from "../../redux/action-creators";
+import { getCookie } from "../../store/action-creators";
 import { useRouter } from "next/router";
 
 interface IProps {

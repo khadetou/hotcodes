@@ -4,8 +4,8 @@ import { GetServerSideProps, NextPage } from "next/types";
 import { useEffect, useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
-import { wrapper } from "../../redux";
-import { getCookie, LoadUserSsr } from "../../redux/action-creators";
+import { wrapper } from "../../store";
+import { getCookie, LoadUserSsr } from "../../store/action-creators";
 
 const UpdateProfile: NextPage = () => {
   const router = useRouter();

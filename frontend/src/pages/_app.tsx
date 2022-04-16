@@ -4,7 +4,7 @@ import "rc-dropdown/assets/index.css";
 import "flag-icons/css/flag-icons.min.css";
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
-import { wrapper } from "@/redux/index";
+import { wrapper } from "store/index";
 import Layout from "@/components/Layout";
 import { useState } from "react";
 
