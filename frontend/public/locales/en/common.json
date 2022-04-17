@@ -20,5 +20,25 @@
       "title": "Digital Marketing",
       "p": "With our digital marketing techniques the world will hear about your business,you will see your business grow in real time."
     }
+  },
+  "presentation": {
+    "design": {
+      "title": "UI/UX Design",
+      "h1": "We Create and build. Incredible designs",
+      "p": "We build modern design that respect all the rules of ui/ux desing. If you want your website to be as this day and age websites and  to be profetionnal you are on the right place.",
+      "button": "Learn more"
+    },
+    "dev": {
+      "title": "Software Development",
+      "h1": "We Build and optimized web, mobile. & desktop apps",
+      "p": "To give a heigh value to the performance of the apps we build, wich could allow you to perform better in to the task  and allowing you to earn more.",
+      "button": "Learn more"
+    },
+    "marketing": {
+      "title": "Digital Marketing",
+      "h1": "Providing Best. Digital marketing Services",
+      "p": "HotCodes stays  ahead of the curve with digital marketing trends. Our success has us leading the pack amongst our competitors with our ability to anticipate change and innovation.",
+      "button": "Learn more"
+    }
   }
 }

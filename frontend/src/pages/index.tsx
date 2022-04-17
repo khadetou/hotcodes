@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import SEO from "@/components/Seo";
 import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
+import Presentation from "@/components/landing/presentation";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -31,6 +32,7 @@ const Home: NextPage<IProps> = ({ token }) => {
       <SEO />
       <Banner />
       <Services />
+      <Presentation />
       <div className="">hello world</div>
     </>
   );

@@ -20,5 +20,25 @@
       "title": "Marketing Digital",
       "p": "Avec nos techniques de marketing numérique, le monde entendra parler de votre entreprise,Vous verrez votre entreprise croître en temps réel."
     }
+  },
+  "presentation": {
+    "design": {
+      "title": "UI/UX Design",
+      "h1": "Nous développons et construisons des conceptions incroyables",
+      "p": "Nous construisons un design moderne qui respecte toutes les règles de conception ui/ux. Si vous voulez que votre site Web soit comme ce jour et les sites Web d’âge et d’être professionnel, vous êtes au bon endroit.",
+      "button": "Learn more"
+    },
+    "dev": {
+      "title": "Software Development",
+      "h1": "Nous construisons et optimisons votre logiciel",
+      "p": "Pour donner une valeur heigh à la performance des applications que nous construisons, qui pourrait vous permettre de mieux exécuter dans la tâche et vous permettant de gagner plus.",
+      "button": "Learn more"
+    },
+    "marketing": {
+      "title": "Digital Marketing",
+      "h1": "Nous Fournissons les meilleurs. services de marketing numérique",
+      "p": "HotCodes garde une longueur d’avance sur les tendances du marketing numérique. Notre succès nous permet de devancer nos concurrents grâce à notre capacité à anticiper le changement et l’innovation.",
+      "button": "Learn more"
+    }
   }
 }
