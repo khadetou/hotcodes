@@ -8,9 +8,17 @@
   "services": {
     "h1": "We provide the best solutions for you",
     "p": "We build your website, mobile app, desktop app, without any problem, We solve your problem by using the latest technology and best practices to help build a successful product.",
-    "card": {
+    "design": {
       "title": "UI/UX Design",
       "p": "We build modern beautiful modern design that will make your business grow faster and you’ ll get the best highest clientel from it."
+    },
+    "dev": {
+      "title": "Software Development",
+      "p": "We build modern optimized web apps, desktop apps and mobile apps."
+    },
+    "marketing": {
+      "title": "Digital Marketing",
+      "p": "With our digital marketing techniques the world will hear about your business,you will see your business grow in real time."
     }
   }
 }

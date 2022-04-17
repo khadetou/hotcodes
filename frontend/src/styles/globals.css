@@ -54,6 +54,12 @@ body {
   }
 }
 
+.card {
+  &:not(:last-child) {
+    @apply lg:mr-5;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

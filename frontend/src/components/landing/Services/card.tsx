@@ -14,7 +14,7 @@ const Card: FC<CardProps> = ({ title, paragraph, src }) => {
         <Image src={src} />
       </div>
 
-      <h1 className="pt-[46px] text-xl xxs:pt-[95px] xsm:pt-[137px] md:pt-[128px] xxs:text-[26px] xs:pt-[116px] font-bold uppercase text-transparent bg-clip-text bg-grad-text-2 text-center">
+      <h1 className="pt-[46px] text-xl xxs:pt-[95px] xsm:pt-[137px] md:pt-[128px] xxs:text-[26px] xs:pt-[116px] lg:pt-[90px] xl:pt-[128px] font-bold uppercase text-transparent bg-clip-text bg-grad-text-2 text-center">
         {title}
       </h1>
       <p className="mt-[5px] text-[13px]  text-center font-medium leading-6 xxs:text-[14px] xs:text-[22px] text-dark xxs:mt-4">
