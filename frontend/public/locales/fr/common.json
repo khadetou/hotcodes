@@ -39,10 +39,10 @@
       "h1": "Nous Fournissons les meilleurs. services de marketing numérique",
       "p": "HotCodes garde une longueur d’avance sur les tendances du marketing numérique. Notre succès nous permet de devancer nos concurrents grâce à notre capacité à anticiper le changement et l’innovation.",
       "button": "Learn more"
-    },
-    "process": {
-      "h1": "Notre processus de travail",
-      "p": "Nous fournirons beaucoup de projets pré-construits dans notre plateforme afin de rendre les choses plus dynamiques, mais si vous ne trouvez pas ce que vous voulez dans ce que nous vous proposons, vous pouvez toujours pré-commander votre application web, mobile ou de bureau"
     }
+  },
+  "process": {
+    "h1": "Notre processus de travail",
+    "p": "Nous fournirons beaucoup de projets pré-construits dans notre plateforme afin de rendre les choses plus dynamiques, mais si vous ne trouvez pas ce que vous voulez dans ce que nous vous proposons, vous pouvez toujours pré-commander votre application web, mobile ou de bureau"
   }
 }

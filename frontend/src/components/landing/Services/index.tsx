@@ -28,7 +28,7 @@ const Service = () => {
   ];
   return (
     <section>
-      <div className="containers">
+      <div className="containers flex flex-col items-center">
         <Title
           title={t("services.h1")}
           p={t("services.p")}

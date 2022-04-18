@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
 import { FaPlay } from "react-icons/fa";
 import Button from "@/components/button/Button";
+import { useRouter } from "next/router";
 
 interface FieldProps {
   src: StaticImageData;
@@ -26,6 +27,11 @@ const Field: FC<FieldProps> = ({
   fsrcStyle,
   flip,
 }) => {
+  const { locale } = useRouter();
+  const styles =
+    locale === "en"
+      ? "md:text-[83px] xl:text-[83px] md:leading-[76px] xl:leading-[76px] "
+      : "md:text-[54px] xl:text-[54px] md:leading-[65px] xl:leading-[65px] ";
   const h1Text = h1.split(".");
 
   return (
@@ -47,10 +53,12 @@ const Field: FC<FieldProps> = ({
         </div>
       </div>
       <div className="max-w-[651px]">
-        <span className="uppercase font-semibold text-[17px] xxs:text-xl xs:text-2xl text-black">
+        <span className="uppercase font-semibold text-[17px] xxs:text-xl text-black">
           {title}
         </span>
-        <h1 className="font-light lg:leading-[54px] md:leading-[76px] xl:leading-[76px] text-[33px] xs:text-[42px] leading-[1.2] lg:text-[54px] md:text-[80px] xl:text-[80px] my-[5px] xxs:leading-[44px]  text-dark lg:my-4 md:my-5 xl:my-5">
+        <h1
+          className={`font-light lg:leading-[54px] ${styles}  text-[33px] xs:text-[42px] leading-[1.2] lg:text-[54px]  my-[5px] xxs:leading-[44px]  text-dark lg:my-4 md:my-5 xl:my-5`}
+        >
           <span className="text-transparent bg-grad-text-2 bg-clip-text">
             {h1Text[0]}
           </span>

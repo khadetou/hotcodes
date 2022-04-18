@@ -10,7 +10,7 @@ interface TitleProps {
 const Title: FC<TitleProps> = ({ title, p, className }) => {
   const { t } = useTranslation("common");
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center max-w-[1023px]">
       <h1
         className={`lg:text-[101px] xxs:text-[47px] md:text-[60px] md:mt-[66px] leading-none text-[32px] mt-[32px] lg:leading-[104px] font-light text-center lg:mt-[66px]  ${className}`}
       >
