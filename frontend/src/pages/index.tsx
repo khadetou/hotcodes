@@ -10,6 +10,7 @@ import SEO from "@/components/Seo";
 import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
 import Presentation from "@/components/landing/presentation";
+import Process from "@/components/landing/process";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -33,6 +34,7 @@ const Home: NextPage<IProps> = ({ token }) => {
       <Banner />
       <Services />
       <Presentation />
+      <Process />
       <div className="">hello world</div>
     </>
   );

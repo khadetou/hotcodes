@@ -29,7 +29,11 @@ const Service = () => {
   return (
     <section>
       <div className="containers">
-        <Title />
+        <Title
+          title={t("services.h1")}
+          p={t("services.p")}
+          className="text-transparent bg-clip-text bg-grad-text-1"
+        />
         <div className="flex justify-between items-center  flex-col lg:flex-row">
           {services.map(({ title, paragraph, src }, idx) => (
             <div key={idx} className="card">

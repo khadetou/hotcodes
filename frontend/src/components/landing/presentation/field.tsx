@@ -46,7 +46,7 @@ const Field: FC<FieldProps> = ({
           <Image src={src} />
         </div>
       </div>
-      <div className="md:w-full lg:w-[523px] xl:w-[687px] w-[240px] xxs:w-[300px]">
+      <div className="max-w-[651px]">
         <span className="uppercase font-semibold text-[17px] xxs:text-xl xs:text-2xl text-black">
           {title}
         </span>
