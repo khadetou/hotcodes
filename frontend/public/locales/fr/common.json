@@ -43,6 +43,24 @@
   },
   "process": {
     "h1": "Notre processus de travail",
-    "p": "Nous fournirons beaucoup de projets pré-construits dans notre plateforme afin de rendre les choses plus dynamiques, mais si vous ne trouvez pas ce que vous voulez dans ce que nous vous proposons, vous pouvez toujours pré-commander votre application web, mobile ou de bureau"
+    "p": "Nous fournirons beaucoup de projets pré-construits dans notre plateforme afin de rendre les choses plus dynamiques, mais si vous ne trouvez pas ce que vous voulez dans ce que nous vous proposons, vous pouvez toujours pré-commander votre application web, mobile ou de bureau",
+    "cards":{
+      "1": {
+        "title": "Project Study",
+        "p": "Nous étudions le projet et essayons de comprendre l’objectif final de la cible publique et la meilleure façon de traiter les problèmes afin de fournir les meilleures solutions à vos problèmes."
+      },
+      "2": {
+        "title": "UI/UX Design",
+        "p": "Nous allons construire le design ensemble sens à chaque étape, nous allons envoyer le résultat afin que vous renonciez si c’est bien ou vous voulez changer quelque chose sur la conception."
+      },
+      "3": {
+        "title": "Development",
+        "p": "Pour ce qui est de la conception, dans la section de développement, chaque étape vous sera envoyée aux fins de validation. Il s’agira d’un travail d’équipe entre vous et nous.."
+      },
+      "4": {
+        "title": "Results",
+        "p": "À la fin, vous obtiendrez votre application Web, application mobile ou application de bureau comme vous le souhaitez. Et nous pourrions aller jusqu’à le maintenir pour vous."
+      }
+    }
   }
 }

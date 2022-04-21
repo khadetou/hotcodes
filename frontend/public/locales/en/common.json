@@ -43,6 +43,24 @@
   },
   "process": {
     "h1": "Our Work Process",
-    "p": "We will provide a lot of pre-buid projects in our plateform in order to make things more dynamic, but if you do not find what you want in what we proposes you can still pre order your web, mobile or desktop app"
+    "p": "We will provide a lot of pre-buid projects in our plateform in order to make things more dynamic, but if you do not find what you want in what we proposes you can still pre order your web, mobile or desktop app",
+    "cards":{
+      "1": {
+        "title": "Project Study",
+        "p": "We study the project and try to understand the end goal the public target and the best way to tacle th problems in order to deliver the best solutions to your problems."
+      },
+      "2": {
+        "title": "UI/UX Design",
+        "p": "We’ll build the design together meaning at each step we’ll send the result in order for you to deside if it’s okey or you want to change something on the design."
+      },
+      "3": {
+        "title": "Development",
+        "p": "As for the design, in the development section as well each step will be sent to you to validate, it’s going to be a team work between you and us."
+      },
+      "4": {
+        "title": "Results",
+        "p": "At the end you’ll get your web app, mobile app, or desktop app as you desired it. And we might go as far as maintain it for you."
+      }
+    }
   }
 }

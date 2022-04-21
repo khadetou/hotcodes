@@ -9,6 +9,8 @@ body {
   @apply font-Inter overflow-x-hidden;
 }
 
+
+
 .rc-dropdown-menu > .rc-dropdown-menu-item:hover,
 .rc-dropdown-menu > .rc-dropdown-menu-item-selected {
   @apply bg-light-pink !important;
