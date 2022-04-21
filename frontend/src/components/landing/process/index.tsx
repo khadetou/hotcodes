@@ -2,10 +2,13 @@ import React from "react";
 import Title from "../Services/title";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import ProcesImg from "/public/images/processtext.svg";
+import ProcessImgfr from '/public/images/processtextfr.svg'
 
 const Process = () => {
   const { t } = useTranslation("common");
+  const {locale} = useRouter();
   return (
     <div className="containers flex flex-col items-center ">
       <Title
@@ -15,7 +18,7 @@ const Process = () => {
       />
 
       <div className="mt-[51px]">
-        <Image src={ProcesImg} className="flex items-center" />
+        {locale === "en" ?<Image src={ProcesImg} className="flex items-center" />: <Image src={ProcessImgfr} className="flex items-center" /> }
       </div>
     </div>
   );
