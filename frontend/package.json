@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^2.1.1",
+    "@types/": "glidejs/glide",
     "@types/js-cookie": "^3.0.1",
     "@types/react-stickynode": "^4.0.0",
     "@types/redux": "^3.6.0",

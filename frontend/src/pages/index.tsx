@@ -11,6 +11,7 @@ import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
 import Presentation from "@/components/landing/presentation";
 import Process from "@/components/landing/process";
+import Slider from "@/components/slider";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
