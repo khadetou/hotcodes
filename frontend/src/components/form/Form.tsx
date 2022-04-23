@@ -1,11 +1,16 @@
 import React, { FC, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
+import codes from "country-calling-code";
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem } from "rc-menu";
 
 import Input from "./Input";
 interface FormProps {
   className?: string;
 }
+
+console.log(codes);
 
 const Inputs = [
   {
@@ -45,9 +50,23 @@ const Form: FC<FormProps> = ({ className }) => {
       setTextareaFocused(false);
     }
   };
+
+  const menu = (
+    <Menu>
+      {codes.map(({ country, countryCodes, isoCode2, isoCode3 }) => (
+        <MenuItem key={isoCode2}>
+          <div className="flex items-center">
+            <span className={`fi fi-${isoCode2.toLocaleLowerCase()}`}></span>
+            <span>{country}</span>
+            <span>{countryCodes[0]}</span>
+          </div>
+        </MenuItem>
+      ))}
+    </Menu>
+  );
   return (
     <div
-      className={`max-h-[993px] h-full m-w-[1300px] w-full shadow-shadow  rounded-[35px] ${className}`}
+      className={`h-full m-w-[1300px] w-full shadow-shadow  rounded-[35px]  mb-[160px] ${className}`}
     >
       <form className="w-full h-full flex flex-col items-center  p-[43px]">
         {Inputs.map(({ label, id }, idx) => (
@@ -68,7 +87,7 @@ const Form: FC<FormProps> = ({ className }) => {
             rows={8}
             className=" focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[60px] py-8 text-dark text-[22px] font-medium"
             id="message"
-          />
+          ></textarea>
         </div>
         <div className="flex justify-between items-center w-full max-w-[822px]">
           <button className="font-bold text-white bg-dark-pink text-base py-[15px] px-[159px] rounded-lg border-2 border-blue">
@@ -80,6 +99,25 @@ const Form: FC<FormProps> = ({ className }) => {
           <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
             <FaWhatsapp />
           </div>
+
+          {/* <div className="bg-dark-pink py-[15px] px-10 rounded-[33px]">
+            <Dropdown
+              trigger={["click"]}
+              overlay={menu}
+              animation="slide-down"
+              onVisibleChange={(visible) => {
+                console.log(visible);
+              }}
+            >
+              <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
+                <span className="fi fi-flag"></span>
+
+                <span>+91</span>
+
+                <span>India</span>
+              </div>
+            </Dropdown>
+          </div> */}
         </div>
       </form>
     </div>

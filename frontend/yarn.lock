@@ -842,6 +842,11 @@ cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+country-calling-code@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/country-calling-code/-/country-calling-code-0.0.3.tgz#d4401da11b7cfcda35ba8f05a325cab55a3b7b66"
+  integrity sha512-DNLyidwJPrEZyDkILYFbgPRlg/tFkpP+uk6JWG+du41l7qoH5guePxSA2YlIjl6wUfp7vWdjCUJeMRuAQPKpRg==
+
 cross-fetch@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"

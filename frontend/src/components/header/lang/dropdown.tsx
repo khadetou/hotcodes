@@ -11,16 +11,8 @@ interface DropDownProps {
 const DropDown: FC<DropDownProps> = ({ path }) => {
   const { locale } = useRouter();
 
-  const onSelect = ({ key }: any) => {};
-  const onVisibleChange = (visible: boolean) => {
-    // console.log(visible);
-  };
   const menu = (
-    <Menu
-      onSelect={onSelect}
-      activeKey={locale}
-      className="bg-black text-white rounded-lg w-32  "
-    >
+    <Menu activeKey={locale} className="bg-black text-white rounded-lg w-32  ">
       <MenuItem key="fr" className="cursor-pointer">
         <Link href={path!} locale={"fr"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">
@@ -39,12 +31,7 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
     </Menu>
   );
   return (
-    <Dropdown
-      trigger={["click"]}
-      overlay={menu}
-      animation="slide-up"
-      onVisibleChange={onVisibleChange}
-    >
+    <Dropdown trigger={["click"]} overlay={menu} animation="slide-up">
       <button className="text-black flex items-center">
         <span
           className={
