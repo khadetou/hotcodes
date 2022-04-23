@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { IoChevronForwardOutline } from "react-icons/io5";
@@ -12,8 +11,6 @@ interface SmallCardsProps {
 }
 
 const SmallCards: FC<SmallCardsProps> = ({ title, p, link, src }) => {
-  const { t } = useTranslation("common");
-
   return (
     <div className="max-w-[320px] max-h-[493px] rounded-3xl shadow-shadow p-6 mx-auto ">
       <div className="flex flex-col items-center">

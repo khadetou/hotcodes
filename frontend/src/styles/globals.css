@@ -44,7 +44,7 @@ body {
 }
 
 .swiper-wrapper {
-  @apply h-screen !important;
+  @apply h-full !important;
 }
 
 .containers {
@@ -88,6 +88,10 @@ body {
   @media (min-width: 1024px) {
     transform: rotateY(0);
   }
+}
+
+.focus {
+  @apply text-base top-[16px] !important;
 }
 
 @tailwind base;

@@ -22,6 +22,7 @@ module.exports = {
       boxShadow: {
         btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",
         shadow: "16px 0px 68px rgba(234, 0, 125, 0.27)",
+        input: "0px 0px 0px 2px rgba(226, 147, 221)",
       },
       backgroundImage: {
         "grad-back":

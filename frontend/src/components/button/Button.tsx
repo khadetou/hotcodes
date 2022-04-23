@@ -54,14 +54,9 @@ const Button: FC<ButtonProps> = ({
 };
 
 Button.defaultProps = {
-  px: "px-6",
-  py: "py-[5px]",
-  bg: "bg-black",
-  size: "xl",
-  text: "text-white",
-  rounded: "rounded-md",
+  className:
+    "px-6 font-bold text-white bg-primary text-base py-[15px] px-[95px] rounded-lg border-2 border-blue",
   outline: true,
-  border: "border-black border-2",
   outlText: "text-black",
   leading: "leading-none",
   value: "Button",

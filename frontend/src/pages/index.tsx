@@ -11,7 +11,7 @@ import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
 import Presentation from "@/components/landing/presentation";
 import Process from "@/components/landing/process";
-import Slider from "@/components/slider";
+import Contact from "@/components/landing/Contact";
 
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
@@ -36,7 +36,7 @@ const Home: NextPage<IProps> = ({ token }) => {
       <Services />
       <Presentation />
       <Process />
-      <div className="">hello world</div>
+      <Contact />
     </>
   );
 };

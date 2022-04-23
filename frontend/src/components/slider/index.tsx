@@ -37,7 +37,7 @@ const Slider = () => {
 
   return (
     <Swiper
-      className="mt-[15px] block md:hidden"
+      className="mt-[15px] !h-[650px] block md:hidden"
       slidesPerView={1}
       spaceBetween={30}
       centeredSlides={true}
