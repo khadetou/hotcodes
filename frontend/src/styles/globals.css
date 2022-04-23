@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
 * {
   @apply m-0 p-0 box-border;
 }
@@ -9,8 +8,6 @@ html,
 body {
   @apply font-Inter overflow-x-hidden;
 }
-
-
 
 .rc-dropdown-menu > .rc-dropdown-menu-item:hover,
 .rc-dropdown-menu > .rc-dropdown-menu-item-selected {
@@ -29,26 +26,25 @@ body {
   @apply h-20 !important;
 }
 
-
-.swiper-slide{
+.swiper-slide {
   @apply flex items-center;
 }
 
-.swiper-button-next{
-  @apply left-[52%] bg-[url('/images/swiper/arrow-right-circle.svg')] bg-no-repeat top-[97%] w-9 !important;
-  &::after{
+.swiper-button-next {
+  @apply left-[52%] bg-[url('/images/swiper/arrow-right-circle.svg')] bg-no-repeat top-[97%] w-9 ml-4 !important;
+  &::after {
     @apply hidden;
   }
 }
-.swiper-button-prev{
-  @apply left-[48%] bg-no-repeat bg-[url('/images/swiper/arrow-left-circle.svg')] top-[97%]  w-9 !important;
-  &::after{
+.swiper-button-prev {
+  @apply left-[48%] bg-no-repeat bg-[url('/images/swiper/arrow-left-circle.svg')] top-[97%] w-9 -ml-4 !important;
+  &::after {
     @apply hidden;
   }
 }
 
-.swiper-wrapper{
-  @apply h-screen flex justify-center !important;
+.swiper-wrapper {
+  @apply h-screen !important;
 }
 
 .containers {
