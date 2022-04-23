@@ -10,8 +10,6 @@ interface FormProps {
   className?: string;
 }
 
-console.log(codes);
-
 const Inputs = [
   {
     label: "First Name",
@@ -40,7 +38,8 @@ const Form: FC<FormProps> = ({ className }) => {
     number: 0,
     message: "",
   });
-
+  const [country, setCountry] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const onFocus = () => {
     setTextareaFocused(true);
   };
@@ -51,14 +50,22 @@ const Form: FC<FormProps> = ({ className }) => {
     }
   };
 
+  const onSelect = ({ key }: any) => {
+    setCountryCode(key);
+  };
+
   const menu = (
-    <Menu>
+    <Menu
+      className="max-h-48 overflow-auto !rounded-xl scrollbar"
+      onSelect={onSelect}
+    >
       {codes.map(({ country, countryCodes, isoCode2, isoCode3 }) => (
-        <MenuItem key={isoCode2}>
-          <div className="flex items-center">
-            <span className={`fi fi-${isoCode2.toLocaleLowerCase()}`}></span>
-            <span>{country}</span>
-            <span>{countryCodes[0]}</span>
+        <MenuItem key={countryCodes[0]} onClick={() => setCountry(isoCode2)}>
+          <div className="flex items-center px-4 py-3">
+            <span
+              className={`fi fi-${isoCode2.toLocaleLowerCase()} text-lg mr-5`}
+            ></span>
+            <span className="text-sm text-dark font-medium">{country}</span>
           </div>
         </MenuItem>
       ))}
@@ -100,24 +107,25 @@ const Form: FC<FormProps> = ({ className }) => {
             <FaWhatsapp />
           </div>
 
-          {/* <div className="bg-dark-pink py-[15px] px-10 rounded-[33px]">
-            <Dropdown
-              trigger={["click"]}
-              overlay={menu}
-              animation="slide-down"
-              onVisibleChange={(visible) => {
-                console.log(visible);
-              }}
-            >
-              <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
-                <span className="fi fi-flag"></span>
+          <Dropdown
+            trigger={["click"]}
+            overlay={menu}
+            onVisibleChange={(visible) => {
+              console.log(visible);
+            }}
+          >
+            <div className="text-white bg-dark-pink text-3xl py-3 px-6  rounded-[19px]">
+              <span
+                className={`fi fi-${
+                  country ? country.toLocaleLowerCase() : "sn"
+                } mr-6 rounded-full !w-9 !h-9`}
+              ></span>
 
-                <span>+91</span>
-
-                <span>India</span>
-              </div>
-            </Dropdown>
-          </div> */}
+              <span className="text-[22px] font-medium">
+                {countryCode ? `+${countryCode}` : "+221"}
+              </span>
+            </div>
+          </Dropdown>
         </div>
       </form>
     </div>
