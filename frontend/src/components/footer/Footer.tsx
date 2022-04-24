@@ -89,7 +89,7 @@ const Footer = () => {
     <footer>
       <div className="containers">
         <div className="flex justify-between flex-wrap">
-          <div className="">
+          <div >
             <div>
               <Image src={Logo} />
             </div>
@@ -98,20 +98,20 @@ const Footer = () => {
               can use device.
             </p>
             <div className="flex justify-between">
-              {footerLogos.map(({ title, image }) => (
-                <div className="border hover:bg-dark hover:text-white p-[13px] border-dark rounded-full transition-all duration-300 ease-in-out ">
+              {footerLogos.map(({ title, image },  idx) => (
+                <div key={idx} className="border text-dark-pink hover:bg-dark-pink hover:text-white p-[13px] border-dark-pink rounded-full transition-all duration-300 ease-in-out ">
                   {image}
                 </div>
               ))}
             </div>
           </div>
-          {footer.map(({ title, links }) => (
-            <div>
+          {footer.map(({ title, links }, idx) => (
+            <div key={idx}>
               <h3 className="text-2xl mb-[37px] font-bold text-dark">
                 {title}
               </h3>
-              {links.map(({ text, link }) => (
-                <div className="text-gray  mb-[33px] ">
+              {links.map(({ text, link }, idx) => (
+                <div key={idx} className="text-gray  mb-[33px] ">
                   <a href={link}>{text}</a>
                 </div>
               ))}
