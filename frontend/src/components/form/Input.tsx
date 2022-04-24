@@ -53,8 +53,8 @@ const Input: FC<InputProps> = ({
     >
       <label
         htmlFor={htmlFor}
-        className={`text-[#b2b2b2] absolute left-[20px] md:left-[60px] font-normal text-[18px] top-1/2 -translate-y-1/2 transition-all duration-300 ${
-          id === "tel" && "!left-[150px] md:!left-[209px] "
+        className={`text-[#b2b2b2] absolute left-[20px] md:left-[60px] font-normal text-base xxs:text-[18px] top-1/2 -translate-y-1/2 transition-all duration-300 ${
+          id === "tel" && "xsm:!left-[150px] !left-[80px]  md:!left-[209px] "
         }  ${focused && "focus"} ${labelClassName}`}
       >
         {label}
@@ -68,7 +68,7 @@ const Input: FC<InputProps> = ({
         name={id}
         id={id}
         className={`bg-transparent focus:border focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[20px] md:px-[60px] py-2 text-dark text-lg md:text-[22px] font-medium ${
-          id === "tel" && "!pl-[150px] md:!pl-[209px]"
+          id === "tel" && "xsm:!pl-[150px] !pl-[80px]  md:!pl-[209px]"
         } ${inputClassName}`}
       />
     </div>

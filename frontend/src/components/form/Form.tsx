@@ -74,14 +74,18 @@ const Form: FC<FormProps> = ({ className }) => {
       padding: "12px 24px",
       borderRadius: "19px",
       cursor: "pointer",
-      "@media (max-width: 768px)": {
-        padding: "8px 16px",
+      "@media (max-width: 767px)": {
+        padding: "6px 12px",
+        borderRadius: "5px",
       },
     }),
     menu: (base: any, state: any) => ({
       ...base,
       width: "384px",
       borderRadius: "10px",
+      "@media (max-width: 767px)": {
+        width: "250px",
+      },
     }),
     menuList: (base: any, state: any) => ({
       ...base,
@@ -121,7 +125,10 @@ const Form: FC<FormProps> = ({ className }) => {
 
     indicatorsContainer: (base: any, state: any) => ({
       ...base,
-      display: "none",
+      display: "block",
+      "@media (max-width: 767px)": {
+        display: "none",
+      },
     }),
   };
 
@@ -137,9 +144,11 @@ const Form: FC<FormProps> = ({ className }) => {
   };
   const formatOptionLabel = (option: any, { context }: any) =>
     context === "value" ? (
-      <div className="text-white text-medium">
-        <span className={option.label.props.children[0].props.className}></span>
-        {`+${option.value}`}
+      <div className="text-white text-medium flex items-center justify-between ">
+        <span
+          className={`flex md:mr-3 justify-center${option.label.props.children[0].props.className}`}
+        ></span>
+        <span className="hidden md:block">{`+${option.value}`}</span>
       </div>
     ) : (
       option.label
@@ -148,7 +157,7 @@ const Form: FC<FormProps> = ({ className }) => {
     <div
       className={`h-full m-w-[1300px] w-full shadow-shadow  rounded-[35px]  mb-[160px] ${className}`}
     >
-      <form className="w-full h-full flex flex-col items-center  p-[43px]">
+      <form className="w-full h-full flex flex-col items-center p-[20px]  xsm:p-[43px]">
         {Inputs.map(({ label, id }, idx) => (
           <Input
             htmlFor={id}
@@ -157,6 +166,7 @@ const Form: FC<FormProps> = ({ className }) => {
               <Select
                 theme={theme}
                 formatOptionLabel={formatOptionLabel}
+                isSearchable={false}
                 instanceId="country-select"
                 defaultValue={options[188]}
                 styles={styles}
@@ -171,7 +181,7 @@ const Form: FC<FormProps> = ({ className }) => {
         ))}
         <div className="  max-w-[822px] w-full rounded-[23px]   mb-[36px] relative">
           <label
-            className={`text-[#b2b2b2] absolute left-[60px] font-normal text-[18px] top-[10%] -translate-y-1/2 transition-all duration-300  ${
+            className={`text-[#b2b2b2] absolute left-[20px] md:left-[60px] font-normal text-base xxs:text-[18px] top-[10%] -translate-y-1/2 transition-all duration-300  ${
               textareaFocused && "focus"
             }`}
             htmlFor="message"
@@ -182,7 +192,7 @@ const Form: FC<FormProps> = ({ className }) => {
             onFocus={onFocus}
             onBlur={onBlur}
             rows={8}
-            className=" focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[60px] py-8 text-dark text-[22px] font-medium"
+            className=" focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
             id="message"
           ></textarea>
         </div>
@@ -190,10 +200,10 @@ const Form: FC<FormProps> = ({ className }) => {
           <button className="font-bold text-white bg-dark-pink text-base py-[10px] px-[25px] md:py-[15px] md:px-[159px] rounded-lg border-2 border-blue">
             Send
           </button>
-          <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
+          <div className="text-dark-pink text-3xl py-1 px-2 xxs:px-4 border-2 border-dark-pink rounded-lg">
             <FiMail />
           </div>
-          <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
+          <div className="text-dark-pink text-3xl py-1  px-2 xxs:px-4 border-2 border-dark-pink rounded-lg">
             <FaWhatsapp />
           </div>
         </div>
