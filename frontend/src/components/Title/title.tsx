@@ -17,7 +17,7 @@ const Title: FC<TitleProps> = ({ title, p, className }) => {
         {title}
       </h1>
       {p && (
-        <p className="text-center text-[14px] md:text-[20px] leading-[26px] text-dark max-w-[750px] font-medium mt-[22px]">
+        <p className="text-center text-[14px] md:text-[20px] leading-[26px] text-gray  max-w-[750px] font-medium mt-[22px]">
           {p}
         </p>
       )}

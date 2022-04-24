@@ -12,7 +12,7 @@ const Process = () => {
   const { locale } = useRouter();
   return (
     <Fragment>
-      <section className="containers flex flex-col items-center ">
+      <section className="containers flex flex-col items-center mb-[160px] ">
         <Title
           title={t("process.h1")}
           p={t("process.p")}

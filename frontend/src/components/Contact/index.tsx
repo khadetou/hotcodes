@@ -9,7 +9,7 @@ const Contact = () => {
         title="Contact Us"
         className="text-transparent bg-clip-text bg-grad-text-2 mr-0 text-center"
       />
-      <Form className="mt-[63px]" />
+      <Form className="mt-[63px] mb-[387px]" />
     </div>
   );
 };
