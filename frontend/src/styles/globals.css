@@ -9,6 +9,8 @@ body {
   @apply font-Inter overflow-x-hidden;
 }
 
+/* RC DROPDOWN */
+
 .rc-dropdown-menu > .rc-dropdown-menu-item:hover,
 .rc-dropdown-menu > .rc-dropdown-menu-item-selected {
   @apply bg-light-pink !important;
@@ -25,6 +27,8 @@ body {
 .rc-dropdown-menu ul {
   @apply h-20 !important;
 }
+
+/* SWIPER JS */
 
 .swiper-slide {
   @apply flex items-center;
@@ -47,6 +51,7 @@ body {
   @apply h-full !important;
 }
 
+/* NATIVE CODE */
 .containers {
   @apply max-w-full w-full px-5 sm:px-[30px] md:max-w-[1020px] lg:max-w-[1300px] mx-auto;
 }
@@ -91,30 +96,7 @@ body {
 }
 
 .focus {
-  @apply text-base top-[16px] !important;
-}
-
-@layer utilities {
-  .scrollbar::-webkit-scrollbar {
-    width: 0.375rem;
-    height: 0.375rem;
-    background-color: transparent;
-  }
-
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background-color: #ea007d;
-  }
-
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: #e0cbcb;
-    border-radius: 100vh;
-    border: 3px solid #f6f7ed;
-  }
-
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #c0a0b9;
-  }
+  @apply text-sm top-[14px] md:text-base md:top-[16px] !important;
 }
 
 @tailwind base;

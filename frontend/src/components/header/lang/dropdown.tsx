@@ -12,7 +12,7 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
   const { locale } = useRouter();
 
   const menu = (
-    <Menu activeKey={locale} className="bg-black text-white rounded-lg w-32  ">
+    <Menu activeKey={locale} className="bg-black text-white rounded-lg !w-32  ">
       <MenuItem key="fr" className="cursor-pointer">
         <Link href={path!} locale={"fr"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">

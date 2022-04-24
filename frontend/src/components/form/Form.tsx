@@ -2,10 +2,9 @@ import React, { FC, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import codes from "country-calling-code";
-import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem } from "rc-menu";
-
+import Select from "react-select";
 import Input from "./Input";
+
 interface FormProps {
   className?: string;
 }
@@ -25,11 +24,12 @@ const Inputs = [
   },
   {
     label: "Number phone",
-    id: "number",
+    id: "tel",
   },
 ];
 
 const Form: FC<FormProps> = ({ className }) => {
+  //TEXT AREA
   const [textareaFocused, setTextareaFocused] = useState(false);
   const [form, setForm] = useState({
     firstName: "",
@@ -38,8 +38,7 @@ const Form: FC<FormProps> = ({ className }) => {
     number: 0,
     message: "",
   });
-  const [country, setCountry] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+
   const onFocus = () => {
     setTextareaFocused(true);
   };
@@ -50,34 +49,125 @@ const Form: FC<FormProps> = ({ className }) => {
     }
   };
 
-  const onSelect = ({ key }: any) => {
-    setCountryCode(key);
+  // REACT SELECT
+  const options: any = [];
+
+  codes.forEach(({ isoCode2, country, countryCodes, isoCode3 }, idx) => {
+    options.push({
+      value: countryCodes[0],
+      label: (
+        <div className=" hover:text-white font-medium">
+          <span
+            className={`mr-2  fi fi-${isoCode2.toLocaleLowerCase()}`}
+          ></span>
+          {country}
+        </div>
+      ),
+    });
+  });
+
+  const styles = {
+    control: (base: any, state: any) => ({
+      ...base,
+      color: "white",
+      backgroundColor: "#ea007d",
+      padding: "12px 24px",
+      borderRadius: "19px",
+      cursor: "pointer",
+      "@media (max-width: 768px)": {
+        padding: "8px 16px",
+      },
+    }),
+    menu: (base: any, state: any) => ({
+      ...base,
+      width: "384px",
+      borderRadius: "10px",
+    }),
+    menuList: (base: any, state: any) => ({
+      ...base,
+      "&::-webkit-scrollbar": {
+        width: " 0.375rem",
+        height: "0.375rem",
+        backgroundColor: "transparent",
+      },
+      "&::-webkit-scrollbar-track": {
+        borderRadius: "100vh",
+        backgroundColor: "#ea007d",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "#e0cbcb",
+        borderRadius: "100vh",
+        border: "3px solid #f6f7ed",
+      },
+
+      "&::-webkit-scrollbar-thumb:hover": {
+        background: "#c0a0b9",
+      },
+    }),
+    option: (base: any, state: any) => ({
+      ...base,
+      "&:hover": {
+        color: "#fff",
+      },
+    }),
+    placeholder: (base: any, state: any) => ({
+      ...base,
+      color: "#fff",
+    }),
+    input: (base: any, state: any) => ({
+      ...base,
+      color: "#fff",
+    }),
+
+    indicatorsContainer: (base: any, state: any) => ({
+      ...base,
+      display: "none",
+    }),
   };
 
-  const menu = (
-    <Menu
-      className="max-h-48 overflow-auto !rounded-xl scrollbar"
-      onSelect={onSelect}
-    >
-      {codes.map(({ country, countryCodes, isoCode2, isoCode3 }) => (
-        <MenuItem key={countryCodes[0]} onClick={() => setCountry(isoCode2)}>
-          <div className="flex items-center px-4 py-3">
-            <span
-              className={`fi fi-${isoCode2.toLocaleLowerCase()} text-lg mr-5`}
-            ></span>
-            <span className="text-sm text-dark font-medium">{country}</span>
-          </div>
-        </MenuItem>
-      ))}
-    </Menu>
-  );
+  const theme = (theme: any) => {
+    return {
+      ...theme,
+      colors: {
+        ...theme.colors,
+        primary: "#EA007D",
+        primary25: "#E293D3",
+      },
+    };
+  };
+  const formatOptionLabel = (option: any, { context }: any) =>
+    context === "value" ? (
+      <div className="text-white text-medium">
+        <span className={option.label.props.children[0].props.className}></span>
+        {`+${option.value}`}
+      </div>
+    ) : (
+      option.label
+    );
   return (
     <div
       className={`h-full m-w-[1300px] w-full shadow-shadow  rounded-[35px]  mb-[160px] ${className}`}
     >
       <form className="w-full h-full flex flex-col items-center  p-[43px]">
         {Inputs.map(({ label, id }, idx) => (
-          <Input htmlFor={id} key={idx} id={id} label={label} type={id} />
+          <Input
+            htmlFor={id}
+            key={idx}
+            CountryDropdown={() => (
+              <Select
+                theme={theme}
+                formatOptionLabel={formatOptionLabel}
+                instanceId="country-select"
+                defaultValue={options[188]}
+                styles={styles}
+                className="!absolute !top-1/2 !-translate-y-1/2 left-[10px] md:!left-[20px] !z-50 "
+                options={options}
+              />
+            )}
+            id={id}
+            label={label}
+            type={id}
+          />
         ))}
         <div className="  max-w-[822px] w-full rounded-[23px]   mb-[36px] relative">
           <label
@@ -97,7 +187,7 @@ const Form: FC<FormProps> = ({ className }) => {
           ></textarea>
         </div>
         <div className="flex justify-between items-center w-full max-w-[822px]">
-          <button className="font-bold text-white bg-dark-pink text-base py-[15px] px-[159px] rounded-lg border-2 border-blue">
+          <button className="font-bold text-white bg-dark-pink text-base py-[10px] px-[25px] md:py-[15px] md:px-[159px] rounded-lg border-2 border-blue">
             Send
           </button>
           <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
@@ -106,26 +196,6 @@ const Form: FC<FormProps> = ({ className }) => {
           <div className="text-dark-pink text-3xl py-1 px-4 border-2 border-dark-pink rounded-lg">
             <FaWhatsapp />
           </div>
-
-          <Dropdown
-            trigger={["click"]}
-            overlay={menu}
-            onVisibleChange={(visible) => {
-              console.log(visible);
-            }}
-          >
-            <div className="text-white bg-dark-pink text-3xl py-3 px-6  rounded-[19px]">
-              <span
-                className={`fi fi-${
-                  country ? country.toLocaleLowerCase() : "sn"
-                } mr-6 rounded-full !w-9 !h-9`}
-              ></span>
-
-              <span className="text-[22px] font-medium">
-                {countryCode ? `+${countryCode}` : "+221"}
-              </span>
-            </div>
-          </Dropdown>
         </div>
       </form>
     </div>

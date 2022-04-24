@@ -12,7 +12,6 @@ import Services from "@/components/landing/Services";
 import Presentation from "@/components/landing/presentation";
 import Process from "@/components/landing/process";
 import Contact from "@/components/landing/Contact";
-
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 interface IProps {
@@ -28,7 +27,6 @@ const Home: NextPage<IProps> = ({ token }) => {
       LogoutUser();
     }
   }, [token]);
-
   return (
     <>
       <SEO />
