@@ -11,7 +11,7 @@ import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
 import Presentation from "@/components/landing/presentation";
 import Process from "@/components/landing/process";
-import Contact from "@/components/landing/Contact";
+import Contact from "@/components/Contact";
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 interface IProps {

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Footer from "./footer/Footer";
 import Header from "./header/index";
 
 interface LayoutProp {
@@ -12,6 +13,7 @@ const Layout: FC<LayoutProp> = ({ children, isOpen, setIsOpen }) => {
     <>
       <Header />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
