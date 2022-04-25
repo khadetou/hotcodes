@@ -10,7 +10,6 @@ import { Navigation, Scrollbar, A11y } from "swiper";
 
 const Slider = () => {
   const { t } = useTranslation("common");
-  console.log(arrow);
 
   const slides = [
     {

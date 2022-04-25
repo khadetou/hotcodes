@@ -5,7 +5,7 @@ import { setAuthToken } from "@/utils/setAuthToken";
 import { wrapper } from "store/index";
 import { getCookie, LoadUserSsr } from "store/action-creators";
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import SEO from "@/components/Seo";
 import Banner from "@/components/landing/Banner";
 import Services from "@/components/landing/Services";
