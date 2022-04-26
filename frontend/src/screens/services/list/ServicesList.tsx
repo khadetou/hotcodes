@@ -4,6 +4,7 @@ import marketing from "/public/images/services/marketing.svg";
 import web from "/public/images/services/web.svg";
 import mobile from "/public/images/services/mobile.svg";
 import React from "react";
+import Title from "@/components/Title/title";
 
 const ServicesList = () => {
   const services = [
@@ -33,7 +34,7 @@ const ServicesList = () => {
     },
   ];
   return (
-    <section className="mt-[80px] lg:mt-[160px]">
+    <section className="mt-[80px] lg:mt-[160px] flex flex-col items-center">
       <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8 ">
         {services.map(({ title, toptitle, subtitle, image }, index) => (
           <div key={index}>
@@ -46,6 +47,10 @@ const ServicesList = () => {
           </div>
         ))}
       </div>
+      <Title
+        title="We use the best tools in order to deliver quality"
+        className="text-transparent bg-clip-text bg-grad-text-2"
+      />
     </section>
   );
 };
