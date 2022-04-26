@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/screens/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -23,6 +24,7 @@ module.exports = {
       boxShadow: {
         btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",
         shadow: "16px 0px 68px rgba(234, 0, 125, 0.27)",
+        "shadow-sm": "0px 4px 15px rgba(234, 0, 125, 0.1)",
         input: "0px 0px 0px 2px rgba(226, 147, 221)",
       },
       backgroundImage: {

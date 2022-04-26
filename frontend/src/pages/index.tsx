@@ -7,10 +7,10 @@ import { getCookie, LoadUserSsr } from "store/action-creators";
 import jwtDecode from "jwt-decode";
 import { Fragment, useEffect } from "react";
 import SEO from "@/components/Seo";
-import Banner from "@/components/landing/Banner";
-import Services from "@/components/landing/Services";
-import Presentation from "@/components/landing/presentation";
-import Process from "@/components/landing/process";
+import Banner from "screens/landing/Banner";
+import Services from "screens/landing/Services";
+import Presentation from "screens/landing/presentation";
+import Process from "screens/landing/process";
 import Contact from "@/components/Contact";
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
