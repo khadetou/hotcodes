@@ -9,16 +9,17 @@ import blender from "/public/images/tools/blender.svg";
 
 export const animations = [
   {
-    title: "Adobe After Effects",
+    title: "AE",
     image: ae,
   },
-  {
-    title: "Premiere Pro",
-    image: premierepro,
-  },
+
   {
     title: "Blender",
     image: blender,
+  },
+  {
+    title: "PP",
+    image: premierepro,
   },
 ];
 

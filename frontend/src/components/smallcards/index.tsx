@@ -20,7 +20,7 @@ const SmallCards: FC<SmallCardsProps> = ({
 }) => {
   return (
     <div
-      className={`max-w-[320px] max-h-[493px] rounded-3xl shadow-shadow-sm p-6 mx-auto ${
+      className={`max-w-[320px] max-h-[493px] lg:h-[493px] rounded-3xl shadow-shadow-sm p-6 mx-auto ${
         className && className
       }`}
     >
