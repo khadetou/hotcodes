@@ -8,11 +8,22 @@ interface SmallCardsProps {
   p: string;
   link?: string;
   src: string;
+  className?: string;
 }
 
-const SmallCards: FC<SmallCardsProps> = ({ title, p, link, src }) => {
+const SmallCards: FC<SmallCardsProps> = ({
+  title,
+  p,
+  link,
+  src,
+  className,
+}) => {
   return (
-    <div className="max-w-[320px] max-h-[493px] rounded-3xl shadow-shadow p-6 mx-auto ">
+    <div
+      className={`max-w-[320px] max-h-[493px] rounded-3xl shadow-shadow-sm p-6 mx-auto ${
+        className && className
+      }`}
+    >
       <div className="flex flex-col items-center">
         <h2 className="text-[29px] xxs:text-[40px] font-medium text-center text-transparent bg-clip-text bg-grad-text-2">
           {title}
@@ -22,7 +33,7 @@ const SmallCards: FC<SmallCardsProps> = ({ title, p, link, src }) => {
           <Link href="target">
             <a className="mt-2 text-dark-pink flex items-center underline">
               {" "}
-              link{" "}
+              {link}
               <span>
                 <IoChevronForwardOutline />
               </span>

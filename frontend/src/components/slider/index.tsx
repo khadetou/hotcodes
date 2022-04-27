@@ -3,10 +3,9 @@ import { useTranslation } from "next-i18next";
 import Goal from "/public/images/process/goal.svg";
 import Design from "/public/images/process/design.svg";
 import Developement from "/public/images/process/production.svg";
-import arrow from "/public/images/swiper/arrow-right-circle.svg";
 import Result from "/public/images/process/result.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Scrollbar, A11y } from "swiper";
+import { Navigation } from "swiper";
 
 const Slider = () => {
   const { t } = useTranslation("common");

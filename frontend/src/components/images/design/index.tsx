@@ -24,7 +24,7 @@ export const animations = [
 
 export default [
   {
-    title: "Adobe Illustrator",
+    title: "Illustrator",
     image: ai,
   },
   {
