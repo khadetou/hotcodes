@@ -5,9 +5,10 @@ interface TitleProps {
   title: string;
   p?: string;
   className?: string;
+  pclassName?: string;
 }
 
-const Titlebold: FC<TitleProps> = ({ title, p, className }) => {
+const Titlebold: FC<TitleProps> = ({ title, p, className, pclassName }) => {
   const { t } = useTranslation("common");
   return (
     <div className="flex flex-col items-center max-w-[1184px]">
@@ -17,7 +18,9 @@ const Titlebold: FC<TitleProps> = ({ title, p, className }) => {
         {title}
       </h1>
       {p && (
-        <p className="text-center text-[14px] md:text-[20px] leading-[26px] text-gray  max-w-[750px] font-medium mt-[22px]">
+        <p
+          className={`text-center text-[14px] md:text-[20px] leading-[26px] text-gray  max-w-[750px] font-medium  ${pclassName}`}
+        >
           {p}
         </p>
       )}
