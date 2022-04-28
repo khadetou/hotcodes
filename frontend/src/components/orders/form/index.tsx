@@ -3,7 +3,7 @@ import { useTypedSelector } from "@/hooks/useTypeSelector";
 import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Select from "@/components/orders/form/select/select";
+import Selects from "@/components/orders/form/select/select";
 
 import { plateforms, goal, typeApp, checkbox } from "@/components/orders/lists";
 import Input from "./input/input";
@@ -144,14 +144,14 @@ const Form: FC<FormProps> = ({ title, Action }) => {
       </a> */}
 
       <form onSubmit={onSubmit}>
-        <Select
+        <Selects
           options={plateforms}
           selected="plateform"
           formData={formData}
           setSelected={setFormData}
           selectedTitle="Select a plateform"
         />
-        <Select
+        <Selects
           setSelectOther={setOtherTypeApp}
           options={typeApp}
           formData={formData}
@@ -162,36 +162,38 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
         {otherTypeApp && (
           <>
-            <label htmlFor="typeofapp">Type of App</label>
-
             <Input
               type="text"
               name="typeapp"
               id="typeofapp"
               value={formData.typeofapp}
+              label="Type of App"
               onChange={onChange}
             />
           </>
         )}
-        <label htmlFor="appname">App name</label>
         <Input
           type="text"
           name="appName"
           placeholder="App name"
           value={formData.appName}
+          label="App name"
           onChange={onChange}
         />
-        <label htmlFor="decription">Enter your app description</label>
-        <textarea
-          name="description"
-          value={formData.description}
-          id="description"
-          cols={30}
-          rows={10}
-          onChange={onChange}
-        ></textarea>
+        <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px]">
+          <label htmlFor="decription">Enter your app description</label>
+          <textarea
+            className="focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
+            name="description"
+            value={formData.description}
+            id="description"
+            cols={30}
+            rows={10}
+            onChange={onChange}
+          ></textarea>
+        </div>
         <h1>What is the goal? </h1>
-        <Select
+        <Selects
           setSelectOther={setOtherGoal}
           options={goal}
           formData={formData}
@@ -201,10 +203,11 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         />
         {otherGoal && (
           <>
-            <label htmlFor="">Enter your goal description</label>
+            <h1>Enter your goal description</h1>
             <Input
               type="text"
               name="goal"
+              label="Goal Description"
               value={formData.goal}
               onChange={onChange}
             />
@@ -212,12 +215,13 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         )}
 
         <h1>Add specifics functionalities </h1>
-        <label htmlFor="">Select a functionnality</label>
+        {/* <label htmlFor="">Select a functionnality</label> */}
         {checkbox.map(({ id, title }, idx) => (
           <React.Fragment key={idx}>
             <Input
               type="checkbox"
               name="functionnality"
+              label={title}
               value={title}
               id={id}
               onChange={onCheckboxChange}
@@ -227,11 +231,11 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         ))}
         {other && (
           <>
-            <label htmlFor="">Enter your functionnality description</label>
             <Input
               type="text"
               value={formData.functionnality}
               onChange={onChange}
+              label="Functionnality Description"
               name="functionnality"
             />
           </>
@@ -251,11 +255,11 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             />
           ))}
 
-        <label htmlFor="">Figma link</label>
         <Input
           type="text"
           name="link"
           value="link"
+          label="Figma link"
           onChange={() => {
             console.log("display links");
           }}

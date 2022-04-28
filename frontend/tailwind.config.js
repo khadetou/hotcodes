@@ -20,6 +20,7 @@ module.exports = {
         primary: "#440052",
         dark: "#393938",
         gray: "#828282",
+        "light-gray": "#f2f2f2",
       },
       boxShadow: {
         btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",
