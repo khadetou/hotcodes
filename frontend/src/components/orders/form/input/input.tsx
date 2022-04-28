@@ -28,13 +28,13 @@ const Input: FC<InputProps> = ({
         className={
           type === "text"
             ? `bg-white py-[15px] px-5 shadow-shadow-sm max-w-[621px] rounded-[23px]`
-            : "max-w-[422px] bg-white py-[13px] px-[20px] shadow-shadow-sm rounded-[23px]"
+            : "max-w-[346px] bg-white  py-[13px] px-[20px] shadow-shadow-sm rounded-[23px]"
         }
       >
         <div
           className={
             type === "checkbox"
-              ? "bg-light-gray py-3 px-5 rounded-[15px] flex items-center flex-row-reverse justify-end"
+              ? "bg-light-gray p-3 w-full rounded-[15px] flex items-center flex-row-reverse justify-end"
               : ""
           }
         >
