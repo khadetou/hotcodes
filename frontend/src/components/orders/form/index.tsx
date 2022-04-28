@@ -183,7 +183,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px]">
           <label htmlFor="decription">Enter your app description</label>
           <textarea
-            className="focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
+            className="focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input border-none focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
             name="description"
             value={formData.description}
             id="description"

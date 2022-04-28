@@ -158,6 +158,7 @@ const Selects: FC<SelectProps> = ({
             options={option}
             theme={theme}
             styles={styles}
+            instanceId="select"
             onChange={(value: any) => onChange(value, selected)}
             value={formData.selected}
             placeholder="Select"
