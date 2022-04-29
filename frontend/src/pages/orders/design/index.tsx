@@ -8,7 +8,7 @@ const Design = () => {
   return (
     <>
       <Banner />
-      <Form title="Order" Action={CreateOrderWeb} />
+      <Form title="What are we building" Action={CreateOrderWeb} />
     </>
   );
 };

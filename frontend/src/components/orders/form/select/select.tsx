@@ -149,7 +149,7 @@ const Selects: FC<SelectProps> = ({
       option.label
     );
   return (
-    <div className="container">
+    <div className="containers !px-0">
       <div className="select-box">
         <div
           className={toggle ? "options-container active" : "options-container"}
@@ -161,7 +161,7 @@ const Selects: FC<SelectProps> = ({
             instanceId="select"
             onChange={(value: any) => onChange(value, selected)}
             value={formData.selected}
-            placeholder="Select"
+            placeholder={selectedTitle}
             formatOptionLabel={formatOptionLabel}
             isSearchable={false}
             onFocus={() => setToggle(true)}

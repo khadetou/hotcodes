@@ -87,3 +87,26 @@ export const checkbox = [
     title: "Other",
   },
 ];
+
+export const targets = [
+  {
+    id: "team",
+    title: "Remote Teams",
+  },
+  {
+    id: "individual",
+    title: "Individuals",
+  },
+  {
+    id: "puclic",
+    title: "Public Services",
+  },
+  {
+    id: "startups",
+    title: "Startups, small businesses",
+  },
+  {
+    id: "other",
+    title: "Other",
+  },
+];

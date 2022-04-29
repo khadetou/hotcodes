@@ -5,9 +5,10 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Selects from "@/components/orders/form/select/select";
 
-import { plateforms, goal, typeApp, checkbox } from "@/components/orders/lists";
+import { plateforms, goal, typeApp, targets } from "@/components/orders/lists";
 import Input from "./input/input";
 import Upload from "./uploads";
+import Titlebold from "@/components/Title/titlebold";
 
 interface FormProps {
   title: string;
@@ -137,139 +138,154 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
   //JSX RETURN-----------------------------------------------------------------
   return (
-    <div>
-      <h1>{title}</h1>
+    <section>
       {/* <a href="https://api.whatsapp.com/send/?phone=+221786004564&text&app_absent=0">
         Call me
       </a> */}
 
-      <form onSubmit={onSubmit}>
-        <Selects
-          options={plateforms}
-          selected="plateform"
-          formData={formData}
-          setSelected={setFormData}
-          selectedTitle="Select a plateform"
-        />
-        <Selects
-          setSelectOther={setOtherTypeApp}
-          options={typeApp}
-          formData={formData}
-          selected="typeapp"
-          setSelected={setFormData}
-          selectedTitle="Type of app"
-        />
+      <div className="containers">
+        <form onSubmit={onSubmit}>
+          <Titlebold title={title} />
 
-        {otherTypeApp && (
-          <>
+          <div className="flex justify-between mt-[60px] mb-[104px]">
+            <Selects
+              options={plateforms}
+              selected="plateform"
+              formData={formData}
+              setSelected={setFormData}
+              selectedTitle="Select a plateform"
+            />
+            <Selects
+              setSelectOther={setOtherTypeApp}
+              options={typeApp}
+              formData={formData}
+              selected="typeapp"
+              setSelected={setFormData}
+              selectedTitle="Type of app"
+            />
+          </div>
+
+          <div className="flex mb-[47px] justify-between">
             <Input
               type="text"
               name="typeapp"
               id="typeofapp"
+              placeholder="type of app"
               value={formData.typeofapp}
-              label="Type of App"
+              label="Enter the Type of App"
               onChange={onChange}
             />
-          </>
-        )}
-        <Input
-          type="text"
-          name="appName"
-          placeholder="App name"
-          value={formData.appName}
-          label="App name"
-          onChange={onChange}
-        />
-        <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px]">
-          <label htmlFor="decription">Enter your app description</label>
-          <textarea
-            className="focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input border-none focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
-            name="description"
-            value={formData.description}
-            id="description"
-            cols={30}
-            rows={10}
-            onChange={onChange}
-          ></textarea>
-        </div>
-        <h1>What is the goal? </h1>
-        <Selects
-          setSelectOther={setOtherGoal}
-          options={goal}
-          formData={formData}
-          setSelected={setFormData}
-          selected="goal"
-          selectedTitle="Select a goal"
-        />
-        {otherGoal && (
-          <>
-            <h1>Enter your goal description</h1>
+
+            <Input
+              type="text"
+              name="appName"
+              placeholder="App name"
+              value={formData.appName}
+              label="Enter the App name"
+              onChange={onChange}
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <label
+              className="text-center mb-4 text-[18px] font-medium"
+              htmlFor="decription"
+            >
+              Enter your app description
+            </label>
+            <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px]">
+              <textarea
+                className="focus:border focus:ring-0 bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input border-none focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
+                name="description"
+                value={formData.description}
+                id="description"
+                cols={30}
+                rows={10}
+                onChange={onChange}
+              ></textarea>
+            </div>
+          </div>
+          <Titlebold title="What is the goal?" />
+
+          <div className="flex items-center mt-[62px] mb-[62px]">
+            <Selects
+              setSelectOther={setOtherGoal}
+              options={goal}
+              formData={formData}
+              setSelected={setFormData}
+              selected="goal"
+              selectedTitle="Select a goal"
+            />
             <Input
               type="text"
               name="goal"
-              label="Goal Description"
+              label=""
+              placeholder="Enter your goal"
               value={formData.goal}
               onChange={onChange}
             />
-          </>
-        )}
+          </div>
 
-        <h1>Add specifics functionalities </h1>
-        {/* <label htmlFor="">Select a functionnality</label> */}
-        {checkbox.map(({ id, title }, idx) => (
-          <React.Fragment key={idx}>
-            <Input
-              type="checkbox"
-              name="functionnality"
-              label={title}
-              value={title}
-              id={id}
-              onChange={onCheckboxChange}
-            />
-            {title}
-          </React.Fragment>
-        ))}
-        {other && (
-          <>
-            <Input
-              type="text"
-              value={formData.functionnality}
-              onChange={onChange}
-              label="Functionnality Description"
-              name="functionnality"
-            />
-          </>
-        )}
+          <Titlebold title="Who is the target audience" />
+          {/* <label htmlFor="">Select a functionnality</label> */}
+          <div className="flex justify-between mt-[65px] flex-wrap">
+            {targets.map(({ id, title }, idx) => (
+              <React.Fragment key={idx}>
+                <Input
+                  type="checkbox"
+                  name="functionnality"
+                  label={title}
+                  value={title}
+                  id={id}
+                  onChange={onCheckboxChange}
+                />
+              </React.Fragment>
+            ))}
+            {other && (
+              <>
+                <Input
+                  type="text"
+                  value={formData.functionnality}
+                  onChange={onChange}
+                  label=""
+                  placeholder="Enter your functionnality"
+                  name="functionnality"
+                  className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
+                  containerClassName="!py-[13px]  !px-[20px]"
+                />
+              </>
+            )}
+          </div>
 
-        <h1>You already have a design share it with us</h1>
-        <Upload onChange={onChangeImage} />
+          <h1>You already have a design share it with us</h1>
+          <Upload onChange={onChangeImage} />
 
-        {previewImages.length > 0 &&
-          previewImages.map((image: any, idx: any) => (
-            <Image
-              key={idx}
-              src={image}
-              alt="Images preview"
-              width={55}
-              height={55}
-            />
-          ))}
+          {previewImages.length > 0 &&
+            previewImages.map((image: any, idx: any) => (
+              <Image
+                key={idx}
+                src={image}
+                alt="Images preview"
+                width={55}
+                height={55}
+              />
+            ))}
 
-        <Input
-          type="text"
-          name="link"
-          value="link"
-          label="Figma link"
-          onChange={() => {
-            console.log("display links");
-          }}
-        />
+          <Input
+            type="text"
+            name="link"
+            value="link"
+            label="Figma link"
+            onChange={() => {
+              console.log("display links");
+            }}
+          />
 
-        <button type="submit">Submit</button>
-        <button>I DONT HAVE A DESIGN </button>
-        <button>Download Invoice</button>
-      </form>
-    </div>
+          <button type="submit">Submit</button>
+          <button>I DONT HAVE A DESIGN </button>
+          <button>Download Invoice</button>
+        </form>
+      </div>
+    </section>
   );
 };
 
