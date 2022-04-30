@@ -4,8 +4,15 @@ import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Selects from "@/components/orders/form/select/select";
+import { HiOutlineDownload } from "react-icons/hi";
 
-import { plateforms, goal, typeApp, targets } from "@/components/orders/lists";
+import {
+  plateforms,
+  goal,
+  typeApp,
+  targets,
+  checkbox,
+} from "@/components/orders/lists";
 import Input from "./input/input";
 import Upload from "./uploads";
 import Titlebold from "@/components/Title/titlebold";
@@ -162,6 +169,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               selected="typeapp"
               setSelected={setFormData}
               selectedTitle="Type of app"
+              className="flex justify-end"
             />
           </div>
 
@@ -256,33 +264,82 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             )}
           </div>
 
-          <h1>You already have a design share it with us</h1>
-          <Upload onChange={onChangeImage} />
-
-          {previewImages.length > 0 &&
-            previewImages.map((image: any, idx: any) => (
-              <Image
-                key={idx}
-                src={image}
-                alt="Images preview"
-                width={55}
-                height={55}
-              />
+          <Titlebold title="Add specific functionalities" />
+          <div className="flex justify-between mt-[65px] flex-wrap">
+            {checkbox.map(({ id, title }, idx) => (
+              <React.Fragment key={idx}>
+                <Input
+                  type="checkbox"
+                  name="functionnality"
+                  label={title}
+                  value={title}
+                  id={id}
+                  onChange={onCheckboxChange}
+                />
+              </React.Fragment>
             ))}
+            {other && (
+              <>
+                <Input
+                  type="text"
+                  value={formData.functionnality}
+                  onChange={onChange}
+                  label=""
+                  placeholder="Enter your functionnality"
+                  name="functionnality"
+                  className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
+                  containerClassName="!py-[13px]  !px-[20px]"
+                />
+              </>
+            )}
+          </div>
 
-          <Input
-            type="text"
-            name="link"
-            value="link"
-            label="Figma link"
-            onChange={() => {
-              console.log("display links");
-            }}
-          />
+          <div className="flex justify-around">
+            <button
+              type="submit"
+              className="text-base font-bold text-white bg-dark-pink px-24 py-4 rounded-full shadow-shadow "
+            >
+              Save
+            </button>
 
-          <button type="submit">Submit</button>
-          <button>I DONT HAVE A DESIGN </button>
-          <button>Download Invoice</button>
+            <button className="flex items-center text-base font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4">
+              Download Invoice{" "}
+              <HiOutlineDownload size="20px" className="ml-[8px]" />
+            </button>
+          </div>
+
+          <Titlebold title="You already have a design share it with us" />
+
+          <div className=" flex justify-between flex-wrap mt-[137px]">
+            <Upload onChange={onChangeImage} />
+            {previewImages.length > 0 &&
+              previewImages.map((image: any, idx: any) => (
+                <Image
+                  key={idx}
+                  src={image}
+                  alt="Images preview"
+                  width={55}
+                  height={55}
+                />
+              ))}
+
+            <Input
+              type="text"
+              name="link"
+              value="link"
+              label=""
+              onChange={() => {
+                console.log("display links");
+              }}
+            />
+
+            <button
+              className="bg-white max-h-[58px] shadow-shadow rounded-full text-base font-bold px-24 py-4 uppercase"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </section>

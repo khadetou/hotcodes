@@ -15,6 +15,7 @@ interface SelectProps {
   formData: any;
   selected: string;
   selectedTitle: string;
+  className?: string;
 }
 
 const Selects: FC<SelectProps> = ({
@@ -24,6 +25,7 @@ const Selects: FC<SelectProps> = ({
   selected,
   selectedTitle,
   setSelectOther,
+  className,
 }) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const onChange = (e: any, selected: string) => {
@@ -149,7 +151,7 @@ const Selects: FC<SelectProps> = ({
       option.label
     );
   return (
-    <div className="containers !px-0">
+    <div className={`containers !px-0 ${className && className}`}>
       <div className="select-box">
         <div
           className={toggle ? "options-container active" : "options-container"}
