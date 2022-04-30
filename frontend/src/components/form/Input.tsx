@@ -67,7 +67,7 @@ const Input: FC<InputProps> = ({
         type={type}
         name={id}
         id={id}
-        className={`bg-transparent focus:border focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[20px] md:px-[60px] py-2 text-dark text-lg md:text-[22px] font-medium ${
+        className={`bg-transparent absolute focus:border focus:border-[#e293d3] focus:ring-0 border-none focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[20px] md:px-[60px] py-2 text-dark text-lg md:text-[22px] font-medium ${
           id === "tel" && "xsm:!pl-[150px] !pl-[80px]  md:!pl-[209px]"
         } ${inputClassName}`}
       />

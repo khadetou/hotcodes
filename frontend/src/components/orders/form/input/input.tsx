@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 interface InputProps {
   type: string;
@@ -23,32 +23,40 @@ const Input: FC<InputProps> = ({
   className,
   containerClassName,
 }) => {
-  console.log(label);
+  const [focused, setFocused] = useState(false);
 
+  const onFocus = () => {
+    setFocused(true);
+  };
+
+  const onBlur = (e: any) => {
+    if (e.target.value === "") {
+      setFocused(false);
+    }
+  };
   return (
-    <label className="flex flex-col ">
-      {type !== "checkbox" && label !== "" && (
-        <label
-          className="text-[18px] font-medium text-center text-dark mb-4"
-          htmlFor=""
-        >
-          {label}
-        </label>
-      )}
+    <label
+      htmlFor={id}
+      className={
+        type === "text"
+          ? "flex max-w-[524px] w-full h-[98px] flex-col"
+          : "flex flex-col"
+      }
+    >
       <div
         className={
           type === "text"
             ? `bg-white ${
                 containerClassName && containerClassName
-              } py-[15px] px-5 shadow-shadow max-w-[621px] rounded-[23px]`
+              } py-[15px] px-5 w-full max-h-[98px] h-full shadow-shadow max-w-[524px] rounded-[23px]`
             : "w-[346px] bg-white  py-[13px] px-[20px] shadow-shadow-sm mb-[51px] rounded-[23px]"
         }
       >
         <div
           className={
             type === "checkbox"
-              ? "bg-light-gray p-3 w-full rounded-[15px] flex items-center flex-row-reverse justify-end"
-              : ""
+              ? "bg-light-gray p-3 w-full rounded-[15px] flex items-center  h-full flex-row-reverse justify-end"
+              : "relative max-w-[524px] rounded-xl bg-light-gray max-h-[98px] w-full h-full"
           }
         >
           {type === "checkbox" ? (
@@ -56,17 +64,26 @@ const Input: FC<InputProps> = ({
               {label}
             </label>
           ) : (
-            ""
+            <label
+              className={`absolute text-[#b2b2b2] left-[20px] md:left-[60px] font-medium text-base xxs:text-[20px]  top-1/2 z-10 -translate-y-1/2 duration-300 ${
+                focused && "focus"
+              }`}
+            >
+              {label}
+            </label>
           )}
+
           <input
             className={
               type === "text"
-                ? `bg-light-gray ${
+                ? `bg-transparent ${
                     className && className
-                  } focus:border focus:border-[#e293d3] focus:shadow-input focus:ring-0  !focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-[20px] md:px-[60px] border-none py-6 text-dark text-lg md:text-[22px] font-medium`
+                  } focus:border focus:border-[#e293d3] focus:shadow-input rounded-xl focus:ring-0  !focus:shadow-[#e9aede] w-full h-full  outline-none px-[20px] md:px-[60px] border-none py-6 text-dark text-lg md:text-[22px] z-50  absolute font-medium`
                 : "border-light-gray w-8 h-8 text-dark-pink focus:ring-0 rounded-lg border-2"
             }
             type={type}
+            onFocus={onFocus}
+            onBlur={onBlur}
             name={name}
             value={value}
             id={id}

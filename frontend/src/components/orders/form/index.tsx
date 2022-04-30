@@ -45,6 +45,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const [otherGoal, setOtherGoal] = useState(false);
   const [previewImages, setPreviewImages] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
+  const [textareaFocused, setTextareaFocused] = useState(false);
 
   //LOCAL STORAGE ITEMS--------------------------------------
 
@@ -143,6 +144,16 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     }
   };
 
+  const onFocus = () => {
+    setTextareaFocused(true);
+  };
+
+  const onBlur = (e: any) => {
+    if (e.target.value === "") {
+      setTextareaFocused(false);
+    }
+  };
+
   //JSX RETURN-----------------------------------------------------------------
   return (
     <section>
@@ -178,7 +189,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               type="text"
               name="typeapp"
               id="typeofapp"
-              placeholder="type of app"
               value={formData.typeofapp}
               label="Enter the Type of App"
               onChange={onChange}
@@ -187,30 +197,32 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             <Input
               type="text"
               name="appName"
-              placeholder="App name"
               value={formData.appName}
               label="Enter the App name"
               onChange={onChange}
             />
           </div>
-          <div className="flex flex-col justify-center">
+          <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px] flex flex-col justify-center w-full relative">
             <label
-              className="text-center mb-4 text-[18px] font-medium"
+              className={`text-[#b2b2b2] absolute left-[20px] md:left-[90px] font-normal mb-4 text-sm xxs:text-base  top-[13%] transition-all duration-300 -translate-y-1/2 ${
+                textareaFocused && "focus !top-[10%]"
+              }`}
               htmlFor="decription"
             >
               Enter your app description
             </label>
-            <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px]">
-              <textarea
-                className="focus:border focus:ring-0 bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input border-none focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
-                name="description"
-                value={formData.description}
-                id="description"
-                cols={30}
-                rows={10}
-                onChange={onChange}
-              ></textarea>
-            </div>
+
+            <textarea
+              className="focus:border focus:ring-0 bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input border-none focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
+              name="description"
+              value={formData.description}
+              id="description"
+              onFocus={onFocus}
+              onBlur={onBlur}
+              cols={30}
+              rows={10}
+              onChange={onChange}
+            ></textarea>
           </div>
           <Titlebold title="What is the goal?" />
 
@@ -226,8 +238,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             <Input
               type="text"
               name="goal"
-              label=""
-              placeholder="Enter your goal"
+              label="Your goal"
               value={formData.goal}
               onChange={onChange}
             />
@@ -255,7 +266,6 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   value={formData.functionnality}
                   onChange={onChange}
                   label=""
-                  placeholder="Enter your functionnality"
                   name="functionnality"
                   className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
                   containerClassName="!py-[13px]  !px-[20px]"
@@ -284,8 +294,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   type="text"
                   value={formData.functionnality}
                   onChange={onChange}
-                  label=""
-                  placeholder="Enter your functionnality"
+                  label="Enter a functionality"
                   name="functionnality"
                   className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
                   containerClassName="!py-[13px]  !px-[20px]"
@@ -310,7 +319,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <Titlebold title="You already have a design share it with us" />
 
-          <div className=" flex justify-between flex-wrap mt-[137px]">
+          <div className=" flex justify-between flex-wrap my-[137px]">
             <Upload onChange={onChangeImage} />
             {previewImages.length > 0 &&
               previewImages.map((image: any, idx: any) => (

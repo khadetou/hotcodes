@@ -96,7 +96,7 @@ body {
 }
 
 .focus {
-  @apply text-sm top-[14px] md:text-base md:top-[16px] !important;
+  @apply text-xs top-[13px] md:text-sm md:top-[14px] font-normal !important;
 }
 
 .calc {

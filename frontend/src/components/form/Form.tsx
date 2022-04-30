@@ -192,7 +192,7 @@ const Form: FC<FormProps> = ({ className }) => {
             onFocus={onFocus}
             onBlur={onBlur}
             rows={8}
-            className=" focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] py-8 text-dark text-[22px] font-medium"
+            className=" focus:border bg-[#f5f5f5]  focus:border-[#e293d3] focus:shadow-input focus:ring-0 focus:shadow-[#e9aede] w-full h-full rounded-[23px] outline-none px-5  md:px-[60px] border-none py-8 text-dark text-[22px] font-medium"
             id="message"
           ></textarea>
         </div>
