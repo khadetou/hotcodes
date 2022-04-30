@@ -12,14 +12,18 @@ const DesignCards: FC<BigcardsProps> = ({
   subtitle,
   image,
 }) => {
+  const splitedTitle = toptitle.split(",");
   return (
-    <div className="max-w-[633px] max-h-[853px] lg:h-[853px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
+    <div className="max-w-[633px] max-h-[782px] lg:h-[853px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
       <div className="rounded-t-[35px]">
         <Image src={image} className="rounded-t-[35px]" />
       </div>
       <div className="text-center">
         <h3 className="text-[18px]  xxs:text-[20px] lg:text-[32px] text-dark font-normal mb-[3px] mt-[35px]">
-          {toptitle}
+          {splitedTitle[0]}
+          <span className="text-transparent bg-clip-text bg-grad-text-2">
+            {splitedTitle[1]}
+          </span>
         </h3>
         <h1 className=" text-[40px] font-semibold break-words text-dark ">
           {title}
