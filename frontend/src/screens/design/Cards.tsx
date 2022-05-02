@@ -6,6 +6,22 @@ import crypto from "/public/images/design/crypto.png";
 import photowire from "/public/images/design/photowire.png";
 import Title from "@/components/Title/title";
 import DesignCards from "@/components/Bigcards/Design";
+import Modal from "react-modal";
+import Modals from "@/components/Modal/Modal";
+import { FiEdit3 } from "react-icons/fi";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+Modal.setAppElement("#modals");
 
 const Cards = () => {
   const moodboard = [
@@ -61,43 +77,78 @@ const Cards = () => {
     },
   ];
 
+  let subtitle: any = "";
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
-    <div>
-      <div className="containers my-16">
-        <Title
-          title="Moodboard"
-          className="text-transparent bg-clip-text bg-grad-btn"
-        />
-      </div>
-      <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8">
-        {moodboard.map(({ title, toptitle, text, image }, index) => (
-          <DesignCards
-            title={title}
-            toptitle={toptitle}
-            subtitle={text}
-            image={image}
-            key={index}
+    <>
+      <Modals
+        afterOpenModal={afterOpenModal}
+        closeModal={closeModal}
+        openModal={openModal}
+        modalIsOpen={modalIsOpen}
+        customStyles={customStyles}
+        subtitle={subtitle && subtitle}
+      />
+      <div id="modals">
+        <div className="containers my-16">
+          <Title
+            title="Moodboard"
+            className="text-transparent bg-clip-text bg-grad-btn"
           />
-        ))}
-      </div>
-      <div className="containers my-16">
-        <Title
-          title="Wireframe"
-          className="text-transparent bg-clip-text bg-grad-btn"
-        />
-      </div>
-      <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8">
-        {wireframes.map(({ title, toptitle, text, image }, index) => (
-          <DesignCards
-            title={title}
-            toptitle={toptitle}
-            subtitle={text}
-            image={image}
-            key={index}
+        </div>
+        <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8">
+          {moodboard.map(({ title, toptitle, text, image }, index) => (
+            <div className="relative group">
+              <button
+                onClick={openModal}
+                className="group-hover:flex hidden  items-center rounded-full px-[9px] py-[7px] shadow-md text-dark font-medium absolute z-10 top-5 right-6 bg-white"
+              >
+                <FiEdit3 className="mr-3" />
+                Select one model
+              </button>
+              <DesignCards
+                title={title}
+                toptitle={toptitle}
+                subtitle={text}
+                image={image}
+                key={index}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="containers my-16">
+          <Title
+            title="Wireframe"
+            className="text-transparent bg-clip-text bg-grad-btn"
           />
-        ))}
+        </div>
+        <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8">
+          {wireframes.map(({ title, toptitle, text, image }, index) => (
+            <DesignCards
+              title={title}
+              toptitle={toptitle}
+              subtitle={text}
+              image={image}
+              key={index}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
