@@ -48,7 +48,6 @@ const SubModal: FC<SubModalProps> = ({ modalIsOpen, setIsOpen, openModal }) => {
   }
   return (
     <div className={modalIsOpen ? "h-screen w-screen overflow-hidden" : ""}>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
