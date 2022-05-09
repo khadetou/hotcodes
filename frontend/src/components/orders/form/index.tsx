@@ -354,7 +354,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <Titlebold title="You already have a design share it with us" />
 
-          <div className=" flex justify-between flex-wrap my-[137px]">
+          <div className=" grid grid-cols-3 gap-4 my-[137px]">
             <Upload onChange={onChangeImage} />
             {previewImages.length > 0 &&
               previewImages.map((image: any, idx: any) => (
