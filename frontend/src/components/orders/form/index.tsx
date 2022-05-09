@@ -246,7 +246,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <Titlebold title="Who is the target audience" />
           {/* <label htmlFor="">Select a functionnality</label> */}
-          <div className="flex justify-between mt-[65px] flex-wrap">
+          <div className="grid grid-cols-3 gap-4 mt-[65px]">
             {targets.map(({ id, title }, idx) => (
               <React.Fragment key={idx}>
                 <Input
@@ -265,17 +265,18 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   type="text"
                   value={formData.functionnality}
                   onChange={onChange}
-                  label=""
-                  name="functionnality"
-                  className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
-                  containerClassName="!py-[13px]  !px-[20px]"
+                  label="Enter a target audience"
+                  name="target"
+                  className="!p-[12px] !text-[18px] !rounded-lg"
+                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px]  !px-[20px]"
+                  labelClassName="!w-[348px]"
                 />
               </>
             )}
           </div>
 
           <Titlebold title="Add specific functionalities" />
-          <div className="flex justify-between mt-[65px] flex-wrap">
+          <div className="grid grid-cols-3 gap-4 mt-[65px] ">
             {checkbox.map(({ id, title }, idx) => (
               <React.Fragment key={idx}>
                 <Input
@@ -296,8 +297,9 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   onChange={onChange}
                   label="Enter a functionality"
                   name="functionnality"
-                  className="!px-[33px] !py-[16px] !text-[18px] !rounded-lg"
-                  containerClassName="!py-[13px]  !px-[20px]"
+                  className="!p-[12px] !text-[18px] !rounded-lg"
+                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !px-[20px]"
+                  labelClassName="!w-[348px]"
                 />
               </>
             )}

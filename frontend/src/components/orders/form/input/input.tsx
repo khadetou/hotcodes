@@ -9,6 +9,7 @@ interface InputProps {
   placeholder?: string;
   className?: string;
   containerClassName?: string;
+  labelClassName?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -22,6 +23,7 @@ const Input: FC<InputProps> = ({
   label,
   className,
   containerClassName,
+  labelClassName,
 }) => {
   const [focused, setFocused] = useState(false);
 
@@ -39,7 +41,7 @@ const Input: FC<InputProps> = ({
       htmlFor={id}
       className={
         type === "text"
-          ? "flex max-w-[524px] w-full h-[98px] flex-col"
+          ? `${labelClassName} flex max-w-[524px] w-full h-[98px] flex-col`
           : "flex flex-col"
       }
     >
