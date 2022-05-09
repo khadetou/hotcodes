@@ -68,7 +68,7 @@ const Input: FC<InputProps> = ({
           ) : (
             <label
               className={`absolute text-[#b2b2b2] left-[20px] md:left-[60px] font-medium text-base xxs:text-[20px]  top-1/2 z-10 -translate-y-1/2 duration-300 ${
-                focused && "focus"
+                (focused && "focus") || (value && "focus")
               }`}
             >
               {label}
