@@ -9,19 +9,41 @@ import DesignCards from "@/components/Bigcards/Design";
 import Modal from "react-modal";
 import Modals from "@/components/Modal/Modal";
 import { FiEdit3 } from "react-icons/fi";
+import SubModal from "@/components/Modal/SubModal";
 
 const customStyles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0,0, 0.8)",
+  },
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    position: "absolute",
+    top: "20px",
+    left: "40px",
+    right: "40px",
+    bottom: "0px",
+    border: "1px solid #ccc",
+    background: "#fff",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    borderRadius: "4px",
+    outline: "none",
+    padding: "20px",
   },
 };
 
 Modal.setAppElement("#modals");
+
+type Style = {
+  color: string;
+};
+interface Subtitle {
+  style: Style;
+}
 
 const Cards = () => {
   const moodboard = [
@@ -77,32 +99,31 @@ const Cards = () => {
     },
   ];
 
-  let subtitle: any = "";
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [submodalIsOpen, setSubIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
-
-  function closeModal() {
-    setIsOpen(false);
+  function openSubModal() {
+    setSubIsOpen(true);
   }
 
   return (
     <>
       <Modals
-        afterOpenModal={afterOpenModal}
-        closeModal={closeModal}
+        setIsOpen={setIsOpen}
         openModal={openModal}
+        openSubModal={openSubModal}
         modalIsOpen={modalIsOpen}
         customStyles={customStyles}
-        subtitle={subtitle && subtitle}
       />
+      <SubModal
+        setIsOpen={setSubIsOpen}
+        modalIsOpen={submodalIsOpen}
+        openModal={openSubModal}
+      />
+
       <div id="modals">
         <div className="containers my-16">
           <Title
@@ -112,7 +133,7 @@ const Cards = () => {
         </div>
         <div className="containers grid grid-cols-1 md:grid-cols-2 gap-8">
           {moodboard.map(({ title, toptitle, text, image }, index) => (
-            <div className="relative group">
+            <div key={index} className="relative group">
               <button
                 onClick={openModal}
                 className="group-hover:flex hidden  items-center rounded-full px-[9px] py-[7px] shadow-md text-dark font-medium absolute z-10 top-5 right-6 bg-white"
@@ -125,7 +146,6 @@ const Cards = () => {
                 toptitle={toptitle}
                 subtitle={text}
                 image={image}
-                key={index}
               />
             </div>
           ))}
