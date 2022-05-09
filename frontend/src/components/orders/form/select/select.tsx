@@ -89,6 +89,7 @@ const Selects: FC<SelectProps> = ({
     menu: (base: any, state: any) => ({
       ...base,
       width: "524px",
+      zIndex: "9999",
       display: "flex",
       justifyContent: "center",
       borderRadius: "28px",
@@ -124,10 +125,18 @@ const Selects: FC<SelectProps> = ({
       display: "flex",
       margin: "3px 0",
       alignItems: "center",
-      color: "#E9E7E2",
-      "&:hover": {
-        color: "#393938",
-      },
+      backgroundColor: state.isSelected
+        ? "#EA007D"
+        : state.isFocused
+        ? "#ebebeb"
+        : "#fff",
+      color: state.isSelected
+        ? "#ffffff"
+        : state.isFocused
+        ? "#393938"
+        : "#696969",
+
+      cursor: "pointer",
     }),
   };
 
@@ -136,8 +145,6 @@ const Selects: FC<SelectProps> = ({
       ...theme,
       colors: {
         ...theme.colors,
-        primary: "#EA007D",
-        primary25: "#f2f2f2",
       },
     };
   };
