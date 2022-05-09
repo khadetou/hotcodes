@@ -116,7 +116,24 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         "," + e.target.value,
         ""
       );
+    } else if (formData.functionnality.includes(e.target.value)) {
+      console.log("It run");
+      formData.functionnality = formData.functionnality.replace(
+        e.target.value,
+        ""
+      );
     }
+    if (
+      formData.functionnality.includes(e.target.value + ",") &&
+      formData.functionnality !== "" &&
+      formData.functionnality.startsWith(e.target.value)
+    ) {
+      formData.functionnality = formData.functionnality.replace(
+        e.target.value + ",",
+        ""
+      );
+    }
+
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
   };
 
