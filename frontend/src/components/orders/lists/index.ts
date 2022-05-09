@@ -83,8 +83,9 @@ export const checkbox = [
     title: "form-submittion",
   },
   {
-    id: "other",
+    id: "functionnality",
     title: "Other",
+   
   },
 ];
 
@@ -106,7 +107,8 @@ export const targets = [
     title: "Startups, small businesses",
   },
   {
-    id: "other",
+    id: "target",
     title: "Other",
+ 
   },
 ];

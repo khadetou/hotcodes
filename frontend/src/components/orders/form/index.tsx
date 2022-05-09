@@ -41,6 +41,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     functionnality: "",
   });
   const [other, setOther] = useState(false);
+  const [otherfunc, setOtherfunc] = useState(false);
   const [otherTypeApp, setOtherTypeApp] = useState(false);
   const [otherGoal, setOtherGoal] = useState(false);
   const [previewImages, setPreviewImages] = useState<any>([]);
@@ -76,8 +77,23 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   };
 
   const onCheckboxChange = (e: any) => {
-    e.target.checked && e.target.value === "Other" && setOther(true);
-    !e.target.checked && e.target.value === "Other" && setOther(false);
+    e.target.checked &&
+      e.target.name === "functionnality" &&
+      e.target.value === "Other" &&
+      setOtherfunc(true);
+    !e.target.checked &&
+      e.target.name === "functionnality" &&
+      e.target.value === "Other" &&
+      setOtherfunc(false);
+
+    e.target.checked &&
+      e.target.name === "target" &&
+      e.target.value === "Other" &&
+      setOther(true);
+    !e.target.checked &&
+      e.target.name === "target" &&
+      e.target.value === "Other" &&
+      setOther(false);
     if (e.target.checked && e.target.value !== "Other") {
       if (formData.functionnality !== "") {
         formData.functionnality += "," + e.target.value;
@@ -251,7 +267,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               <React.Fragment key={idx}>
                 <Input
                   type="checkbox"
-                  name="functionnality"
+                  name="target"
                   label={title}
                   value={title}
                   id={id}
@@ -289,7 +305,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                 />
               </React.Fragment>
             ))}
-            {other && (
+            {otherfunc && (
               <>
                 <Input
                   type="text"
