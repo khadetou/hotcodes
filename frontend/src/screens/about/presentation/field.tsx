@@ -34,9 +34,9 @@ const Field: FC<FieldProps> = ({
 
   return (
     <div
-      className={`flex ${style} justify-between mb-[30px] xs:mb-[160px] flex-col-reverse`}
+      className={`flex ${style} justify-between mb-[30px] xs:mb-[160px] flex-col-reverse items-center`}
     >
-      <div className="relative">
+      <div className="relative  lg:mr-6">
         <span className="absolute z-10 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-dark-pink rounded-full  w-16 h-16 xxs:w-28 xxs:h-28 flex items-center justify-center bg-opacity-50 ">
           <FaPlay
             color="#fff"
@@ -47,12 +47,12 @@ const Field: FC<FieldProps> = ({
           <Image src={src} />
         </div>
       </div>
-      <div className="max-w-[651px]">
-        <span className="uppercase font-semibold text-[17px] xxs:text-xl text-black">
+      <div className="max-w-[639px] w-full">
+        <span className="uppercase font-semibold text-[17px] xxs:text-xl text-dark-pink">
           {title}
         </span>
         <h1
-          className={`font-light lg:leading-[54px] ${styles}  text-[33px] xs:text-[42px] leading-[1.2] lg:text-[54px]  my-[5px] xxs:leading-[44px]  text-dark lg:my-4 md:my-5 xl:my-5`}
+          className={`text-dark leading-[1.2] md:leading-[inherit] w-full font-bold text-[47px]`}
         >
           <span className="text-transparent bg-grad-text-2 bg-clip-text">
             {h1Text[0]}
@@ -62,11 +62,6 @@ const Field: FC<FieldProps> = ({
         <p className="text-dark text-base font-medium text-[14px] lg:text-[18px] md:text-xl xl:text-xl mb-[10px] leading-[26px] xxs:mb-[1rem] lg:mb-8">
           {paragraph}
         </p>
-        <Button
-          outline={false}
-          value={button}
-          className="text-lg py-[13px] px-[50px] font-bold text-dark-pink border-dark-pink mb-[1rem] md:mb-[14px]"
-        />
       </div>
     </div>
   );

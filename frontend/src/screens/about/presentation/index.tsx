@@ -12,27 +12,30 @@ const Presentation = () => {
 
   const presentations = [
     {
-      title: t("presentation.design.title"),
-      h1: t("presentation.design.h1"),
-      paragraph: t("presentation.design.p"),
+      title: "WHO WE ARE",
+      h1: "Boots Your. Website Traffic !",
+      paragraph:
+        "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.design.button"),
       src: WhoWeAre,
       style: "lg:flex-row",
       flip: "",
     },
     {
-      title: t("presentation.dev.title"),
-      h1: t("presentation.dev.h1"),
-      paragraph: t("presentation.dev.p"),
+      title: "",
+      h1: "Our. Mission",
+      paragraph:
+        "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.dev.button"),
       src: Mission,
       style: "lg:flex-row-reverse",
       flip: "flip-y",
     },
     {
-      title: t("presentation.marketing.title"),
-      h1: t("presentation.marketing.h1"),
-      paragraph: t("presentation.marketing.p"),
+      title: "",
+      h1: "Our. Vision",
+      paragraph:
+        "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.marketing.button"),
       src: Vision,
       style: "lg:flex-row",

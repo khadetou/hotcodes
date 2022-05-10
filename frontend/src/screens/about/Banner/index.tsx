@@ -3,11 +3,11 @@ import React from "react";
 const Banner = () => {
   return (
     <div className="relative h-screen w-full">
-      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.1)]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.6)]"></div>
       <video
         className="w-full h-full object-cover"
         autoPlay
-        src="/videos/bg-video1.mp4"
+        src="/videos/about.mp4"
         loop
         muted
       />
