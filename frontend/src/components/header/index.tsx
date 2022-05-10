@@ -45,29 +45,31 @@ const Header: FC<HeaderProps> = ({ className }) => {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <Lang path="/" />
-            <Link href="/login">
-              <a className="mx-[15px] sm:mx-[30px] lg:mx-0">
-                <FaUser className="text-white text-[20px] sm:text-[26px]  text-xl block lg:hidden" />
-              </a>
-            </Link>
+            <div className="lg:flex  hidden items-center">
+              <Link href="/login">
+                <a className="mx-[15px] sm:mx-[30px] lg:mx-0">
+                  <FaUser className="text-white text-[20px] sm:text-[26px]  text-xl block lg:hidden" />
+                </a>
+              </Link>
 
-            <Link href="/login">
-              <a className="m-0 lg:mx-[30px] ">
-                <AiOutlineLogin
-                  size="29px"
-                  className="cursor-pointer hidden lg:block text-white "
-                />
-              </a>
-            </Link>
-            <Link href="/register">
-              <a>
-                <button className=" border-2 text-base font-bold border-white rounded-md px-10 py-1">
-                  {t("signup")}
-                </button>
-              </a>
-            </Link>
+              <Link href="/login">
+                <a className="m-0 lg:mx-[30px] ">
+                  <AiOutlineLogin
+                    size="29px"
+                    className="cursor-pointer hidden lg:block text-white "
+                  />
+                </a>
+              </Link>
+              <Link href="/register">
+                <a>
+                  <button className=" border-2  border-white rounded-md font-medium text-sm mr-2 px-2 xxs:font-bold xxs:text-base xxs:mr-0 xxs:px-10 xxs:py-1">
+                    {t("signup")}
+                  </button>
+                </a>
+              </Link>
+            </div>
             <MobileDrawer />
           </div>
         </div>

@@ -7,7 +7,7 @@ interface LangProps {
 
 const Lang: FC<LangProps> = ({ path }) => {
   return (
-    <div>
+    <div className="mr-5 lg:mr-[inherit]">
       <DropDown path={path} />
     </div>
   );
