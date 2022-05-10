@@ -20,19 +20,13 @@ const Banner = () => {
             {t("banner.p")}
           </p>
           <div className="flex md:mt-6">
-            <Button
-              className="xxs:text-[14px] py-0 px-[12px] xxs:px-[17px] xxs:py-[11px] lg:py-[15px] lg:px-[24px] xs:text-[15px] md:text-[18px] text-[12px] md:px-[19px] lg:text-2xl lg:font-bold "
-              rounded="rounded-full"
-              bg="bg-white"
-              text="text-primary"
-              value={t("banner.button")}
-              shadow="shadow-btn"
-              font="font-bold"
-            />
-            <div className="md:ml-6 ml-[7px]">
-              <Circular className="rounded-full p-[7px] xs:px-4 xs:py-4 xxs:p-[11px] bg-white text-primary shadow-btn lg:p-5" />
-              <span className="text-white xxs:text-[14px] md:text-base xs:text-[14px] font-normal ml-[10px] text-[10px] lg:text-lg lg:font-semibold uppercase">
-                {t("banner.video")}
+            <button className="bg-white max-h-[50px] text-dark text-sm py-2 px-4 sm:text-base sm:px-10 sm:py-[11px] font-bold rounded-full shadow-btn">
+              Start Now
+            </button>
+            <div className="md:ml-6  xxs:ml-[13px] ml-[7px]">
+              <Circular className="rounded-full p-[12px] xxs:p-[11px] bg-white text-primary shadow-btn lg:p-4" />
+              <span className="text-white xxs:text-[14px] md:text-base xs:text-[14px] font-normal ml-[5px] text-[10px] lg:text-lg lg:font-semibold uppercase">
+                Watch the video
               </span>
             </div>
           </div>
