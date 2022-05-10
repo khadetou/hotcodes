@@ -18,22 +18,22 @@ const DesignCards: FC<BigcardsProps> = ({
       <div className="rounded-t-[35px]">
         <Image src={image} className="rounded-t-[35px]" />
       </div>
-      <div className="text-center">
-        <h3 className="text-[18px]  xxs:text-[20px] lg:text-[32px] text-dark font-normal mb-[3px] mt-[35px]">
+      <div className="text-cente w-full px-5">
+        <h3 className="text-[18px] text-center lg:text-[32px] text-dark font-normal mb-[3px] mt-[15px] md:mt-[35px] xxs:text-[20px] ">
           {splitedTitle[0]}
           <span className="text-transparent bg-clip-text bg-grad-text-2">
             {splitedTitle[1]}
           </span>
         </h3>
-        <h1 className=" text-[40px] font-semibold break-words text-dark ">
+        <h1 className="text-center font-semibold break-words text-dark text-[25px] leading-[1.2] sm:leading-[inherit] xxs:text-[40px] ">
           {title}
         </h1>
-        <p className="text-xl mt-[10px]">{subtitle}</p>
-        <div className="flex justify-between mt-[25px]  items-center ">
-          <button className="font-bold text-sm rounded-full bg-grad-btn text-white px-24 py-4">
+        <p className="text-center text-lg xxs:text-xl mt-[10px]">{subtitle}</p>
+        <div className="flex justify-between items-center p-0 mb-[20px] mt-[15px] xxs:mt-[25px] xl:px-7">
+          <button className="font-bold rounded-full bg-grad-btn text-white text-xs px-3 py-1 xl:px-24 xxs:text-sm xxs:px-10  xxs:py-4">
             more example
           </button>
-          <button className="font-bold text-base text-dark-pink underline ">
+          <button className="font-bold text-dark-pink underline text-[13px] xxs:text-base">
             Select a plan
           </button>
         </div>
@@ -41,5 +41,4 @@ const DesignCards: FC<BigcardsProps> = ({
     </div>
   );
 };
-
 export default DesignCards;
