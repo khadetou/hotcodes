@@ -63,16 +63,9 @@ const Header: FC<HeaderProps> = ({ className }) => {
             </Link>
             <Link href="/register">
               <a>
-                <Button
-                  className="leading-loose hidden lg:block"
-                  outline={false}
-                  border="border-white border-2"
-                  outlText="white"
-                  rounded="rounded-full"
-                  value={t("signup")}
-                  px="px-4"
-                  mr="mr-3"
-                />
+                <button className=" border-2 text-base font-bold border-white rounded-md px-10 py-1">
+                  {t("signup")}
+                </button>
               </a>
             </Link>
             <MobileDrawer />

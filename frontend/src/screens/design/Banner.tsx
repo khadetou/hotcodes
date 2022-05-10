@@ -10,7 +10,7 @@ const Banner = () => {
 
   return (
     <section className="h-[890px] flex items-center bg-grad-back blend relative ">
-      <div className="flex  flex-col items-center lg:flex-row translate-y-[-50%] md:mb-[75px] xsm:mb-[103px] lg:transform-none containers -mt-9">
+      <div className="flex  flex-col items-center lg:flex-row translate-y-[-50%] md:mb-[110px] xsm:mb-[103px] lg:transform-none containers -mt-9">
         <div className="max-w-[734px] mb-4 lg:mb-[-9.5rem]">
           <h1 className="text-white  w-[699px] text-[32px] leading-[1.2] xxs:text-[40px]  md:text-[40px] xs:text-[47px] lg:text-[64px]  2xl:text-[89px]  2xl:leading-none  font-light">
             We Create and build Incredible design
@@ -20,7 +20,7 @@ const Banner = () => {
             If you want your website to be as this day and age websites and to
             be profetionnal you are on the right place.
           </p>
-          <div className="flex md:mt-6">
+          <div className="flex items-center  md:mt-6">
             {/* <Button
               className="xxs:text-[14px] py-0 px-[12px] xxs:px-[17px] xxs:py-[11px] lg:py-[15px] lg:px-[24px] xs:text-[15px] md:text-[18px] text-[12px] md:px-[19px] lg:text-2xl lg:font-bold "
               rounded="rounded-full"
@@ -30,11 +30,11 @@ const Banner = () => {
               shadow="shadow-btn"
               font="font-bold"
             /> */}
-            <button className="bg-white text-dark text-base px-[70px] py-[15px] font-bold rounded-full shadow-btn">
+            <button className="bg-white max-h-[50px] text-dark text-base px-10 py-[11px] font-bold rounded-full shadow-btn">
               Start Now
             </button>
             <div className="md:ml-6 ml-[7px]">
-              <Circular className="rounded-full p-[7px] xs:px-4 xs:py-4 xxs:p-[11px] bg-white text-primary shadow-btn lg:p-5" />
+              <Circular className="rounded-full p-[7px] xs:px-4 xs:py-4 xxs:p-[11px] bg-white text-primary shadow-btn lg:p-4" />
               <span className="text-white xxs:text-[14px] md:text-base xs:text-[14px] font-normal ml-[10px] text-[10px] lg:text-lg lg:font-semibold uppercase">
                 Watch the video
               </span>
@@ -42,7 +42,7 @@ const Banner = () => {
           </div>
         </div>
         <div className=" md:w-[228px] -mb-[65px] mt-[24px] w-[278px] md:mb-0 lg:w-[691px] xxs:w-[370px] xxs:mt-[10px] ">
-          <div className="absolute lg:top-1/2 lg:translate-y-[-36%]  ">
+          <div className="absolute lg:top-1/2 lg:translate-y-[-48%]  ">
             <Image src={DesignBanner} />
           </div>
         </div>
