@@ -60,13 +60,18 @@ const Selects: FC<SelectProps> = ({
       backgroundColor: "#fff",
       padding: "15px 20px",
       borderRadius: "28px",
+      margin: "auto",
       border: "none",
-      boxShadow: "16px 0px 68px rgba(234, 0, 125, 0.27)",
-      width: "524px",
+      boxShadow: "0px 4px 15px rgba(234, 0, 125, 0.27)",
+      width: "100%",
+      maxWidth: "524px",
       cursor: "pointer",
       "@media (max-width: 767px)": {
         padding: "6px 12px",
         borderRadius: "5px",
+      },
+      "@media (max-width: 575px)": {
+        margin: "auto",
       },
     }),
     valueContainer: (base: any, state: any) => ({
@@ -88,7 +93,9 @@ const Selects: FC<SelectProps> = ({
     }),
     menu: (base: any, state: any) => ({
       ...base,
-      width: "524px",
+      maxWidth: "524px",
+      width: "100%",
+      padding: "10px",
       zIndex: "9999",
       display: "flex",
       justifyContent: "center",
@@ -97,6 +104,7 @@ const Selects: FC<SelectProps> = ({
     }),
     menuList: (base: any, state: any) => ({
       ...base,
+      width: "100%",
       "&::-webkit-scrollbar": {
         width: " 0.375rem",
         height: "0.375rem",
@@ -119,9 +127,10 @@ const Selects: FC<SelectProps> = ({
 
     option: (base: any, state: any) => ({
       ...base,
-      width: "496px",
+      maxWidth: "496px",
+      width: "100%",
       height: "68px",
-      borderRadius: "20px",
+      borderRadius: "15px",
       display: "flex",
       margin: "3px 0",
       alignItems: "center",
@@ -159,9 +168,13 @@ const Selects: FC<SelectProps> = ({
     );
   return (
     <div className={`containers !px-0 ${className && className}`}>
-      <div className="select-box">
+      <div className="select-box w-full">
         <div
-          className={toggle ? "options-container active" : "options-container"}
+          className={
+            toggle
+              ? "options-container active w-full"
+              : "options-container w-full"
+          }
         >
           <Select
             options={option}

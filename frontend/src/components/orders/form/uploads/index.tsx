@@ -11,7 +11,7 @@ const Upload: FC<UploadProps> = ({ onChange }) => {
       <div className="max-w-[422px] rounded-[35px] shadow-shadow-sm p-[33px]">
         <label
           htmlFor="upload"
-          className="flex cursor-pointer z-20 relative flex-col justify-center bg-light-gray rounded-[20px] h-[268px] focus:ring-0 border-none outline-none w-full"
+          className="flex cursor-pointer z-20 relative px-7 flex-col justify-center bg-light-gray rounded-[20px] h-[268px] focus:ring-0 border-none outline-none w-full"
         >
           <Image src={uploadImg} />
           <span className="mx-auto">Uplaod files</span>
@@ -31,7 +31,8 @@ const Upload: FC<UploadProps> = ({ onChange }) => {
             onChange={onChange}
             className="opacity-0"
           />
-          <div className="left-1/2 -translate-x-1/2 text-base font-bold px-[96.5px] text-white bg-dark-pink rounded-full py-[15px] absolute -bottom-4  ">
+
+          <div className="left-1/2 flex items-center justify-center -translate-x-1/2 text-base font-bold  text-white bg-dark-pink rounded-full w-full py-[15px] absolute -bottom-4  ">
             Upload
           </div>
         </label>

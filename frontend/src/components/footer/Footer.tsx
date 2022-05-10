@@ -88,8 +88,8 @@ const Footer = () => {
   return (
     <footer>
       <div className="containers">
-        <div className="flex justify-between flex-wrap">
-          <div >
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-4 md:gap-10 lg:gap-20">
+          <div>
             <div>
               <Image src={Logo} />
             </div>
@@ -98,8 +98,11 @@ const Footer = () => {
               can use device.
             </p>
             <div className="flex justify-between">
-              {footerLogos.map(({ title, image },  idx) => (
-                <div key={idx} className="border text-dark-pink hover:bg-dark-pink hover:text-white p-[13px] border-dark-pink rounded-full transition-all duration-300 ease-in-out ">
+              {footerLogos.map(({ title, image }, idx) => (
+                <div
+                  key={idx}
+                  className="border text-dark-pink hover:bg-dark-pink hover:text-white p-[13px] border-dark-pink rounded-full transition-all duration-300 ease-in-out "
+                >
                   {image}
                 </div>
               ))}

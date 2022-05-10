@@ -198,13 +198,14 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         <form onSubmit={onSubmit}>
           <Titlebold title={title} />
 
-          <div className="flex justify-between mt-[60px] mb-[104px]">
+          <div className="flex flex-col justify-between mt-[60px] mb-[104px] lg:flex-row">
             <Selects
               options={plateforms}
               selected="plateform"
               formData={formData}
               setSelected={setFormData}
               selectedTitle="Select a plateform"
+              className="mb-[50px] mr-5 lg:mb-[inherit]"
             />
             <Selects
               setSelectOther={setOtherTypeApp}
@@ -217,7 +218,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             />
           </div>
 
-          <div className="flex mb-[47px] justify-between">
+          <div className="flex mb-[47px] justify-between items-center flex-col lg:flex-row">
             <Input
               type="text"
               name="typeapp"
@@ -225,6 +226,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               value={formData.typeofapp}
               label="Enter the Type of App"
               onChange={onChange}
+              labelClassName="mb-[30px] lg:mb-[inherit]"
             />
 
             <Input
@@ -235,9 +237,10 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               onChange={onChange}
             />
           </div>
+
           <div className="bg-white shadow-shadow-sm py-5 px-8 max-w-[1300px] rounded-[51px] flex flex-col justify-center w-full relative">
             <label
-              className={`text-[#b2b2b2] absolute left-[20px] md:left-[90px] font-normal mb-4 text-sm xxs:text-base  top-[13%] transition-all duration-300 -translate-y-1/2 ${
+              className={`text-[#b2b2b2] absolute left-[50px] md:left-[90px] font-normal mb-4 text-sm xxs:text-base  top-[13%] transition-all duration-300 -translate-y-1/2 ${
                 textareaFocused && "focus !top-[10%]"
               }`}
               htmlFor="decription"
@@ -259,7 +262,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
           </div>
           <Titlebold title="What is the goal?" />
 
-          <div className="flex items-center mt-[62px] mb-[62px]">
+          <div className="flex items-center mt-[62px] mb-[62px] flex-col lg:flex-row">
             <Selects
               setSelectOther={setOtherGoal}
               options={goal}
@@ -267,6 +270,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               setSelected={setFormData}
               selected="goal"
               selectedTitle="Select a goal"
+              className="mb-8 lg:mb-0"
             />
             <Input
               type="text"
@@ -279,7 +283,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <Titlebold title="Who is the target audience" />
           {/* <label htmlFor="">Select a functionnality</label> */}
-          <div className="grid grid-cols-3 gap-4 mt-[65px]">
+          <div className="grid gap-1 mt-[65px] grid-cols-1  md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             {targets.map(({ id, title }, idx) => (
               <React.Fragment key={idx}>
                 <Input
@@ -301,15 +305,15 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   label="Enter a target audience"
                   name="target"
                   className="!p-[12px] !text-[18px] !rounded-lg"
-                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px]  !px-[20px]"
-                  labelClassName="!w-[348px]"
+                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !max-w-[348px] !px-[20px]"
+                  labelClassName=" !w-full flex  items-center"
                 />
               </>
             )}
           </div>
 
           <Titlebold title="Add specific functionalities" />
-          <div className="grid grid-cols-3 gap-4 mt-[65px] ">
+          <div className="grid gap-1 mx-auto mt-[65px] grid-cols-1  md:grid-cols-2 lg:grid-cols-3 lg:gap-4 ">
             {checkbox.map(({ id, title }, idx) => (
               <React.Fragment key={idx}>
                 <Input
@@ -331,22 +335,22 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   label="Enter a functionality"
                   name="functionnality"
                   className="!p-[12px] !text-[18px] !rounded-lg"
-                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !px-[20px]"
-                  labelClassName="!w-[348px]"
+                  containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !max-w-[348px] !px-[20px]"
+                  labelClassName="!w-full flex items-center"
                 />
               </>
             )}
           </div>
 
-          <div className="flex justify-around">
+          <div className="flex flex-col md:flex-row mt-5 justify-around">
             <button
               type="submit"
-              className="text-base font-bold text-white bg-dark-pink px-24 py-4 rounded-full shadow-shadow "
+              className="text-base font-bold text-white bg-dark-pink px-24 py-4 rounded-full shadow-shadow mb-4 md:mb-0 "
             >
               Save
             </button>
 
-            <button className="flex items-center text-base font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4">
+            <button className="flex items-center justify-center  font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4 text-xs mb:text-base">
               Download Invoice{" "}
               <HiOutlineDownload size="20px" className="ml-[8px]" />
             </button>
@@ -354,7 +358,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <Titlebold title="You already have a design share it with us" />
 
-          <div className=" grid grid-cols-3 gap-4 my-[137px]">
+          <div className=" grid  gap-4 mt-10 mb-[137px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <Upload onChange={onChangeImage} />
             {previewImages.length > 0 &&
               previewImages.map((image: any, idx: any) => (

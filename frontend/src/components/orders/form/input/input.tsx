@@ -42,7 +42,7 @@ const Input: FC<InputProps> = ({
       className={
         type === "text"
           ? `${labelClassName} flex max-w-[524px] w-full h-[98px] flex-col`
-          : "flex flex-col"
+          : "flex flex-col justify-center items-center"
       }
     >
       <div
@@ -50,8 +50,8 @@ const Input: FC<InputProps> = ({
           type === "text"
             ? `bg-white ${
                 containerClassName && containerClassName
-              } py-[15px] px-5 w-full max-h-[98px] h-full shadow-shadow max-w-[524px] rounded-[23px]`
-            : "w-[346px] bg-white  py-[13px] px-[20px] shadow-shadow-sm mb-[51px] rounded-[23px]"
+              } py-[15px] px-5 w-full max-h-[98px] h-full shadow-shadow-sm max-w-[524px] rounded-[23px]`
+            : "max-w-[346px] w-full bg-white  py-[13px] px-[20px] shadow-shadow-sm mb-[51px] rounded-[23px]"
         }
       >
         <div
