@@ -12,6 +12,7 @@ import Services from "screens/landing/Services";
 import Presentation from "screens/landing/presentation";
 import Process from "screens/landing/process";
 import Contact from "@/components/Contact";
+import Header from "@/components/header";
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 interface IProps {
@@ -29,6 +30,7 @@ const Home: NextPage<IProps> = ({ token }) => {
   }, [token]);
   return (
     <>
+      <Header />
       <SEO />
       <Banner />
       <Services />

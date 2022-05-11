@@ -11,7 +11,6 @@ interface LayoutProp {
 const Layout: FC<LayoutProp> = ({ children, isOpen, setIsOpen }) => {
   return (
     <>
-      <Header />
       <main>{children}</main>
       <Footer />
     </>

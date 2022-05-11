@@ -18,7 +18,7 @@ const Presentation = () => {
         "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.design.button"),
       src: WhoWeAre,
-      style: "lg:flex-row",
+      style: "lg:flex-row-reverse",
       flip: "",
     },
     {
@@ -28,7 +28,7 @@ const Presentation = () => {
         "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.dev.button"),
       src: Mission,
-      style: "lg:flex-row-reverse",
+      style: "lg:flex-row",
       flip: "flip-y",
     },
     {
@@ -38,7 +38,7 @@ const Presentation = () => {
         "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
       button: t("presentation.marketing.button"),
       src: Vision,
-      style: "lg:flex-row",
+      style: "lg:flex-row-reverse",
       flip: "",
     },
   ];

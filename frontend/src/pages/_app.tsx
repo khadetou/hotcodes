@@ -12,7 +12,6 @@ import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [open, setOpen] = useState(false);
-
   return (
     <Layout setIsOpen={setOpen} isOpen={open}>
       <Component {...pageProps} />
