@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { getCookie } from "store/action-creators";
 import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
+import RegisterScreen from "@/screens/register";
+import Header from "@/components/header";
 
 const Register: NextPage = () => {
   const router = useRouter();
@@ -47,58 +49,10 @@ const Register: NextPage = () => {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <label htmlFor="firstname">FirstName</label>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="lastname">LastName</label>
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={formData.confirmPassword}
-          onChange={(e) => onChange(e)}
-        />
-        <button type="submit">Register</button>
-        <GoogleLogin
-          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
-          buttonText="Login with Google"
-          onSuccess={GoogleLoginUser}
-          onFailure={(res) => console.log(res)}
-        />
-      </form>
-    </div>
+    <>
+      <Header />
+      <RegisterScreen />
+    </>
   );
 };
 

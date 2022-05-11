@@ -4,6 +4,7 @@ import { FiMail } from "react-icons/fi";
 import codes from "country-calling-code";
 import Select from "react-select";
 import Input from "./Input";
+import CountryDropdown from "../Countrycodes";
 
 interface FormProps {
   className?: string;
@@ -163,15 +164,9 @@ const Form: FC<FormProps> = ({ className }) => {
             htmlFor={id}
             key={idx}
             CountryDropdown={() => (
-              <Select
-                theme={theme}
-                formatOptionLabel={formatOptionLabel}
-                isSearchable={false}
-                instanceId="country-select"
-                defaultValue={options[188]}
-                styles={styles}
-                className="!absolute !top-1/2 !-translate-y-1/2 left-[10px] md:!left-[20px] !z-50 "
-                options={options}
+              <CountryDropdown
+                instanceId="select country"
+                onChange={() => {}}
               />
             )}
             id={id}

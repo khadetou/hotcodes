@@ -22,6 +22,7 @@ module.exports = {
         gray: "#828282",
         "light-gray": "#f2f2f2",
         "pink-transparent": "rgba(206, 65, 164, 0.09)",
+        "pink-transparent-1": "rgba(241, 217, 232, 0.39)",
       },
       boxShadow: {
         btn: "4px 0 43px 0 rgba(3, 0, 155, 0.93)",
