@@ -14,7 +14,7 @@ const DesignCards: FC<BigcardsProps> = ({
 }) => {
   const splitedTitle = toptitle.split(",");
   return (
-    <div className="max-w-[633px] max-h-[782px] lg:h-[853px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
+    <div className="max-w-[633px]  lg:h-[800px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
       <div className="rounded-t-[35px]">
         <Image src={image} className="rounded-t-[35px]" />
       </div>
@@ -28,10 +28,12 @@ const DesignCards: FC<BigcardsProps> = ({
         <h1 className="text-center font-semibold break-words text-dark text-[25px] leading-[1.2] sm:leading-[inherit] xxs:text-[40px] ">
           {title}
         </h1>
-        <p className="text-center text-lg xxs:text-xl mt-[10px]">{subtitle}</p>
-        <div className="flex justify-between items-center p-0 mb-[20px] mt-[15px] xxs:mt-[25px] xl:px-7">
+        <p className="text-center text-gray text-lg xxs:text-xl mt-[10px]">
+          {subtitle}
+        </p>
+        <div className="flex justify-between items-center p-0 mb-[20px] mt-[15px] xl:px-7">
           <button className="font-bold rounded-full bg-grad-btn text-white text-xs px-3 py-1 xl:px-24 xxs:text-sm xxs:px-10  xxs:py-4">
-            more example
+            See More
           </button>
           <button className="font-bold text-dark-pink underline text-[13px] xxs:text-base">
             Select a plan
