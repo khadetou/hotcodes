@@ -1,5 +1,8 @@
+import Latest from "@/components/blogs/Latest";
+import Line from "@/components/blogs/Line";
 import Title from "@/components/blogs/Title";
 import Titlebold from "@/components/Title/titlebold";
+
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
@@ -62,7 +65,10 @@ const Banner = () => {
             </div>
           ))}
         </div>
+
+        <Latest />
       </div>
+      <Line />
     </section>
   );
 };
