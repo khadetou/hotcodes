@@ -4,7 +4,6 @@ import React from "react";
 const Category = () => {
   return (
     <div>
-      {" "}
       <Header />
       Category
     </div>
