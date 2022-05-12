@@ -6,7 +6,11 @@ import React from "react";
 const Category = () => {
   return (
     <div>
-      <Header />
+      <Header
+        bgClassName="!bg-transparent shadow-lg"
+        className="!text-dark "
+        buttonClassName="bg-grad-text-2 text-white "
+      />
       <Banner />
       <CategoryScreen />
     </div>

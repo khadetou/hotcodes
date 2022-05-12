@@ -6,7 +6,11 @@ import React from "react";
 const Blog = () => {
   return (
     <>
-      <Header />
+      <Header
+        bgClassName="!bg-transparent shadow-lg"
+        className="!text-dark "
+        buttonClassName="bg-grad-text-2 text-white "
+      />
       <Banner />
       <Cards />
     </>
