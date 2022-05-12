@@ -10,9 +10,9 @@ const OrderWeb: NextPage = () => {
   return (
     <>
       <Header
-        bgClassName="!bg-[#F6F9FD]"
-        className="!text-dark shadow-md"
-        buttonClassName="border-dark"
+        bgClassName="!bg-transparent shadow-lg"
+        className="!text-dark "
+        buttonClassName="bg-grad-text-2 text-white "
       />
       <Banner />
       <Presentation />

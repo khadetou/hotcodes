@@ -1,8 +1,8 @@
 import Header from "@/components/header";
-import WorkScreen from "@/screens/work";
+import ProjectScreen from "@/screens/projects";
 import React from "react";
 
-const Work = () => {
+const Projects = () => {
   return (
     <>
       <Header
@@ -10,9 +10,9 @@ const Work = () => {
         className="!text-dark "
         buttonClassName="bg-grad-text-2 text-white "
       />
-      <WorkScreen />
+      <ProjectScreen />
     </>
   );
 };
 
-export default Work;
+export default Projects;
