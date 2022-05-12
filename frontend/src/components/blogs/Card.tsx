@@ -1,15 +1,22 @@
 import BlogImg from "/public/images/blog-img.png";
 import Avatar from "/public/images/avatar/avatar.jpg";
 import Image from "next/image";
+import { FC } from "react";
 
-const Card = () => {
+interface CardProps {
+  className?: string;
+}
+
+const Card: FC<CardProps> = ({ className }) => {
   return (
-    <div className="shadow-shadow max-w-[413px] w-full p-4 h-[653px] rounded-3xl">
+    <div className="hover:shadow-shadow hover:scale-105 max-w-[413px] w-full p-4 h-[653px] rounded-3xl transition-all ease-linear duration-300">
       <div className="max-h-[260px] h-full w-full relative ">
         <Image className="rounded-[20px] " layout="fill" src={BlogImg} />
       </div>
       <div className="flex mt-[18px] w-full max-w-[177px] justify-between items-center">
-        <button className="text-white font-bold bg-dark-pink max-w-[113px] w-full h-[36px] rounded-[10px] text-[12px]">
+        <button
+          className={`text-white font-bold bg-dark-pink max-w-[113px] w-full h-[36px] rounded-[10px] text-[12px] ${className}`}
+        >
           Developement
         </button>
         <span className="h-1 w-1 bg-dark rounded-sm"></span>
