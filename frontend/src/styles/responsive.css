@@ -1,0 +1,14 @@
+@media (min-width: 1280px) {
+  .xl\:my-0 {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+  .xl\:mt-0 {
+    margin-top: 0rem;
+  }
+}
+@media (min-width: 768px) {
+  .md\:w-96 {
+    width: 24rem;
+  }
+}
