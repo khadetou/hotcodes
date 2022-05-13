@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from "next";
-import { wrapper } from "../../../store";
-import { getCookie, LoadUserSsr } from "../../../store/action-creators";
-import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypeSelector";
+import { wrapper } from "../../../../store";
+import { getCookie, LoadUserSsr } from "../../../../store/action-creators";
+import { useActions } from "../../../../hooks/useActions";
+import { useTypedSelector } from "../../../../hooks/useTypeSelector";
 import { useEffect } from "react";
 import Link from "next/link";
 import jwtDecode from "jwt-decode";

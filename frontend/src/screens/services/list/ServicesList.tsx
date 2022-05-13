@@ -62,7 +62,7 @@ const ServicesList = () => {
       playRef.current.pause();
     }
   };
-  console.log(playRef.current);
+
   return (
     <section className="mb-[160px]">
       <div className="mt-[80px] lg:mt-[160px] flex flex-col items-center">

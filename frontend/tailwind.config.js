@@ -37,7 +37,7 @@ module.exports = {
           " linear-gradient(90deg, rgba(57,0,77,1) 0%, rgba(3,0,155,1) 100%)",
         "grad-text-2":
           "linear-gradient(160deg, rgba(255, 0, 128, 1) 50%, rgba(121, 40, 202, 1) 100%)",
-          "grad-btn":"linear-gradient(135deg, #FF0080 0%, #7928CA 100%)",
+          "grad-btn":"linear-gradient(310deg,#7928ca,#ff0080)",
       },
       fontFamily: {
         Inter: ["Inter", "sans-serif"],

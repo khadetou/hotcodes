@@ -62,6 +62,7 @@ const Header: FC<HeaderProps> = ({
               <Link href="/login">
                 <a className="m-0 lg:mx-[30px] ">
                   <AiOutlineLogin
+                    title="Login"
                     size="29px"
                     className="cursor-pointer hidden lg:block"
                   />
