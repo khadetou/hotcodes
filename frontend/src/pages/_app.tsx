@@ -4,6 +4,8 @@ import "rc-dropdown/assets/index.css";
 import "flag-icons/css/flag-icons.min.css";
 import "swiper/css";
 import "swiper/css/navigation";
+// import 'aos/dist/aos'
+import "aos/dist/aos.css";
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { wrapper } from "store/index";
