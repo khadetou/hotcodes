@@ -188,21 +188,21 @@ module.exports = {
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
       },
-      boxShadow: {
-        sm: '0 .125rem .25rem rgba(17, 38, 146, 0.1)',
-        DEFAULT: '0 .5rem 1rem 0 rgba(17, 38, 146, 0.05)',
-        md: '0 .5rem 1rem rgba(17, 38, 146, 0.05)',
-        lg: '0 10px 30px 0 rgba(17, 38, 146, 0.05)',
-        inner: 'inset 0 4px 8px 0 rgba(0, 0, 0, 0.16)',
-        active: '0 10px 20px -10px rgba(58,87,232, 0.4)',
-        none: 'none',
-      },
+      // boxShadow: {
+      //   sm: '0 .125rem .25rem rgba(17, 38, 146, 0.1)',
+      //   DEFAULT: '0 .5rem 1rem 0 rgba(17, 38, 146, 0.05)',
+      //   md: '0 .5rem 1rem rgba(17, 38, 146, 0.05)',
+      //   lg: '0 10px 30px 0 rgba(17, 38, 146, 0.05)',
+      //   inner: 'inset 0 4px 8px 0 rgba(0, 0, 0, 0.16)',
+      //   active: '0 10px 20px -10px rgba(58,87,232, 0.4)',
+      //   none: 'none',
+      // },
     },
   },
-  variants: {
-    extend: {
-      zIndex: ['hover'],
-    },
-  },
+  // variants: {
+  //   extend: {
+  //     zIndex: ['hover'],
+  //   },
+  // },
   plugins: [require('@tailwindcss/forms')],
 };

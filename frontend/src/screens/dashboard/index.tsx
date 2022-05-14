@@ -10,6 +10,9 @@ import shapes3 from "/public/assets/images/shapes/03.png";
 import shapes4 from "/pubilc/assets/images/shapes/04.png";
 import shapes5 from "/public/assets/images/shapes/05.png";
 import Slider from "@/components/dashboard/Slider";
+import { sliderItems } from "@/components/dashboard/arrays";
+import GrossSales from "@/components/dashboard/charts/GrossSales";
+import Chart from "@/components/dashboard/charts";
 
 const DashboardScreen = () => {
   useEffect(() => {
@@ -125,6 +128,10 @@ const DashboardScreen = () => {
   //chart2
   const chart2 = {
     options: {
+      chart: {
+        height: 390,
+        type: "radialBar",
+      },
       colors: ["blue", "red"],
       plotOptions: {
         radialBar: {
@@ -145,6 +152,8 @@ const DashboardScreen = () => {
     },
     series: [55, 75],
   };
+
+  //chart3
   const chart3 = {
     options: {
       chart: {
@@ -221,151 +230,55 @@ const DashboardScreen = () => {
   return (
     <section className="my-[160px] h-full">
       <div>
-        <div>
-          <Swiper
-            className="relative flex flex-row LR"
-            slidesPerView={5}
-            spaceBetween={32}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              550: { slidesPerView: 2 },
-              991: { slidesPerView: 3 },
-              1400: { slidesPerView: 4 },
-              1500: { slidesPerView: 5 },
-              1920: { slidesPerView: 6 },
-              2040: { slidesPerView: 7 },
-              2440: { slidesPerView: 8 },
-            }}
-            data-aos="fade-up"
-            data-aos-delay="700"
-          >
-            <SwiperSlide className="pt-0 pb-0 mb-8">
-              <Slider />
-            </SwiperSlide>
-            <div className="swiper-button swiper-button-next"></div>
-            <div className="swiper-button swiper-button-prev"></div>
-          </Swiper>
-        </div>
+        <Swiper
+          className="relative flex flex-row LR"
+          slidesPerView={5}
+          spaceBetween={32}
+          modules={[Navigation]}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            550: { slidesPerView: 2 },
+            991: { slidesPerView: 3 },
+            1400: { slidesPerView: 4 },
+            1500: { slidesPerView: 5 },
+            1920: { slidesPerView: 6 },
+            2040: { slidesPerView: 7 },
+            2440: { slidesPerView: 8 },
+          }}
+          data-aos="fade-up"
+          data-aos-delay="700"
+        >
+          {sliderItems.map(
+            (
+              {
+                Icon,
+                circleOneClassName,
+                circleTwoClassName,
+                className,
+                price,
+                strokeDasharray,
+                strokeDashoffset,
+                text,
+              },
+              idx
+            ) => (
+              <SwiperSlide key={idx} className="pt-0 pb-0 mb-8">
+                <Slider
+                  Icon={Icon}
+                  circleOneClassName={circleOneClassName}
+                  circleTwoClassName={circleTwoClassName}
+                  className={className}
+                  price={price}
+                  strokeDasharray={strokeDasharray}
+                  strokeDashoffset={strokeDashoffset}
+                  text={text}
+                />
+              </SwiperSlide>
+            )
+          )}
+        </Swiper>
       </div>
-
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-2/3">
-          <div className="flex flex-auto">
-            <div className="flex-auto w-full lg:pr-4 rtl:pr-0 rtl:pl-4">
-              <div className="flex flex-col mb-8 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-dark-card">
-                <div className="p-6 relative ">
-                  <div className="flex flex-wrap items-center justify-between pb-0 mb-0">
-                    <div>
-                      <div className="mt-0 mb-0 text-2xl font-medium dark:text-gray-600 counter">
-                        $855.8K
-                      </div>
-                      <p className="block mb-0 text-gray-500 font-medium dark:text-gray-600">
-                        Gross Sales
-                      </p>
-                    </div>
-                    <div className="flex items-center self-center">
-                      <div className="flex items-center text-blue-500">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="12"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <g>
-                            <circle
-                              cx="12"
-                              cy="12"
-                              r="8"
-                              fill="currentColor"
-                            ></circle>
-                          </g>
-                        </svg>
-                        <div className="ml-2 rtl:ml-0 rtl:mr-2">
-                          <span className="text-gray-600">Sales</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center ml-3 rtl:ml-0 rtl:mr-3 text-cyan-500">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="12"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <g>
-                            <circle
-                              cx="12"
-                              cy="12"
-                              r="8"
-                              fill="currentColor"
-                            ></circle>
-                          </g>
-                        </svg>
-                        <div className="ml-2 rtl:ml-0 rtl:mr-2">
-                          <span className="text-gray-600">Cost</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center" x-data="{ open: false }">
-                      <div x-data="{ open: false }">
-                        <span
-                          className="flex items-center h5 cursor-pointer text-gray-600 dark:text-blue-300"
-                          onClick={() => console.log("open =!open")}
-                        >
-                          This Week
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            // x-bind:style="open ? 'transform:  rotate(180deg)' : ''"
-                            className="w-5 h-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                        <div
-                          className="absolute dark:bg-dark-bg dark:border-dark-bg z-50 py-2 text-base right-4 rtl:right-0 rtl:left-4 text-left text-gray-600 bg-white border rounded shadow-md bg-clip-padding"
-                          onClick={() => console.log("open=false")}
-                          x-show="open"
-                        >
-                          <a
-                            className="block clear-both w-full px-4 py-1 font-normal whitespace-nowrap hover:text-blue-500 focus:text-white focus:bg-blue-500"
-                            href="javascript:void(0);"
-                          >
-                            This Week
-                          </a>
-                          <a
-                            className="block clear-both w-full px-4 py-1 font-normal whitespace-nowrap hover:text-blue-500 focus:text-white focus:bg-blue-500"
-                            href="javascript:void(0);"
-                          >
-                            This Month
-                          </a>
-                          <a
-                            className="block clear-both w-full px-4 py-1 font-normal whitespace-nowrap hover:text-blue-500 focus:text-white focus:bg-blue-500"
-                            href="javascript:void(0);"
-                          >
-                            This Year
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6 pt-0">
-                  <div id="d-main"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Chart />
     </section>
   );
 };

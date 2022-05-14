@@ -12,6 +12,7 @@ interface SliderProps {
   size?: string;
   text?: string;
   price?: string;
+  Icon?: any;
 }
 
 const Slider: FC<SliderProps> = ({
@@ -22,6 +23,7 @@ const Slider: FC<SliderProps> = ({
   strokeDashoffset,
   text,
   price,
+  Icon,
 }) => {
   return (
     <div className="relative flex flex-col overflow-hidden bg-white rounded-lg shadow-lg dark:bg-dark-card">
@@ -35,7 +37,7 @@ const Slider: FC<SliderProps> = ({
               strokeDasharray={strokeDasharray}
               strokeDashoffset={strokeDashoffset}
             />
-            <ArrowRightUp />
+            <Icon />
           </div>
           <div className="ml-6 rtl:ml-0 rtl:mr-6 ">
             <p className="mb-2 text-gray-600 dark:text-gray-600">{text}</p>
@@ -55,6 +57,7 @@ const Slider: FC<SliderProps> = ({
 Slider.defaultProps = {
   text: "Total Sales",
   price: "560K",
+  Icon: ArrowRightUp,
 };
 
 export default Slider;

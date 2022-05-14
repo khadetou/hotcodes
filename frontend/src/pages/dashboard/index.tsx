@@ -1,13 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import { Users } from "@/icons/index";
 import Sidebar from "@/screens/dashboard/sidebar";
 import DashboardScreen from "@/screens/dashboard";
 
 const Dashboard = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <>
-      <DashboardScreen />
-    </>
+    <section className="h-screen">
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    </section>
   );
 };
 
