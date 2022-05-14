@@ -56,7 +56,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
     }
   }, [sidebarExpanded]);
 
-  console.log(sidebarOpen);
+  console.log(sidebarExpanded);
 
   return (
     <section className="h-screen">
@@ -71,7 +71,9 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:!translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-white shadow-md p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:!translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar ${
+          sidebarExpanded ? "lg:!w-20" : "w-64"
+        } w-64 lg:sidebar-expanded:!w-64 shrink-0 bg-white shadow-md p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? "!translate-x-0" : "!-translate-x-64 lg:trasnlate-x-0"
         }`}
       >
@@ -169,9 +171,12 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
                     >
                       <div className="flex items-center">
                         <Icon size={24} />
-                        <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                          {title}
-                        </span>
+
+                        {!sidebarExpanded && (
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            {title}
+                          </span>
+                        )}
                       </div>
                     </button>
                   </Link>
@@ -181,12 +186,14 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
         </div>
 
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        <div className="pt-3 hidden lg:inline-flex  justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
               <svg
-                className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
+                className={`w-6 h-6 fill-current ${
+                  sidebarExpanded && "rotate-180"
+                }`}
                 viewBox="0 0 24 24"
               >
                 <path
