@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 interface SidebarLinkGroupProps {
   activecondition?: boolean;
@@ -17,7 +16,6 @@ const SidebarLinkGroup: FC<SidebarLinkGroupProps> = ({
   setSidebarExpanded,
   list,
 }) => {
-  const { pathname } = useRouter();
   const [open, setOpen] = useState(activecondition);
 
   const handleClick = () => {
@@ -67,7 +65,16 @@ const SidebarLinkGroup: FC<SidebarLinkGroupProps> = ({
             </span>
           </div>
           {/* Icon */}
-          <div className="flex shrink-0 ml-2">{list.icon}</div>
+          <div className="flex shrink-0 ml-2">
+            <svg
+              className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
+                open && "transform rotate-180"
+              }`}
+              viewBox="0 0 12 12"
+            >
+              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+            </svg>
+          </div>
         </div>
       </a>
       <div className="lg:hidden  lg:sidebar-expanded:block 2xl:block">

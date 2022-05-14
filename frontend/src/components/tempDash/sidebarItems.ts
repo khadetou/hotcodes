@@ -1,7 +1,15 @@
-// import Ecommerce as EcoIcon from "@/icons/ecommerce";
+import {
+  BlogIcon,
+  DashboardIcon,
+  MessageIcon,
+  OrderIcon,
+  UserIcon,
+  Users,
+} from "@/icons/index";
+
 export const Ecommerce = {
   title: "E-commerce",
-  Icon: "",
+  Icon: "EcommerceIcon",
   list: [
     {
       title: " Customers",
@@ -43,7 +51,7 @@ export const Ecommerce = {
 };
 export const Team = {
   title: "Team",
-  Icon: "",
+  Icon: "TeamIcon",
   list: [
     {
       title: " Team - Tabs",
@@ -61,7 +69,7 @@ export const Team = {
 };
 export const Settings = {
   title: "Settings",
-  Icon: "",
+  Icon: "SettingsIcon",
   list: [
     {
       title: "  My Account",
@@ -91,7 +99,7 @@ export const Settings = {
 };
 export const Utility = {
   title: "Utility",
-  Icon: "",
+  Icon: "UtilityIcon",
   list: [
     {
       title: "Changlog",
@@ -115,3 +123,42 @@ export const Utility = {
     },
   ],
 };
+
+export const SidebarItems = [
+  {
+    title: "Dashboard",
+    pathName: "dashboard",
+    link: "/dashboard",
+    Icon: DashboardIcon,
+  },
+  {
+    title: "Blog",
+    pathName: "blog",
+    link: "/dashboard/blog",
+    Icon: BlogIcon,
+  },
+  {
+    title: "Orders",
+    pathName: "orders",
+    link: "/dashboard/orders",
+    Icon: OrderIcon,
+  },
+  {
+    title: "Users",
+    pathName: "users",
+    link: "/dashboard/users",
+    Icon: Users,
+  },
+  {
+    title: "Profile",
+    pathName: "profile",
+    link: "/dashboard/profile",
+    Icon: UserIcon,
+  },
+  {
+    title: "Messages",
+    pathName: "messages",
+    link: "/dashboard/message",
+    Icon: MessageIcon,
+  },
+];

@@ -1,12 +1,16 @@
 import React, { FC } from "react";
 
-interface UsersIconProps {
+interface DashboardIconIconProps {
   className?: string;
   size?: number | string;
   title?: string;
 }
 
-const Users: FC<UsersIconProps> = ({ className, size, title }) => {
+const DashboardIcon: FC<DashboardIconIconProps> = ({
+  className,
+  size,
+  title,
+}) => {
   return (
     <svg
       width={size}
@@ -31,10 +35,10 @@ const Users: FC<UsersIconProps> = ({ className, size, title }) => {
   );
 };
 
-Users.defaultProps = {
+DashboardIcon.defaultProps = {
   className: "",
   size: "2rem",
   title: "",
 };
 
-export default Users;
+export default DashboardIcon;
