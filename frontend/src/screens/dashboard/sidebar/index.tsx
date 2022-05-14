@@ -12,14 +12,8 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
-  let storedSidebarExpanded: any;
-  storedSidebarExpanded =
-    typeof window !== "undefined"
-      ? localStorage.getItem("sidebar-expanded")
-      : "";
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
-  );
+
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
   // close on click outside
   useEffect(() => {
@@ -46,17 +40,6 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
-
-  useEffect(() => {
-    localStorage.setItem("sidebar-expanded", JSON.stringify(sidebarExpanded));
-    if (sidebarExpanded) {
-      document.querySelector("body")!.classList.add("sidebar-expanded");
-    } else {
-      document.querySelector("body")!.classList.remove("sidebar-expanded");
-    }
-  }, [sidebarExpanded]);
-
-  console.log(sidebarExpanded);
 
   return (
     <section className="h-screen">
@@ -192,7 +175,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
               <span className="sr-only">Expand / collapse sidebar</span>
               <svg
                 className={`w-6 h-6 fill-current ${
-                  sidebarExpanded && "rotate-180"
+                  !sidebarExpanded && "rotate-180"
                 }`}
                 viewBox="0 0 24 24"
               >
