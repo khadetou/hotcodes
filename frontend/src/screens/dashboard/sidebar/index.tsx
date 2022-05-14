@@ -58,7 +58,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
   }, [sidebarExpanded]);
 
   return (
-    <section>
+    <section className="h-screen">
       <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -151,7 +151,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
             <ul className="mt-3">
               {SidebarItems.map(({ link, title, Icon, pathName }) => (
                 <li
-                  className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 group hover:bg-pink-transparent cursor-pointer ${
+                  className={`px-3 py-2 rounded-md mb-0.5 last:mb-0 group hover:bg-pink-transparent cursor-pointer ${
                     pathname.includes(pathName) &&
                     "bg-dark-pink hover:!bg-dark-pink"
                   }`}
@@ -165,7 +165,7 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
                       type="button"
                     >
                       <div className="flex items-center">
-                        <Icon />
+                        <Icon size={24} />
                         <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                           {title}
                         </span>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext, FC } from "react";
+import React, { useRef, useEffect, useContext, FC, Children } from "react";
 import { CSSTransition as ReactCSSTransition } from "react-transition-group";
 
 type ParentType = {
@@ -38,7 +38,7 @@ interface CSSTransitionProps {
   unmountOnExit?: boolean;
   tag?: any;
   children?: any;
-  rest?: any;
+  [x: string]: any;
 }
 const CSSTransition: FC<CSSTransitionProps> = ({
   show,
@@ -119,7 +119,7 @@ const CSSTransition: FC<CSSTransitionProps> = ({
 interface TransitionProps {
   show: boolean;
   appear?: boolean;
-  rest: any;
+  [x: string]: any;
 }
 const Transition: FC<TransitionProps> = ({ show, appear, ...rest }) => {
   const { parent } = useContext(TransitionContext);
