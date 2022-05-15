@@ -158,7 +158,7 @@ export const SidebarItems = [
   {
     title: "Messages",
     pathName: "messages",
-    link: "/dashboard/message",
+    link: "/dashboard/messages",
     Icon: MessageIcon,
   },
 ];

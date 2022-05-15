@@ -1,10 +1,13 @@
-import Users from "@/components/dashboard/users";
-import React, { useState } from "react";
-import Header from "../header";
-import Sidebar from "../sidebar";
-import WelcomeBanner from "../WelcomeBanner";
+import { useState } from "react";
 
-const UsersScreens = () => {
+import Sidebar from "@/screens/dashboard/sidebar";
+
+import Header from "@/screens/dashboard/header";
+
+import WelcomeBanner from "../WelcomeBanner";
+import ProfileForm from "@/components/dashboard/profileForm/ProfileForm";
+
+const ProfileScreen = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -17,7 +20,7 @@ const UsersScreens = () => {
             <WelcomeBanner />
             <div className="sm:flex sm:justify-between sm:items-center mb-8"></div>
             <div className="grid grid-cols-1 gap-6">
-              <Users />
+              <ProfileForm />
             </div>
           </div>
         </main>
@@ -26,4 +29,4 @@ const UsersScreens = () => {
   );
 };
 
-export default UsersScreens;
+export default ProfileScreen;

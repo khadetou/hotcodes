@@ -1,10 +1,10 @@
-import Users from "@/components/dashboard/users";
+import Messages from "@/components/dashboard/messages";
 import React, { useState } from "react";
 import Header from "../header";
 import Sidebar from "../sidebar";
 import WelcomeBanner from "../WelcomeBanner";
 
-const UsersScreens = () => {
+const MessagesScreen = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ const UsersScreens = () => {
             <WelcomeBanner />
             <div className="sm:flex sm:justify-between sm:items-center mb-8"></div>
             <div className="grid grid-cols-1 gap-6">
-              <Users />
+              <Messages />
             </div>
           </div>
         </main>
@@ -26,4 +26,4 @@ const UsersScreens = () => {
   );
 };
 
-export default UsersScreens;
+export default MessagesScreen;
