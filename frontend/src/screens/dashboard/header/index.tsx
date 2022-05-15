@@ -2,6 +2,7 @@ import Help from "@/components/dashboard/header/Help";
 import Notifications from "@/components/dashboard/header/Notification";
 import SearchModal from "@/components/dashboard/header/SearchModal";
 import UserMenu from "@/components/dashboard/header/UserMenue";
+import Lang from "@/components/dashboard/Lang";
 import { FC, useState } from "react";
 
 interface HeaderProps {
@@ -65,6 +66,7 @@ const Header: FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                 />
               </svg>
             </button>
+            {/* <Lang /> */}
             <SearchModal
               id="search-modal"
               searchId="search"
