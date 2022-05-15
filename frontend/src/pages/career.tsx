@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import CarreerScreen from "@/screens/Carreer";
 import React from "react";
@@ -11,6 +12,7 @@ const career = () => {
         buttonClassName="bg-grad-text-2 text-white "
       />
       <CarreerScreen />
+      <Footer />
     </>
   );
 };

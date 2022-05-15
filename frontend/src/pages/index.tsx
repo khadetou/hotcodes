@@ -13,6 +13,7 @@ import Presentation from "screens/landing/presentation";
 import Process from "screens/landing/process";
 import Contact from "@/components/Contact";
 import Header from "@/components/header";
+import Footer from "@/components/footer/Footer";
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 interface IProps {
@@ -37,6 +38,7 @@ const Home: NextPage<IProps> = ({ token }) => {
       <Presentation />
       <Process />
       <Contact />
+      <Footer />
     </>
   );
 };

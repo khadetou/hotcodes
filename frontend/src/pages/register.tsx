@@ -8,6 +8,7 @@ import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
 import RegisterScreen from "@/screens/register";
 import Header from "@/components/header";
+import Footer from "@/components/footer/Footer";
 
 const Register: NextPage = () => {
   const router = useRouter();
@@ -52,6 +53,7 @@ const Register: NextPage = () => {
     <>
       <Header />
       <RegisterScreen />
+      <Footer />
     </>
   );
 };

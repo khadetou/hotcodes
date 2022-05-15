@@ -12,7 +12,6 @@ const Layout: FC<LayoutProp> = ({ children, isOpen, setIsOpen }) => {
   return (
     <>
       <main>{children}</main>
-      <Footer />
     </>
   );
 };

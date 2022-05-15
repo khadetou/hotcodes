@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import CategoryScreen from "@/screens/blogs/CategoryScreen";
 import Banner from "@/screens/blogs/Index";
@@ -13,6 +14,7 @@ const Category = () => {
       />
       <Banner />
       <CategoryScreen />
+      <Footer />
     </div>
   );
 };

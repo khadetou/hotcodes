@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import Article from "@/screens/blogs/Article";
 import React from "react";
@@ -11,6 +12,7 @@ const SingleBlog = () => {
         buttonClassName="bg-grad-text-2 text-white "
       />
       <Article />
+      <Footer />
     </div>
   );
 };

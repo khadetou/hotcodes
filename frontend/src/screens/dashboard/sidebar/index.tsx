@@ -140,14 +140,14 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
                 <li
                   key={idx}
                   className={`px-3 py-2 rounded-md mb-0.5 last:mb-0 group hover:bg-pink-transparent cursor-pointer ${
-                    pathname.includes(pathName) &&
+                    pathname.endsWith(pathName) &&
                     "bg-dark-pink hover:!bg-dark-pink"
                   }`}
                 >
                   <Link href={link}>
                     <button
                       className={`block text-gray group-hover:text-dark-pink truncate transition duration-150  ${
-                        pathname.includes(pathName) &&
+                        pathname.endsWith(pathName) &&
                         "hover:!text-white !text-white"
                       }`}
                       type="button"

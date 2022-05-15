@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import Banner from "@/screens/web/Banner";
 import Presentation from "@/screens/web/presentation";
@@ -17,6 +18,7 @@ const OrderWeb: NextPage = () => {
       <Banner />
       <Presentation />
       <Form title="What are we building" Action={CreateOrderWeb} />
+      <Footer />
     </>
   );
 };

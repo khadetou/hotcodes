@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import Cards from "@/screens/blogs/Cards";
 import Banner from "@/screens/blogs/Index";
@@ -13,6 +14,7 @@ const Blog = () => {
       />
       <Banner />
       <Cards />
+      <Footer />
     </>
   );
 };

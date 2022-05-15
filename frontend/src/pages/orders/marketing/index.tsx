@@ -5,6 +5,7 @@ import { useActions } from "@/hooks/useActions";
 import Header from "@/components/header";
 import Presentation from "@/screens/marketing/presentation";
 import Cards from "@/screens/marketing/Cards";
+import Footer from "@/components/footer/Footer";
 
 const Marketing = () => {
   const { CreateOrderWeb } = useActions();
@@ -19,6 +20,7 @@ const Marketing = () => {
       <Presentation />
       <Cards />
       <Form title="What are we Selling" Action={CreateOrderWeb} />
+      <Footer />
     </>
   );
 };

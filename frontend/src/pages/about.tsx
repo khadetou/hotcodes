@@ -1,4 +1,5 @@
 import Contact from "@/components/Contact";
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import Banner from "@/screens/about/Banner";
 import Presentation from "@/screens/about/presentation";
@@ -13,6 +14,7 @@ const About = () => {
       <Presentation />
       <Team />
       <Contact />
+      <Footer />
     </>
   );
 };

@@ -8,6 +8,7 @@ import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
 import LoginScreen from "@/screens/login";
 import Header from "@/components/header";
+import Footer from "@/components/footer/Footer";
 
 const Login: NextPage = () => {
   const { SetSuccess, LoadUser } = useActions();
@@ -34,6 +35,7 @@ const Login: NextPage = () => {
     <>
       <Header />
       <LoginScreen />
+      <Footer />
     </>
   );
 };
