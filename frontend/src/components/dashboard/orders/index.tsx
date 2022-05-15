@@ -106,7 +106,7 @@ const Orders = () => {
                   <div className="pl-6">
                     <label>
                       Show
-                      <select className="inline-block outline-none mx-2 w-14 py-1 pl-4 pr-0 text-sm border bg-white rounded-lg">
+                      <select className="inline-block outline-none mx-2 !w-20 py-1 pl-4 pr-0 text-sm border bg-white rounded-lg">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -144,13 +144,18 @@ const Orders = () => {
                   </thead>
 
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <tr className="border-b border-light-gray">
-                      {TableBody.map(({ title }, index) => (
-                        <td key={index} className="px-6 py-4 whitespace-nowrap">
-                          {title}
-                        </td>
-                      ))}
-                    </tr>
+                    {Array.from({ length: 3 }).map((item, index) => (
+                      <tr className="border-b border-light-gray">
+                        {TableBody.map(({ title }, index) => (
+                          <td
+                            key={index}
+                            className="px-6 py-4 whitespace-nowrap"
+                          >
+                            {title}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
