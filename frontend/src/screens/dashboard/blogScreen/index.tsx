@@ -1,5 +1,5 @@
 import Buttons from "@/components/dashboard/blog/Buttons";
-import Cards from "@/components/dashboard/blog/cards";
+import Cards from "@/components/dashboard/blog/Cards";
 import React, { useState } from "react";
 import Header from "../header";
 import Sidebar from "../sidebar";
