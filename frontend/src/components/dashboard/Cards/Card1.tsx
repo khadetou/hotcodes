@@ -45,15 +45,13 @@ function DashboardCard01() {
           154, 273, 191, 191, 126, 263, 349, 252, 423, 622, 470, 532,
         ],
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(
-          tailwindConfig().theme.colors.blue[500]
-        )}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `rgba(234, 0, 125, 0.1)`,
+        borderColor: "#ff0080",
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: "#ff0080",
         clip: 20,
       },
       // Gray line
@@ -62,12 +60,12 @@ function DashboardCard01() {
           532, 532, 532, 404, 404, 314, 314, 314, 314, 314, 234, 314, 234, 234,
           314, 314, 314, 388, 314, 202, 202, 202, 202, 314, 720, 642,
         ],
-        borderColor: tailwindConfig().theme.colors.slate[300],
+        borderColor: "rgba(121, 40, 202, 0.3)",
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.slate[300],
+        pointBackgroundColor: "rgba(121, 40, 202, 0.3)",
         clip: 20,
       },
     ],
@@ -86,7 +84,7 @@ function DashboardCard01() {
                 className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
                 href="#0"
               >
-                Option 1
+                Fund this project
               </a>
             </li>
             <li>
@@ -94,7 +92,7 @@ function DashboardCard01() {
                 className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
                 href="#0"
               >
-                Option 2
+                Donate to this project
               </a>
             </li>
             <li>
@@ -102,14 +100,16 @@ function DashboardCard01() {
                 className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3"
                 href="#0"
               >
-                Remove
+                Share this project
               </a>
             </li>
           </EditMenu>
         </header>
-        <h2 className="text-lg font-semibold text-slate-800 mb-2">Acme Plus</h2>
+        <h2 className="text-lg font-semibold text-slate-800 mb-2">
+          MarketPlace
+        </h2>
         <div className="text-xs font-semibold text-slate-400 uppercase mb-1">
-          Sales
+          Amount Raised
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">$24,780</div>

@@ -84,7 +84,7 @@ function Card3() {
                 className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
                 href="#0"
               >
-                Option 1
+                Fund this project
               </a>
             </li>
             <li>
@@ -92,7 +92,7 @@ function Card3() {
                 className="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3"
                 href="#0"
               >
-                Option 2
+                Donate to this project
               </a>
             </li>
             <li>
@@ -100,16 +100,16 @@ function Card3() {
                 className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3"
                 href="#0"
               >
-                Remove
+                Share this project
               </a>
             </li>
           </EditMenu>
         </header>
         <h2 className="text-lg font-semibold text-slate-800 mb-2">
-          Acme Professional
+          Wedding Planner
         </h2>
         <div className="text-xs font-semibold text-slate-400 uppercase mb-1">
-          Sales
+          Amount Raised
         </div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 mr-2">$9,962</div>

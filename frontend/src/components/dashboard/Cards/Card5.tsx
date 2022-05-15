@@ -74,15 +74,13 @@ function Card5() {
       {
         data: slicedData,
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(
-          tailwindConfig().theme.colors.blue[500]
-        )}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `rgba(234, 0, 125, 0.1)`,
+        borderColor: "#ff0080",
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: "#ff0080",
         clip: 20,
       },
     ],

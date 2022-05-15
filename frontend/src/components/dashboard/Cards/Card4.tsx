@@ -19,8 +19,8 @@ function Card4() {
       {
         label: "Direct",
         data: [800, 1600, 900, 1300, 1950, 1700],
-        backgroundColor: tailwindConfig().theme.colors.blue[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
+        backgroundColor: "#ff0080",
+        hoverBackgroundColor: "#ff0080",
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
@@ -28,8 +28,8 @@ function Card4() {
       {
         label: "Indirect",
         data: [4900, 2600, 5350, 4800, 5200, 4800],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+        backgroundColor: "#7928ca",
+        hoverBackgroundColor: "#7928ca",
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },

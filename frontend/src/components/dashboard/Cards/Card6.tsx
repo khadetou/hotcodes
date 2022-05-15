@@ -6,7 +6,7 @@ import DoughnutChart from "../charts/DoughnutChart";
 
 function Card6() {
   const chartData = {
-    labels: ["United States", "Italy", "Other"],
+    labels: ["Senegal", "France", "Other"],
     datasets: [
       {
         label: "Top Countries",
