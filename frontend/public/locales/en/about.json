@@ -14,7 +14,12 @@
         "mission":{
             "h1":"Our. mission",
             "p":"Currently, hotcodes identifies as a service company and also a cradle of IT startups, our goal is to create unicorns while attracting the largest number of investors in Senegal."
+        },
+        "vision":{
+            "h1":"Our. vision",
+            "p":"Our vision is to initiate the digital and industrial revolution in Senegal. Participate in the creation of industrial companies for the production and transformation of mechanical and digital parts, the creation of software, automated systems and robotics."
         }
+
     }
     
 }
