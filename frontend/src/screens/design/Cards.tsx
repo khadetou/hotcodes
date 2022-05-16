@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import photofeel from "/public/images/design/photography.png";
 import illustration from "/public/images/design/illustration.png";
 import minimalistic from "/public/images/design/minimalistic.png";
 import crypto from "/public/images/design/crypto.png";
-import photowire from "/public/images/design/photowire.png";
+
 import Title from "@/components/Title/title";
 import DesignCards from "@/components/Bigcards/Design";
 import Modal from "react-modal";
@@ -35,8 +35,6 @@ const customStyles = {
     padding: "20px",
   },
 };
-
-Modal.setAppElement("#modals");
 
 type Style = {
   color: string;
@@ -108,6 +106,10 @@ const Cards = () => {
   function openSubModal() {
     setSubIsOpen(true);
   }
+
+  useEffect(() => {
+    Modal.setAppElement("#modals");
+  }, []);
 
   return (
     <>

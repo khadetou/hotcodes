@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Image1 from "/public/images/display/image1.png";
 import Modal from "react-modal";
 import Image from "next/image";
@@ -28,7 +28,6 @@ const customStyles: any = {
   },
 };
 
-Modal.setAppElement("#modals");
 interface SubModalProps {
   modalIsOpen: boolean;
   afterOpenModal?: () => void;
@@ -46,6 +45,10 @@ const SubModal: FC<SubModalProps> = ({ modalIsOpen, setIsOpen, openModal }) => {
     document.body.parentElement!.style.overflow = "auto";
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    Modal.setAppElement("#modals");
+  }, []);
   return (
     <div className={modalIsOpen ? "h-screen w-screen overflow-hidden" : ""}>
       <Modal
