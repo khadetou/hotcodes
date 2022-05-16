@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
 import { FaPlay } from "react-icons/fa";
-import Button from "@/components/button/Button";
 import { useRouter } from "next/router";
 
 interface FieldProps {
@@ -67,11 +66,9 @@ const Field: FC<FieldProps> = ({
         <p className="text-dark text-base font-medium text-[14px] lg:text-[18px] md:text-xl xl:text-xl mb-[10px] leading-[26px] xxs:mb-[1rem] lg:mb-8">
           {paragraph}
         </p>
-        <Button
-          outline={false}
-          value={button}
-          className="text-lg py-[13px] px-[50px] font-bold text-dark-pink border-dark-pink mb-[1rem] md:mb-[14px]"
-        />
+        <button className="text-lg w-full max-w-[249px] h-[48px] font-bold text-dark-pink border-2 rounded-md border-dark-pink mb-[1rem] md:mb-[14px] hover:bg-dark-pink hover:text-white transition-all ease-in-out duration-500">
+          {button}
+        </button>
       </div>
     </div>
   );
