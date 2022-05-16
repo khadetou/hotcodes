@@ -14,17 +14,7 @@ interface FieldProps {
   flip?: string;
 }
 
-const Field: FC<FieldProps> = ({
-  src,
-  title,
-  paragraph,
-  h1,
-  style,
-
-  button,
-
-  flip,
-}) => {
+const Field: FC<FieldProps> = ({ src, title, paragraph, h1, style, flip }) => {
   const { locale } = useRouter();
   const styles =
     locale === "en"

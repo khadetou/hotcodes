@@ -62,5 +62,16 @@
         "p": "À la fin, vous obtiendrez votre application Web, application mobile ou application de bureau comme vous le souhaitez. Et nous pourrions aller jusqu’à le maintenir pour vous."
       }
     }
-  }
+  },
+  "contact":{
+    "h1": "Nous Contacter",
+    "form": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "phone": "Numéro de téléphone",
+      "email": "Email",
+      "message": "Message",
+      "button": "Envoyer"
+    }
+}
 }

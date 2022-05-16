@@ -1,12 +1,14 @@
 import Title from "@/components/Title/title";
+import { useTranslation } from "next-i18next";
 import React from "react";
 import Card from "./Cards";
 
 const Team = () => {
+  const { t } = useTranslation("about");
   return (
     <div className="containers">
       <Title
-        title="LEADING TEAM"
+        title={t("team.h1")}
         className="bg-grad-text-2 !mt-0 bg-clip-text text-transparent"
       />
 

@@ -20,6 +20,10 @@
             "p":"Our vision is to initiate the digital and industrial revolution in Senegal. Participate in the creation of industrial companies for the production and transformation of mechanical and digital parts, the creation of software, automated systems and robotics."
         }
 
+    },
+    "team":{
+        "h1":"Our Leading Team",
+        "job":"Developer"
     }
     
 }

@@ -17,5 +17,9 @@
             "h1":"Notre. Vision",
             "p":"Notre vision est de d'initier la révolution numérique et industrielle au Sénégal. Participer à la création d'entreprises industrielles pour la production et la transformation de pièces mécaniques et digitales, la création de logiciels, de systèmes automatisés et robotiques."
         }
+    },
+    "team":{
+        "h1":"Notre Equipe",
+        "job":"Développeur"
     }
 }

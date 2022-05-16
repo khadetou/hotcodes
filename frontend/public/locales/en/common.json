@@ -62,5 +62,17 @@
         "p": "At the end you’ll get your web app, mobile app, or desktop app as you desired it. And we might go as far as maintain it for you."
       }
     }
+  },
+  "contact":{
+    "h1": "Contact Us",
+    "form": {
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "message": "Message",
+      "button": "Send"
+    }
   }
+  
 }
