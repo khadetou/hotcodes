@@ -4,6 +4,8 @@ import Header from "@/components/header";
 import Banner from "@/screens/about/Banner";
 import Presentation from "@/screens/about/presentation";
 import Team from "@/screens/about/team";
+import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 
 const About = () => {
@@ -20,3 +22,12 @@ const About = () => {
 };
 
 export default About;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { locale } = context;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, ["services", "header"])),
+    },
+  };
+};
