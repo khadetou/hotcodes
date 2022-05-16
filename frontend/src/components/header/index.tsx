@@ -101,7 +101,7 @@ const Header: FC<HeaderProps> = ({
             ))}
           </nav>
           <div className="flex  items-center">
-            <Lang path="/" />
+            <Lang path={pathname} />
             <div className="lg:flex  hidden items-center">
               <Link href="/login">
                 <button className="mx-[15px] sm:mx-[30px] lg:mx-0">

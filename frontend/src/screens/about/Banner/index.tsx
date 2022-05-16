@@ -1,8 +1,9 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 const Banner = () => {
-  const { t } = useTranslation("services");
+  const { t } = useTranslation("about");
   const split = t("banner.h1").split(".");
+  console.log(split);
   return (
     <div className="relative h-screen w-full">
       <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.6)]"></div>
