@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import MobileDrawer from "./drawer/mobile-drawer";
 import Lang from "./lang/Lang";
 import { useTranslation } from "next-i18next";
@@ -15,6 +16,11 @@ interface HeaderProps {
   buttonClassName?: string;
 }
 
+interface IconProps {
+  className?: string;
+  size?: number | string;
+}
+
 const Header: FC<HeaderProps> = ({
   className,
   bgClassName,
@@ -24,7 +30,11 @@ const Header: FC<HeaderProps> = ({
   const menues = [
     { title: t("home"), path: "/" },
     { title: t("about"), path: "/about" },
-    { title: t("services"), path: "/services", className: "relative group" },
+    {
+      title: t("services"),
+      path: "/services",
+      className: "relative group",
+    },
     { title: t("work"), path: "/work" },
     { title: t("products"), path: "/products" },
     { title: t("career"), path: "/career" },
@@ -47,12 +57,18 @@ const Header: FC<HeaderProps> = ({
             {menues.map(({ title, path, className }, key) => (
               <Link key={key} href={path}>
                 <button
-                  className={`block  px-1 mx-1 my-1 py-3 xl:px-1  xl:py-3 xl:text-xl relative  font-Inter font-normal leading-none text-[0.95rem]  before:contente-[""] before:w-0  hover:before:w-full before:h-[3px] before:transition-all before:left-0 before:bg-white before:absolute before:bottom-1 lg:text-base hover:text-gray-500 before:duration-500 ease-linear ${className} ${
+                  className={`flex px-1 mx-1 my-1 py-3 xl:px-1  xl:py-3 xl:text-xl relative group  font-Inter font-normal leading-none text-[0.95rem]  before:contente-[""] before:w-0  hover:before:w-full before:h-[3px] before:transition-all before:left-0 before:bg-white before:absolute before:bottom-1 lg:text-base hover:text-gray-500 before:duration-500 ease-linear ${className} ${
                     pathname.endsWith(path) && "before:!bg-white before:!w-full"
                   }`}
                   type="button"
                 >
                   {title}
+                  {title.toLocaleLowerCase() === "services" && (
+                    <RiArrowDropDownLine
+                      size="27"
+                      className="group-hover:rotate-180 transition-all ease-in-out duration-300"
+                    />
+                  )}
                   {title.toLocaleLowerCase() === "services" && (
                     <div className="absolute !w-[245px] rounded-md top-7  bg-white transition-transform ease-linear duration-300 shadow-shadow-sm  text-dark   invisible translate-x-3 translate-y-12 opacity-0  group-hover:visible group-hover:opacity-100 group-hover:translate-y-[21px] group-hover:translate-x-0">
                       <Link href="/orders/design">

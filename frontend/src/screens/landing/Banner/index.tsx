@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-
-import Button from "@/components/button/Button";
+import Link from "next/link";
 import sideImage from "/public/images/sideimage.png";
 import Circular from "@/components/button/circular";
-import * as fs from "fs";
 
 const Banner = () => {
   const { t } = useTranslation("common");
@@ -20,13 +18,15 @@ const Banner = () => {
             {t("banner.p")}
           </p>
           <div className="flex md:mt-6">
-            <button className="bg-white max-h-[50px] text-dark text-sm py-2 px-4 sm:text-base sm:px-10 sm:py-[11px] font-bold rounded-full shadow-btn">
-              Start Now
-            </button>
+            <Link href="/services">
+              <button className="bg-white hover:scale-105 transition-all ease-linear duration-150 max-h-[50px] text-dark text-sm py-2 px-4 sm:text-base sm:px-10 sm:py-[11px] font-bold rounded-md shadow-btn">
+                {t("banner.button")}
+              </button>
+            </Link>
             <div className="md:ml-6  xxs:ml-[13px] ml-[7px]">
               <Circular className="rounded-full p-[12px] xxs:p-[11px] bg-white text-primary shadow-btn lg:p-4" />
               <span className="text-white xxs:text-[14px] md:text-base xs:text-[14px] font-normal ml-[5px] text-[10px] lg:text-lg lg:font-semibold uppercase">
-                Watch the video
+                {t("banner.video")}
               </span>
             </div>
           </div>
