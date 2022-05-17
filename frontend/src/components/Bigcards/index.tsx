@@ -1,12 +1,21 @@
 import React, { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 interface BigcardsProps {
   title: string;
   toptitle: string;
   subtitle: string;
   image: string;
+  link: string;
 }
-const Bigcards: FC<BigcardsProps> = ({ title, toptitle, subtitle, image }) => {
+const Bigcards: FC<BigcardsProps> = ({
+  title,
+  toptitle,
+  subtitle,
+  image,
+  link,
+}) => {
   return (
     <div className="max-w-[633px] max-h-[853px] lg:h-[853px]  rounded-[35px] shadow-shadow-sm flex flex-col items-center p-[20px] xxs:p-[34px]">
       <div className="text-center">
@@ -19,10 +28,14 @@ const Bigcards: FC<BigcardsProps> = ({ title, toptitle, subtitle, image }) => {
         </h1>
         <p className="text-xl mt-[10px]">{subtitle}</p>
         <div className="flex justify-around mt-[25px]  items-center ">
-          <button className="font-bold text-sm rounded-full bg-grad-text-2 text-white px-[20px] py-[8px]">
-            Start now
+          <Link href={link}>
+            <button className="font-bold text-sm rounded-full max-w-[131px] h-[40px] w-full bg-grad-btn text-white">
+              Start now
+            </button>
+          </Link>
+          <button className="font-bold text-base text-dark-pink hover:border-b-2 hover:border-dark-pink ">
+            Learn more
           </button>
-          <button className="font-bold text-base text-dark ">Learn more</button>
         </div>
       </div>
       <div className="mt-[59px]">

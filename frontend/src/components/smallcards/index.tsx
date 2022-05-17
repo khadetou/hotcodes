@@ -28,11 +28,12 @@ const SmallCards: FC<SmallCardsProps> = ({
         <h2 className="text-[29px] xxs:text-[40px] font-medium text-center text-transparent bg-clip-text bg-grad-text-2">
           {title}
         </h2>
-        <p className="text-center text-[14px] xxs:text-[16px] mt-2">{p}</p>
+        <p className="text-center text-dark font-medium text-[12px] xxs:text-[14px] mt-2">
+          {p}
+        </p>
         {link && (
-          <Link href="target">
+          <Link href="/">
             <a className="mt-2 text-dark-pink flex items-center underline">
-              {" "}
               {link}
               <span>
                 <IoChevronForwardOutline />

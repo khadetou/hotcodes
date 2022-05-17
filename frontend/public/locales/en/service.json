@@ -3,5 +3,42 @@
         "h1":"Providing Best. Digital Services",
         "p":"Hotcodes provide the best services for your business and allow it to grow faster.",
         "btn":"Learn More"
+    },
+    "serviceList":{
+        "design":{
+            "title":"Design",
+            "topTitle":"Ui/Ux",
+            "subTitle":"Get the best ui/ux design experience."
+        },
+        "marketing":{
+            "title":"Marketing",
+            "topTitle":"Digital",
+            "subTitle":"Get the best digital marketing experience."
+        },
+        "web":{
+            "title":"Development",
+            "topTitle":"Web",
+            "subTitle":"Get the best web development experience."
+        },
+        "mobile":{
+            "title":"Development",
+            "topTitle":"Mobile",
+            "subTitle":"Get the best mobile development experience."
+        },
+        "title":{
+            "design":{
+                "h1":"Design tools", 
+                "p":"We use the best tools in order to deliver the best quality"
+            }
+        },
+        "tools":{
+            "design":{
+                "illustrator":"Adobe Illustrator is a vector graphics editor and design program.",
+                "xd":"Adobe XD is a vector-based user experience design tool for web apps and mobile apps.",
+                "framer":"Framer is primarily a design and prototyping tool.",
+                "figma":"Figma is a free and open-source software tool for creating and sharing digital design and illustration files.",
+                "photoshop":"Adobe Photoshop is a raster graphics editor developed and marketed by Adobe Systems Incorporated."
+            }
+        }
     }
 }

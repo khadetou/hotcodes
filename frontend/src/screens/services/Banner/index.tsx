@@ -16,7 +16,7 @@ const Banner = () => {
       />
       <div className="absolute w-full h-full top-0 flex flex-col justify-center items-center text-white ">
         <div className="containers">
-          <div className="max-w-[623px]">
+          <div className="max-w-[901px]">
             <h1 className=" text-[60px] md:text-[81px] leading-[1.2] font-semibold ">
               <span className="font-thin">{split[0]}</span> {split[1]}
             </h1>

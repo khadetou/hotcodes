@@ -3,5 +3,42 @@
         "h1":"Nous fournissons les meilleurs. services numériques",
         "p":"Les hotcodes fournissent les meilleurs services pour votre entreprise et lui permettent de croître plus rapidement",
         "btn":"En savoir plus"
+    },
+    "serviceList": {
+        "design":{
+            "title":"Design",
+            "topTitle":"Ui/Ux",
+            "subTitle":"Obtenez la meilleure expérience de conception ui/ux.."
+        },
+        "marketing":{
+            "title":" Digital",
+            "topTitle":"Marketing",
+            "subTitle":"Obtenez la meilleure expérience de marketing numérique."
+        },
+        "web":{
+            "title":"Development",
+            "topTitle":"Web",
+            "subTitle":"Obtenez la meilleure expérience de développement web."
+        },
+        "mobile":{
+            "title":"Development",
+            "topTitle":"Mobile",
+            "subTitle":"Obtenez la meilleure expérience de développement mobile."
+        },
+        "title":{
+            "design":{
+                "h1":"Outils de conception", 
+                "p":"Nous utilisons les meilleurs outils pour offrir la meilleure qualité."
+            }
+        },
+        "tools":{
+            "design":{
+                "illustrator":"Adobe Illustrator est un éditeur de graphiques vectoriels et un programme de conception développé et commercialisé par Adobe Inc",
+                "xd":"Adobe XD est un logiciel de conception et de prototypage développé par Adobe et commercialisé par Adobe Inc",
+                "framer":"Framer est un logiciel de prototypage développé par Framer et commercialisé par Framer",
+                "figma":"Figma est un logiciel libre et open-source pour créer et partager des fichiers numériques de conception et d’illustration",
+                "photoshop":"Photoshop est un logiciel de traitement d'image et de graphiques vectoriels développé par Adobe et commercialisé par Adobe Inc"
+            }
+        }
     }
 }
