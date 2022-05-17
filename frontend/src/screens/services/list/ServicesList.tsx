@@ -148,6 +148,7 @@ const ServicesList = () => {
         <div className="flex  flex-wrap">
           {animations.map(({ title, image }, index) => (
             <SmallCards
+              key={index}
               p="Figma is a flexible tool that allows to build incredible design"
               src={image}
               title={title}
