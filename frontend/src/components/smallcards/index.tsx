@@ -33,12 +33,12 @@ const SmallCards: FC<SmallCardsProps> = ({
         </p>
         {link && (
           <Link href="/">
-            <a className="mt-2 text-dark-pink flex items-center underline">
+            <button className="mt-2 text-dark-pink hover:border-b hover:border-dark-pink flex items-center ">
               {link}
               <span>
                 <IoChevronForwardOutline />
               </span>
-            </a>
+            </button>
           </Link>
         )}
       </div>

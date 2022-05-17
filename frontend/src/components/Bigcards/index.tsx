@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 interface BigcardsProps {
   title: string;
@@ -16,6 +17,7 @@ const Bigcards: FC<BigcardsProps> = ({
   image,
   link,
 }) => {
+  const { t } = useTranslation("service");
   return (
     <div className="max-w-[633px] max-h-[853px] lg:h-[853px]  rounded-[35px] shadow-shadow-sm flex flex-col items-center p-[20px] xxs:p-[34px]">
       <div className="text-center">
@@ -30,11 +32,11 @@ const Bigcards: FC<BigcardsProps> = ({
         <div className="flex justify-around mt-[25px]  items-center ">
           <Link href={link}>
             <button className="font-bold text-sm rounded-full max-w-[131px] h-[40px] w-full bg-grad-btn text-white">
-              Start now
+              {t("banner.button")}
             </button>
           </Link>
           <button className="font-bold text-base text-dark-pink hover:border-b-2 hover:border-dark-pink ">
-            Learn more
+            {t("banner.btn")}
           </button>
         </div>
       </div>

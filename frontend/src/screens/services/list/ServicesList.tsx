@@ -5,6 +5,15 @@ import marketing from "/public/images/services/marketing.svg";
 import web from "/public/images/services/web.svg";
 import mobile from "/public/images/services/mobile.svg";
 import React from "react";
+import reactjs from "/public/images/tools/reactjs.svg";
+import angular from "/public/images/tools/angular.svg";
+import nextjs from "/public/images/tools/nextjs.svg";
+import vuejs from "/public/images/tools/vuejs.svg";
+import javascript from "/public/images/tools/javascript.svg";
+import html from "/public/images/tools/html.svg";
+import css from "/public/images/tools/css.svg";
+import tailwind from "/public/images/tools/tailwind.svg";
+
 import Image from "next/image";
 import ai from "/public/images/tools/ai.svg";
 import xd from "/public/images/tools/xd.svg";
@@ -13,11 +22,25 @@ import figma from "/public/images/tools/figma.svg";
 import photoshop from "/public/images/tools/photoshop.svg";
 import Titlebold from "@/components/Title/titlebold";
 import Subtitle from "@/components/Title/subtitle";
-import { animations } from "@/components/images/design";
-import frontend from "@/components/images/frontend";
-import backend from "@/components/images/backend";
-import mobileDev from "@/components/images/mobile";
-import hybrid from "@/components/images/hybrid";
+
+import ae from "/public/images/tools/ae.svg";
+import premierepro from "/public/images/tools/premierepro.svg";
+import blender from "/public/images/tools/blender.svg";
+
+import laravel from "/public/images/tools/laravel.svg";
+import php from "/public/images/tools/php.svg";
+import nodejs from "/public/images/tools/nodejs.svg";
+import mongodb from "/public/images/tools/mongodb.svg";
+import mysql from "/public/images/tools/mysql.svg";
+import postgres from "/public/images/tools/postgres.svg";
+import nestjs from "/public/images/tools/nestjs.svg";
+
+import apple from "/public/images/tools/apple.svg";
+import android from "/public/images/tools/android.svg";
+
+import pwa from "/public/images/tools/pwa.svg";
+import flutter from "/public/images/tools/flutter.svg";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import SmallCards from "@/components/smallcards";
@@ -27,6 +50,74 @@ import { useTranslation } from "next-i18next";
 
 const ServicesList = () => {
   const { t } = useTranslation("service");
+  const hybrid = [
+    {
+      title: "PWA",
+      image: pwa,
+      desc: t("serviceList.tools.hybrid.pwa"),
+    },
+    {
+      title: "ReactJS",
+      image: reactjs,
+      desc: t("serviceList.tools.hybrid.reactnative"),
+    },
+    {
+      title: "Flutter",
+      image: flutter,
+      desc: t("serviceList.tools.hybrid.flutter"),
+    },
+  ];
+
+  const mobileDev = [
+    {
+      title: "Apple",
+      image: apple,
+      desc: t("serviceList.tools.mobiledev.xcode"),
+    },
+    {
+      title: "Android",
+      image: android,
+      desc: t("serviceList.tools.mobiledev.androidstudio"),
+    },
+  ];
+
+  const backend = [
+    {
+      title: "Laravel",
+      image: laravel,
+      desc: t("serviceList.tools.backend.laravel"),
+    },
+    {
+      title: "PHP",
+      image: php,
+      desc: t("serviceList.tools.backend.php"),
+    },
+    {
+      title: "NodeJS",
+      image: nodejs,
+      desc: t("serviceList.tools.backend.nodejs"),
+    },
+    {
+      title: "MongoDB",
+      image: mongodb,
+      desc: t("serviceList.tools.backend.mongodb"),
+    },
+    {
+      title: "MySQL",
+      image: mysql,
+      desc: t("serviceList.tools.backend.mysql"),
+    },
+    {
+      title: "PostgreSQL",
+      image: postgres,
+      desc: t("serviceList.tools.backend.postgres"),
+    },
+    {
+      title: "NestJS",
+      image: nestjs,
+      desc: t("serviceList.tools.backend.nestjs"),
+    },
+  ];
 
   const services = [
     {
@@ -83,6 +174,68 @@ const ServicesList = () => {
       title: "Photoshop",
       image: photoshop,
       desc: t("serviceList.tools.design.photoshop"),
+    },
+  ];
+
+  const frontend = [
+    {
+      title: "ReactJS",
+      image: reactjs,
+      desc: t("serviceList.tools.frontend.react"),
+    },
+    {
+      title: "Angular",
+      image: angular,
+      desc: t("serviceList.tools.frontend.angular"),
+    },
+    {
+      title: "NextJS",
+      image: nextjs,
+      desc: t("serviceList.tools.frontend.nextjs"),
+    },
+    {
+      title: "VueJS",
+      image: vuejs,
+      desc: t("serviceList.tools.frontend.vue"),
+    },
+    {
+      title: "JavaScript",
+      image: javascript,
+      desc: t("serviceList.tools.frontend.javascript"),
+    },
+    {
+      title: "HTML",
+      image: html,
+      desc: t("serviceList.tools.frontend.html"),
+    },
+    {
+      title: "CSS",
+      image: css,
+      desc: t("serviceList.tools.frontend.css"),
+    },
+    {
+      title: "TailwindCSS",
+      image: tailwind,
+      desc: t("serviceList.tools.frontend.tailwind"),
+    },
+  ];
+
+  const animations = [
+    {
+      title: "AE",
+      image: ae,
+      desc: t("serviceList.tools.animation.ae"),
+    },
+
+    {
+      title: "Blender",
+      image: blender,
+      desc: t("serviceList.tools.animation.blender"),
+    },
+    {
+      title: "PP",
+      image: premierepro,
+      desc: t("serviceList.tools.animation.premiere"),
     },
   ];
 
@@ -153,7 +306,7 @@ const ServicesList = () => {
               src={image}
               title={title}
               className="mb-[30px]"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           </SwiperSlide>
         ))}
@@ -186,22 +339,22 @@ const ServicesList = () => {
           </div>
         </div>
         <div className="flex  flex-wrap">
-          {animations.map(({ title, image }, index) => (
+          {animations.map(({ title, image, desc }, index) => (
             <SmallCards
               key={index}
-              p="Figma is a flexible tool that allows to build incredible design"
+              p={desc}
               src={image}
               title={title}
               className="mb-[30px]"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           ))}
         </div>
         <Titlebold
-          title="Web Development"
+          title={t("serviceList.title.web.h1")}
           className=" leading-[88px] md:-mb-3"
           pclassName="md:mt-[22px]"
-          p=" We use the best tools in order to deliver quality"
+          p={t("serviceList.title.web.p")}
         />
         <Subtitle sub1="Frontend" sub2="tools" className="md:mt-4" />
       </div>
@@ -225,14 +378,14 @@ const ServicesList = () => {
           },
         }}
       >
-        {frontend.map(({ title, image }, index) => (
+        {frontend.map(({ title, image, desc }, index) => (
           <SwiperSlide key={index}>
             <SmallCards
-              p="Figma is a flexible tool that allows to build incredible design"
+              p={desc}
               src={image}
               title={title}
               className="mb-[30px]"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           </SwiperSlide>
         ))}
@@ -260,14 +413,14 @@ const ServicesList = () => {
           },
         }}
       >
-        {backend.map(({ title, image }, index) => (
+        {backend.map(({ title, image, desc }, index) => (
           <SwiperSlide key={index}>
             <SmallCards
-              p="Figma is a flexible tool that allows to build incredible design"
+              p={desc}
               src={image}
               title={title}
               className="mb-[30px]"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           </SwiperSlide>
         ))}
@@ -275,34 +428,34 @@ const ServicesList = () => {
 
       <div className="containers flex flex-col items-center justify-center">
         <Titlebold
-          title="Mobile Development"
+          title={t("serviceList.title.mobile.h1")}
           className=" leading-[88px] md:-mb-3"
           pclassName="md:mt-[22px]"
-          p=" We use the best tools in order to deliver quality"
+          p={t("serviceList.title.mobile.p")}
         />
         <Subtitle sub1="Native" sub2="Apps" className="md:mt-4" />
         <div className="flex flex-wrap">
-          {mobileDev.map(({ title, image }, index) => (
+          {mobileDev.map(({ title, image, desc }, index) => (
             <SmallCards
               key={index}
-              p="Figma is a flexible tool that allows to build incredible design"
+              p={desc}
               src={image}
               title={title}
               className="mb-[30px] mr-5"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           ))}
         </div>
         <Subtitle sub1="Hybrid" sub2="Apps" className="md:mt-4" />
         <div className="flex flex-wrap">
-          {hybrid.map(({ title, image }, index) => (
+          {hybrid.map(({ title, image, desc }, index) => (
             <SmallCards
               key={index}
-              p="Figma is a flexible tool that allows to build incredible design"
+              p={desc}
               src={image}
               title={title}
               className="mb-[30px] mr-5"
-              link="Learn more"
+              link={t("banner.btn")}
             />
           ))}
         </div>
