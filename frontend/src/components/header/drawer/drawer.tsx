@@ -1,5 +1,8 @@
 import { FC, Fragment } from "react";
 import RcDrawer from "rc-drawer";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "/public/images/hotcodes-dark.svg";
 import { IPlacement } from "rc-drawer/lib/IDrawerPropTypes";
 
 interface DrawerProps {
@@ -49,9 +52,11 @@ const Drawer: FC<DrawerProps> = ({
             <div onClick={toggleHandler} className={closeBtnStyle}>
               {closeButton}
             </div>
-            <div className="text-black flex items-center justify-center top-[25px] left-[30px] absolute z-10 cursor-pointer">
-              Logo
-            </div>
+            <Link href="/">
+              <button className="w-[95px] text-white xl:w-[115px] flex items-center justify-center top-[25px] left-[30px] absolute z-10 cursor-pointer">
+                <Image src={Logo} />
+              </button>
+            </Link>
           </>
         )}
         <div className={drawerStyle}>{children}</div>

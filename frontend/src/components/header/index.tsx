@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({
       <div className={`w-full bg-header h-11 flex items-center ${bgClassName}`}>
         <div className="flex justify-between  items-center containers">
           <Link href="/">
-            <button className="w-[95px] flex items-center xl:w-[115px]">
+            <button className="w-[95px] flex items-center text-white xl:w-[115px]">
               <Image src={Logo} />
             </button>
           </Link>
