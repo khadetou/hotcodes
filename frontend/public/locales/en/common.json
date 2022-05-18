@@ -73,6 +73,33 @@
       "message": "Message",
       "button": "Send"
     }
+  },
+  "Form":{
+    "title1":"What are we building ?",
+    "form1":{
+      "plateform":{
+        "list1":"website",
+        "list2":"web app",
+        "list3":"pwa"
+      },
+      "type":{
+        "list1":"E-commerce",
+        "list2":"Blog",
+        "list3":"Portfolio",
+        "list4":"E-Learning",
+        "list5":"Infoproneur website",
+        "list6":"Webportal website",
+        "list7":"Other",
+        "placeholder1":"Select a plateform",
+        "placeholder2":"Type of app",
+        "placeholder3":"Enter the Type of App",
+        "placeholder4":"Enter the Type app name",
+        "placeholder5":"Enter your app description"
+      }
+    },
+    "title2":"What is the goal ?"
   }
+
+  
   
 }
