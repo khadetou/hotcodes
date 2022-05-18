@@ -226,7 +226,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               value={formData.typeofapp}
               label="Enter the Type of App"
               onChange={onChange}
-              labelClassName="mb-[30px] lg:mb-[inherit]"
+              labelClassName="mb-[30px]"
             />
 
             <Input
@@ -235,6 +235,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               value={formData.appName}
               label="Enter the App name"
               onChange={onChange}
+              labelClassName="mb-[30px]"
             />
           </div>
 
