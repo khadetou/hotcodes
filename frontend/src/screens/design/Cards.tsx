@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import Modals from "@/components/Modal/Modal";
 import { FiEdit3 } from "react-icons/fi";
 import SubModal from "@/components/Modal/SubModal";
+import { useTranslation } from "next-i18next";
 
 const customStyles = {
   overlay: {
@@ -44,29 +45,31 @@ interface Subtitle {
 }
 
 const Cards = () => {
+  const { t } = useTranslation("design");
+
   const moodboard = [
     {
-      title: "Photography look and feel",
-      toptitle: "Photo,graphy",
-      text: "For $2000 get it with the website",
+      title: t("cards.photo.h1"),
+      toptitle: t("cards.photo.topTitle"),
+      text: t("cards.photo.p"),
       image: photofeel,
     },
     {
-      title: "Illustration look and feel",
-      toptitle: "Illus,tration",
-      text: "For $2000 get it with the website",
+      title: t("cards.illustration.h1"),
+      toptitle: t("cards.illustration.topTitle"),
+      text: t("cards.illustration.p"),
       image: illustration,
     },
     {
-      title: "Minimalistic look and feel",
-      toptitle: "Minimalistic ,and clean",
-      text: "For $2000 get it with the website",
+      title: t("cards.minim.h1"),
+      toptitle: t("cards.minim.topTitle"),
+      text: t("cards.minim.p"),
       image: minimalistic,
     },
     {
-      title: "Cryptocurrency look and feel",
-      toptitle: "Crypto,currency",
-      text: "For $2000 get it with the website",
+      title: t("cards.crypto.h1"),
+      toptitle: t("cards.crypto.topTitle"),
+      text: t("cards.crypto.p"),
       image: crypto,
     },
   ];
