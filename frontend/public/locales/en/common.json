@@ -97,9 +97,39 @@
         "placeholder5":"Enter your app description"
       }
     },
-    "title2":"What is the goal ?"
+   
+    "Goal":{
+      "title":"What is the goal ?",
+      "goal1":"Get people to sign in for early access",
+      "goal2":"Show benefit of using the platform",
+      "goal3":"A place for more information and contact...",
+      "goal4":"Other",
+      "placeholder":"Enter the goal"
+    },
+    "target":{
+      "title":"What is the target audience ?",
+      "target1":"Remote teams",
+      "target2":"Individuals",
+      "target3":"Public Services",
+      "target4":"Startups, small businesses",
+      "target5":"Other"
+    },
+    "functionnality":{
+      "title":"Add specific functionnalities ?",
+      "functionnality1":"Blog",
+      "functionnality2":"News-Letter",
+      "functionnality3":"Form-submission"
+    },
+    "button1":"Save",
+    "button2":"DOWNLOAD INVOICE",
+    "title2":"You already have a design share it with us",
+    "upload":{
+      "title":"Upload files",
+      "p":"Designs must be figma or sketch or adobe xd orpdf format, Heigh resolutionimage.",
+      "button":"Upload"
+    },
+    "link":"Include a figma link to your project",
+    "button":"submit"
+    }
   }
 
-  
-  
-}
