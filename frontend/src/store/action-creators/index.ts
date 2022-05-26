@@ -41,9 +41,9 @@ export const LoadUser = () => {
 
 //LOAD USER WITH SSR
 export const LoadUserSsr = (token: string) => {
-  if (typeof localStorage !== "undefined" && localStorage.token) {
+  
     setAuthToken("localStorage.token");
-  }
+  
   return async (dispatch: Dispatch<Action>) => {
     const config = {
       headers: {
