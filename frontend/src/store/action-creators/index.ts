@@ -20,9 +20,7 @@ interface Login {
 
 //Load user with localeStorage
 export const LoadUser = () => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
+  setAuthToken(localStorage.token);
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.get("http://localhost:5000/auth/user");

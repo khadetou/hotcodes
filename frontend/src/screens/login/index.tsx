@@ -42,7 +42,6 @@ const LoginScreen = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     LoginUser(formData);
   };
 

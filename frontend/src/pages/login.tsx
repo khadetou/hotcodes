@@ -18,6 +18,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     LoadUser();
+
     if (success) {
       SetSuccess(false);
     }

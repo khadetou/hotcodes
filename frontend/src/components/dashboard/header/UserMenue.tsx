@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, FC } from "react";
 import Transition from "@/utils/Transition";
-import Image from "next/image";
-import Avatar from "/public/images/avatar/avatar.jpg";
+import { useActions } from "@/hooks/useActions";
 
 interface UserMenuProp {
   user?: any;
@@ -10,6 +9,7 @@ interface UserMenuProp {
 
 const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { LogoutUser } = useActions();
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
@@ -89,7 +89,7 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
             <div className="font-medium text-slate-800">{user.firstName}</div>
             <div className="text-xs text-slate-500 italic">
-              {user.roles.includes("admin") ? "Administrator" : "User"}
+              {user && user.roles.includes("admin") ? "Administrator" : "User"}
             </div>
           </div>
           <ul>
@@ -106,7 +106,10 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
               <button
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                 type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  LogoutUser();
+                }}
               >
                 Sign Out
               </button>
