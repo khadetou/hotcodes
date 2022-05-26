@@ -111,11 +111,11 @@
   },
   "target":{
     "title":"Quel est le public cible? ?",
-    "target1":"Remote teams",
-    "target2":"Individuals",
-    "target3":"Public Services",
-    "target4":"Startups, small businesses",
-    "target5":"Other",
+    "target1":"Equipes à distance",
+    "target2":"Particuliers",
+    "target3":"Services publics",
+    "target4":"Entreprises en démarrage, petites entreprises",
+    "target5":"Autre",
     "placeholder":"Entrez le public cible"
   },
   "functionnality":{

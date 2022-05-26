@@ -7,17 +7,19 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import Logo from "/public/images/hotcodes-dark.svg";
+import { useTranslation } from "next-i18next";
 const Footer = () => {
+  const { t } = useTranslation("footer");
   const footer = [
     {
-      title: "About",
+      title: t("about.title"),
       links: [
         {
-          text: "Our Team",
+          text: t("about.about1"),
           link: "/about",
         },
         {
-          text: "Products",
+          text: t("about.about2"),
           link: "/products",
         },
         {
@@ -27,18 +29,18 @@ const Footer = () => {
       ],
     },
     {
-      title: "Company",
+      title: t("company.title"),
       links: [
         {
-          text: "Parteners",
+          text: t("company.company1"),
           link: "/parteners",
         },
         {
-          text: "Careers",
+          text: t("company.company2"),
           link: "/careers",
         },
         {
-          text: "Contact Us",
+          text: t("company.company3"),
           link: "/contact",
         },
       ],
@@ -94,8 +96,7 @@ const Footer = () => {
               <Image src={Logo} />
             </div>
             <p className="max-w-[290px] mb-[37px] mt-[26px] text-lg font-normal leading-[1.2] text-gray">
-              We use multi-mic and echo cancellation technology so that everyone
-              can use device.
+              {t("first")}
             </p>
             <div className="flex justify-between">
               {footerLogos.map(({ title, image }, idx) => (
