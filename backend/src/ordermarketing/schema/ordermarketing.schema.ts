@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { User } from 'src/auth/schema/user.schema';
 
@@ -19,9 +19,12 @@ export class OrderMarketing {
   @Prop({ type: String })
   status: string;
   @Prop({ type: [String] })
-  MoyenVentes: [string];
+  moyenVentes: [string];
   @Prop({ type: String })
   problemeVente: string;
   @Prop({ type: String })
   nombreProduits: string;
 }
+
+export const OrderMarketingSchema =
+  SchemaFactory.createForClass(OrderMarketing);
