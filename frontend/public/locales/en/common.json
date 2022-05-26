@@ -86,15 +86,17 @@
         "list1":"E-commerce",
         "list2":"Blog",
         "list3":"Portfolio",
-        "list4":"E-Learning",
-        "list5":"Infoproneur website",
-        "list6":"Webportal website",
-        "list7":"Other",
+        "list4":"Entertainment website",
+        "list5":"E-Learning",
+        "list6":"Infoproneur website",
+        "list7":"Webportal website",
+        "list8":"Other",
         "placeholder1":"Select a plateform",
         "placeholder2":"Type of app",
         "placeholder3":"Enter the Type of App",
         "placeholder4":"Enter the Type app name",
-        "placeholder5":"Enter your app description"
+        "placeholder5":"Enter your app description",
+        "placeholder6":"Select a goal"
       }
     },
    
@@ -107,18 +109,21 @@
       "placeholder":"Enter the goal"
     },
     "target":{
-      "title":"What is the target audience ?",
+      "title":"Who is the target audience ?",
       "target1":"Remote teams",
       "target2":"Individuals",
       "target3":"Public Services",
       "target4":"Startups, small businesses",
-      "target5":"Other"
+      "target5":"Other",
+      "placeholder":"Enter the target audience"
     },
     "functionnality":{
       "title":"Add specific functionnalities ?",
       "functionnality1":"Blog",
       "functionnality2":"News-Letter",
-      "functionnality3":"Form-submission"
+      "functionnality3":"Form-submission",
+      "placeholder":"Enter the functionnality"
+
     },
     "button1":"Save",
     "button2":"DOWNLOAD INVOICE",

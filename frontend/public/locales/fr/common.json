@@ -86,15 +86,18 @@
       "list1":"E-commerce",
       "list2":"Blog",
       "list3":"Portfolio",
-      "list4":"E-Learning",
-      "list5":"Infoproneur website",
-      "list6":"Site Web du portail Web",
-      "list7":"Autre",
+      "list4":"Site de divertissement",
+      "list5":"E-Learning",
+      "list6":"Infoproneur website",
+      "list7":"Site Web du portail Web",
+      "list8":"Autre",
       "placeholder1":"Choisir une plateforme",
       "placeholder2":"type d'application",
       "placeholder3":"Entrer le type d’application",
       "placeholder4":"Entrez le nom de l’application Type.",
-      "placeholder5":"Entrez la description de votre application"
+      "placeholder5":"Entrez la description de votre application",
+      "placeholder6":"Choisir un objectif"
+
     }
   },
  
@@ -112,13 +115,15 @@
     "target2":"Individuals",
     "target3":"Public Services",
     "target4":"Startups, small businesses",
-    "target5":"Other"
+    "target5":"Other",
+    "placeholder":"Entrez le public cible"
   },
   "functionnality":{
-    "title":"Add specific functionnalities ?",
+    "title":"Ajouter des fonctionnalités spécifiques ?",
     "functionnality1":"Blog",
     "functionnality2":"News-Letter",
-    "functionnality3":"Soumission du formulaire"
+    "functionnality3":"Soumission du formulaire",
+    "placeholder":"Saisir la fonctionnalité"
   },
   "button1":"Sauver",
   "button2":"TÉLÉCHARGER LA FACTURE",
