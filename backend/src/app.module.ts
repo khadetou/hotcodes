@@ -10,6 +10,7 @@ import { OrderdesignModule } from './orderdesign/orderdesign.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/roles/roles.guard';
+import { OrdermarketingModule } from './ordermarketing/ordermarketing.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { RolesGuard } from './auth/roles/roles.guard';
     OrderwebModule,
     OrdermobileModule,
     OrderdesignModule,
+    OrdermarketingModule,
   ],
 })
 export class AppModule {}
