@@ -87,8 +87,10 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">Acme Inc.</div>
-            <div className="text-xs text-slate-500 italic">Administrator</div>
+            <div className="font-medium text-slate-800">{user.firstName}</div>
+            <div className="text-xs text-slate-500 italic">
+              {user.roles.includes("admin") ? "Administrator" : "User"}
+            </div>
           </div>
           <ul>
             <li>
