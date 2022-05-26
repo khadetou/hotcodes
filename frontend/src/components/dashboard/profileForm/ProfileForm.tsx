@@ -1,6 +1,13 @@
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 import React from "react";
 
 const ProfileForm = () => {
+  const { user } = useTypedSelector((state) => state.authReducer);
+  //GET THE FIRST LETTER OF EACH NAME
+  const getInitials = (name: string) => {
+    const names = name.split(" ");
+    return names.map((n) => n[0]).join("");
+  };
   return (
     <div className="flex flex-wrap">
       <div className="flex-auto w-full lg:w-1/4 lg:pr-4">
@@ -8,7 +15,7 @@ const ProfileForm = () => {
           <div className="flex justify-between flex-auto p-6 pb-0">
             <div className="header-title">
               <h4 className="text-2xl font-medium text-dark">
-                Khadetou Dianifabe
+                {user && `${user.firstName} ${user.lastName}`}
               </h4>
             </div>
           </div>
@@ -17,7 +24,12 @@ const ProfileForm = () => {
               <div className="mb-4">
                 <div className="relative">
                   <div className="w-24 flex items-center justify-center h-24 rounded-full bg-blue-700">
-                    <h1 className="text-base font-bold text-white">KD</h1>
+                    <h1 className="text-base font-bold text-white">
+                      {user &&
+                        `${getInitials(user!.firstName)}${getInitials(
+                          user!.lastName
+                        )}`}
+                    </h1>
                   </div>
 
                   <div className="image-upload absolute cursor-pointer top-auto w-8 h-8 text-center bg-dark-pink border-2 focus:ring-0-4 border-white focus:ring-0-white rounded-full left-16 -bottom-2">
@@ -44,7 +56,10 @@ const ProfileForm = () => {
                 </div>
                 <div className="mt-4 ">
                   <div className="items-center inline-block">
-                    <span>Only</span>
+                    {user && user.roles.includes("admin")
+                      ? "Administrator"
+                      : "User"}
+                    {/* <span>Only</span>
                     <a
                       href="javascript:void();"
                       className="text-blue-400 hover:text-dark-pink"
@@ -62,21 +77,21 @@ const ProfileForm = () => {
                       className="text-blue-400 hover:text-dark-pink"
                     >
                       .jpeg
-                    </a>
-                    <span>allowed</span>
+                    </a> */}
+                    {/* <span>allowed</span> */}
                   </div>
                 </div>
               </div>
               <div className="mb-4">
                 <p className="text-sm font-normal text-gray">Number Phone</p>
                 <h1 className="text-base font-bold text-dark">
-                  +221 786004564
+                  {user?.phone && user.phone}
                 </h1>
               </div>
               <div className="mb-4">
                 <p className="text-sm font-normal text-gray">Email</p>
                 <h1 className="text-base font-bold text-dark">
-                  khadetou96@gmail.com
+                  {user && user.email}
                 </h1>
               </div>
             </form>

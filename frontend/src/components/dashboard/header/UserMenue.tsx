@@ -97,6 +97,19 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
           </div>
           <ul>
             <li>
+              <Link href="/dashboard/profile">
+                <button
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  type="button"
+                  onClick={() => {
+                    setDropdownOpen(!dropdownOpen);
+                  }}
+                >
+                  Profile
+                </button>
+              </Link>{" "}
+            </li>
+            <li>
               <Link href="/dashboard">
                 <button
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
