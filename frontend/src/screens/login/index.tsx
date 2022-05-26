@@ -42,11 +42,8 @@ const LoginScreen = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      return alert("Passwords don't match");
-    } else {
-      LoginUser(formData);
-    }
+
+    LoginUser(formData);
   };
 
   if (success) {
@@ -162,7 +159,7 @@ const LoginScreen = () => {
               type="submit"
               className="max-w-[312px] w-full h-[49px] rounded-md bg-dark-pink text-white font-bold text-base"
             >
-              Sign up
+              Sign In
             </button>
             <div>
               <Link href="/register">

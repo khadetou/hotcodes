@@ -9,6 +9,8 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Logo from "/public/images/hotcodes.svg";
 import { useRouter } from "next/router";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
+import UserMenu from "../dashboard/header/UserMenue";
 
 interface HeaderProps {
   className?: string;
@@ -27,6 +29,9 @@ const Header: FC<HeaderProps> = ({
   buttonClassName,
 }) => {
   const { t } = useTranslation("header");
+  const { isAuthenticated, user } = useTypedSelector(
+    (state) => state.authReducer
+  );
   const menues = [
     { title: t("home"), path: "/" },
     { title: t("about"), path: "/about" },
@@ -102,32 +107,36 @@ const Header: FC<HeaderProps> = ({
           </nav>
           <div className="flex  items-center">
             <Lang path={pathname} />
-            <div className="lg:flex  hidden items-center">
-              <Link href="/login">
-                <button className="mx-[15px] sm:mx-[30px] lg:mx-0">
-                  <FaUser className="text-white text-[20px] sm:text-[26px]  text-xl block lg:hidden" />
-                </button>
-              </Link>
+            {!isAuthenticated ? (
+              <div className="lg:flex  hidden items-center">
+                <Link href="/login">
+                  <button className="mx-[15px] sm:mx-[30px] lg:mx-0">
+                    <FaUser className="text-white text-[20px] sm:text-[26px]  text-xl block lg:hidden" />
+                  </button>
+                </Link>
 
-              <Link href="/login">
-                <button className="m-0 lg:mx-[30px] ">
-                  <AiOutlineLogin
-                    title="Login"
-                    size="29px"
-                    className="cursor-pointer hidden lg:block"
-                  />
-                </button>
-              </Link>
-              <Link href="/register">
-                <button>
-                  <a
-                    className={`border-2 border-white rounded-md font-medium text-sm mr-2 px-2 xxs:font-bold xxs:text-base xxs:mr-0 xxs:px-10 xxs:py-1 ${buttonClassName}`}
-                  >
-                    {t("signup")}
-                  </a>
-                </button>
-              </Link>
-            </div>
+                <Link href="/login">
+                  <button className="m-0 lg:mx-[30px] ">
+                    <AiOutlineLogin
+                      title="Login"
+                      size="29px"
+                      className="cursor-pointer hidden lg:block"
+                    />
+                  </button>
+                </Link>
+                <Link href="/register">
+                  <button>
+                    <a
+                      className={`border-2 border-white rounded-md font-medium text-sm mr-2 px-2 xxs:font-bold xxs:text-base xxs:mr-0 xxs:px-10 xxs:py-1 ${buttonClassName}`}
+                    >
+                      {t("signup")}
+                    </a>
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <UserMenu user={user} isAuthenticated={isAuthenticated} />
+            )}
             <MobileDrawer />
           </div>
         </div>

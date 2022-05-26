@@ -1,9 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, FC } from "react";
 import Transition from "@/utils/Transition";
 import Image from "next/image";
 import Avatar from "/public/images/avatar/avatar.jpg";
 
-function UserMenu() {
+interface UserMenuProp {
+  user?: any;
+  isAuthenticated?: boolean;
+}
+
+const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
@@ -34,8 +39,14 @@ function UserMenu() {
     return () => document.removeEventListener("keydown", keyHandler);
   });
 
+  //GET THE FIRST LETTER OF EACH NAME
+  const getInitials = (name: string) => {
+    const names = name.split(" ");
+    return names.map((n) => n[0]).join("");
+  };
+
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex lg:ml-8">
       <button
         ref={trigger}
         className="inline-flex justify-center items-center group"
@@ -43,18 +54,14 @@ function UserMenu() {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        <div className="relative w-8 h-8 rounded-full">
-          <Image
-            className="rounded-full"
-            src={Avatar}
-            layout="fill"
-            alt="User"
-          />
+        <div className="relative w-8 h-8 rounded-full flex items-center justify-center bg-dark-pink">
+          {isAuthenticated && user && (
+            <span className="text-white font-bold text-normal">{`${getInitials(
+              user.firstName
+            )}${getInitials(user.lastName)}`}</span>
+          )}
         </div>
-        <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
-            Acme Inc.
-          </span>
+        <div className="flex items-center truncate mr-3">
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
             viewBox="0 0 12 12"
@@ -107,6 +114,6 @@ function UserMenu() {
       </Transition>
     </div>
   );
-}
+};
 
 export default UserMenu;
