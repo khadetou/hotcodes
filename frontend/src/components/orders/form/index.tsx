@@ -34,6 +34,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     goal: "",
     design: "",
     functionnality: "",
+    link: "",
   });
   const [other, setOther] = useState(false);
   const [otherfunc, setOtherfunc] = useState(false);
@@ -72,59 +73,51 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   };
 
   const onCheckboxChange = (e: any) => {
+    let value = e.target.value === "Autre" ? "Other" : e.target.value;
     e.target.checked &&
       e.target.name === "functionnality" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOtherfunc(true);
     !e.target.checked &&
       e.target.name === "functionnality" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOtherfunc(false);
 
     e.target.checked &&
       e.target.name === "target" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOther(true);
     !e.target.checked &&
       e.target.name === "target" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOther(false);
-    if (e.target.checked && e.target.value !== "Other") {
+    if (e.target.checked && value !== "Other") {
       if (formData.functionnality !== "") {
-        formData.functionnality += "," + e.target.value;
+        formData.functionnality += "," + value;
       } else {
-        formData.functionnality = e.target.value;
+        formData.functionnality = value;
       }
     } else if (
       formData.functionnality.indexOf(",") === -1 &&
-      formData.functionnality.includes(e.target.value)
+      formData.functionnality.includes(value)
     ) {
+      formData.functionnality = formData.functionnality.replace(value, "");
+    } else if (formData.functionnality.includes(value) && !e.target.checked) {
       formData.functionnality = formData.functionnality.replace(
-        e.target.value,
+        "," + value,
         ""
       );
-    } else if (
-      formData.functionnality.includes(e.target.value) &&
-      !e.target.checked
-    ) {
-      formData.functionnality = formData.functionnality.replace(
-        "," + e.target.value,
-        ""
-      );
-    } else if (formData.functionnality.includes(e.target.value)) {
+    } else if (formData.functionnality.includes(value)) {
       console.log("It run");
-      formData.functionnality = formData.functionnality.replace(
-        e.target.value,
-        ""
-      );
+      formData.functionnality = formData.functionnality.replace(value, "");
     }
     if (
-      formData.functionnality.includes(e.target.value + ",") &&
+      formData.functionnality.includes(value + ",") &&
       formData.functionnality !== "" &&
-      formData.functionnality.startsWith(e.target.value)
+      formData.functionnality.startsWith(value)
     ) {
       formData.functionnality = formData.functionnality.replace(
-        e.target.value + ",",
+        value + ",",
         ""
       );
     }
@@ -481,11 +474,9 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             <Input
               type="text"
               name="link"
-              value="link"
-              label=""
-              onChange={() => {
-                console.log("display links");
-              }}
+              value={formData.link}
+              label="Place your figma design link"
+              onChange={onChange}
             />
 
             <button

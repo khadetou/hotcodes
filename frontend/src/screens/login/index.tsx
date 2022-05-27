@@ -30,13 +30,6 @@ const LoginScreen = () => {
     (state) => state.authReducer
   );
 
-  useEffect(() => {
-    LoadUser();
-    if (user) {
-      router.push("/");
-    }
-  }, [router, user]);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 

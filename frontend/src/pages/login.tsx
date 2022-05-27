@@ -18,13 +18,12 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     LoadUser();
-
     if (success) {
       SetSuccess(false);
     }
     if (isAuthenticated) {
       if (router.query && router.query.from) {
-        router.push(router.query.from as string);
+        router.push(`${router.query.from}`);
       } else {
         router.push("/");
       }
