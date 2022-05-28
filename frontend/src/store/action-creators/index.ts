@@ -571,7 +571,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/orderdesign",
+        "http://localhost:5000/ordermobile",
         body,
         config
       );
