@@ -4,6 +4,7 @@ import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { getCookie } from "store/action-creators";
+import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
 import LoginScreen from "@/screens/login";
 import Header from "@/components/header";

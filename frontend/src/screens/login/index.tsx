@@ -30,23 +30,13 @@ const LoginScreen = () => {
     (state) => state.authReducer
   );
 
-  useEffect(() => {
-    LoadUser();
-    if (user) {
-      router.push("/");
-    }
-  }, [router, user]);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      return alert("Passwords don't match");
-    } else {
-      LoginUser(formData);
-    }
+
+    LoginUser(formData);
   };
 
   if (success) {
@@ -172,7 +162,7 @@ const LoginScreen = () => {
                 >
                   You don't have an account? <br />
                   <span className="text-dark-pink text-base md:text-2xl">
-                    Sign Up
+                    Sign In
                   </span>
                 </button>
               </Link>
