@@ -41,7 +41,7 @@ const Input: FC<InputProps> = ({
       htmlFor={id}
       className={
         type === "text"
-          ? `${labelClassName} flex max-w-[524px] w-full h-[98px] flex-col`
+          ? `${labelClassName} cursor-pointer flex max-w-[524px] w-full h-[98px] flex-col`
           : "flex flex-col justify-center items-center"
       }
     >
@@ -50,7 +50,7 @@ const Input: FC<InputProps> = ({
           type === "text"
             ? `bg-white ${
                 containerClassName && containerClassName
-              } py-[15px] px-5 w-full max-h-[98px] h-full shadow-shadow-sm max-w-[524px] rounded-[23px]`
+              } py-[15px] px-5 cursor-pointer w-full max-h-[98px] h-full shadow-shadow-sm max-w-[524px] rounded-[23px]`
             : "max-w-[346px] w-full bg-white  py-[13px] px-[20px] shadow-shadow-sm mb-[51px] rounded-[23px]"
         }
       >
@@ -62,7 +62,10 @@ const Input: FC<InputProps> = ({
           }
         >
           {type === "checkbox" ? (
-            <label className="text-dark font-medium text-[18px] ml-2">
+            <label
+              htmlFor={id}
+              className="text-dark cursor-pointer font-medium text-[18px] ml-2"
+            >
               {label}
             </label>
           ) : (

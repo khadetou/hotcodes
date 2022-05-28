@@ -1,7 +1,6 @@
 import { Dispatch, FC } from "react";
 import { useState } from "react";
 import Select from "react-select";
-import { FaCheck } from "react-icons/fa";
 
 type Options = {
   id: string;
@@ -10,8 +9,9 @@ type Options = {
 
 interface SelectProps {
   options: Options[];
-  setSelected: Dispatch<any>;
-  setSelectOther?: (value: boolean) => void;
+  toggle: boolean;
+  setToggle: Dispatch<boolean>;
+  onChangeSelect?: any;
   formData: any;
   selected: string;
   selectedTitle: string;
@@ -20,25 +20,26 @@ interface SelectProps {
 
 const Selects: FC<SelectProps> = ({
   options,
-  setSelected,
+  toggle,
+  setToggle,
   formData,
   selected,
   selectedTitle,
-  setSelectOther,
+  onChangeSelect,
   className,
 }) => {
-  const [toggle, setToggle] = useState<boolean>(false);
-  const onChange = (e: any, selected: string) => {
-    if (typeof setSelectOther === "function") {
-      e.value === "Other" ? setSelectOther!(true) : setSelectOther!(false);
-    }
-    setSelected({
-      ...formData,
-      [selected]: e.value !== "Other" ? e.value : "",
-    });
-    console.log(formData);
-    setToggle(false);
-  };
+  // const [toggle, setToggle] = useState<boolean>(false);
+  // const onChange = (e: any, selected: string) => {
+  //   if (typeof setSelectOther === "function") {
+  //     e.value === "Other" ? setSelectOther!(true) : setSelectOther!(false);
+  //   }
+  //   setSelected({
+  //     ...formData,
+  //     [selected]: e.value !== "Other" ? e.value : "",
+  //   });
+
+  //   setToggle(false);
+  // };
 
   const option: any = [];
 
@@ -181,7 +182,7 @@ const Selects: FC<SelectProps> = ({
             theme={theme}
             styles={styles}
             instanceId="select"
-            onChange={(value: any) => onChange(value, selected)}
+            onChange={(value: any) => onChangeSelect(value, selected)}
             value={formData.selected}
             placeholder={selectedTitle}
             formatOptionLabel={formatOptionLabel}
@@ -189,24 +190,7 @@ const Selects: FC<SelectProps> = ({
             onFocus={() => setToggle(true)}
             onBlur={() => setToggle(false)}
           />
-          {/* {options.map(({ title, id }, idx) => (
-            <div key={idx} className="option">
-              <input
-                type="radio"
-                value={title}
-                className="radio"
-                name={selected}
-                checked={selected === title}
-                // onChange={onChange}
-                id={id}
-              />
-              <label htmlFor={id}>{title}</label>
-            </div>
-          ))} */}
         </div>
-        {/* <div className="selected" onClick={() => setToggle(!toggle)}>
-          {formData[selected] === "" ? selectedTitle : formData[selected]}
-        </div> */}
       </div>
     </div>
   );

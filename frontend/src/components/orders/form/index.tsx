@@ -286,6 +286,20 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     },
   ];
 
+  //OnChangeSelect-----------------------------------------------------
+  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle2, setToggle2] = useState<boolean>(false);
+  const onChangeSelect = (e: any, selected: string) => {
+    e.value === "Other" ? setOtherTypeApp(true) : setOtherTypeApp(false);
+    e.value === "Other" ? setToggle2(true) : setToggle2(false);
+    setFormData({
+      ...formData,
+      [selected]: e.value !== "Other" ? e.value : "",
+    });
+
+    setToggle(false);
+  };
+
   //JSX RETURN-----------------------------------------------------------------
   return (
     <section>
@@ -302,31 +316,36 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               options={plateforms}
               selected="plateform"
               formData={formData}
-              setSelected={setFormData}
+              onChangeSelect={onChangeSelect}
+              toggle={toggle}
+              setToggle={setToggle}
               selectedTitle={t("Form.form1.type.placeholder1")}
               className="mb-[50px] mr-5 lg:mb-[inherit]"
             />
             <Selects
-              setSelectOther={setOtherTypeApp}
+              onChangeSelect={onChangeSelect}
               options={typeApp}
               formData={formData}
               selected="typeapp"
-              setSelected={setFormData}
+              setToggle={setToggle}
+              toggle={toggle}
               selectedTitle={t("Form.form1.type.placeholder2")}
               className="flex justify-end"
             />
           </div>
 
           <div className="flex mb-[47px] justify-between items-center flex-col lg:flex-row">
-            <Input
-              type="text"
-              name="typeapp"
-              id="typeofapp"
-              value={formData.typeofapp}
-              label={t("Form.form1.type.placeholder3")}
-              onChange={onChange}
-              labelClassName="mb-[30px]"
-            />
+            {toggle2 && (
+              <Input
+                type="text"
+                name="typeapp"
+                id="typeofapp"
+                value={formData.typeofapp}
+                label={t("Form.form1.type.placeholder3")}
+                onChange={onChange}
+                labelClassName="mb-[30px]"
+              />
+            )}
 
             <Input
               type="text"
@@ -364,21 +383,24 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
           <div className="flex items-center mt-[62px] mb-[62px] flex-col lg:flex-row">
             <Selects
-              setSelectOther={setOtherGoal}
+              onChangeSelect={onChangeSelect}
               options={goal}
               formData={formData}
-              setSelected={setFormData}
+              setToggle={setToggle}
+              toggle={toggle}
               selected="goal"
               selectedTitle={t("Form.form1.type.placeholder6")}
               className="mb-8 lg:mb-0"
             />
-            <Input
-              type="text"
-              name="goal"
-              label={t("Form.Goal.placeholder")}
-              value={formData.goal}
-              onChange={onChange}
-            />
+            {toggle2 && (
+              <Input
+                type="text"
+                name="goal"
+                label={t("Form.Goal.placeholder")}
+                value={formData.goal}
+                onChange={onChange}
+              />
+            )}
           </div>
 
           <Titlebold title={t("Form.target.title")} />
