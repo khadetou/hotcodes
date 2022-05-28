@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { Action, OrderDesign, OrderWeb, User } from "../actions";
+import { Action, OrderDesign, OrderMobile, OrderWeb, User } from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
@@ -535,6 +535,56 @@ export const CreateOrderDesign = (orderDesign: OrderDesign) => {
       console.log({ error });
       dispatch({
         type: ActionType.CREATE_ORDERDESIGN_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+//CREATE ORDER MOBILE
+export const CreateOrderMobile = (orderMobile: OrderMobile) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const {
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
+    } = orderMobile;
+
+    const body = JSON.stringify({
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/orderdesign",
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.CREATE_ORDERMOBILE_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      console.log({ error });
+      dispatch({
+        type: ActionType.CREATE_ORDERMOBILE_FAILURE,
         error: error.response.data.error,
       });
     }

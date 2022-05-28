@@ -41,7 +41,20 @@ const orderReducer = (
         orderDesign: [...state.orderDesign, action.payload.order],
         loading: false,
       };
+    case ActionType.CREATE_ORDERMOBILE_SUCCESS:
+      return {
+        ...state,
+        orderDesign: [...state.orderMobile, action.payload.order],
+        loading: false,
+      };
     case ActionType.CREATE_ORDERDESIGN_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    case ActionType.CREATE_ORDERMOBILE_FAILURE:
       return {
         ...state,
         error: action.error,

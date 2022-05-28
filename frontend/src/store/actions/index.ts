@@ -54,7 +54,7 @@ export interface OrderMobile {
   typeapp: string;
   appName: string;
   description: string;
-  Goal: string[];
+  goal: string[];
   design: {
     public_id: string;
     url: string;
@@ -183,6 +183,7 @@ interface CreateOrderWebFailureAction {
   type: ActionType.CREATE_ORDERWEB_FAILURE;
   error: string;
 }
+
 interface CreateOrderDesignSuccessAction {
   type: ActionType.CREATE_ORDERDESIGN_SUCCESS;
   payload: {
@@ -192,6 +193,18 @@ interface CreateOrderDesignSuccessAction {
 
 interface CreateOrderDesignFailureAction {
   type: ActionType.CREATE_ORDERDESIGN_FAILURE;
+  error: string;
+}
+
+interface CreateOrderMobileSuccessAction {
+  type: ActionType.CREATE_ORDERMOBILE_SUCCESS;
+  payload: {
+    order: any;
+  };
+}
+
+interface CreateOrderMobileFailureAction {
+  type: ActionType.CREATE_ORDERMOBILE_FAILURE;
   error: string;
 }
 
@@ -219,4 +232,6 @@ export type Action =
   | CreateOrderWebSuccessAction
   | CreateOrderWebFailureAction
   | CreateOrderDesignSuccessAction
-  | CreateOrderDesignFailureAction;
+  | CreateOrderDesignFailureAction
+  | CreateOrderMobileSuccessAction
+  | CreateOrderMobileFailureAction;
