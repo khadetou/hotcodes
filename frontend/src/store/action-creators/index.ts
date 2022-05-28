@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { Action, OrderWeb, User } from "../actions";
+import { Action, OrderDesign, OrderWeb, User } from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
@@ -41,9 +41,8 @@ export const LoadUser = () => {
 
 //LOAD USER WITH SSR
 export const LoadUserSsr = (token: string) => {
-  
-    setAuthToken("localStorage.token");
-  
+  setAuthToken("localStorage.token");
+
   return async (dispatch: Dispatch<Action>) => {
     const config = {
       headers: {
@@ -485,6 +484,57 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
       console.log({ error });
       dispatch({
         type: ActionType.CREATE_ORDERWEB_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+
+//CREATE ORDER DESIGN
+export const CreateOrderDesign = (orderDesign: OrderDesign) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const {
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
+    } = orderDesign;
+
+    const body = JSON.stringify({
+      goal,
+      appName,
+      description,
+      functionnality,
+      platform,
+      typeapp,
+      design,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/orderdesign",
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.CREATE_ORDERDESIGN_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      console.log({ error });
+      dispatch({
+        type: ActionType.CREATE_ORDERDESIGN_FAILURE,
         error: error.response.data.error,
       });
     }

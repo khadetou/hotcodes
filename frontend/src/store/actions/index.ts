@@ -19,7 +19,7 @@ export interface OrderDesign {
   typeapp: string;
   appName: string;
   description: string;
-  Goal: string[];
+  goal: string[];
   target: string;
   mood: string;
   wireframe: string;
@@ -183,6 +183,17 @@ interface CreateOrderWebFailureAction {
   type: ActionType.CREATE_ORDERWEB_FAILURE;
   error: string;
 }
+interface CreateOrderDesignSuccessAction {
+  type: ActionType.CREATE_ORDERDESIGN_SUCCESS;
+  payload: {
+    order: any;
+  };
+}
+
+interface CreateOrderDesignFailureAction {
+  type: ActionType.CREATE_ORDERDESIGN_FAILURE;
+  error: string;
+}
 
 export type Action =
   | RegisterSuccessAction
@@ -206,4 +217,6 @@ export type Action =
   | DeleteUserSuccessAction
   | DeleteUserFailureAction
   | CreateOrderWebSuccessAction
-  | CreateOrderWebFailureAction;
+  | CreateOrderWebFailureAction
+  | CreateOrderDesignSuccessAction
+  | CreateOrderDesignFailureAction;
