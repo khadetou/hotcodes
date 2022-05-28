@@ -1,10 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, FC } from "react";
+import Link from "next/link";
 import Transition from "@/utils/Transition";
-import Image from "next/image";
-import Avatar from "/public/images/avatar/avatar.jpg";
+import { useActions } from "@/hooks/useActions";
 
-function UserMenu() {
+interface UserMenuProp {
+  user?: any;
+  isAuthenticated?: boolean;
+}
+
+const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { LogoutUser } = useActions();
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
@@ -34,8 +40,14 @@ function UserMenu() {
     return () => document.removeEventListener("keydown", keyHandler);
   });
 
+  //GET THE FIRST LETTER OF EACH NAME
+  const getInitials = (name: string) => {
+    const names = name.split(" ");
+    return names.map((n) => n[0]).join("");
+  };
+
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex lg:ml-8">
       <button
         ref={trigger}
         className="inline-flex justify-center items-center group"
@@ -43,18 +55,14 @@ function UserMenu() {
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >
-        <div className="relative w-8 h-8 rounded-full">
-          <Image
-            className="rounded-full"
-            src={Avatar}
-            layout="fill"
-            alt="User"
-          />
+        <div className="relative w-8 h-8 rounded-full flex items-center justify-center bg-dark-pink">
+          {isAuthenticated && user && (
+            <span className="text-white font-bold text-normal">{`${getInitials(
+              user.firstName
+            )}${getInitials(user.lastName)}`}</span>
+          )}
         </div>
-        <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
-            Acme Inc.
-          </span>
+        <div className="flex items-center truncate mr-3">
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
             viewBox="0 0 12 12"
@@ -80,24 +88,48 @@ function UserMenu() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">Acme Inc.</div>
-            <div className="text-xs text-slate-500 italic">Administrator</div>
+            <div className="font-medium text-slate-800">
+              {user && user.firstName}
+            </div>
+            <div className="text-xs text-slate-500 italic">
+              {user && user.roles.includes("admin") ? "Administrator" : "User"}
+            </div>
           </div>
           <ul>
             <li>
-              <button
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Settings
-              </button>
+              <Link href="/dashboard/profile">
+                <button
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  type="button"
+                  onClick={() => {
+                    setDropdownOpen(!dropdownOpen);
+                  }}
+                >
+                  Profile
+                </button>
+              </Link>{" "}
+            </li>
+            <li>
+              <Link href="/dashboard">
+                <button
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  type="button"
+                  onClick={() => {
+                    setDropdownOpen(!dropdownOpen);
+                  }}
+                >
+                  Dashboard
+                </button>
+              </Link>{" "}
             </li>
             <li>
               <button
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                 type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  LogoutUser();
+                }}
               >
                 Sign Out
               </button>
@@ -107,6 +139,6 @@ function UserMenu() {
       </Transition>
     </div>
   );
-}
+};
 
 export default UserMenu;

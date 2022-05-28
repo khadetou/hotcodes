@@ -10,6 +10,7 @@ import Image from "next/image";
 import Logo from "/public/images/hotcodes.svg";
 import { useRouter } from "next/router";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
+import UserMenu from "../dashboard/header/UserMenue";
 
 interface HeaderProps {
   className?: string;
@@ -31,7 +32,6 @@ const Header: FC<HeaderProps> = ({
   const { isAuthenticated, user } = useTypedSelector(
     (state) => state.authReducer
   );
-
   const menues = [
     { title: t("home"), path: "/" },
     { title: t("about"), path: "/about" },
@@ -107,7 +107,7 @@ const Header: FC<HeaderProps> = ({
           </nav>
           <div className="flex  items-center">
             <Lang path={pathname} />
-            {!isAuthenticated && (
+            {!isAuthenticated ? (
               <div className="lg:flex  hidden items-center">
                 <Link href="/login">
                   <button className="mx-[15px] sm:mx-[30px] lg:mx-0">
@@ -134,6 +134,8 @@ const Header: FC<HeaderProps> = ({
                   </button>
                 </Link>
               </div>
+            ) : (
+              <UserMenu user={user} isAuthenticated={isAuthenticated} />
             )}
             <MobileDrawer />
           </div>

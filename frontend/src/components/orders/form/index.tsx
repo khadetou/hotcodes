@@ -1,21 +1,15 @@
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, useTransition } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Selects from "@/components/orders/form/select/select";
 import { HiOutlineDownload } from "react-icons/hi";
 
-import {
-  plateforms,
-  goal,
-  typeApp,
-  targets,
-  checkbox,
-} from "@/components/orders/lists";
 import Input from "./input/input";
 import Upload from "./uploads";
 import Titlebold from "@/components/Title/titlebold";
+import { useTranslation } from "next-i18next";
 
 interface FormProps {
   title: string;
@@ -23,6 +17,7 @@ interface FormProps {
 }
 
 const Form: FC<FormProps> = ({ title, Action }) => {
+  const { t } = useTranslation("common");
   //USE ACTIONS-------------------------------------------
   const { LoadUser } = useActions();
   const { isAuthenticated } = useTypedSelector((state) => state.authReducer);
@@ -39,6 +34,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     goal: "",
     design: "",
     functionnality: "",
+    link: "",
   });
   const [other, setOther] = useState(false);
   const [otherfunc, setOtherfunc] = useState(false);
@@ -77,59 +73,51 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   };
 
   const onCheckboxChange = (e: any) => {
+    let value = e.target.value === "Autre" ? "Other" : e.target.value;
     e.target.checked &&
       e.target.name === "functionnality" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOtherfunc(true);
     !e.target.checked &&
       e.target.name === "functionnality" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOtherfunc(false);
 
     e.target.checked &&
       e.target.name === "target" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOther(true);
     !e.target.checked &&
       e.target.name === "target" &&
-      e.target.value === "Other" &&
+      value === "Other" &&
       setOther(false);
-    if (e.target.checked && e.target.value !== "Other") {
+    if (e.target.checked && value !== "Other") {
       if (formData.functionnality !== "") {
-        formData.functionnality += "," + e.target.value;
+        formData.functionnality += "," + value;
       } else {
-        formData.functionnality = e.target.value;
+        formData.functionnality = value;
       }
     } else if (
       formData.functionnality.indexOf(",") === -1 &&
-      formData.functionnality.includes(e.target.value)
+      formData.functionnality.includes(value)
     ) {
+      formData.functionnality = formData.functionnality.replace(value, "");
+    } else if (formData.functionnality.includes(value) && !e.target.checked) {
       formData.functionnality = formData.functionnality.replace(
-        e.target.value,
+        "," + value,
         ""
       );
-    } else if (
-      formData.functionnality.includes(e.target.value) &&
-      !e.target.checked
-    ) {
-      formData.functionnality = formData.functionnality.replace(
-        "," + e.target.value,
-        ""
-      );
-    } else if (formData.functionnality.includes(e.target.value)) {
+    } else if (formData.functionnality.includes(value)) {
       console.log("It run");
-      formData.functionnality = formData.functionnality.replace(
-        e.target.value,
-        ""
-      );
+      formData.functionnality = formData.functionnality.replace(value, "");
     }
     if (
-      formData.functionnality.includes(e.target.value + ",") &&
+      formData.functionnality.includes(value + ",") &&
       formData.functionnality !== "" &&
-      formData.functionnality.startsWith(e.target.value)
+      formData.functionnality.startsWith(value)
     ) {
       formData.functionnality = formData.functionnality.replace(
-        e.target.value + ",",
+        value + ",",
         ""
       );
     }
@@ -187,6 +175,117 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     }
   };
 
+  //Arrays-------------------------------------------
+  const plateforms = [
+    {
+      id: "website",
+      title: t("Form.form1.plateform.list1"),
+    },
+    {
+      id: "webapp",
+      title: t("Form.form1.plateform.list2"),
+    },
+    {
+      id: "pwa",
+      title: t("Form.form1.plateform.list3"),
+    },
+  ];
+  const typeApp = [
+    {
+      id: "ecommerce",
+      title: t("Form.form1.type.list1"),
+    },
+    {
+      id: "blog",
+      title: t("Form.form1.type.list2"),
+    },
+    {
+      id: "portfolio",
+      title: t("Form.form1.type.list3"),
+    },
+    {
+      id: "entertainment",
+      title: t("Form.form1.type.list4"),
+    },
+
+    {
+      id: "elearning",
+      title: t("Form.form1.type.list5"),
+    },
+    {
+      id: "infopreneur",
+      title: t("Form.form1.type.list6"),
+    },
+    {
+      id: "webportal",
+      title: t("Form.form1.type.list7"),
+    },
+    {
+      id: "tother",
+      title: t("Form.form1.type.list8"),
+    },
+  ];
+  const goal = [
+    {
+      id: "signin",
+      title: t("Form.Goal.goal1"),
+    },
+    {
+      id: "benefits",
+      title: t("Form.Goal.goal2"),
+    },
+    {
+      id: "promote",
+      title: t("Form.Goal.goal3"),
+    },
+    {
+      id: "gother",
+      title: t("Form.Goal.goal4"),
+    },
+  ];
+
+  const checkbox = [
+    {
+      id: "blog",
+      title: t("Form.functionnality.functionnality1"),
+    },
+    {
+      id: "news",
+      title: t("Form.functionnality.functionnality2"),
+    },
+    {
+      id: "form",
+      title: t("Form.functionnality.functionnality3"),
+    },
+    {
+      id: "functionnality",
+      title: t("Form.Goal.goal4"),
+    },
+  ];
+
+  const targets = [
+    {
+      id: "team",
+      title: t("Form.target.target1"),
+    },
+    {
+      id: "individual",
+      title: t("Form.target.target2"),
+    },
+    {
+      id: "puclic",
+      title: t("Form.target.target3"),
+    },
+    {
+      id: "startups",
+      title: t("Form.target.target4"),
+    },
+    {
+      id: "target",
+      title: t("Form.target.target5"),
+    },
+  ];
+
   //JSX RETURN-----------------------------------------------------------------
   return (
     <section>
@@ -204,7 +303,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               selected="plateform"
               formData={formData}
               setSelected={setFormData}
-              selectedTitle="Select a plateform"
+              selectedTitle={t("Form.form1.type.placeholder1")}
               className="mb-[50px] mr-5 lg:mb-[inherit]"
             />
             <Selects
@@ -213,7 +312,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               formData={formData}
               selected="typeapp"
               setSelected={setFormData}
-              selectedTitle="Type of app"
+              selectedTitle={t("Form.form1.type.placeholder2")}
               className="flex justify-end"
             />
           </div>
@@ -224,7 +323,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               name="typeapp"
               id="typeofapp"
               value={formData.typeofapp}
-              label="Enter the Type of App"
+              label={t("Form.form1.type.placeholder3")}
               onChange={onChange}
               labelClassName="mb-[30px]"
             />
@@ -233,7 +332,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               type="text"
               name="appName"
               value={formData.appName}
-              label="Enter the App name"
+              label={t("Form.form1.type.placeholder4")}
               onChange={onChange}
               labelClassName="mb-[30px]"
             />
@@ -246,7 +345,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               }`}
               htmlFor="decription"
             >
-              Enter your app description
+              {t("Form.form1.type.placeholder5")}
             </label>
 
             <textarea
@@ -261,7 +360,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               onChange={onChange}
             ></textarea>
           </div>
-          <Titlebold title="What is the goal?" />
+          <Titlebold title={t("Form.Goal.title")} />
 
           <div className="flex items-center mt-[62px] mb-[62px] flex-col lg:flex-row">
             <Selects
@@ -270,19 +369,19 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               formData={formData}
               setSelected={setFormData}
               selected="goal"
-              selectedTitle="Select a goal"
+              selectedTitle={t("Form.form1.type.placeholder6")}
               className="mb-8 lg:mb-0"
             />
             <Input
               type="text"
               name="goal"
-              label="Your goal"
+              label={t("Form.Goal.placeholder")}
               value={formData.goal}
               onChange={onChange}
             />
           </div>
 
-          <Titlebold title="Who is the target audience" />
+          <Titlebold title={t("Form.target.title")} />
           {/* <label htmlFor="">Select a functionnality</label> */}
           <div className="grid gap-1 mt-[65px] grid-cols-1  md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             {targets.map(({ id, title }, idx) => (
@@ -303,7 +402,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   type="text"
                   value={formData.functionnality}
                   onChange={onChange}
-                  label="Enter a target audience"
+                  label={t("Form.target.placeholder")}
                   name="target"
                   className="!p-[12px] !text-[18px] !rounded-lg"
                   containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !max-w-[348px] !px-[20px]"
@@ -313,7 +412,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             )}
           </div>
 
-          <Titlebold title="Add specific functionalities" />
+          <Titlebold title={t("Form.functionnality.title")} />
           <div className="grid gap-1 mx-auto mt-[65px] grid-cols-1  md:grid-cols-2 lg:grid-cols-3 lg:gap-4 ">
             {checkbox.map(({ id, title }, idx) => (
               <React.Fragment key={idx}>
@@ -333,7 +432,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   type="text"
                   value={formData.functionnality}
                   onChange={onChange}
-                  label="Enter a functionality"
+                  label={t("Form.functionnality.placeholder")}
                   name="functionnality"
                   className="!p-[12px] !text-[18px] !rounded-lg"
                   containerClassName="!py-[13px] !shadow-shadow-sm !h-[82px] !max-w-[348px] !px-[20px]"
@@ -348,16 +447,16 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               type="submit"
               className="text-base font-bold text-white bg-dark-pink px-24 py-4 rounded-full shadow-shadow mb-4 md:mb-0 "
             >
-              Save
+              {t("Form.button1")}
             </button>
 
             <button className="flex items-center justify-center  font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4 text-xs mb:text-base">
-              Download Invoice{" "}
+              {t("Form.button2")}
               <HiOutlineDownload size="20px" className="ml-[8px]" />
             </button>
           </div>
 
-          <Titlebold title="You already have a design share it with us" />
+          <Titlebold title={t("Form.title2")} />
 
           <div className=" grid  gap-4 mt-10 mb-[137px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <Upload onChange={onChangeImage} />
@@ -375,18 +474,16 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             <Input
               type="text"
               name="link"
-              value="link"
-              label=""
-              onChange={() => {
-                console.log("display links");
-              }}
+              value={formData.link}
+              label="Place your figma design link"
+              onChange={onChange}
             />
 
             <button
               className="bg-white max-h-[58px] shadow-shadow rounded-full text-base font-bold px-24 py-4 uppercase"
               type="submit"
             >
-              Submit
+              {t("Form.button")}
             </button>
           </div>
         </form>

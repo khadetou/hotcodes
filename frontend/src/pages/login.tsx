@@ -4,7 +4,6 @@ import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { getCookie } from "store/action-creators";
-import GoogleLogin from "react-google-login";
 import jwtDecode from "jwt-decode";
 import LoginScreen from "@/screens/login";
 import Header from "@/components/header";
@@ -24,7 +23,7 @@ const Login: NextPage = () => {
     }
     if (isAuthenticated) {
       if (router.query && router.query.from) {
-        router.push(router.query.from as string);
+        router.push(`${router.query.from}`);
       } else {
         router.push("/");
       }

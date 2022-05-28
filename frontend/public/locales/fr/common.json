@@ -73,7 +73,69 @@
       "message": "Message",
       "button": "Envoyer"
     }
-}
+},
+"Form":{
+  "title1":"Qu'est-ce qu'on va realiser ?",
+  "form1":{
+    "plateform":{
+      "list1":"Site Web",
+      "list2":"Application Web",
+      "list3":"pwa"
+    },
+    "type":{
+      "list1":"E-commerce",
+      "list2":"Blog",
+      "list3":"Portfolio",
+      "list4":"Site de divertissement",
+      "list5":"E-Learning",
+      "list6":"Infoproneur website",
+      "list7":"Site Web du portail Web",
+      "list8":"Autre",
+      "placeholder1":"Choisir une plateforme",
+      "placeholder2":"type d'application",
+      "placeholder3":"Entrer le type d’application",
+      "placeholder4":"Entrez le nom de l’application Type.",
+      "placeholder5":"Entrez la description de votre application",
+      "placeholder6":"Choisir un objectif"
+
+    }
+  },
+ 
+  "Goal":{
+    "title":"Quel est le but ?",
+    "goal1":"Faire en sorte que les gens ouvrent une session pour y accéder rapidement. ",
+    "goal2":"Montrer les avantages de l’utilisation de la plateforme",
+    "goal3":"Un endroit pour plus d’informations et contacter...",
+    "goal4":"Autre",
+    "placeholder":"Entrez l’objectif"
+  },
+  "target":{
+    "title":"Quel est le public cible? ?",
+    "target1":"Equipes à distance",
+    "target2":"Particuliers",
+    "target3":"Services publics",
+    "target4":"Entreprises en démarrage, petites entreprises",
+    "target5":"Autre",
+    "placeholder":"Entrez le public cible"
+  },
+  "functionnality":{
+    "title":"Ajouter des fonctionnalités spécifiques ?",
+    "functionnality1":"Blog",
+    "functionnality2":"News-Letter",
+    "functionnality3":"Soumission du formulaire",
+    "placeholder":"Saisir la fonctionnalité"
+  },
+  "button1":"Sauver",
+  "button2":"TÉLÉCHARGER LA FACTURE",
+  "title2":"Vous avez déjà un design partagez-le avec nous",
+  "upload":{
+    "title":"Charger des fichiers",
+    "p":"Les conceptions doivent être figma ou croquis ou adobe xd orpdf format, Heigh resolutionimage.",
+    "button":"Charger"
+  },
+  "link":"Inclure un lien figma vers votre projet",
+  "button":"Soumettre"
+  }
 
 
 }

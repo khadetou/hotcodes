@@ -3,6 +3,7 @@ import Notifications from "@/components/dashboard/header/Notification";
 import SearchModal from "@/components/dashboard/header/SearchModal";
 import UserMenu from "@/components/dashboard/header/UserMenue";
 import Lang from "@/components/dashboard/Lang";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 import SearchIcon from "@/icons/search-icon";
 import { FC, useState } from "react";
 
@@ -12,7 +13,9 @@ interface HeaderProps {
 }
 const Header: FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-
+  const { isAuthenticated, user } = useTypedSelector(
+    (state) => state.authReducer
+  );
   return (
     <header className="sticky top-0 bg-white border-b border-slate-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -65,7 +68,7 @@ const Header: FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
             <Help />
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
-            <UserMenu />
+            <UserMenu isAuthenticated={isAuthenticated} user={user} />
           </div>
         </div>
       </div>

@@ -35,7 +35,6 @@ const LoginScreen = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     LoginUser(formData);
   };
 
@@ -152,7 +151,7 @@ const LoginScreen = () => {
               type="submit"
               className="max-w-[312px] w-full h-[49px] rounded-md bg-dark-pink text-white font-bold text-base"
             >
-              Sign up
+              Sign In
             </button>
             <div>
               <Link href="/register">
@@ -162,7 +161,7 @@ const LoginScreen = () => {
                 >
                   You don't have an account? <br />
                   <span className="text-dark-pink text-base md:text-2xl">
-                    Sign In
+                    Sign Up
                   </span>
                 </button>
               </Link>
