@@ -1,10 +1,17 @@
 import { ActionType } from "../action-types";
-import { Action, OrderDesign, OrderMobile, OrderWeb } from "../actions";
+import {
+  Action,
+  OrderDesign,
+  OrderMarketing,
+  OrderMobile,
+  OrderWeb,
+} from "../actions";
 
 interface OrderState {
   orderWeb: OrderWeb[];
   orderMobile: OrderMobile[];
   orderDesign: OrderDesign[];
+  orderMarketing: OrderMarketing[];
   loading: boolean;
   error: string;
 }
@@ -13,6 +20,7 @@ const initialState: OrderState = {
   orderWeb: [],
   orderMobile: [],
   orderDesign: [],
+  orderMarketing: [],
   loading: false,
   error: "",
 };
@@ -28,12 +36,6 @@ const orderReducer = (
         orderWeb: [...state.orderWeb, action.payload.order],
         loading: false,
       };
-    case ActionType.CREATE_ORDERWEB_FAILURE:
-      return {
-        ...state,
-        error: action.error,
-        loading: false,
-      };
 
     case ActionType.CREATE_ORDERDESIGN_SUCCESS:
       return {
@@ -47,13 +49,16 @@ const orderReducer = (
         orderDesign: [...state.orderMobile, action.payload.order],
         loading: false,
       };
-    case ActionType.CREATE_ORDERDESIGN_FAILURE:
+    case ActionType.CREATE_ORDERMARKETING_SUCCESS:
       return {
         ...state,
-        error: action.error,
+        orderDesign: [...state.orderMarketing, action.payload.order],
         loading: false,
       };
 
+    case ActionType.CREATE_ORDERDESIGN_FAILURE:
+    case ActionType.CREATE_ORDERMARKETING_FAILURE:
+    case ActionType.CREATE_ORDERWEB_FAILURE:
     case ActionType.CREATE_ORDERMOBILE_FAILURE:
       return {
         ...state,

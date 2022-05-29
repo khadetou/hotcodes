@@ -62,6 +62,18 @@ export interface OrderMobile {
   }[];
   functionnality: [string];
 }
+export interface OrderMarketing {
+  _id?: string;
+  userId: string;
+  nombreClients: number;
+  besoinClients: string;
+  genresClient: string;
+  ageMoyen: string;
+  status: string;
+  moyenVentes: string[];
+  problemeVente: string;
+  nombreProduits: string;
+}
 
 interface RegisterSuccessAction {
   type: ActionType.REGISTER_SUCCESS;
@@ -208,6 +220,17 @@ interface CreateOrderMobileFailureAction {
   error: string;
 }
 
+interface CreateOrderMarketingFailureAction {
+  type: ActionType.CREATE_ORDERMARKETING_FAILURE;
+  error: string;
+}
+interface CreateOrderMarketingSuccessAction {
+  type: ActionType.CREATE_ORDERMARKETING_SUCCESS;
+  payload: {
+    order: any;
+  };
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -234,4 +257,6 @@ export type Action =
   | CreateOrderDesignSuccessAction
   | CreateOrderDesignFailureAction
   | CreateOrderMobileSuccessAction
-  | CreateOrderMobileFailureAction;
+  | CreateOrderMobileFailureAction
+  | CreateOrderMarketingSuccessAction
+  | CreateOrderMarketingFailureAction;
