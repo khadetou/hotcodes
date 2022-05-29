@@ -6,13 +6,13 @@ import Presentation from "@/screens/mobile/presentation";
 import Footer from "@/components/footer/Footer";
 
 const Mobile = () => {
-  const { CreateOrderWeb } = useActions();
+  const { CreateOrderMobile } = useActions();
   return (
     <>
       <Header />
       <Banner />
       <Presentation />
-      <Form title="What are we building" Action={CreateOrderWeb} />
+      <Form title="What are we building" Action={CreateOrderMobile} />
       <Footer />
     </>
   );

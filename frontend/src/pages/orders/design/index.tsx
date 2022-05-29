@@ -8,13 +8,13 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Design = () => {
-  const { CreateOrderWeb } = useActions();
+  const { CreateOrderDesign } = useActions();
   return (
     <>
       <Header />
       <Banner />
       <Cards />
-      <Form title="What are we building" Action={CreateOrderWeb} />
+      <Form title="What are we building" Action={CreateOrderDesign} />
       <Footer />
     </>
   );

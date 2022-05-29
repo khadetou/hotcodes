@@ -1,5 +1,12 @@
 import { Dispatch } from "redux";
-import { Action, OrderDesign, OrderMobile, OrderWeb, User } from "../actions";
+import {
+  Action,
+  OrderDesign,
+  OrderMarketing,
+  OrderMobile,
+  OrderWeb,
+  User,
+} from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
@@ -585,6 +592,58 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
       console.log({ error });
       dispatch({
         type: ActionType.CREATE_ORDERMOBILE_FAILURE,
+        error: error.response.data.error,
+      });
+    }
+  };
+};
+//CREATE ORDER MARKETING
+export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
+  return async (dispatch: Dispatch<Action>) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const {
+      ageMoyen,
+      besoinClients,
+      genresClient,
+      moyenVentes,
+      nombreClients,
+      nombreProduits,
+      problemeVente,
+      status,
+    } = orderMarketing;
+
+    const body = JSON.stringify({
+      ageMoyen,
+      besoinClients,
+      genresClient,
+      moyenVentes,
+      nombreClients,
+      nombreProduits,
+      problemeVente,
+      status,
+    });
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/ordermarketing",
+        body,
+        config
+      );
+      dispatch({
+        type: ActionType.CREATE_ORDERMARKETING_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      console.log({ error });
+      dispatch({
+        type: ActionType.CREATE_ORDERMARKETING_FAILURE,
         error: error.response.data.error,
       });
     }

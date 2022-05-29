@@ -8,7 +8,7 @@ import Cards from "@/screens/marketing/Cards";
 import Footer from "@/components/footer/Footer";
 
 const Marketing = () => {
-  const { CreateOrderWeb } = useActions();
+  const { CreateOrderMarketing } = useActions();
   return (
     <>
       <Header
@@ -19,7 +19,7 @@ const Marketing = () => {
       <Banner />
       <Presentation />
       <Cards />
-      <Form title="What are we Selling" Action={CreateOrderWeb} />
+      <Form title="What are we Selling" Action={CreateOrderMarketing} />
       <Footer />
     </>
   );
