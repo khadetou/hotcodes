@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import WebBanner from "/public/images/web/web-banner.png";
 import Bg1 from "/public/images/web/bg1.svg";
+
 const Banner = () => {
   const { t } = useTranslation("web");
   const splitText = t("banner.title").split(".");

@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Selects from "@/components/orders/form/select/select";
 import { HiOutlineDownload } from "react-icons/hi";
-
 import Input from "./input/input";
 import Upload from "./uploads";
 import Titlebold from "@/components/Title/titlebold";
 import { useTranslation } from "next-i18next";
+import toast, { Toaster } from "react-hot-toast";
 
 interface FormProps {
   title: string;
@@ -19,8 +19,9 @@ interface FormProps {
 const Form: FC<FormProps> = ({ title, Action }) => {
   const { t } = useTranslation("common");
   //USE ACTIONS-------------------------------------------
-  const { LoadUser } = useActions();
+  const { LoadUser, SetSuccess } = useActions();
   const { isAuthenticated } = useTypedSelector((state) => state.authReducer);
+  const { error, success } = useTypedSelector((state) => state.orderReducer);
 
   //USE ROUTER-------------------------------------------------------------
   const router = useRouter();
@@ -66,6 +67,15 @@ const Form: FC<FormProps> = ({ title, Action }) => {
         setFormData(JSON.parse(localStorage.getItem("formData") as string));
     }
   }, [isAuthenticated, typeof localStorage !== "undefined" && localStorage]);
+  useEffect(() => {
+    if (success) {
+      toast.success("Order created successfully");
+      SetSuccess(false);
+    }
+    if (error) {
+      toast.error("THERE IS AN ERROR!!!");
+    }
+  }, [error, success]);
 
   //HANDLE CHANGES-------------------------------------------------------------
   const onChange = (e: any) => {
@@ -510,6 +520,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
           </div>
         </form>
       </div>
+      <Toaster />
     </section>
   );
 };
