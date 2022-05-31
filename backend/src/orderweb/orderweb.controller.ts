@@ -69,6 +69,7 @@ export class OrderwebController {
     @GetUser() user: any,
     @UploadedFile() file: Express.Multer.File,
   ): Promise<void | OrderWeb> {
+    
     return await this.orderwebService.create(createWebdevDto, user, file);
   }
 
@@ -76,7 +77,6 @@ export class OrderwebController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadImage(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
     return this.orderwebService.uploadImage(file);
   }
 }

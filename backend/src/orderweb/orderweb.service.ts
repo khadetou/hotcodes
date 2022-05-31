@@ -119,9 +119,10 @@ export class OrderwebService {
       appName: description && description,
       description: description && description,
       goal: goal && goalSplits,
-      design: (result && designLinks) || (design && designLinks),
+      design:  designLinks ,
       functionnality: functionnality && funcSplits,
     };
+
 
     let orderweb = await this.orderwebModel.findOne({ user: user._id });
     if (orderweb) {
@@ -137,6 +138,7 @@ export class OrderwebService {
     try {
       return await orderweb.save();
     } catch (error) {
+      console.log({error})
       throw new InternalServerErrorException(error);
     }
   }
