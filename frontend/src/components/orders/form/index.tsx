@@ -34,6 +34,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     description: "",
     goal: "",
     design: "",
+    target: "",
     functionnality: "",
     link: "",
   });
@@ -47,16 +48,16 @@ const Form: FC<FormProps> = ({ title, Action }) => {
 
   //LOCAL STORAGE ITEMS--------------------------------------
 
-  if (
-    formData.plateform ||
-    formData.typeapp ||
-    formData.appName ||
-    formData.goal
-  ) {
-    const stringFormData = JSON.stringify(formData);
-    typeof localStorage !== "undefined" &&
-      localStorage.setItem("formData", stringFormData);
-  }
+  // if (
+  //   formData.plateform ||
+  //   formData.typeapp ||
+  //   formData.appName ||
+  //   formData.goal
+  // ) {
+  //   const stringFormData = JSON.stringify(formData);
+  //   typeof localStorage !== "undefined" &&
+  //     localStorage.setItem("formData", stringFormData);
+  // }
 
   //USE EFFECTS--------------------------------------
   useEffect(() => {
@@ -82,7 +83,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onCheckboxChange = (e: any) => {
+  const onCheckboxChangeFunc = (e: any) => {
     let value = e.target.value === "Autre" ? "Other" : e.target.value;
     e.target.checked &&
       e.target.name === "functionnality" &&
@@ -133,6 +134,52 @@ const Form: FC<FormProps> = ({ title, Action }) => {
     }
 
     setFormData({ ...formData, [e.target.name]: formData.functionnality });
+  };
+  const onCheckboxChangeTarget = (e: any) => {
+    let value = e.target.value === "Autre" ? "Other" : e.target.value;
+    e.target.checked &&
+      e.target.name === "functionnality" &&
+      value === "Other" &&
+      setOtherfunc(true);
+    !e.target.checked &&
+      e.target.name === "functionnality" &&
+      value === "Other" &&
+      setOtherfunc(false);
+
+    e.target.checked &&
+      e.target.name === "target" &&
+      value === "Other" &&
+      setOther(true);
+    !e.target.checked &&
+      e.target.name === "target" &&
+      value === "Other" &&
+      setOther(false);
+    if (e.target.checked && value !== "Other") {
+      if (formData.target !== "") {
+        formData.target += "," + value;
+      } else {
+        formData.target = value;
+      }
+    } else if (
+      formData.target.indexOf(",") === -1 &&
+      formData.target.includes(value)
+    ) {
+      formData.target = formData.target.replace(value, "");
+    } else if (formData.target.includes(value) && !e.target.checked) {
+      formData.target = formData.target.replace("," + value, "");
+    } else if (formData.target.includes(value)) {
+      console.log("It run");
+      formData.target = formData.target.replace(value, "");
+    }
+    if (
+      formData.target.includes(value + ",") &&
+      formData.target !== "" &&
+      formData.target.startsWith(value)
+    ) {
+      formData.target = formData.target.replace(value + ",", "");
+    }
+
+    setFormData({ ...formData, [e.target.name]: formData.target });
   };
 
   const onChangeImage = (e: any) => {
@@ -424,7 +471,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   label={title}
                   value={title}
                   id={id}
-                  onChange={onCheckboxChange}
+                  onChange={onCheckboxChangeTarget}
                 />
               </React.Fragment>
             ))}
@@ -432,7 +479,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
               <>
                 <Input
                   type="text"
-                  value={formData.functionnality}
+                  value={formData.target}
                   onChange={onChange}
                   label={t("Form.target.placeholder")}
                   name="target"
@@ -454,7 +501,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
                   label={title}
                   value={title}
                   id={id}
-                  onChange={onCheckboxChange}
+                  onChange={onCheckboxChangeFunc}
                 />
               </React.Fragment>
             ))}
