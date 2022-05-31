@@ -26,7 +26,6 @@ const Input: FC<InputProps> = ({
   labelClassName,
 }) => {
   const [focused, setFocused] = useState(false);
-  console.log(name);
 
   const onFocus = () => {
     setFocused(true);
