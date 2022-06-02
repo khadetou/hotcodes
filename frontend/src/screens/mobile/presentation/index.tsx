@@ -13,14 +13,13 @@ import { useTranslation } from "next-i18next";
 import Field from "./field";
 
 const Presentation = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("mobile");
 
   const presentations = [
     {
       textImg: Appstore,
-      h1: "Native Ios. Apps",
-      paragraph:
-        "We build optimized, secure and fast native ios apps, by using xcode.",
+      h1: t("ios.h1"),
+      paragraph: t("ios.p"),
       button: t("presentation.design.button"),
       src: Mobile1,
       style: "lg:flex-row",
@@ -28,9 +27,8 @@ const Presentation = () => {
     },
     {
       textImg: Playstore,
-      h1: "Native Android. Apps",
-      paragraph:
-        "We build optimized, secure and fast native android apps, by using android studio.",
+      h1: t("android.h1"),
+      paragraph: t("android.p"),
       button: t("presentation.dev.button"),
       src: Mobile2,
       style: "lg:flex-row-reverse",
@@ -38,8 +36,8 @@ const Presentation = () => {
     },
     {
       textImg: PlayApp,
-      h1: "Hybrid. Apps",
-      paragraph: "We build optimized, secure and fast hybrid mobile apps.",
+      h1: t("hybrid.h1"),
+      paragraph: t("hybrid.p"),
       button: t("presentation.marketing.button"),
       src: Mobile3,
       style: "lg:flex-row",
