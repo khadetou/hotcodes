@@ -6,15 +6,33 @@ import Header from "@/components/header";
 import Footer from "@/components/footer/Footer";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 
 const Design = () => {
   const { CreateOrderDesign } = useActions();
+
+  const [formData, setFormData] = useState<any>({
+    plateform: "",
+    typeapp: "",
+    appName: "",
+    description: "",
+    goal: "",
+    design: "",
+    target: "",
+    functionnality: "",
+    link: "",
+  });
   return (
     <>
       <Header />
       <Banner />
-      <Cards />
-      <Form title="What are we building" Action={CreateOrderDesign} />
+      {/* <Cards /> */}
+      <Form
+        title="What are we building"
+        formData={formData}
+        setFormData={setFormData}
+        Action={CreateOrderDesign}
+      />
       <Footer />
     </>
   );
@@ -27,7 +45,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["design", "header"])),
+      ...(await serverSideTranslations(locale!, [
+        "common",
+        "design",
+        "header",
+        "footer",
+      ])),
     },
   };
 };

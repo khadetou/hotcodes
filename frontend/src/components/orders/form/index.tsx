@@ -14,9 +14,11 @@ import toast, { Toaster } from "react-hot-toast";
 interface FormProps {
   title: string;
   Action: (order?: any) => (dispatch: any) => Promise<void>;
+  formData?: any;
+  setFormData?: any;
 }
 
-const Form: FC<FormProps> = ({ title, Action }) => {
+const Form: FC<FormProps> = ({ title, Action, formData, setFormData }) => {
   const { t } = useTranslation("common");
   //USE ACTIONS-------------------------------------------
   const { LoadUser, SetSuccess } = useActions();
@@ -27,17 +29,7 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   const router = useRouter();
 
   //USE STATES--------------------------------------
-  const [formData, setFormData] = useState<any>({
-    plateform: "",
-    typeapp: "",
-    appName: "",
-    description: "",
-    goal: "",
-    design: "",
-    target: "",
-    functionnality: "",
-    link: "",
-  });
+
   const [other, setOther] = useState(false);
   const [otherfunc, setOtherfunc] = useState(false);
   const [otherTypeApp, setOtherTypeApp] = useState(false);
@@ -60,14 +52,14 @@ const Form: FC<FormProps> = ({ title, Action }) => {
   // }
 
   //USE EFFECTS--------------------------------------
-  useEffect(() => {
-    LoadUser();
-    if (isAuthenticated) {
-      typeof localStorage !== "undefined" &&
-        localStorage.formData &&
-        setFormData(JSON.parse(localStorage.getItem("formData") as string));
-    }
-  }, [isAuthenticated, typeof localStorage !== "undefined" && localStorage]);
+  // useEffect(() => {
+  //   LoadUser();
+  //   if (isAuthenticated) {
+  //     typeof localStorage !== "undefined" &&
+  //       localStorage.formData &&
+  //       setFormData(JSON.parse(localStorage.getItem("formData") as string));
+  //   }
+  // }, [isAuthenticated, typeof localStorage !== "undefined" && localStorage]);
   useEffect(() => {
     if (success) {
       toast.success("Order created successfully");
@@ -521,18 +513,20 @@ const Form: FC<FormProps> = ({ title, Action }) => {
             )}
           </div>
 
-          <div className="flex flex-col md:flex-row mt-5 justify-around">
+          <div className="flex flex-col md:flex-row mt-5 justify-center">
             <button
               type="submit"
-              className="text-base font-bold text-white bg-dark-pink px-24 py-4 rounded-full shadow-shadow mb-4 md:mb-0 "
+              className="text-base font-bold text-white bg-grad-btn px-24 py-4 rounded-full shadow-shadow mb-4 md:mb-0 "
             >
               {t("Form.button1")}
             </button>
 
-            <button className="flex items-center justify-center  font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4 text-xs mb:text-base">
+            {/* <button
+              className="flex items-center justify-center  font-bold bg-grad-btn text-white uppercase rounded-full px-9 py-4 text-xs mb:text-base"
+            >
               {t("Form.button2")}
               <HiOutlineDownload size="20px" className="ml-[8px]" />
-            </button>
+            </button> */}
           </div>
 
           <Titlebold title={t("Form.title2")} />
