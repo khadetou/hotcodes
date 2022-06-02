@@ -9,6 +9,7 @@ import { Model } from 'mongoose';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { CreateOrderDesignDto } from './dto/create-design.dto';
 import { User } from 'src/auth/schema/user.schema';
+import { v2 } from 'cloudinary';
 
 @Injectable()
 export class OrderdesignService {
@@ -63,6 +64,7 @@ export class OrderdesignService {
       moodBoard,
       target,
       wireframe,
+      design
     } = createOrderDesignDto;
 
     let goalSplits: string[];
@@ -81,12 +83,26 @@ export class OrderdesignService {
       },
     ];
 
-    const result = await this.cloudinaryService.uploadImages(file, user);
+    const result =  file && await this.cloudinaryService.uploadImages(file, user);
 
-    for (let i = 0; i < designLinks.length; i++) {
-      designLinks[i].public_id = result.public_id;
-      designLinks[i].url = result.secure_url;
-      designLinks[i].format = result.format;
+    if (result) {
+      for (let i = 0; i < designLinks.length; i++) {
+        designLinks[i].public_id = result.public_id;
+        designLinks[i].url = result.secure_url;
+        designLinks[i].format = result.format;
+      }
+    }
+
+    if (design) {
+      for (let i = 0; i < design.length; i++) {
+        const upload = await v2.uploader.upload(design[i], {
+          folder: `hotcodes/orders/${user.lastName}/${user._id}`,
+        });
+
+        designLinks[i].public_id = upload.public_id;
+        designLinks[i].url = upload.secure_url;
+        designLinks[i].format = upload.format;
+      }
     }
 
     if (Goal) {
@@ -104,7 +120,7 @@ export class OrderdesignService {
       description: description && description,
       Goal: goalSplits && goalSplits,
       functionnality: funcSplits && funcSplits,
-      design: designLinks && designLinks,
+      design: designLinks,
       moodBoard: moodBoard && moodBoard,
       target: target && target,
       wireframe: wireframe && wireframe,

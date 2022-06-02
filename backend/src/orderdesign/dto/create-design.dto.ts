@@ -36,4 +36,6 @@ export class CreateOrderDesignDto {
   @IsString()
   @IsNotEmpty()
   functionnality: string;
+
+  design: any;
 }

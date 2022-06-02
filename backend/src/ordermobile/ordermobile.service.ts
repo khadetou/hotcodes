@@ -67,12 +67,17 @@ export class OrdermobileService {
         format: '',
       },
     ];
-    const result = await this.cloudinaryService.uploadImages(file, user);
-    for (let i = 0; i < designLinks.length; i++) {
-      designLinks[i].public_id = result.public_id;
-      designLinks[i].url = result.secure_url;
-      designLinks[i].format = result.format;
+    const result =  file && await this.cloudinaryService.uploadImages(file, user);
+
+    if (result) {
+      for (let i = 0; i < designLinks.length; i++) {
+        designLinks[i].public_id = result.public_id;
+        designLinks[i].url = result.secure_url;
+        designLinks[i].format = result.format;
+      }
     }
+
+   
     if (Goal) {
       goalSplits = Goal.split(',').map((s) => s.trim());
     }
@@ -84,10 +89,9 @@ export class OrdermobileService {
       typeapp: typeapp && typeapp,
       appName: appName && appName,
       description: description && description,
-      design: design && design,
+      design: designLinks,
       functionnality: funcSplits && funcSplits,
       Goal: goalSplits && goalSplits,
-      designLinks: designLinks && designLinks,
     };
     try {
       return this.ordermobileModel.create(ordermobileFields);

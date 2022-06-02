@@ -27,13 +27,13 @@ export class OrderDesign {
   @Prop({
     type: [
       {
-        public_id: { type: String, required: true },
-        url: { type: String, required: true },
-        format: { type: String, required: true },
+        public_id: { type: String, required: false },
+        url: { type: String, required: false },
+        format: { type: String, required: false },
       },
     ],
   })
-  design: {
+  design?: {
     public_id: string;
     url: string;
     format: string;
