@@ -10,24 +10,22 @@ import { useTranslation } from "next-i18next";
 import Field from "./field";
 
 const Presentation: FC = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("marketing");
 
   const presentations = [
     {
-      title: "WHO WE ARE",
-      h1: "Boots Your. Website Traffic !",
-      paragraph:
-        "We are passionate about our work. Our designers stay ahead curve to provide engaging and user-friendly website designs to make your business stand out. Our developers are committed to maintaining the highest web standards so that your site will withstand the test of time. We care about your business, wich is why we work with you",
+      title: t("presentation.toptitle"),
+      h1: t("presentation.title"),
+      paragraph: t("presentation.p"),
       button: t("presentation.design.button"),
       src: Traffic,
       style: "lg:flex-row-reverse",
       flip: "",
     },
     {
-      title: "EXPERIENCE",
-      h1: "Pay For a. Quality  Work",
-      paragraph:
-        "HotCodes stays  ahead of the curve with digital marketing trends. Our success has us leading the pack amongst our competitors with our ability to anticipate change and innovation.",
+      title: t("presentation.exptoptitle"),
+      h1: t("presentation.exptitle"),
+      paragraph: t("presentation.exparagraph"),
       button: t("presentation.dev.button"),
       src: Pay,
       audit: Audit,
