@@ -597,55 +597,176 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
     }
   };
 };
-//CREATE ORDER MARKETING
-export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
+
+//GET  All ORDERS WEB
+export const GetAllOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const {
-      ageMoyen,
-      besoinClients,
-      genresClient,
-      moyenVentes,
-      nombreClients,
-      nombreProduits,
-      problemeVente,
-      status,
-    } = orderMarketing;
-
-    const body = JSON.stringify({
-      ageMoyen,
-      besoinClients,
-      genresClient,
-      moyenVentes,
-      nombreClients,
-      nombreProduits,
-      problemeVente,
-      status,
-    });
-
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/ordermarketing",
-        body,
-        config
-      );
+      const { data } = await axios.get("http://localhost:5000/orders");
       dispatch({
-        type: ActionType.CREATE_ORDERMARKETING_SUCCESS,
+        type: ActionType.GET_ALL_ORDERWEB_SUCCESS,
         payload: {
-          order: data,
+          orders: data,
         },
       });
     } catch (error: any) {
-      console.log({ error });
       dispatch({
-        type: ActionType.CREATE_ORDERMARKETING_FAILURE,
+        type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
         error: error.response.data.message,
       });
     }
   };
 };
+
+//GET ALL ORDERS DESIGN
+export const GetAllOrdersDesign = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/ordersdesign");
+      dispatch({
+        type: ActionType.GET_ALL_ORDERDESIGN_SUCCESS,
+        payload: {
+          orders: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET ALL MOBILE ORDERS
+export const GetAllOrdersMobile = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/ordersmobile");
+      dispatch({
+        type: ActionType.GET_ALL_ORDERMOBILE_SUCCESS,
+        payload: {
+          orders: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ALL_ORDERMOBILE_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET MY ORDERS WEB
+export const GetMyOrdersWeb = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/orders/my`);
+      dispatch({
+        type: ActionType.GET_ORDERWEB_SUCCESS,
+        payload: {
+          orders: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ALL_ORDERWEB_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET MY ORDERS DESIGN
+export const GetMyOrdersDesign = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/ordersdesign/my`);
+      dispatch({
+        type: ActionType.GET_ORDERDESIGN_SUCCESS,
+        payload: {
+          orders: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET MY ORDERS MOBILE
+export const GetMyOrdersMobile = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/ordersmobile/my`);
+      dispatch({
+        type: ActionType.GET_ORDERMOBILE_SUCCESS,
+        payload: {
+          orders: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ALL_ORDERMOBILE_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//CREATE ORDER MARKETING
+// export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
+//   return async (dispatch: Dispatch<Action>) => {
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     };
+
+//     const {
+//       ageMoyen,
+//       besoinClients,
+//       genresClient,
+//       moyenVentes,
+//       nombreClients,
+//       nombreProduits,
+//       problemeVente,
+//       status,
+//     } = orderMarketing;
+
+//     const body = JSON.stringify({
+//       ageMoyen,
+//       besoinClients,
+//       genresClient,
+//       moyenVentes,
+//       nombreClients,
+//       nombreProduits,
+//       problemeVente,
+//       status,
+//     });
+
+//     try {
+//       const { data } = await axios.post(
+//         "http://localhost:5000/ordermarketing",
+//         body,
+//         config
+//       );
+//       dispatch({
+//         type: ActionType.CREATE_ORDERMARKETING_SUCCESS,
+//         payload: {
+//           order: data,
+//         },
+//       });
+//     } catch (error: any) {
+//       console.log({ error });
+//       dispatch({
+//         type: ActionType.CREATE_ORDERMARKETING_FAILURE,
+//         error: error.response.data.message,
+//       });
+//     }
+//   };
+// };

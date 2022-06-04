@@ -62,7 +62,152 @@ const orderReducer = (
         loading: false,
       };
 
-      case ActionType.SET_SUCCESS:
+    case ActionType.GET_ALL_ORDERWEB_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderWeb: action.payload.orders,
+        loading: false,
+      };
+
+    case ActionType.GET_ALL_ORDERDESIGN_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderDesign: action.payload.orders,
+        loading: false,
+      };
+
+    case ActionType.GET_ALL_ORDERMOBILE_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderMobile: action.payload.orders,
+        loading: false,
+      };
+
+    case ActionType.GET_ORDERWEB_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderWeb: action.payload.orders,
+        loading: false,
+      };
+    }
+
+    case ActionType.GET_ORDERDESIGN_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderDesign: action.payload.orders,
+        loading: false,
+      };
+    }
+
+    case ActionType.GET_ORDERMOBILE_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderMobile: action.payload.orders,
+        loading: false,
+      };
+    }
+
+    case ActionType.GET_ORDERWEB_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderWeb: [action.payload.order],
+        loading: false,
+      };
+    }
+
+    case ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderDesign: [action.payload.order],
+        loading: false,
+      };
+    }
+
+    case ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        success: true,
+        orderMobile: [action.payload.order],
+        loading: false,
+      };
+    }
+
+    case ActionType.UPDATE_ORDERWEB_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderWeb: state.orderWeb.map((order: any) =>
+          order.id === action.payload.order._id ? action.payload.order : order
+        ),
+        loading: false,
+      };
+
+    case ActionType.UPDATE_ORDERDESIGN_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderDesign: state.orderDesign.map((order: any) =>
+          order.id === action.payload.order._id ? action.payload.order : order
+        ),
+        loading: false,
+      };
+
+    case ActionType.UPDATE_ORDERMOBILE_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderMobile: state.orderMobile.map((order: any) =>
+          order.id === action.payload.order._id ? action.payload.order : order
+        ),
+        loading: false,
+      };
+
+    case ActionType.DELETE_ORDERWEB_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderWeb: state.orderWeb.filter(
+          (order: any) => order?.id !== action.payload.order._id
+        ),
+        loading: false,
+      };
+
+    case ActionType.DELETE_ORDERDESIGN_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderDesign: state.orderDesign.filter(
+          (order: any) => order?.id !== action.payload.order._id
+        ),
+        loading: false,
+      };
+
+    case ActionType.DELETE_ORDERMOBILE_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        orderMobile: state.orderMobile.filter(
+          (order: any) => order?.id !== action.payload.order._id
+        ),
+        loading: false,
+      };
+
+    case ActionType.DELETE_ORDERDESIGN_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    case ActionType.SET_SUCCESS:
       return {
         ...state,
         success: action.success,

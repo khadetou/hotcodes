@@ -267,6 +267,70 @@ interface GetAllOrderMobileFailureAction {
   error: string;
 }
 
+interface GetMyOrderWebSuccessAction {
+  type: ActionType.GET_ORDERWEB_SUCCESS;
+  payload: {
+    orders: OrderWeb[];
+  };
+}
+
+interface GetMyOrderMobileSuccessAction {
+  type: ActionType.GET_ORDERMOBILE_SUCCESS;
+  payload: {
+    orders: OrderMobile[];
+  };
+}
+
+interface GetMyOrderDesignSuccessAction {
+  type: ActionType.GET_ORDERDESIGN_SUCCESS;
+  payload: {
+    orders: OrderDesign[];
+  };
+}
+
+interface GetMyOrderMobileSuccessAction {
+  type: ActionType.GET_ORDERMOBILE_SUCCESS;
+  payload: {
+    orders: OrderMobile[];
+  };
+}
+
+interface GetOrderWebByIdSuccessAction {
+  type: ActionType.GET_ORDERWEB_BY_ID_SUCCESS;
+  payload: {
+    order: OrderWeb;
+  };
+}
+
+interface GetOrderWebByIdFailureAction {
+  type: ActionType.GET_ORDERWEB_BY_ID_FAILURE;
+  error: string;
+}
+
+interface GetOrderDesignByIdSuccessAction {
+  type: ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS;
+  payload: {
+    order: OrderDesign;
+  };
+}
+
+interface GetOrderDesignByIdFailureAction {
+  type: ActionType.GET_ORDERDESIGN_BY_ID_FAILURE;
+  error: string;
+}
+
+interface GetOrderMobileByIdSuccessAction {
+  type: ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS;
+  payload: {
+    order: OrderMobile;
+  };
+}
+
+interface GetOrderMobileByIdFailureAction {
+  type: ActionType.GET_ORDERMOBILE_BY_ID_FAILURE;
+  error: string;
+}
+
 interface UpdateOrderWebSuccessAction {
   type: ActionType.UPDATE_ORDERWEB_SUCCESS;
   payload: {
@@ -353,6 +417,12 @@ export type Action =
   | GetAllUsersFailureAction
   | GetUserSuccessByIdAction
   | GetUserFailureByIdAction
+  | GetOrderWebByIdSuccessAction
+  | GetOrderWebByIdFailureAction
+  | GetOrderDesignByIdSuccessAction
+  | GetOrderDesignByIdFailureAction
+  | GetOrderMobileByIdSuccessAction
+  | GetOrderMobileByIdFailureAction
   | DeleteUserSuccessAction
   | DeleteUserFailureAction
   | CreateOrderWebSuccessAction
@@ -369,6 +439,10 @@ export type Action =
   | GetAllOrderDesignFailureAction
   | GetAllOrderMobileSuccessAction
   | GetAllOrderMobileFailureAction
+  | GetMyOrderWebSuccessAction
+  | GetMyOrderMobileSuccessAction
+  | GetMyOrderDesignSuccessAction
+  | GetMyOrderMobileSuccessAction
   | UpdateOrderWebSuccessAction
   | UpdateOrderWebFailureAction
   | UpdateOrderDesignSuccessAction
