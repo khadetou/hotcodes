@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import MarketingBanner from "/public/images/marketing/banner-img.png";
 import Built from "/public/images/marketing/built.svg";
 import Sync from "/public/images/marketing/sync.svg";
@@ -7,6 +8,7 @@ import Bg1 from "/public/images/marketing/marketingbg.svg";
 import Circular from "@/components/button/circular";
 const Banner = () => {
   const { t } = useTranslation("marketing");
+  const { locale } = useRouter();
 
   const splitTitle = t("banner.h1").split(".");
   return (
@@ -17,7 +19,11 @@ const Banner = () => {
         </div>
         <div className="flex flex-col justify-between items-center lg:flex-row md:mb-[50px] lg:mb-[110px] mt-[208px] xsm:mb-[103px]  containers">
           <div className="max-w-[734px] w-full mb-4 ">
-            <h1 className="text-dark w-full text-[32px] leading-[1.2] xxs:text-[40px]  md:text-[40px] xs:text-[37px] lg:text-[64px] mb-[20px] 2xl:text-[82px]  2xl:leading-none font-bold">
+            <h1
+              className={`text-dark w-full text-[32px] leading-[1.2] xxs:text-[40px]  md:text-[40px] xs:text-[37px] lg:text-[64px] mb-[20px] ${
+                locale === "en" ? "2xl:text-[82px]" : "2xl:text-[71px]"
+              }   2xl:leading-none font-bold`}
+            >
               {splitTitle[0]}
               <span className="text-transparent bg-clip-text bg-grad-text-2">
                 {splitTitle[1]}

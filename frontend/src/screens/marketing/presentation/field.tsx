@@ -23,7 +23,6 @@ const Field: FC<FieldProps> = ({
   h1,
   style,
   audit,
-  button,
   flip,
 }) => {
   const { locale } = useRouter();
@@ -35,7 +34,7 @@ const Field: FC<FieldProps> = ({
 
   return (
     <div
-      className={`flex ${style} justify-between mb-[30px] xs:mb-[160px] flex-col-reverse items-center`}
+      className={`flex ${style} justify-between mb-[30px] xs:mb-[80px] flex-col-reverse items-center`}
     >
       <div className="relative  lg:mr-6">
         <div className={flip}>
