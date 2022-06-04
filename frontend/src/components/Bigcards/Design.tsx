@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
+import { useTranslation } from "next-i18next";
 interface BigcardsProps {
   title: string;
   toptitle: string;
@@ -13,6 +14,7 @@ const DesignCards: FC<BigcardsProps> = ({
   image,
 }) => {
   const splitedTitle = toptitle.split(",");
+  const { t } = useTranslation("marketing");
   return (
     <div className="max-w-[633px]  lg:h-[800px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
       <div className="rounded-t-[35px]">
@@ -33,10 +35,10 @@ const DesignCards: FC<BigcardsProps> = ({
         </p>
         <div className="flex justify-between items-center p-0 mb-[20px] mt-[15px] xl:px-7">
           <button className="font-bold rounded-full bg-grad-btn text-white text-xs px-3 py-1 xl:px-24 xxs:text-sm xxs:px-10  xxs:py-4">
-            See More
+            {t("cards.button1")}
           </button>
           <button className="font-bold text-dark-pink underline text-[13px] xxs:text-base">
-            Select a plan
+            {t("cards.button2")}
           </button>
         </div>
       </div>

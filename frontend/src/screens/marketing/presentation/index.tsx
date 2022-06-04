@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Traffic from "/public/images/marketing/traffic.png";
 import TrafficFr from "/public/images/marketing/traffic-fr.png";
 import Pay from "/public/images/marketing/indonesia.png";
@@ -11,6 +12,9 @@ import Field from "./field";
 
 const Presentation: FC = () => {
   const { t } = useTranslation("marketing");
+  const { locale } = useRouter();
+
+  console.log(locale);
 
   const presentations = [
     {
@@ -18,7 +22,7 @@ const Presentation: FC = () => {
       h1: t("presentation.title"),
       paragraph: t("presentation.p"),
       button: t("presentation.design.button"),
-      src: Traffic,
+      src: locale === "en" ? Traffic : TrafficFr,
       style: "lg:flex-row-reverse",
       flip: "",
     },

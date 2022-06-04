@@ -6,6 +6,7 @@ import crypto from "/public/images/design/crypto.png";
 import Title from "@/components/Title/title";
 import DesignCards from "@/components/Bigcards/Design";
 import { FiEdit3 } from "react-icons/fi";
+import { useTranslation } from "next-i18next";
 
 const customStyles = {
   overlay: {
@@ -40,29 +41,31 @@ interface Subtitle {
 }
 
 const Cards = () => {
+  const { t } = useTranslation("marketing");
+
   const marketing = [
     {
       title: "360 Digital Marketing",
       toptitle: "Digital, Marketing",
-      text: "Strategy + results + clarity of your digital marketing campaigns.",
+      text: t("cards.card1.p"),
       image: Marketing,
     },
     {
       title: "Search Engine Optimization",
       toptitle: "SE,O",
-      text: "Ensuring the best return on investment for your bespoke SEO campaign requuirement",
+      text: t("cards.card2.p"),
       image: Seo,
     },
     {
       title: "Social Media Marketing",
       toptitle: "Social ,Media",
-      text: "Advertising and content planning across Facebook, Instagram, Twitter and more.",
+      text: t("cards.card3.p"),
       image: Social,
     },
     {
       title: "Email & Text Marketing",
       toptitle: "Email ,Marketing",
-      text: "Building a list of target users prior to launch to enter the market with momentum, then retargeting to maximize conversions and ensure ongoing use of your app.",
+      text: t("cards.card4.p"),
       image: crypto,
     },
   ];
@@ -82,7 +85,7 @@ const Cards = () => {
       <div className="mb-[160px]">
         <div className="containers my-16">
           <Title
-            title="What we Offer"
+            title={t("cards.title")}
             className="text-transparent bg-clip-text bg-grad-btn"
           />
         </div>
