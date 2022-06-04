@@ -1,15 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 import Traffic from "/public/images/marketing/traffic.png";
+import TrafficFr from "/public/images/marketing/traffic-fr.png";
 import Pay from "/public/images/marketing/indonesia.png";
-import Vision from "/public/images/about/vision.png";
 import Audit from "/public/images/marketing/audit.png";
 import Map from "/public/images/marketing/map.svg";
 
 import { useTranslation } from "next-i18next";
 import Field from "./field";
 
-const Presentation = () => {
+const Presentation: FC = () => {
   const { t } = useTranslation("common");
 
   const presentations = [
