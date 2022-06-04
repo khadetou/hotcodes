@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         "common",
         "header",
         "footer",
-        "web",
+        "marketing",
       ])),
     },
   };
