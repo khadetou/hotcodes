@@ -16,7 +16,7 @@ export default Orders;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = getCookie("token", ctx.req);
   if (token) {
-    if (jwtDecode<any>(token).exp > Date.now() / 1000) {
+    if (jwtDecode<any>(token).exp < Date.now() / 1000) {
       return {
         redirect: {
           destination: "/",
