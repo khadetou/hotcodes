@@ -1,3 +1,4 @@
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 import {
   BlogIcon,
   DashboardIcon,
@@ -6,6 +7,8 @@ import {
   UserIcon,
   Users,
 } from "@/icons/index";
+
+const { user } = useTypedSelector((state) => state.authReducer);
 
 export const Ecommerce = {
   title: "E-commerce",
@@ -143,12 +146,16 @@ export const SidebarItems = [
     link: "/dashboard/orders",
     Icon: OrderIcon,
   },
-  {
-    title: "Users",
-    pathName: "users",
-    link: "/dashboard/users",
-    Icon: Users,
-  },
+  ...(user && user!.roles.includes("admin")
+    ? [
+        {
+          title: "Users",
+          pathName: "users",
+          link: "/dashboard/users",
+          Icon: Users,
+        },
+      ]
+    : []),
   {
     title: "Profile",
     pathName: "profile",

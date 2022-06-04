@@ -3,13 +3,24 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "/public/images/hotcodes-dark.svg";
-import { SidebarItems } from "@/components/tempDash/sidebarItems";
+import {
+  BlogIcon,
+  DashboardIcon,
+  MessageIcon,
+  OrderIcon,
+  UserIcon,
+  Users,
+} from "@/icons/index";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
+import { useActions } from "@/hooks/useActions";
 
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (value: boolean) => void;
 }
 const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
+  const { user } = useTypedSelector((state) => state.authReducer);
+  const { LoadUser } = useActions();
   const { pathname } = useRouter();
 
   const trigger = useRef<any>(null);
@@ -42,6 +53,55 @@ const Sidebar: FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
+  //Load user
+  useEffect(() => {
+    if (!user) {
+      LoadUser();
+    }
+  }, [user]);
+
+  const SidebarItems = [
+    {
+      title: "Dashboard",
+      pathName: "dashboard",
+      link: "/dashboard",
+      Icon: DashboardIcon,
+    },
+    {
+      title: "Blog",
+      pathName: "blog",
+      link: "/dashboard/blog",
+      Icon: BlogIcon,
+    },
+    {
+      title: "Orders",
+      pathName: "orders",
+      link: "/dashboard/orders",
+      Icon: OrderIcon,
+    },
+    ...(user?.roles.includes("admin")
+      ? [
+          {
+            title: "Users",
+            pathName: "users",
+            link: "/dashboard/users",
+            Icon: Users,
+          },
+        ]
+      : []),
+    {
+      title: "Profile",
+      pathName: "profile",
+      link: "/dashboard/profile",
+      Icon: UserIcon,
+    },
+    {
+      title: "Messages",
+      pathName: "messages",
+      link: "/dashboard/messages",
+      Icon: MessageIcon,
+    },
+  ];
 
   return (
     <section className="h-screen">
