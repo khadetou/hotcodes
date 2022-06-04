@@ -231,6 +231,109 @@ interface CreateOrderMarketingSuccessAction {
   };
 }
 
+interface GetAllOrderWebSuccessAction {
+  type: ActionType.GET_ALL_ORDERWEB_SUCCESS;
+  payload: {
+    orders: OrderWeb[];
+  };
+}
+
+interface GetAllOrderWebFailureAction {
+  type: ActionType.GET_ALL_ORDERWEB_FAILURE;
+  error: string;
+}
+
+interface GetAllOrderDesignSuccessAction {
+  type: ActionType.GET_ALL_ORDERDESIGN_SUCCESS;
+  payload: {
+    orders: OrderDesign[];
+  };
+}
+
+interface GetAllOrderDesignFailureAction {
+  type: ActionType.GET_ALL_ORDERDESIGN_FAILURE;
+  error: string;
+}
+
+interface GetAllOrderMobileSuccessAction {
+  type: ActionType.GET_ALL_ORDERMOBILE_SUCCESS;
+  payload: {
+    orders: OrderMobile[];
+  };
+}
+
+interface GetAllOrderMobileFailureAction {
+  type: ActionType.GET_ALL_ORDERMOBILE_FAILURE;
+  error: string;
+}
+
+interface UpdateOrderWebSuccessAction {
+  type: ActionType.UPDATE_ORDERWEB_SUCCESS;
+  payload: {
+    order: OrderWeb;
+  };
+}
+
+interface UpdateOrderWebFailureAction {
+  type: ActionType.UPDATE_ORDERWEB_FAILURE;
+  error: string;
+}
+
+interface UpdateOrderDesignSuccessAction {
+  type: ActionType.UPDATE_ORDERDESIGN_SUCCESS;
+  payload: {
+    order: OrderDesign;
+  };
+}
+
+interface UpdateOrderDesignFailureAction {
+  type: ActionType.UPDATE_ORDERDESIGN_FAILURE;
+  error: string;
+}
+
+interface UpdateOrderMobileSuccessAction {
+  type: ActionType.UPDATE_ORDERMOBILE_SUCCESS;
+  payload: {
+    order: OrderMobile;
+  };
+}
+
+interface UpdateOrderMobileFailureAction {
+  type: ActionType.UPDATE_ORDERMOBILE_FAILURE;
+  error: string;
+}
+
+interface DeleteOrderWebSuccessAction {
+  type: ActionType.DELETE_ORDERWEB_SUCCESS;
+  payload: {
+    order: OrderWeb;
+  };
+}
+
+interface DeleteOrderWebFailureAction {
+  type: ActionType.DELETE_ORDERWEB_FAILURE;
+  error: string;
+}
+
+interface DeleteOrderDesignSuccessAction {
+  type: ActionType.DELETE_ORDERDESIGN_SUCCESS;
+  payload: {
+    order: OrderDesign;
+  };
+}
+
+interface DeleteOrderDesignFailureAction {
+  type: ActionType.DELETE_ORDERDESIGN_FAILURE;
+  error: string;
+}
+
+interface DeleteOrderMobileSuccessAction {
+  type: ActionType.DELETE_ORDERMOBILE_SUCCESS;
+  payload: {
+    order: OrderMobile;
+  };
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -259,4 +362,21 @@ export type Action =
   | CreateOrderMobileSuccessAction
   | CreateOrderMobileFailureAction
   | CreateOrderMarketingSuccessAction
-  | CreateOrderMarketingFailureAction;
+  | CreateOrderMarketingFailureAction
+  | GetAllOrderWebSuccessAction
+  | GetAllOrderWebFailureAction
+  | GetAllOrderDesignSuccessAction
+  | GetAllOrderDesignFailureAction
+  | GetAllOrderMobileSuccessAction
+  | GetAllOrderMobileFailureAction
+  | UpdateOrderWebSuccessAction
+  | UpdateOrderWebFailureAction
+  | UpdateOrderDesignSuccessAction
+  | UpdateOrderDesignFailureAction
+  | UpdateOrderMobileSuccessAction
+  | UpdateOrderMobileFailureAction
+  | DeleteOrderWebSuccessAction
+  | DeleteOrderWebFailureAction
+  | DeleteOrderDesignSuccessAction
+  | DeleteOrderDesignFailureAction
+  | DeleteOrderMobileSuccessAction;
