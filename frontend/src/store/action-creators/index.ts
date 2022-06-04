@@ -718,6 +718,181 @@ export const GetMyOrdersMobile = () => {
   };
 };
 
+//GET ORDER BY WEB
+export const GetOrderWeb = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/orders/${id}`);
+      dispatch({
+        type: ActionType.GET_ORDERWEB_BY_ID_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ORDERWEB_BY_ID_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET ORDER BY DESIGN
+export const GetOrderDesign = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5000/ordersdesign/${id}`
+      );
+      dispatch({
+        type: ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ORDERDESIGN_BY_ID_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//GET ORDER BY MOBILE
+export const GetOrderMobile = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5000/ordersmobile/${id}`
+      );
+      dispatch({
+        type: ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.GET_ORDERMOBILE_BY_ID_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//UPDATE ORDER WEB
+export const UpdateOrderWeb = (id: string, order: any) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/orders/${id}`,
+        order
+      );
+      dispatch({
+        type: ActionType.UPDATE_ORDERWEB_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.UPDATE_ORDERWEB_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//UPDATE ORDER DESIGN
+export const UpdateOrderDesign = (id: string, order: any) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/ordersdesign/${id}`,
+        order
+      );
+      dispatch({
+        type: ActionType.UPDATE_ORDERDESIGN_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.UPDATE_ORDERDESIGN_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//UPDATE ORDER MOBILE
+export const UpdateOrderMobile = (id: string, order: any) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/ordersmobile/${id}`,
+        order
+      );
+      dispatch({
+        type: ActionType.UPDATE_ORDERMOBILE_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.UPDATE_ORDERMOBILE_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//DELETE ORDER WEB
+export const DeleteOrderWeb = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.delete(`http://localhost:5000/orders/${id}`);
+      dispatch({
+        type: ActionType.DELETE_ORDERWEB_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.DELETE_ORDERWEB_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
+//DELETE ORDER DESIGN
+export const DeleteOrderDesign = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5000/ordersdesign/${id}`
+      );
+      dispatch({
+        type: ActionType.DELETE_ORDERDESIGN_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.DELETE_ORDERDESIGN_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
 //CREATE ORDER MARKETING
 // export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
 //   return async (dispatch: Dispatch<Action>) => {
