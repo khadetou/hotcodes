@@ -2,14 +2,10 @@ import { useState } from "react";
 import Marketing from "/public/images/marketing/360.png";
 import Seo from "/public/images/marketing/seo.png";
 import Social from "/public/images/marketing/social.png";
-import minimalistic from "/public/images/design/minimalistic.png";
 import crypto from "/public/images/design/crypto.png";
 import Title from "@/components/Title/title";
 import DesignCards from "@/components/Bigcards/Design";
-import Modal from "react-modal";
-import Modals from "@/components/Modal/Modal";
 import { FiEdit3 } from "react-icons/fi";
-import SubModal from "@/components/Modal/SubModal";
 
 const customStyles = {
   overlay: {
@@ -35,8 +31,6 @@ const customStyles = {
     padding: "20px",
   },
 };
-
-Modal.setAppElement("#modals");
 
 type Style = {
   color: string;
@@ -85,20 +79,7 @@ const Cards = () => {
 
   return (
     <>
-      <Modals
-        setIsOpen={setIsOpen}
-        openModal={openModal}
-        openSubModal={openSubModal}
-        modalIsOpen={modalIsOpen}
-        customStyles={customStyles}
-      />
-      <SubModal
-        setIsOpen={setSubIsOpen}
-        modalIsOpen={submodalIsOpen}
-        openModal={openSubModal}
-      />
-
-      <div id="modals">
+      <div className="mb-[160px]">
         <div className="containers my-16">
           <Title
             title="What we Offer"

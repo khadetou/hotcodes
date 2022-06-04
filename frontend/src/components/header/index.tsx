@@ -62,7 +62,7 @@ const Header: FC<HeaderProps> = ({
             {menues.map(({ title, path, className }, key) => (
               <Link key={key} href={path}>
                 <button
-                  className={`flex px-1 mx-1 my-1 py-3 xl:px-1  xl:py-3 xl:text-xl relative group  font-Inter font-normal leading-none text-[0.95rem]  before:contente-[""] before:w-0  hover:before:w-full before:h-[3px] before:transition-all before:left-0 before:bg-white before:absolute before:bottom-1 lg:text-base hover:text-gray-500 before:duration-500 ease-linear ${className} ${
+                  className={`flex px-1 mx-3 my-1 py-3 xl:px-1  xl:py-3 xl:text-base relative group  font-Inter font-normal leading-none text-[0.95rem]  before:contente-[""] before:w-0  hover:before:w-full before:h-[3px] before:transition-all before:left-0 before:bg-white before:absolute before:bottom-1  hover:text-gray-500 before:duration-500 ease-linear ${className} ${
                     pathname.endsWith(path) && "before:!bg-white before:!w-full"
                   }`}
                   type="button"
