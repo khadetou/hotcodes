@@ -2,35 +2,35 @@ import React, { FC, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import codes from "country-calling-code";
-import Select from "react-select";
 import Input from "./Input";
 import CountryDropdown from "../Countrycodes";
+import { useTranslation } from "next-i18next";
 
 interface FormProps {
   className?: string;
 }
 
-const Inputs = [
-  {
-    label: "First Name",
-    id: "f-Name",
-  },
-  {
-    label: "Last Name",
-    id: "l-Name",
-  },
-  {
-    label: "Email",
-    id: "email",
-  },
-  {
-    label: "Number phone",
-    id: "tel",
-  },
-];
-
 const Form: FC<FormProps> = ({ className }) => {
   //TEXT AREA
+  const { t } = useTranslation("common");
+  const Inputs = [
+    {
+      label: t("contact.firstname"),
+      id: "f-Name",
+    },
+    {
+      label: t("contact.lastname"),
+      id: "l-Name",
+    },
+    {
+      label: t("contact.email"),
+      id: "email",
+    },
+    {
+      label: t("contact.phone"),
+      id: "tel",
+    },
+  ];
   const [textareaFocused, setTextareaFocused] = useState(false);
   const [form, setForm] = useState({
     firstName: "",
@@ -143,6 +143,7 @@ const Form: FC<FormProps> = ({ className }) => {
       },
     };
   };
+
   const formatOptionLabel = (option: any, { context }: any) =>
     context === "value" ? (
       <div className="text-white text-medium flex items-center justify-between ">
@@ -181,7 +182,7 @@ const Form: FC<FormProps> = ({ className }) => {
             }`}
             htmlFor="message"
           >
-            Enter your message
+            {t("contact.message")}
           </label>
           <textarea
             onFocus={onFocus}
@@ -193,7 +194,7 @@ const Form: FC<FormProps> = ({ className }) => {
         </div>
         <div className="flex justify-between items-center w-full max-w-[822px]">
           <button className="font-bold text-white bg-dark-pink text-base py-[10px] px-[25px] md:py-[15px] md:px-[159px] rounded-lg border-2 border-blue">
-            Send
+            {t("contact.button")}
           </button>
           <div className="text-dark-pink text-3xl py-1 px-2 xxs:px-4 border-2 border-dark-pink rounded-lg">
             <FiMail />

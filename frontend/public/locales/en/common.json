@@ -70,7 +70,7 @@
       "lastname": "Last Name",
       "phone": "Phone Number",
       "email": "Email",
-      "message": "Message",
+      "message": "Enter your message",
       "button": "Send"
     }
   },
