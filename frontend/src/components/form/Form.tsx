@@ -15,19 +15,19 @@ const Form: FC<FormProps> = ({ className }) => {
   const { t } = useTranslation("common");
   const Inputs = [
     {
-      label: t("contact.firstname"),
+      label: t("contact.form.firstname"),
       id: "f-Name",
     },
     {
-      label: t("contact.lastname"),
+      label: t("contact.form.lastname"),
       id: "l-Name",
     },
     {
-      label: t("contact.email"),
+      label: t("contact.form.email"),
       id: "email",
     },
     {
-      label: t("contact.phone"),
+      label: t("contact.form.phone"),
       id: "tel",
     },
   ];
@@ -182,7 +182,7 @@ const Form: FC<FormProps> = ({ className }) => {
             }`}
             htmlFor="message"
           >
-            {t("contact.message")}
+            {t("contact.form.message")}
           </label>
           <textarea
             onFocus={onFocus}
@@ -194,7 +194,7 @@ const Form: FC<FormProps> = ({ className }) => {
         </div>
         <div className="flex justify-between items-center w-full max-w-[822px]">
           <button className="font-bold text-white bg-dark-pink text-base py-[10px] px-[25px] md:py-[15px] md:px-[159px] rounded-lg border-2 border-blue">
-            {t("contact.button")}
+            {t("contact.form.button")}
           </button>
           <div className="text-dark-pink text-3xl py-1 px-2 xxs:px-4 border-2 border-dark-pink rounded-lg">
             <FiMail />
