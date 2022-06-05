@@ -855,7 +855,9 @@ export const UpdateOrderMobile = (id: string, order: any) => {
 export const DeleteOrderWeb = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.delete(`http://localhost:5000/orders/${id}`);
+      const { data } = await axios.delete(
+        `http://localhost:5000/orderweb/${id}`
+      );
       dispatch({
         type: ActionType.DELETE_ORDERWEB_SUCCESS,
         payload: {
@@ -873,10 +875,11 @@ export const DeleteOrderWeb = (id: string) => {
 
 //DELETE ORDER DESIGN
 export const DeleteOrderDesign = (id: string) => {
+  console.log(id);
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/ordersdesign/${id}`
+        `http://localhost:5000/orderdesign/${id}`
       );
       dispatch({
         type: ActionType.DELETE_ORDERDESIGN_SUCCESS,
@@ -898,7 +901,7 @@ export const DeleteOrderMobile = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/ordersmobile/${id}`
+        `http://localhost:5000/ordermobile/${id}`
       );
       dispatch({
         type: ActionType.DELETE_ORDERMOBILE_SUCCESS,
@@ -914,3 +917,23 @@ export const DeleteOrderMobile = (id: string) => {
     }
   };
 };
+
+//DELETE MY ORDER WEB
+// export const DeleteMyOrderWeb = (id: string) => {
+//   return async (dispatch: Dispatch<Action>) => {
+//     try {
+//       const { data } = await axios.delete(`http://localhost:5000/orderweb/my/${id}`);
+//       dispatch({
+//         type: ActionType.DELETE_MYORDERWEB_SUCCESS,
+//         payload: {
+//           order: data,
+//         },
+//       });
+//     } catch (error: any) {
+//       dispatch({
+//         type: ActionType.DELETE_MYORDERWEB_FAILURE,
+//         error: error.response.data.message,
+//       });
+//     }
+//   };
+// }

@@ -1,11 +1,44 @@
 import DeleteIcon from "@/icons/delete-icon";
 import EditIcon from "@/icons/edit-icon";
 import { AiOutlineFilePdf } from "react-icons/ai";
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 
-const Actions = () => {
+interface ActionProps {
+  id: any;
+  plateform: string;
+}
+const Actions: FC<ActionProps> = ({ id, plateform }) => {
+  const {
+    GetAllOrdersDesign,
+    GetAllOrdersMobile,
+    GetAllOrdersWeb,
+    GetMyOrdersDesign,
+    GetMyOrdersMobile,
+    GetMyOrdersWeb,
+    DeleteOrderDesign,
+    DeleteOrderMobile,
+    DeleteOrderWeb,
+    SetSuccess,
+  } = useActions();
+  const { success } = useTypedSelector((state) => state.orderReducer);
+  const { user } = useTypedSelector((state) => state.authReducer);
+  useEffect(() => {
+    if (success) {
+      if (user?.roles.includes("admin")) {
+        GetAllOrdersWeb();
+        GetAllOrdersDesign();
+        GetAllOrdersMobile();
+      } else {
+        GetMyOrdersDesign();
+        GetMyOrdersMobile();
+        GetMyOrdersWeb();
+      }
+      SetSuccess(false);
+    }
+  }, [success]);
+
   return (
     <div className="flex items-center list-user-action">
       <a
@@ -35,6 +68,15 @@ const Actions = () => {
         title=""
         data-original-title="Delete"
         href="#"
+        onClick={() => {
+          if (plateform === "web") {
+            DeleteOrderWeb(id);
+          } else if (plateform === "mobile") {
+            DeleteOrderMobile(id);
+          } else if (plateform === "design") {
+            DeleteOrderDesign(id);
+          }
+        }}
       >
         <span className="btn-inner">
           <DeleteIcon />
@@ -96,26 +138,6 @@ const Orders = () => {
     }
   }, [user]);
 
-  const TableBody = [
-    {
-      title: "Dev web",
-    },
-    {
-      title: "Web",
-    },
-    {
-      title: "E-commerce",
-    },
-    {
-      title: <Status />,
-    },
-
-    {
-      title: <Actions />,
-    },
-  ];
-
-  console.log(orderWeb);
   return (
     <div className="flex flex-wrap">
       <div className="flex-auto w-full">
@@ -171,7 +193,7 @@ const Orders = () => {
 
                   <tbody className="bg-white divide-y divide-gray-200">
                     {orderWeb.length !== 0 &&
-                      orderWeb.map(({ platform, typeapp }, index) => (
+                      orderWeb.map(({ platform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Web Dev
@@ -186,12 +208,12 @@ const Orders = () => {
                             <Status />
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Actions />
+                            <Actions id={_id} plateform="web" />
                           </td>
                         </tr>
                       ))}
                     {orderDesign.length !== 0 &&
-                      orderDesign.map(({ platform, typeapp }, index) => (
+                      orderDesign.map(({ platform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Ui/Ux Design
@@ -206,12 +228,12 @@ const Orders = () => {
                             <Status />
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Actions />
+                            <Actions id={_id} plateform="design" />
                           </td>
                         </tr>
                       ))}
                     {orderMobile.length !== 0 &&
-                      orderMobile.map(({ platform, typeapp }, index) => (
+                      orderMobile.map(({ platform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Mobile Dev
@@ -226,7 +248,7 @@ const Orders = () => {
                             <Status />
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Actions />
+                            <Actions id={_id} plateform="mobile" />
                           </td>
                         </tr>
                       ))}

@@ -65,7 +65,6 @@ const orderReducer = (
     case ActionType.GET_ALL_ORDERWEB_SUCCESS:
       return {
         ...state,
-        success: true,
         orderWeb: action.payload.orders,
         loading: false,
       };
@@ -73,7 +72,6 @@ const orderReducer = (
     case ActionType.GET_ALL_ORDERDESIGN_SUCCESS:
       return {
         ...state,
-        success: true,
         orderDesign: action.payload.orders,
         loading: false,
       };
@@ -81,7 +79,6 @@ const orderReducer = (
     case ActionType.GET_ALL_ORDERMOBILE_SUCCESS:
       return {
         ...state,
-        success: true,
         orderMobile: action.payload.orders,
         loading: false,
       };
@@ -89,7 +86,6 @@ const orderReducer = (
     case ActionType.GET_ORDERWEB_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderWeb: action.payload.orders,
         loading: false,
       };
@@ -98,7 +94,6 @@ const orderReducer = (
     case ActionType.GET_ORDERDESIGN_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderDesign: action.payload.orders,
         loading: false,
       };
@@ -107,7 +102,6 @@ const orderReducer = (
     case ActionType.GET_ORDERMOBILE_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderMobile: action.payload.orders,
         loading: false,
       };
@@ -116,7 +110,6 @@ const orderReducer = (
     case ActionType.GET_ORDERWEB_BY_ID_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderWeb: [action.payload.order],
         loading: false,
       };
@@ -125,7 +118,6 @@ const orderReducer = (
     case ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderDesign: [action.payload.order],
         loading: false,
       };
@@ -134,7 +126,6 @@ const orderReducer = (
     case ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS: {
       return {
         ...state,
-        success: true,
         orderMobile: [action.payload.order],
         loading: false,
       };
