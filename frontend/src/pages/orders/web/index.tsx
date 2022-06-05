@@ -16,7 +16,7 @@ const OrderWeb: NextPage = () => {
   const [formData, setFormData] = useState<any>({
     plateform: "",
     typeapp: "",
-    appName: "",
+    appname: "",
     description: "",
     goal: "",
     design: "",

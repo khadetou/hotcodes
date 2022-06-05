@@ -14,9 +14,9 @@ const Dashboard: NextPage = () => {
   const router = useRouter();
   useEffect(() => {
     LoadUser();
-    if (!isAuthenticated) {
-      router.push("/login");
-    }
+    // if (!isAuthenticated) {
+    //   router.push("/login");
+    // }
   }, [router, isAuthenticated]);
   return (
     <>

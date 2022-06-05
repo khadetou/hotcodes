@@ -602,7 +602,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
 export const GetAllOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/orders");
+      const { data } = await axios.get("http://localhost:5000/orderweb");
       dispatch({
         type: ActionType.GET_ALL_ORDERWEB_SUCCESS,
         payload: {
@@ -622,7 +622,7 @@ export const GetAllOrdersWeb = () => {
 export const GetAllOrdersDesign = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/ordersdesign");
+      const { data } = await axios.get("http://localhost:5000/orderdesign");
       dispatch({
         type: ActionType.GET_ALL_ORDERDESIGN_SUCCESS,
         payload: {
@@ -642,7 +642,7 @@ export const GetAllOrdersDesign = () => {
 export const GetAllOrdersMobile = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/ordersmobile");
+      const { data } = await axios.get("http://localhost:5000/ordermobile");
       dispatch({
         type: ActionType.GET_ALL_ORDERMOBILE_SUCCESS,
         payload: {
@@ -662,7 +662,7 @@ export const GetAllOrdersMobile = () => {
 export const GetMyOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/orders/my`);
+      const { data } = await axios.get(`http://localhost:5000/orderweb/my`);
       dispatch({
         type: ActionType.GET_ORDERWEB_SUCCESS,
         payload: {
@@ -914,56 +914,3 @@ export const DeleteOrderMobile = (id: string) => {
     }
   };
 };
-
-//CREATE ORDER MARKETING
-// export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
-//   return async (dispatch: Dispatch<Action>) => {
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     };
-
-//     const {
-//       ageMoyen,
-//       besoinClients,
-//       genresClient,
-//       moyenVentes,
-//       nombreClients,
-//       nombreProduits,
-//       problemeVente,
-//       status,
-//     } = orderMarketing;
-
-//     const body = JSON.stringify({
-//       ageMoyen,
-//       besoinClients,
-//       genresClient,
-//       moyenVentes,
-//       nombreClients,
-//       nombreProduits,
-//       problemeVente,
-//       status,
-//     });
-
-//     try {
-//       const { data } = await axios.post(
-//         "http://localhost:5000/ordermarketing",
-//         body,
-//         config
-//       );
-//       dispatch({
-//         type: ActionType.CREATE_ORDERMARKETING_SUCCESS,
-//         payload: {
-//           order: data,
-//         },
-//       });
-//     } catch (error: any) {
-//       console.log({ error });
-//       dispatch({
-//         type: ActionType.CREATE_ORDERMARKETING_FAILURE,
-//         error: error.response.data.message,
-//       });
-//     }
-//   };
-// };

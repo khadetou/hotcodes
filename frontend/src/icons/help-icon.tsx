@@ -9,7 +9,6 @@ interface BlogIconIconProps {
 const HelpIcon: FC<BlogIconIconProps> = ({ className, size, pathname }) => {
   return (
     <svg
-      height={size}
       width={size}
       className={className}
       fill="none"

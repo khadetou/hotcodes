@@ -10,7 +10,6 @@ const DeleteIcon: FC<DeleteIconIconProps> = ({ className, size, title }) => {
   return (
     <svg
       width={size}
-      height={size}
       className={className}
       viewBox="0 0 24 24"
       fill="none"

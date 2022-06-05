@@ -13,7 +13,6 @@ const NotificationIcon: FC<BlogIconIconProps> = ({
 }) => {
   return (
     <svg
-      height={size}
       width={size}
       className={className}
       fill="none"

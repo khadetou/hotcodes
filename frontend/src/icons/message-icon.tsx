@@ -9,7 +9,6 @@ interface BlogIconIconProps {
 const MessageIcon: FC<BlogIconIconProps> = ({ className, size, pathname }) => {
   return (
     <svg
-      height={size}
       width={size}
       className={className}
       viewBox="0 0 24 24"

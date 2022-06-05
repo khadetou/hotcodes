@@ -217,6 +217,23 @@ const orderReducer = (
     case ActionType.CREATE_ORDERMARKETING_FAILURE:
     case ActionType.CREATE_ORDERWEB_FAILURE:
     case ActionType.CREATE_ORDERMOBILE_FAILURE:
+    case ActionType.GET_USER_FAILURE_BY_ID:
+    case ActionType.GET_ALL_ORDERWEB_FAILURE:
+    case ActionType.GET_ALL_ORDERMOBILE_FAILURE:
+    case ActionType.GET_ORDERWEB_BY_ID_FAILURE:
+    case ActionType.GET_ORDERWEB_FAILURE:
+    case ActionType.GET_ORDERDESIGN_FAILURE:
+    case ActionType.GET_ORDERMOBILE_FAILURE:
+    case ActionType.GET_ORDERWEB_BY_ID_FAILURE:
+    case ActionType.GET_ORDERDESIGN_BY_ID_FAILURE:
+    case ActionType.GET_ORDERMOBILE_BY_ID_FAILURE:
+    case ActionType.DELETE_ORDERWEB_FAILURE:
+    case ActionType.DELETE_ORDERMOBILE_FAILURE:
+    case ActionType.DELETE_ORDERDESIGN_FAILURE:
+    case ActionType.UPDATE_ORDERWEB_FAILURE:
+    case ActionType.UPDATE_ORDERMOBILE_FAILURE:
+    case ActionType.UPDATE_ORDERDESIGN_FAILURE:
+    case ActionType.CREATE_ORDERDESIGN_FAILURE:
       return {
         ...state,
         error: action.error,

@@ -1,8 +1,9 @@
-import AddUserIcon from "@/icons/add-user-icon";
 import DeleteIcon from "@/icons/delete-icon";
 import EditIcon from "@/icons/edit-icon";
 import { AiOutlineFilePdf } from "react-icons/ai";
-import React from "react";
+import React, { useEffect } from "react";
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 
 const Actions = () => {
   return (
@@ -70,26 +71,51 @@ const TableHeader = [
   },
 ];
 
-const TableBody = [
-  {
-    title: "Dev web",
-  },
-  {
-    title: "Web",
-  },
-  {
-    title: "E-commerce",
-  },
-  {
-    title: <Status />,
-  },
-
-  {
-    title: <Actions />,
-  },
-];
-
 const Orders = () => {
+  const {
+    GetAllOrdersWeb,
+    GetAllOrdersDesign,
+    GetAllOrdersMobile,
+    GetMyOrdersDesign,
+    GetMyOrdersMobile,
+    GetMyOrdersWeb,
+  } = useActions();
+  const { user } = useTypedSelector((state) => state.authReducer);
+  const { orderWeb, orderDesign, orderMobile } = useTypedSelector(
+    (state) => state.orderReducer
+  );
+  useEffect(() => {
+    if (user?.roles.includes("admin")) {
+      GetAllOrdersWeb();
+      GetAllOrdersDesign();
+      GetAllOrdersMobile();
+    } else {
+      GetMyOrdersDesign();
+      GetMyOrdersMobile();
+      GetMyOrdersWeb();
+    }
+  }, [user]);
+
+  const TableBody = [
+    {
+      title: "Dev web",
+    },
+    {
+      title: "Web",
+    },
+    {
+      title: "E-commerce",
+    },
+    {
+      title: <Status />,
+    },
+
+    {
+      title: <Actions />,
+    },
+  ];
+
+  console.log(orderWeb);
   return (
     <div className="flex flex-wrap">
       <div className="flex-auto w-full">
@@ -144,18 +170,66 @@ const Orders = () => {
                   </thead>
 
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {Array.from({ length: 3 }).map((item, index) => (
-                      <tr className="border-b border-light-gray">
-                        {TableBody.map(({ title }, index) => (
-                          <td
-                            key={index}
-                            className="px-6 py-4 whitespace-nowrap"
-                          >
-                            {title}
+                    {orderWeb.length !== 0 &&
+                      orderWeb.map(({ platform, typeapp }, index) => (
+                        <tr key={index} className="border-b border-light-gray">
+                          <td className="px-6 py-4 whitespace-nowrap font-bold">
+                            Web Dev
                           </td>
-                        ))}
-                      </tr>
-                    ))}
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {platform}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {typeapp}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Status />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Actions />
+                          </td>
+                        </tr>
+                      ))}
+                    {orderDesign.length !== 0 &&
+                      orderDesign.map(({ platform, typeapp }, index) => (
+                        <tr key={index} className="border-b border-light-gray">
+                          <td className="px-6 py-4 whitespace-nowrap font-bold">
+                            Ui/Ux Design
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {platform}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {typeapp}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Status />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Actions />
+                          </td>
+                        </tr>
+                      ))}
+                    {orderMobile.length !== 0 &&
+                      orderMobile.map(({ platform, typeapp }, index) => (
+                        <tr key={index} className="border-b border-light-gray">
+                          <td className="px-6 py-4 whitespace-nowrap font-bold">
+                            Mobile Dev
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {platform}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {typeapp}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Status />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <Actions />
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

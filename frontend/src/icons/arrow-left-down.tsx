@@ -12,7 +12,7 @@ const ArrowLeftDown: FC<ArrowLeftDownIconProps> = ({
   title,
 }) => {
   return (
-    <svg className={className} width={size} height={size} viewBox="0 0 24 24">
+    <svg className={className} width={size} viewBox="0 0 24 24">
       <path
         fill="currentColor"
         d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z"
