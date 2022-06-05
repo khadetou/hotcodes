@@ -51,7 +51,7 @@ export class OrderdesignController {
     return await this.orderdesignService.getMyOrderDesigns(user);
   }
 
-  //DELET MY ORDER DESIGN
+  //DELETE MY ORDER DESIGN
   @Delete('/my/:id')
   @Auth(Role.User)
   async deleteMyOrderDesign(id: string, user: User): Promise<OrderDesign> {
