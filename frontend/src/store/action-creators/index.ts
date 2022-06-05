@@ -893,6 +893,28 @@ export const DeleteOrderDesign = (id: string) => {
   };
 };
 
+//DELETE ORDER MOBILE
+export const DeleteOrderMobile = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5000/ordersmobile/${id}`
+      );
+      dispatch({
+        type: ActionType.DELETE_ORDERMOBILE_SUCCESS,
+        payload: {
+          order: data,
+        },
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ActionType.DELETE_ORDERMOBILE_FAILURE,
+        error: error.response.data.message,
+      });
+    }
+  };
+};
+
 //CREATE ORDER MARKETING
 // export const CreateOrderMarketing = (orderMarketing: OrderMarketing) => {
 //   return async (dispatch: Dispatch<Action>) => {

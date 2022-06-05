@@ -274,11 +274,21 @@ interface GetMyOrderWebSuccessAction {
   };
 }
 
+interface GetMyOrderWebFailureAction {
+  type: ActionType.GET_ORDERWEB_FAILURE;
+  error: string;
+}
+
 interface GetMyOrderMobileSuccessAction {
   type: ActionType.GET_ORDERMOBILE_SUCCESS;
   payload: {
     orders: OrderMobile[];
   };
+}
+
+interface GetMyOrderMobileFailureAction {
+  type: ActionType.GET_ORDERMOBILE_FAILURE;
+  error: string;
 }
 
 interface GetMyOrderDesignSuccessAction {
@@ -288,11 +298,14 @@ interface GetMyOrderDesignSuccessAction {
   };
 }
 
-interface GetMyOrderMobileSuccessAction {
-  type: ActionType.GET_ORDERMOBILE_SUCCESS;
-  payload: {
-    orders: OrderMobile[];
-  };
+interface GetMyOrderDesignFailureAction {
+  type: ActionType.GET_ORDERDESIGN_FAILURE;
+  error: string;
+}
+
+interface GetMyOrderMobileFailureAction {
+  type: ActionType.GET_ORDERMOBILE_FAILURE;
+  error: string;
 }
 
 interface GetOrderWebByIdSuccessAction {
@@ -398,6 +411,11 @@ interface DeleteOrderMobileSuccessAction {
   };
 }
 
+interface DeleteOrderMobileFailureAction {
+  type: ActionType.DELETE_ORDERMOBILE_FAILURE;
+  error: string;
+}
+
 export type Action =
   | RegisterSuccessAction
   | RegisterFailureAction
@@ -423,6 +441,7 @@ export type Action =
   | GetOrderDesignByIdFailureAction
   | GetOrderMobileByIdSuccessAction
   | GetOrderMobileByIdFailureAction
+  | GetAllOrderWebSuccessAction
   | DeleteUserSuccessAction
   | DeleteUserFailureAction
   | CreateOrderWebSuccessAction
@@ -433,7 +452,6 @@ export type Action =
   | CreateOrderMobileFailureAction
   | CreateOrderMarketingSuccessAction
   | CreateOrderMarketingFailureAction
-  | GetAllOrderWebSuccessAction
   | GetAllOrderWebFailureAction
   | GetAllOrderDesignSuccessAction
   | GetAllOrderDesignFailureAction
@@ -443,6 +461,9 @@ export type Action =
   | GetMyOrderMobileSuccessAction
   | GetMyOrderDesignSuccessAction
   | GetMyOrderMobileSuccessAction
+  | GetMyOrderMobileFailureAction
+  | GetMyOrderWebFailureAction
+  | GetMyOrderDesignFailureAction
   | UpdateOrderWebSuccessAction
   | UpdateOrderWebFailureAction
   | UpdateOrderDesignSuccessAction
@@ -453,4 +474,5 @@ export type Action =
   | DeleteOrderWebFailureAction
   | DeleteOrderDesignSuccessAction
   | DeleteOrderDesignFailureAction
-  | DeleteOrderMobileSuccessAction;
+  | DeleteOrderMobileSuccessAction
+  | DeleteOrderMobileFailureAction;
