@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseGuards,
@@ -40,7 +41,8 @@ export class OrderdesignController {
   //DELETE ORDER DESIGN
   @Delete('/:id')
   @Auth(Role.Admin)
-  async delete(id: string): Promise<OrderDesign> {
+  async delete(@Param('id') id: string): Promise<OrderDesign> {
+    console.log(id);
     return await this.orderdesignService.delete(id);
   }
 
@@ -54,7 +56,10 @@ export class OrderdesignController {
   //DELETE MY ORDER DESIGN
   @Delete('/my/:id')
   @Auth(Role.User)
-  async deleteMyOrderDesign(id: string, user: User): Promise<OrderDesign> {
+  async deleteMyOrderDesign(
+    @Param('id') id: string,
+    @GetUser() user: User,
+  ): Promise<OrderDesign> {
     return await this.orderdesignService.deleteMyOrderDesign(id, user);
   }
 

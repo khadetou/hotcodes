@@ -47,7 +47,7 @@ export class OrderwebController {
   //DELETE ORDERWEB
   @Delete('/:id')
   @Auth(Role.Admin)
-  async delete(@Param('id') id: string): Promise<OrderWeb> {
+  async delete(@Param('id') id: string): Promise<OrderWeb | any> {
     return await this.orderwebService.delete(id);
   }
 
@@ -56,7 +56,8 @@ export class OrderwebController {
   async deleteMyOrderWeb(
     @Param('id') id: string,
     @GetUser() user: any,
-  ): Promise<OrderWeb> {
+  ): Promise<OrderWeb | any> {
+    console.log(id);
     return await this.orderwebService.deleteMyOrderWeb(id, user);
   }
 
