@@ -875,7 +875,6 @@ export const DeleteOrderWeb = (id: string) => {
 
 //DELETE ORDER DESIGN
 export const DeleteOrderDesign = (id: string) => {
-  console.log(id);
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.delete(

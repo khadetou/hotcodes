@@ -4,12 +4,42 @@ import { AiOutlineFilePdf } from "react-icons/ai";
 import React, { FC, useEffect } from "react";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 interface ActionProps {
   id: any;
   plateform: string;
 }
 const Actions: FC<ActionProps> = ({ id, plateform }) => {
+  const deleteAction = () => {
+    MySwal.fire({
+      title: <p>Are you sure ?</p>,
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#4bb543",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (plateform === "web") {
+          DeleteOrderWeb(id);
+        } else if (plateform === "mobile") {
+          DeleteOrderMobile(id);
+        } else if (plateform === "design") {
+          DeleteOrderDesign(id);
+        }
+        MySwal.fire("Deleted!", "Your file has been deleted.", "success");
+      } else if (result.dismiss === MySwal.DismissReason.cancel) {
+        MySwal.fire("Cancelled", "Your file is safe :)", "error");
+      }
+    });
+  };
   const {
     GetAllOrdersDesign,
     GetAllOrdersMobile,
@@ -68,15 +98,7 @@ const Actions: FC<ActionProps> = ({ id, plateform }) => {
         title=""
         data-original-title="Delete"
         href="#"
-        onClick={() => {
-          if (plateform === "web") {
-            DeleteOrderWeb(id);
-          } else if (plateform === "mobile") {
-            DeleteOrderMobile(id);
-          } else if (plateform === "design") {
-            DeleteOrderDesign(id);
-          }
-        }}
+        onClick={() => deleteAction()}
       >
         <span className="btn-inner">
           <DeleteIcon />
