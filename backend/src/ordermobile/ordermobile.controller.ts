@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseGuards,
@@ -39,7 +40,7 @@ export class OrdermobileController {
   //DELETE ORDERMOBILE
   @Delete('/:id')
   @Auth(Role.Admin)
-  async delete(id: string): Promise<OrderMobile> {
+  async delete(@Param('id') id: string): Promise<OrderMobile> {
     return await this.ordermobileService.delete(id);
   }
 
