@@ -64,7 +64,7 @@ export class OrderdesignService {
       moodBoard,
       target,
       wireframe,
-      design
+      design,
     } = createOrderDesignDto;
 
     let goalSplits: string[];
@@ -83,7 +83,8 @@ export class OrderdesignService {
       },
     ];
 
-    const result =  file && await this.cloudinaryService.uploadImages(file, user);
+    const result =
+      file && (await this.cloudinaryService.uploadImages(file, user));
 
     if (result) {
       for (let i = 0; i < designLinks.length; i++) {
@@ -113,7 +114,7 @@ export class OrderdesignService {
       funcSplits = functionnality.split(',').map((s) => s.trim());
     }
 
-    let orderwebFields = {
+    let orderDesignFields = {
       plateform: plateform && plateform,
       typeapp: typeapp && typeapp,
       appName: appName && appName,
@@ -126,18 +127,19 @@ export class OrderdesignService {
       wireframe: wireframe && wireframe,
     };
 
-    let orderweb = await this.orderwebModel.findOne({ user: user._id });
-    if (orderweb) {
-      orderweb = await this.orderwebModel.findOneAndUpdate(
+    let orderDesign = await this.orderwebModel.findOne({ user: user._id });
+    if (orderDesign) {
+      orderDesign = await this.orderwebModel.findOneAndUpdate(
         { user: user._id },
-        orderwebFields,
+        { $set: orderDesignFields },
+        { new: true },
       );
     } else {
-      orderweb = await this.orderwebModel.create(orderwebFields);
+      orderDesign = await this.orderwebModel.create(orderDesignFields);
     }
 
     try {
-      return await orderweb.save();
+      return await orderDesign.save();
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
