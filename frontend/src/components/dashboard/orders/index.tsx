@@ -7,6 +7,7 @@ import { useTypedSelector } from "@/hooks/useTypeSelector";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Link from "next/link";
+import Router from "next/router";
 
 const MySwal = withReactContent(Swal);
 
@@ -173,6 +174,8 @@ const Orders = () => {
       GetMyOrdersDesign();
       GetMyOrdersMobile();
       GetMyOrdersWeb();
+    } else {
+      Router.push("/login");
     }
   }, [user]);
 

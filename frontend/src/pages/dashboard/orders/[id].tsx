@@ -20,6 +20,7 @@ const Invoice = () => {
   plateforme =
     typeof window !== "undefined" ? localStorage.getItem("plateforme") : "";
 
+  console.log(plateforme);
   const { GetOrderDesignById, GetOrderMobileById, GetOrderWebById, LoadUser } =
     useActions();
   const { orderd, orderw, orderm } = useTypedSelector(
@@ -31,7 +32,7 @@ const Invoice = () => {
       GetOrderMobileById(id as string);
     } else if (plateforme === "design") {
       GetOrderDesignById(id as string);
-    } else {
+    } else if (plateforme === "web") {
       GetOrderWebById(id as string);
     }
   }, [plateforme]);

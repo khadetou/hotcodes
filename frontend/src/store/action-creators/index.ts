@@ -612,9 +612,10 @@ export const GetAllOrdersWeb = () => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -632,9 +633,10 @@ export const GetAllOrdersDesign = () => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -652,9 +654,10 @@ export const GetAllOrdersMobile = () => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ALL_ORDERMOBILE_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -712,9 +715,10 @@ export const GetMyOrdersMobile = () => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ALL_ORDERMOBILE_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -732,9 +736,10 @@ export const GetOrderWebById = (id: string) => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ORDERWEB_BY_ID_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -754,9 +759,10 @@ export const GetOrderDesignById = (id: string) => {
         },
       });
     } catch (error: any) {
+      console.log(error);
       dispatch({
         type: ActionType.GET_ORDERDESIGN_BY_ID_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -776,9 +782,10 @@ export const GetOrderMobileById = (id: string) => {
         },
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.GET_ORDERMOBILE_BY_ID_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
@@ -799,9 +806,10 @@ export const UpdateOrderWeb = (id: string, order: any) => {
         },
       });
     } catch (error: any) {
+      console.log(error);
       dispatch({
         type: ActionType.UPDATE_ORDERWEB_FAILURE,
-        error: error.response.data.message,
+        error: error,
       });
     }
   };
