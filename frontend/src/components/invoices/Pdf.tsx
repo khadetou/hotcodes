@@ -181,8 +181,8 @@ const Pdf: FC<PdfProp> = ({ orderw, orderm, orderd, plateforme }) => {
               {plateforme === "web"
                 ? orderw?.user.firstName + " " + orderw?.user.lastName
                 : plateforme == "mobile"
-                ? orderm?.date.user.firstName + " " + orderw?.user.lastName
-                : orderd?.date.user.firstName + " " + orderw?.user.lastName}
+                ? orderm?.user.firstName + " " + orderm?.user.lastName
+                : orderd?.user.firstName + " " + orderd?.user.lastName}
             </Text>
           </View>
         </View>
