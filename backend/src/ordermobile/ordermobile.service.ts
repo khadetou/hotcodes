@@ -96,8 +96,20 @@ export class OrdermobileService {
       date: new Date(),
     };
 
+    let orderMobile = await this.ordermobileModel.findOne({ user: user._id });
+
+    if (orderMobile) {
+      orderMobile = await this.ordermobileModel.findByIdAndUpdate(
+        { user: user._id },
+        { $set: ordermobileFields },
+        { new: true },
+      );
+    } else {
+      orderMobile = await this.ordermobileModel.create(ordermobileFields);
+    }
+
     try {
-      return this.ordermobileModel.create(ordermobileFields);
+      return await orderMobile.save();
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
