@@ -34,7 +34,7 @@ export class OrderdesignController {
   //GET ORDER DESIGN BY ID
   @Get(':id')
   @Auth(Role.Admin)
-  async getById(id: string): Promise<OrderDesign> {
+  async getById(@Param('id') id: string): Promise<OrderDesign> {
     return await this.orderdesignService.getById(id);
   }
 

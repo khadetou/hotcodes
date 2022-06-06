@@ -85,6 +85,7 @@ export class OrdermobileService {
       funcSplits = functionnality.split(',').map((s) => s.trim());
     }
     let ordermobileFields = {
+      user: user._id,
       plateform: plateform && plateform,
       typeapp: typeapp && typeapp,
       appName: appName && appName,
@@ -94,6 +95,7 @@ export class OrdermobileService {
       Goal: goalSplits && goalSplits,
       date: new Date(),
     };
+
     try {
       return this.ordermobileModel.create(ordermobileFields);
     } catch (error) {

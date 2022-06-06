@@ -33,7 +33,7 @@ export class OrdermobileController {
   //GET ORDERMOBILE BY ID
   @Get(':id')
   @Auth(Role.Admin)
-  async getOrderMobileById(id: string): Promise<OrderMobile> {
+  async getOrderMobileById(@Param('id') id: string): Promise<OrderMobile> {
     return await this.ordermobileService.findOne(id);
   }
 
