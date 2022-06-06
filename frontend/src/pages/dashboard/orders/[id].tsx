@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Pdf from "@/components/invoices/Pdf";
 import { useRouter } from "next/router";
 import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 const PdfDownload = dynamic(() => import("@/components/invoices/PdfDownload"), {
   ssr: false,
 });
@@ -19,10 +20,13 @@ const Invoice = () => {
   plateforme =
     typeof window !== "undefined" ? localStorage.getItem("plateforme") : "";
 
-  const { GetOrderDesignById, GetOrderMobileById, GetOrderWebById } =
+  const { GetOrderDesignById, GetOrderMobileById, GetOrderWebById, LoadUser } =
     useActions();
-
+  const { orderd, orderw, orderm } = useTypedSelector(
+    (state) => state.orderReducer
+  );
   useEffect(() => {
+    // LoadUser();
     if (plateforme === "mobile") {
       GetOrderMobileById(id as string);
     } else if (plateforme === "design") {
@@ -35,7 +39,12 @@ const Invoice = () => {
   return (
     <section className="h-screen">
       <PDFViewer>
-        <Pdf section="#Section Text" />
+        <Pdf
+          orderd={orderd}
+          orderm={orderm}
+          orderw={orderw}
+          plateforme={plateforme}
+        />
       </PDFViewer>
     </section>
   );
