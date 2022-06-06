@@ -34,6 +34,8 @@ export class OrderMobile {
   }[];
   @Prop({ type: [String] })
   functionnality: [string];
+  @Prop({ type: Date })
+  date: Date;
 }
 
 export const OrderMobileSchema = SchemaFactory.createForClass(OrderMobile);

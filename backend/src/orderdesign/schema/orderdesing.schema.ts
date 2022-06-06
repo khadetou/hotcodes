@@ -40,6 +40,9 @@ export class OrderDesign {
   }[];
   @Prop({ type: [String] })
   functionnality: [string];
+
+  @Prop({ type: Date })
+  date: Date;
 }
 
 export const OrderDesignSchema = SchemaFactory.createForClass(OrderDesign);

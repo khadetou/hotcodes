@@ -26,7 +26,7 @@ export class OrderdesignService {
 
   //GET ORDER DESIGN BY ID
   async getById(id: string): Promise<OrderDesign> {
-    return await this.orderwebModel.findById(id).exec();
+    return await this.orderwebModel.findById(id).populate('user').exec();
   }
 
   //DELETE ORDER DESIGN
@@ -115,16 +115,18 @@ export class OrderdesignService {
     }
 
     let orderDesignFields = {
-      plateform: plateform && plateform,
-      typeapp: typeapp && typeapp,
-      appName: appName && appName,
-      description: description && description,
+      user: user._id,
+      plateform: plateform !== '' && plateform,
+      typeapp: typeapp !== '' && typeapp,
+      appName: appName !== '' && appName,
+      description: description !== '' && description,
       Goal: goalSplits && goalSplits,
       functionnality: funcSplits && funcSplits,
       design: designLinks,
-      moodBoard: moodBoard && moodBoard,
-      target: target && target,
-      wireframe: wireframe && wireframe,
+      moodBoard: moodBoard !== '' && moodBoard,
+      target: target !== '' && target,
+      wireframe: wireframe !== '' && wireframe,
+      date: new Date(),
     };
 
     let orderDesign = await this.orderwebModel.findOne({ user: user._id });

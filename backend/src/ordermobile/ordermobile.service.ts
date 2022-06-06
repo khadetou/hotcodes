@@ -20,7 +20,7 @@ export class OrdermobileService {
 
   //GET ORDERMOBILE BY ID
   async findOne(id: string): Promise<OrderMobile> {
-    return await this.ordermobileModel.findById(id).exec();
+    return await this.ordermobileModel.findById(id).populate('user').exec();
   }
 
   //DELETE ORDERMOBILE
@@ -67,7 +67,8 @@ export class OrdermobileService {
         format: '',
       },
     ];
-    const result =  file && await this.cloudinaryService.uploadImages(file, user);
+    const result =
+      file && (await this.cloudinaryService.uploadImages(file, user));
 
     if (result) {
       for (let i = 0; i < designLinks.length; i++) {
@@ -77,7 +78,6 @@ export class OrdermobileService {
       }
     }
 
-   
     if (Goal) {
       goalSplits = Goal.split(',').map((s) => s.trim());
     }
@@ -92,6 +92,7 @@ export class OrdermobileService {
       design: designLinks,
       functionnality: funcSplits && funcSplits,
       Goal: goalSplits && goalSplits,
+      date: new Date(),
     };
     try {
       return this.ordermobileModel.create(ordermobileFields);

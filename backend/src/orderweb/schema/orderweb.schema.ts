@@ -35,6 +35,9 @@ export class OrderWeb {
 
   @Prop({ type: [String] })
   functionnality: [string];
+
+  @Prop({ type: Date })
+  date: Date;
 }
 
 export const OrderWebSchema = SchemaFactory.createForClass(OrderWeb);

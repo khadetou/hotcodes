@@ -25,7 +25,7 @@ export class OrderwebService {
 
   //GET ORDERWEB BY ID
   async getOrderWebById(id: string): Promise<OrderWeb> {
-    const user = await this.orderwebModel.findById(id).exec();
+    const user = await this.orderwebModel.findById(id).populate('user').exec();
     if (!user) {
       throw new NotFoundException('OrderWeb not found with that id');
     }
@@ -119,10 +119,10 @@ export class OrderwebService {
       appName: description && description,
       description: description && description,
       goal: goal && goalSplits,
-      design:  designLinks ,
+      design: designLinks,
       functionnality: functionnality && funcSplits,
+      date: new Date(),
     };
-
 
     let orderweb = await this.orderwebModel.findOne({ user: user._id });
     if (orderweb) {
@@ -138,7 +138,7 @@ export class OrderwebService {
     try {
       return await orderweb.save();
     } catch (error) {
-      console.log({error})
+      console.log({ error });
       throw new InternalServerErrorException(error);
     }
   }
