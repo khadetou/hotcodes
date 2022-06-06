@@ -720,11 +720,11 @@ export const GetMyOrdersMobile = () => {
   };
 };
 
-//GET ORDER BY WEB
-export const GetOrderWeb = (id: string) => {
+//GET ORDER WEB BY  Id
+export const GetOrderWebById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/orders/${id}`);
+      const { data } = await axios.get(`http://localhost:5000/orderweb/${id}`);
       dispatch({
         type: ActionType.GET_ORDERWEB_BY_ID_SUCCESS,
         payload: {
@@ -740,12 +740,12 @@ export const GetOrderWeb = (id: string) => {
   };
 };
 
-//GET ORDER BY DESIGN
-export const GetOrderDesign = (id: string) => {
+//GET ORDER DESIGN BY id
+export const GetOrderDesignById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/ordersdesign/${id}`
+        `http://localhost:5000/orderdesign/${id}`
       );
       dispatch({
         type: ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS,
@@ -762,12 +762,12 @@ export const GetOrderDesign = (id: string) => {
   };
 };
 
-//GET ORDER BY MOBILE
-export const GetOrderMobile = (id: string) => {
+//GET ORDER MOBILE BY id
+export const GetOrderMobileById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/ordersmobile/${id}`
+        `http://localhost:5000/ordermobile/${id}`
       );
       dispatch({
         type: ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS,

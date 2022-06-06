@@ -6,6 +6,7 @@ import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Link from "next/link";
 
 const MySwal = withReactContent(Swal);
 
@@ -69,28 +70,43 @@ const Actions: FC<ActionProps> = ({ id, plateform }) => {
     }
   }, [success]);
 
+  const setPlateforme = (plateform: string) => {
+    localStorage.setItem("plateforme", plateform);
+  };
+
   return (
     <div className="flex items-center list-user-action">
-      <a
-        className="inline-block p-1 text-sm font-normal text-center text-white bg-green-500 border rounded-lg "
-        href="#"
+      <Link href={`orders/${id}`}>
+        <a
+          className="inline-block p-1 text-sm font-normal text-center text-white bg-green-500 border rounded-lg "
+          onClick={() => setPlateforme(plateform)}
+        >
+          <span className="btn-inner">
+            <AiOutlineFilePdf size="22" />
+          </span>
+        </a>
+      </Link>
+      <Link
+        href={
+          plateform === "mobile"
+            ? "/orders/mobile"
+            : plateform === "web"
+            ? "/orders/web"
+            : "/orders/design"
+        }
       >
-        <span className="btn-inner">
-          <AiOutlineFilePdf size="22" />
-        </span>
-      </a>
-      <a
-        className="inline-block p-1 ml-1 mr-1 text-sm font-normal text-center text-white bg-orange-500 border rounded-lg"
-        data-toggle="tooltip"
-        data-placement="top"
-        title=""
-        data-original-title="Edit"
-        href="#"
-      >
-        <span className="btn-inner">
-          <EditIcon />
-        </span>
-      </a>
+        <a
+          className="inline-block p-1 ml-1 mr-1 text-sm font-normal text-center text-white bg-orange-500 border rounded-lg"
+          data-toggle="tooltip"
+          data-placement="top"
+          title=""
+          data-original-title="Edit"
+        >
+          <span className="btn-inner">
+            <EditIcon />
+          </span>
+        </a>
+      </Link>
       <a
         className="inline-block p-1 text-sm font-normal text-center text-white bg-red-500 border rounded-lg"
         data-toggle="tooltip"
@@ -153,7 +169,7 @@ const Orders = () => {
       GetAllOrdersWeb();
       GetAllOrdersDesign();
       GetAllOrdersMobile();
-    } else {
+    } else if (user?.roles.includes("user")) {
       GetMyOrdersDesign();
       GetMyOrdersMobile();
       GetMyOrdersWeb();

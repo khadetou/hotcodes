@@ -11,6 +11,9 @@ interface OrderState {
   orderWeb: OrderWeb[];
   orderMobile: OrderMobile[];
   orderDesign: OrderDesign[];
+  orderw: any;
+  orderm: any;
+  orderd: any;
   orderMarketing: OrderMarketing[];
   success: boolean;
   loading: boolean;
@@ -21,6 +24,9 @@ const initialState: OrderState = {
   orderWeb: [],
   orderMobile: [],
   orderDesign: [],
+  orderd: null,
+  orderm: null,
+  orderw: null,
   orderMarketing: [],
   success: false,
   loading: false,
@@ -110,7 +116,7 @@ const orderReducer = (
     case ActionType.GET_ORDERWEB_BY_ID_SUCCESS: {
       return {
         ...state,
-        orderWeb: [action.payload.order],
+        orderw: action.payload.order,
         loading: false,
       };
     }
@@ -118,7 +124,7 @@ const orderReducer = (
     case ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS: {
       return {
         ...state,
-        orderDesign: [action.payload.order],
+        orderd: action.payload.order,
         loading: false,
       };
     }
@@ -126,7 +132,7 @@ const orderReducer = (
     case ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS: {
       return {
         ...state,
-        orderMobile: [action.payload.order],
+        orderm: action.payload.order,
         loading: false,
       };
     }
