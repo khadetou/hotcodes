@@ -47,13 +47,102 @@ const styles = StyleSheet.create({
   },
 
   text1: {
+    fontSize: 14,
+    marginBottom: 4,
+  },
+  text2: {
+    fontSize: 14,
+    marginBottom: 4,
+  },
+  textContainer: {
     marginTop: "130px",
     marginLeft: "55px",
-    fontSize: 16,
+    marginRight: "55px",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  text: {
-    fontSize: 20,
-    color: "blue",
+
+  table: {
+    position: "relative",
+    marginTop: "130px",
+    marginLeft: "55px",
+    marginRight: "55px",
+  },
+  tablebar: {
+    position: "absolute",
+    top: "5px",
+    left: 0,
+    right: 0,
+    zIndex: 1,
+  },
+  tablebar1: {
+    position: "absolute",
+    bottom: "30%",
+    left: 0,
+    right: 0,
+    zIndex: 1,
+  },
+  tableHeaderTitle: {
+    fontSize: 13,
+    fontWeight: "bold",
+    marginTop: "7px",
+    marginLeft: "9px",
+    color: "#fff",
+  },
+  tableHeaderTitleEnd: {
+    fontSize: 13,
+    fontWeight: "bold",
+    marginTop: "7px",
+    marginRight: "9px",
+    color: "#fff",
+  },
+  tableHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  tableResult: {
+    marginTop: "10px",
+    backgroundColor: "#f5f5f5",
+    width: "100%",
+    height: "auto",
+  },
+  tableTitle: {
+    color: "#000",
+    fontSize: 12,
+    marginTop: "10px",
+    padding: "9px",
+  },
+  footer: {
+    marginTop: "170px",
+  },
+  website: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  logoImages: {
+    width: "22px",
+    height: "22px",
+    marginRight: "8px",
+  },
+  logoText: {
+    fontSize: 12,
+  },
+  logoContainer: {
+    marginTop: "50px",
+    marginLeft: "55px",
+    marginRight: "55px",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  socialContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "30px",
+  },
+  social: {
+    width: "93px",
   },
 });
 
@@ -74,16 +163,94 @@ const Pdf: FC<PdfProp> = ({ orderw, orderm, orderd, plateforme }) => {
         <View style={styles.logo}>
           <Image style={styles.logoImg} src="/images/invoice/logo-png.png" />
         </View>
-        <View style={styles.text1}>
-          <Text>Invoice</Text>
-          <Text>
-            Date:
-            {plateforme === "web"
-              ? orderw?.date.split("T")[0]
-              : plateforme == "mobile"
-              ? orderm?.date.split("T")[0]
-              : orderd?.date.split("T")[0]}
-          </Text>
+        <View style={styles.textContainer}>
+          <View style={styles.text1}>
+            <Text>Invoice</Text>
+            <Text>
+              Date:
+              {plateforme === "web"
+                ? orderw?.date.split("T")[0]
+                : plateforme == "mobile"
+                ? orderm?.date.split("T")[0]
+                : orderd?.date.split("T")[0]}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.text2}>Billing to:</Text>
+            <Text style={styles.text2}>
+              {plateforme === "web"
+                ? orderw?.user.firstName + " " + orderw?.user.lastName
+                : plateforme == "mobile"
+                ? orderm?.date.user.firstName + " " + orderw?.user.lastName
+                : orderd?.date.user.firstName + " " + orderw?.user.lastName}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.table}>
+          <Image style={styles.tablebar} src="/images/invoice/bar.png" />
+          <View style={styles.tableHeader}>
+            <Text style={styles.tableHeaderTitle}>Service</Text>
+            <Text style={styles.tableHeaderTitle}>Plateform</Text>
+            <Text style={styles.tableHeaderTitle}>App Name</Text>
+            <Text style={styles.tableHeaderTitleEnd}>Type App</Text>
+          </View>
+
+          <View style={styles.tableResult}>
+            <View style={styles.tableHeader}>
+              <Text style={styles.tableTitle}>Service</Text>
+              <Text style={styles.tableTitle}>Plateform</Text>
+              <Text style={styles.tableTitle}>App Name</Text>
+              <Text style={styles.tableTitle}>Type App</Text>
+            </View>
+          </View>
+
+          <Image style={styles.tablebar1} src="/images/invoice/bar.png" />
+          <View style={styles.tableHeader}>
+            <Text style={styles.tableHeaderTitle}>Service</Text>
+            <Text style={styles.tableHeaderTitle}>Plateform</Text>
+            <Text style={styles.tableHeaderTitle}>App Name</Text>
+            <Text style={styles.tableHeaderTitleEnd}>Type App</Text>
+          </View>
+
+          <View style={styles.tableResult}>
+            <View style={styles.tableHeader}>
+              <Text style={styles.tableTitle}>Service</Text>
+              <Text style={styles.tableTitle}>Plateform</Text>
+              <Text style={styles.tableTitle}>App Name</Text>
+              <Text style={styles.tableTitle}>Type App</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.footer}>
+          <Image src="/images/invoice/line.png" />
+
+          <View style={styles.logoContainer}>
+            <View style={styles.website}>
+              <Image
+                style={styles.logoImages}
+                src="/images/invoice/website.png"
+              />
+              <Text style={styles.logoText}>www.hotcodesagency.com</Text>
+            </View>
+            <View style={styles.website}>
+              <Image
+                style={styles.logoImages}
+                src="/images/invoice/email.png"
+              />
+              <Text style={styles.logoText}>hotocesagency@gmail.com</Text>
+            </View>
+            <View style={styles.website}>
+              <Image
+                style={styles.logoImages}
+                src="/images/invoice/phone.png"
+              />
+              <Text style={styles.logoText}>+221 33844422</Text>
+            </View>
+          </View>
+          <View style={styles.socialContainer}>
+            <Image style={styles.social} src="/images/invoice/socials.png" />
+          </View>
         </View>
       </Page>
     </Document>

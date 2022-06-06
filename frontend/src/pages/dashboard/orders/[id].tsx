@@ -34,7 +34,7 @@ const Invoice = () => {
     } else {
       GetOrderWebById(id as string);
     }
-  });
+  }, [plateforme]);
 
   return (
     <section className="h-screen">
