@@ -15,7 +15,7 @@ export type User = {
 export interface OrderDesign {
   _id?: string;
   userId: string;
-  platform: string;
+  plateform: string;
   typeapp: string;
   appName: string;
   description: string;
@@ -34,7 +34,7 @@ export interface OrderDesign {
 export interface OrderWeb {
   _id?: string;
   userId: string;
-  platform: string;
+  plateform: string;
   typeapp: string;
   appName: string;
   description: string;
@@ -50,7 +50,7 @@ export interface OrderWeb {
 export interface OrderMobile {
   _id?: string;
   userId: string;
-  platform: string;
+  plateform: string;
   typeapp: string;
   appName: string;
   description: string;

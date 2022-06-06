@@ -171,33 +171,35 @@ const Orders = () => {
           </div>
           <div className="p-6 px-0">
             <div className="overflow-x-auto">
-              <div className="flex flex-wrap items-center">
-                <div className="md:w-2/4 pt-4">
-                  <div className="pl-6">
-                    <label>
-                      Show
-                      <select className="inline-block outline-none mx-2 !w-20 py-1 pl-4 pr-0 text-sm border bg-white rounded-lg">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                      </select>{" "}
-                      entries
-                    </label>
+              {user?.roles.includes("admin") && (
+                <div className="flex flex-wrap items-center">
+                  <div className="md:w-2/4 pt-4">
+                    <div className="pl-6">
+                      <label>
+                        Show
+                        <select className="inline-block outline-none mx-2 !w-20 py-1 pl-4 pr-0 text-sm border bg-white rounded-lg">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>{" "}
+                        entries
+                      </label>
+                    </div>
+                  </div>
+                  <div className="md:w-2/4 pt-4">
+                    <div className="pr-6 pl-6 lg:pl-0 lg:block flex text-right">
+                      <label>Search:</label>
+                      <input
+                        type="text"
+                        className="py-1 ml-2 text-base border outline-none rounded-md focus:border-blue-400 focus:shadow hover:border-blue-500"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="md:w-2/4 pt-4">
-                  <div className="pr-6 pl-6 lg:pl-0 lg:block flex text-right">
-                    <label>Search:</label>
-                    <input
-                      type="text"
-                      className="py-1 ml-2 text-base border outline-none rounded-md focus:border-blue-400 focus:shadow hover:border-blue-500"
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
-                </div>
-              </div>
+              )}
               <div className="mt-6 overflow-x-auto">
                 <table className="min-w-full overflow-hidden divide-y divide-gray-200">
                   <thead className="bg-light-gray text-dark">
@@ -215,13 +217,13 @@ const Orders = () => {
 
                   <tbody className="bg-white divide-y divide-gray-200">
                     {orderWeb.length !== 0 &&
-                      orderWeb.map(({ platform, typeapp, _id }, index) => (
+                      orderWeb.map(({ plateform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Web Dev
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {platform}
+                            {plateform}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {typeapp}
@@ -235,13 +237,13 @@ const Orders = () => {
                         </tr>
                       ))}
                     {orderDesign.length !== 0 &&
-                      orderDesign.map(({ platform, typeapp, _id }, index) => (
+                      orderDesign.map(({ plateform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Ui/Ux Design
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {platform}
+                            {plateform}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {typeapp}
@@ -255,13 +257,13 @@ const Orders = () => {
                         </tr>
                       ))}
                     {orderMobile.length !== 0 &&
-                      orderMobile.map(({ platform, typeapp, _id }, index) => (
+                      orderMobile.map(({ plateform, typeapp, _id }, index) => (
                         <tr key={index} className="border-b border-light-gray">
                           <td className="px-6 py-4 whitespace-nowrap font-bold">
                             Mobile Dev
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {platform}
+                            {plateform}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {typeapp}

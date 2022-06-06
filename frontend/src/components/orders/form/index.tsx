@@ -193,6 +193,7 @@ const Form: FC<FormProps> = ({ title, Action, formData, setFormData }) => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
+    console.log(formData);
 
     if (isAuthenticated) {
       const order = {

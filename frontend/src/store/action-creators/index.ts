@@ -460,7 +460,7 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     } = orderWeb;
@@ -470,7 +470,7 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     });
@@ -511,17 +511,19 @@ export const CreateOrderDesign = (orderDesign: OrderDesign) => {
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     } = orderDesign;
+
+    console.log(orderDesign);
 
     const body = JSON.stringify({
       goal,
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     });
@@ -561,7 +563,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     } = orderMobile;
@@ -571,7 +573,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
       appName,
       description,
       functionnality,
-      platform,
+      plateform,
       typeapp,
       design,
     });
