@@ -18,7 +18,7 @@ const DesignCards: FC<BigcardsProps> = ({
   return (
     <div className="max-w-[633px]  lg:h-[800px]  rounded-[35px] shadow-shadow-sm rounde- flex flex-col items-center">
       <div className="rounded-t-[35px]">
-        <Image src={image} className="rounded-t-[35px]" />
+        <Image src={image} className="rounded-t-[35px]" alt="Design image" />
       </div>
       <div className="text-cente w-full px-5">
         <h3 className="text-[18px] text-center lg:text-[32px] text-dark font-normal mb-[3px] mt-[15px] md:mt-[35px] xxs:text-[20px] ">

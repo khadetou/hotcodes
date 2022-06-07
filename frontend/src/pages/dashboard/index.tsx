@@ -23,7 +23,7 @@ const Dashboard: NextPage = () => {
     if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [loading, user, isAuthenticated, router]);
+  }, [loading, user, isAuthenticated, router, LoadUser]);
 
   return (
     <>

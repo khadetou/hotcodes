@@ -18,7 +18,7 @@ const CircurlarProgress: FC<CircualarProgressProps> = ({
     <svg className={className}>
       <circle
         className={circleOneClassName}
-        stroke-width="3"
+        strokeWidth="3"
         stroke="currentColor"
         fill="transparent"
         r="30"
@@ -27,8 +27,8 @@ const CircurlarProgress: FC<CircualarProgressProps> = ({
       />
       <circle
         className={circleTwoClassName}
-        stroke-width="5"
-        stroke-linecap="round"
+        strokeWidth="5"
+        strokeLinecap="round"
         strokeDasharray={strokeDasharray}
         strokeDashoffset={strokeDashoffset}
         stroke="currentColor"

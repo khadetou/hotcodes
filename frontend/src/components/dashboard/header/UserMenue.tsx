@@ -97,7 +97,7 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
           </div>
           <ul>
             <li>
-              <Link href="/dashboard/profile">
+              <Link passHref href="/dashboard/profile">
                 <button
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                   type="button"
@@ -110,7 +110,7 @@ const UserMenu: FC<UserMenuProp> = ({ user, isAuthenticated }) => {
               </Link>{" "}
             </li>
             <li>
-              <Link href="/dashboard">
+              <Link passHref href="/dashboard">
                 <button
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                   type="button"

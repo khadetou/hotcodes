@@ -54,7 +54,7 @@ function Cards() {
       {/* Chart built with Chart.js 3 */}
       <div className={`grow  pb-5 px-5 mt-2 flex justify-center `}>
         {/* Change the height attribute to adjust the chart height */}
-        <Image src={BlogImg} className="rounded-md" />
+        <Image src={BlogImg} className="rounded-md" alt="blog image" />
       </div>
     </div>
   );

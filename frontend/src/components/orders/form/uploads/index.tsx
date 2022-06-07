@@ -15,15 +15,9 @@ const Upload: FC<UploadProps> = ({ onChange }) => {
           htmlFor="upload"
           className="flex cursor-pointer z-20 relative px-7 flex-col justify-center bg-light-gray rounded-[20px] h-[268px] focus:ring-0 border-none outline-none w-full"
         >
-          <Image src={uploadImg} />
+          <Image src={uploadImg} alt="Uploaded image" />
           <span className="mx-auto">{t("Form.upload.title")}</span>
           <p className="mx-auto text-center max-w-[255px] text-gray text-base mt-[8px]">
-            {/* Designs must be <span className="text-dark">figma</span> or{" "}
-            <span className="text-black">sketch</span> or{" "}
-            <span className="text-black">adobe xd</span> or
-            <span className="text-black">pdf</span> format,
-            <span className="text-black"> Heigh resolution</span>
-            image. */}
             {t("Form.upload.p")}
           </p>
           <input

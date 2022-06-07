@@ -14,14 +14,14 @@ const DropDown: FC<DropDownProps> = ({ path }) => {
   const menu = (
     <Menu activeKey={locale} className="bg-black text-white rounded-lg !w-32  ">
       <MenuItem key="fr" className="cursor-pointer">
-        <Link href={path!} locale={"fr"}>
+        <Link passHref href={path!} locale={"fr"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">
             <span className="fi fi-fr mr-2 lg:text-base "></span> French (Fr)
           </div>
         </Link>
       </MenuItem>
       <MenuItem key="en" className="cursor-pointer">
-        <Link href={path!} locale={"en"}>
+        <Link passHref href={path!} locale={"en"}>
           <div className="cursor-pointer px-3 py-2 text-black font-medium">
             <span className="fi fi-us w-6 mr-2 lg:text-base"></span> English
             (En)

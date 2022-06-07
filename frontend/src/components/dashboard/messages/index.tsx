@@ -136,8 +136,8 @@ const Messages = () => {
                   </thead>
 
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {Array.from({ length: 3 }).map((item, index) => (
-                      <tr className="border-b border-light-gray">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <tr key={index} className="border-b border-light-gray">
                         {TableBody.map(({ title }, index) => (
                           <td
                             key={index}

@@ -28,7 +28,7 @@ const ForgotPassword: NextPage<IProps> = ({ tokens }) => {
       LogoutUser();
       router.push("/");
     }
-  }, [tokens, router]);
+  }, [tokens, router, LogoutUser]);
 
   return (
     <div>

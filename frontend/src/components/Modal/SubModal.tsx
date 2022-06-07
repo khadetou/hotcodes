@@ -67,7 +67,7 @@ const SubModal: FC<SubModalProps> = ({ modalIsOpen, setIsOpen, openModal }) => {
             <button className="bg-header transition-all duration-300 ease-in-out group-hover:opacity-100  opacity-0 py-2 px-10 text-white font-bold text-xs z-[1000] top-3 left-3  rounded-full absolute">
               Select
             </button>
-            <Image className="rounded-md" src={Image1} />
+            <Image className="rounded-md" src={Image1} alt="submodal image" />
             <h3 className="text-black text-base font-bold ">Image </h3>
           </div>
         </div>

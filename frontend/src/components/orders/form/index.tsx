@@ -1,10 +1,9 @@
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-import React, { useState, useEffect, FC, useTransition } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Selects from "@/components/orders/form/select/select";
-import { HiOutlineDownload } from "react-icons/hi";
 import Input from "./input/input";
 import Upload from "./uploads";
 import Titlebold from "@/components/Title/titlebold";
@@ -40,26 +39,6 @@ const Form: FC<FormProps> = ({ title, Action, formData, setFormData }) => {
 
   //LOCAL STORAGE ITEMS--------------------------------------
 
-  // if (
-  //   formData.plateform ||
-  //   formData.typeapp ||
-  //   formData.appName ||
-  //   formData.goal
-  // ) {
-  //   const stringFormData = JSON.stringify(formData);
-  //   typeof localStorage !== "undefined" &&
-  //     localStorage.setItem("formData", stringFormData);
-  // }
-
-  //USE EFFECTS--------------------------------------
-  // useEffect(() => {
-  //   LoadUser();
-  //   if (isAuthenticated) {
-  //     typeof localStorage !== "undefined" &&
-  //       localStorage.formData &&
-  //       setFormData(JSON.parse(localStorage.getItem("formData") as string));
-  //   }
-  // }, [isAuthenticated, typeof localStorage !== "undefined" && localStorage]);
   useEffect(() => {
     if (success) {
       toast.success("Order created successfully");
@@ -68,7 +47,7 @@ const Form: FC<FormProps> = ({ title, Action, formData, setFormData }) => {
     if (error) {
       toast.error("THERE IS AN ERROR!!!");
     }
-  }, [error, success]);
+  }, [error, success, SetSuccess]);
 
   //HANDLE CHANGES-------------------------------------------------------------
   const onChange = (e: any) => {

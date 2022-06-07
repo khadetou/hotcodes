@@ -69,7 +69,17 @@ const Actions: FC<ActionProps> = ({ id, plateform }) => {
       }
       SetSuccess(false);
     }
-  }, [success]);
+  }, [
+    success,
+    GetAllOrdersDesign,
+    GetAllOrdersMobile,
+    GetAllOrdersWeb,
+    GetMyOrdersDesign,
+    GetMyOrdersMobile,
+    GetMyOrdersWeb,
+    user,
+    SetSuccess,
+  ]);
 
   const setPlateforme = (plateform: string) => {
     localStorage.setItem("plateforme", plateform);
@@ -175,7 +185,15 @@ const Orders = () => {
       GetMyOrdersMobile();
       GetMyOrdersWeb();
     }
-  }, [user]);
+  }, [
+    user,
+    GetMyOrdersDesign,
+    GetMyOrdersMobile,
+    GetMyOrdersWeb,
+    GetAllOrdersDesign,
+    GetAllOrdersMobile,
+    GetAllOrdersWeb,
+  ]);
 
   return (
     <div className="flex flex-wrap">

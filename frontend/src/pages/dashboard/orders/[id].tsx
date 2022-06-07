@@ -4,9 +4,6 @@ import Pdf from "@/components/invoices/Pdf";
 import { useRouter } from "next/router";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-const PdfDownload = dynamic(() => import("@/components/invoices/PdfDownload"), {
-  ssr: false,
-});
 
 const PDFViewer = dynamic(() => import("@/components/invoices/PdfViewer"), {
   ssr: false,
@@ -35,7 +32,7 @@ const Invoice = () => {
     } else if (plateforme === "web") {
       GetOrderWebById(id as string);
     }
-  }, [plateforme]);
+  }, [plateforme, id, GetOrderDesignById, GetOrderMobileById, GetOrderWebById]);
 
   return (
     <section className="h-screen">

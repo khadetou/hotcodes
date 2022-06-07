@@ -11,7 +11,12 @@ const Card: FC<CardProps> = ({ className }) => {
   return (
     <div className="hover:shadow-shadow hover:scale-105 max-w-[413px] w-full p-4 h-[700px] md:h-[653px] rounded-3xl transition-all ease-linear duration-300">
       <div className="max-h-[260px] h-full w-full relative ">
-        <Image className="rounded-[20px] " layout="fill" src={BlogImg} />
+        <Image
+          className="rounded-[20px] "
+          layout="fill"
+          src={BlogImg}
+          alt="Blog image"
+        />
       </div>
       <div className="flex mt-[18px] w-full max-w-[177px] justify-between items-center">
         <button

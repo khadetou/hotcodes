@@ -31,7 +31,7 @@ const Register: NextPage = () => {
     if (user) {
       router.push("/");
     }
-  }, [router, user]);
+  }, [router, user, LoadUser]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

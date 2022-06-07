@@ -13,7 +13,7 @@ const Users: NextPage = () => {
 
   useEffect(() => {
     GetAllUsers();
-  }, []);
+  }, [GetAllUsers]);
 
   return (
     <div>
@@ -22,7 +22,7 @@ const Users: NextPage = () => {
         {users &&
           users.map((user) => (
             <>
-              <Link key={user?._id} href={`/admin/users/${user?._id}`}>
+              <Link passHref key={user?._id} href={`/admin/users/${user?._id}`}>
                 <li>{user?.email}</li>
               </Link>
               <button onClick={() => DeleteUser(user?._id as string)}>

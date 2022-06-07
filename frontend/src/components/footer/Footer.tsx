@@ -93,7 +93,7 @@ const Footer = () => {
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-4 md:gap-10 lg:gap-20">
           <div>
             <div>
-              <Image src={Logo} />
+              <Image alt="logo" src={Logo} />
             </div>
             <p className="max-w-[290px] mb-[37px] mt-[26px] text-lg font-normal leading-[1.2] text-gray">
               {t("first")}

@@ -76,7 +76,7 @@ const ProfileForm = () => {
       });
       ClearError();
     }
-  }, [success, error]);
+  }, [success, error, ClearError, SetSuccess]);
 
   return (
     <div className="flex flex-wrap">

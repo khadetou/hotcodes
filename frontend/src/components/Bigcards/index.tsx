@@ -30,7 +30,7 @@ const Bigcards: FC<BigcardsProps> = ({
         </h1>
         <p className="text-xl mt-[10px]">{subtitle}</p>
         <div className="flex justify-around mt-[25px]  items-center ">
-          <Link href={link}>
+          <Link passHref href={link}>
             <button className="font-bold text-sm rounded-full max-w-[131px] h-[40px] w-full bg-grad-btn text-white">
               {t("banner.button")}
             </button>
@@ -41,7 +41,7 @@ const Bigcards: FC<BigcardsProps> = ({
         </div>
       </div>
       <div className="mt-[59px]">
-        <Image src={image} />
+        <Image src={image} alt="card image" />
       </div>
     </div>
   );

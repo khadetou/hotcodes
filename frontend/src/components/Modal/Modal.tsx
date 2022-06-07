@@ -56,6 +56,7 @@ const Modals: FC<ModalsProps> = ({
                 src="https://images.unsplash.com/photo-1603969072881-b0fc7f3d77d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHVpJTIwZGVzaWdufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 width={400}
                 height={300}
+                alt="modal image"
               />
 
               <h3 className="text-black text-base font-bold ">Image {idx}</h3>

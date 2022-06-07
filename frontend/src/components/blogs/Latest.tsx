@@ -6,7 +6,12 @@ const Latest = () => {
   return (
     <div className="hover:shadow-shadow hover:scale-105 transition-all ease-linear duration-300 mt-[78px]  flex flex-col justify-center items-center lg:justify-center lg:flex-row w-full p-4 h-[700px] md:h-[500px] rounded-3xl">
       <div className="lg:mr-10 h-full min-h-[260px] max-h-[200px] md:max-h-[450px]  xl:max-h-[492px] w-full max-w-[737px] relative ">
-        <Image className="rounded-[20px] " layout="fill" src={BlogImg} />
+        <Image
+          className="rounded-[20px] "
+          alt="latest image"
+          layout="fill"
+          src={BlogImg}
+        />
       </div>
       <div className="w-full max-w-[524px]">
         <div className="flex mt-[18px] w-full max-w-[177px] justify-between items-center">

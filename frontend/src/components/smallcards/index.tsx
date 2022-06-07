@@ -32,7 +32,7 @@ const SmallCards: FC<SmallCardsProps> = ({
           {p}
         </p>
         {link && (
-          <Link href="/">
+          <Link passHref href="/">
             <button className="mt-2 text-dark-pink hover:border-b hover:border-dark-pink flex items-center ">
               {link}
               <span>
@@ -43,7 +43,7 @@ const SmallCards: FC<SmallCardsProps> = ({
         )}
       </div>
       <div className="mt-5 flex justify-center">
-        <Image src={src} />
+        <Image src={src} alt="small cards" />
       </div>
     </div>
   );

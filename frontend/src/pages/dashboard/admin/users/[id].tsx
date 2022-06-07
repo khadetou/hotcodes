@@ -10,12 +10,11 @@ import jwtDecode from "jwt-decode";
 
 const User: NextPage = () => {
   const { GetUserById } = useActions();
-  const { userId } = useTypedSelector((state) => state.authReducer);
   const router = useRouter();
 
   useEffect(() => {
     GetUserById(router.query.id as string);
-  }, [router]);
+  }, [router, GetUserById]);
   return <div>User</div>;
 };
 

@@ -1,6 +1,4 @@
-import Form from "@/components/orders/form";
 import Banner from "@/screens/marketing/Banner";
-import { useActions } from "@/hooks/useActions";
 import Header from "@/components/header";
 import Presentation from "@/screens/marketing/presentation";
 import Cards from "@/screens/marketing/Cards";
@@ -10,7 +8,6 @@ import { GetServerSideProps } from "next";
 import Contact from "@/components/Contact";
 
 const Marketing = () => {
-  const { CreateOrderMarketing } = useActions();
   return (
     <>
       <Header

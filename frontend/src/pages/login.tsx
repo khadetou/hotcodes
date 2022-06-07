@@ -28,7 +28,7 @@ const Login: NextPage = () => {
         router.push("/");
       }
     }
-  }, [router, isAuthenticated, success]);
+  }, [router, isAuthenticated, success, LoadUser, SetSuccess]);
 
   return (
     <>

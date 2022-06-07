@@ -28,7 +28,7 @@ const Home: NextPage<IProps> = ({ token }) => {
     if (token) {
       LogoutUser();
     }
-  }, [token]);
+  }, [token, LogoutUser]);
   return (
     <>
       <Header />

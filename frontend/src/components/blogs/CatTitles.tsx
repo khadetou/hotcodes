@@ -15,7 +15,7 @@ const CatTitles: FC<CatTitlesProps> = ({ className }) => {
         </h1>
         <div className={`w-2 h-2 bg-dark-pink rounded-full ${className}`}></div>
       </div>
-      <Link href="/blogs/category">
+      <Link passHref href="/blogs/category">
         <button
           type="button"
           className="flex w-full max-w-[150px] md:max-w-[210px] items-center justify-between text-dark-pink"

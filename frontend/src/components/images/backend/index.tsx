@@ -6,7 +6,7 @@ import mysql from "/public/images/tools/mysql.svg";
 import postgres from "/public/images/tools/postgres.svg";
 import nestjs from "/public/images/tools/nestjs.svg";
 
-export default [
+const backend = [
   {
     title: "Laravel",
     image: laravel,
@@ -36,3 +36,5 @@ export default [
     image: nestjs,
   },
 ];
+
+export default backend;
