@@ -934,26 +934,6 @@ export const DeleteOrderMobile = (id: string) => {
   };
 };
 
-//DELETE MY ORDER WEB
-// export const DeleteMyOrderWeb = (id: string) => {
-//   return async (dispatch: Dispatch<Action>) => {
-//     try {
-//       const { data } = await axios.delete(`http://localhost:5000/orderweb/my/${id}`);
-//       dispatch({
-//         type: ActionType.DELETE_MYORDERWEB_SUCCESS,
-//         payload: {
-//           order: data,
-//         },
-//       });
-//     } catch (error: any) {
-//       dispatch({
-//         type: ActionType.DELETE_MYORDERWEB_FAILURE,
-//         error: error.response.data.message,
-//       });
-//     }
-//   };
-// }
-
 //Clear error message
 export const ClearError = () => {
   return async (dispatch: Dispatch<Action>) => {
