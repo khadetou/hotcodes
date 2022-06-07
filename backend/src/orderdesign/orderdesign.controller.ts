@@ -30,18 +30,17 @@ export class OrderdesignController {
     return await this.orderdesignService.getMyOrderDesigns(user);
   }
 
+  //GET ORDER DESIGN BY ID
+  @Get(':id')
+  async getById(@Param('id') id: string): Promise<OrderDesign> {
+    return await this.orderdesignService.getById(id);
+  }
+
   //GET ALL ORDER DESIGN
   @Get()
   @Auth(Role.Admin)
   async getAll(): Promise<OrderDesign[]> {
     return await this.orderdesignService.getAll();
-  }
-
-  //GET ORDER DESIGN BY ID
-  @Get(':id')
-  @Auth(Role.Admin)
-  async getById(@Param('id') id: string): Promise<OrderDesign> {
-    return await this.orderdesignService.getById(id);
   }
 
   //DELETE ORDER DESIGN

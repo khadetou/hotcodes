@@ -30,18 +30,18 @@ export class OrderwebController {
   async getMyOrderWeb(@GetUser() user: User): Promise<OrderWeb | any> {
     return await this.orderwebService.getMyOrderWeb(user);
   }
+
+  //GET ORDERWEB BY ID
+  @Get(':id')
+  async getOrderWebById(@Param('id') id: string): Promise<OrderWeb> {
+    return await this.orderwebService.getOrderWebById(id);
+  }
+
   //GET ALL ORDERWEB
   @Get()
   @Auth(Role.Admin)
   async getAllOrderWeb(): Promise<OrderWeb[]> {
     return await this.orderwebService.getAllOrderWeb();
-  }
-
-  //GET ORDERWEB BY ID
-  @Get(':id')
-  @Auth(Role.Admin)
-  async getOrderWebById(@Param('id') id: string): Promise<OrderWeb> {
-    return await this.orderwebService.getOrderWebById(id);
   }
 
   //DELETE ORDERWEB

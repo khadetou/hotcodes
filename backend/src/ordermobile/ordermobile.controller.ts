@@ -29,18 +29,18 @@ export class OrdermobileController {
   async getMyOrderMobile(@GetUser() user: User): Promise<OrderMobile | any> {
     return await this.ordermobileService.findMyOrder(user);
   }
+
+  //GET ORDERMOBILE BY ID
+  @Get(':id')
+  async getOrderMobileById(@Param('id') id: string): Promise<OrderMobile> {
+    return await this.ordermobileService.findOne(id);
+  }
+
   //GET ALL ORDERMOBILE
   @Get()
   @Auth(Role.Admin)
   async findAll(): Promise<OrderMobile[]> {
     return await this.ordermobileService.findAll();
-  }
-
-  //GET ORDERMOBILE BY ID
-  @Get(':id')
-  @Auth(Role.Admin)
-  async getOrderMobileById(@Param('id') id: string): Promise<OrderMobile> {
-    return await this.ordermobileService.findOne(id);
   }
 
   //DELETE ORDERMOBILE
