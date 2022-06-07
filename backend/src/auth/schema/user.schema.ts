@@ -12,8 +12,8 @@ export class User {
   lastName: string;
   @Prop({ required: true, type: String })
   email: string;
-  @Prop({ type: Number, default: 0 })
-  phone: number;
+  @Prop({ type: String, default: '0' })
+  phone: string;
   @Prop({ type: String })
   password?: string;
   @Prop({ type: [String], enum: ['admin', 'user'], default: ['user'] })

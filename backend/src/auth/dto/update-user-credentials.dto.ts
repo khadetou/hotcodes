@@ -19,7 +19,7 @@ export class AuthUpdateCredentialsDto {
   email: string;
   @IsNotEmpty()
   @IsNumber()
-  phone: number;
+  phone: string;
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(32)

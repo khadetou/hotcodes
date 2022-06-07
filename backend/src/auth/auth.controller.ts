@@ -24,6 +24,14 @@ import { User } from './schema/user.schema';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  //UPDATE USER
+  @Put('/update/profile')
+  async upadateUser(
+    @Body() authUpdateCredentialsDto: AuthUpdateCredentialsDto,
+  ): Promise<User> {
+    return await this.authService.updateUser(authUpdateCredentialsDto);
+  }
+
   //GET ALL USERS
   @Get('users')
   // @Auth(Role.Admin)
@@ -71,14 +79,6 @@ export class AuthController {
     @Body('token') token: string,
   ): Promise<{ user: User; accessToken: string }> {
     return await this.authService.signInWithGoogle(token);
-  }
-
-  //UPDATE USER
-  @Put('/update/profile')
-  async upadateUser(
-    @Body() authUpdateCredentialsDto: AuthUpdateCredentialsDto,
-  ): Promise<User> {
-    return await this.authService.updateUser(authUpdateCredentialsDto);
   }
 
   //NORMAL SIGNIN
