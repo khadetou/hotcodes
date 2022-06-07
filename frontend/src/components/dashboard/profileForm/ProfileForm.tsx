@@ -1,13 +1,83 @@
+import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const ProfileForm = () => {
-  const { user } = useTypedSelector((state) => state.authReducer);
+  const { user, success, error } = useTypedSelector(
+    (state) => state.authReducer
+  );
+  console.log(error);
   //GET THE FIRST LETTER OF EACH NAME
   const getInitials = (name: string) => {
     const names = name.split(" ");
     return names.map((n) => n[0]).join("");
   };
+  const { UpdateUserProfile, SetSuccess, ClearError } = useActions();
+
+  const [form, setForm] = useState({
+    firstName: user ? user.firstName : "",
+    lastName: user ? user.lastName : "",
+    email: user ? user.email : "",
+    phone: user ? user.phone : "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (form.password !== form.confirmPassword) {
+      return MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password and Confirm Password do not match",
+      });
+    } else {
+      UpdateUserProfile(form);
+    }
+  };
+
+  useEffect(() => {
+    if (success) {
+      MySwal.fire({
+        toast: true,
+        showCancelButton: false,
+        position: "top-end",
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+        icon: "success",
+        title: "Profile Updated Successfully",
+      });
+      SetSuccess(false);
+    }
+    if (error) {
+      MySwal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 3000,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+        icon: "error",
+        title: error,
+      });
+      ClearError();
+    }
+  }, [success, error]);
+
   return (
     <div className="flex flex-wrap">
       <div className="flex-auto w-full lg:w-1/4 lg:pr-4">
@@ -59,26 +129,6 @@ const ProfileForm = () => {
                     {user && user.roles.includes("admin")
                       ? "Administrator"
                       : "User"}
-                    {/* <span>Only</span>
-                    <a
-                      href="javascript:void();"
-                      className="text-blue-400 hover:text-dark-pink"
-                    >
-                      .jpg
-                    </a>
-                    <a
-                      href="javascript:void();"
-                      className="text-blue-400 hover:text-dark-pink"
-                    >
-                      .png
-                    </a>
-                    <a
-                      href="javascript:void();"
-                      className="text-blue-400 hover:text-dark-pink"
-                    >
-                      .jpeg
-                    </a> */}
-                    {/* <span>allowed</span> */}
                   </div>
                 </div>
               </div>
@@ -110,7 +160,7 @@ const ProfileForm = () => {
           </div>
           <div className="p-6 ">
             <div>
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="flex flex-wrap">
                   <div className="mb-4 md:w-2/4 md:flex-auto md:pr-3 ">
                     <label
@@ -123,7 +173,10 @@ const ProfileForm = () => {
                       type="text"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="fname"
+                      name="frstName"
                       placeholder="First Name"
+                      value={form.firstName}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="mb-4 md:w-2/4 md:flex-auto md:pl-3 ">
@@ -137,6 +190,9 @@ const ProfileForm = () => {
                       type="text"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="lname"
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={onChange}
                       placeholder="Last Name"
                     />
                   </div>
@@ -152,6 +208,9 @@ const ProfileForm = () => {
                       type="text"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="mobno"
+                      name="phone"
+                      value={form.phone}
+                      onChange={onChange}
                       placeholder="Mobile Number"
                     />
                   </div>
@@ -166,6 +225,9 @@ const ProfileForm = () => {
                       type="email"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="email"
+                      name="email"
+                      value={form.email}
+                      onChange={onChange}
                       placeholder="Email"
                     />
                   </div>
@@ -181,6 +243,9 @@ const ProfileForm = () => {
                       type="password"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="pass"
+                      name="password"
+                      value={form.password}
+                      onChange={onChange}
                       placeholder="Password"
                     />
                   </div>
@@ -195,6 +260,9 @@ const ProfileForm = () => {
                       type="password"
                       className="block w-full px-4 py-2 placeholder-gray-600 text-base font-normal bg-white border focus:ring-0 rounded outline-none focus:border-dark-pink focus:shadow"
                       id="rpass"
+                      name="confirmPassword"
+                      value={form.confirmPassword}
+                      onChange={onChange}
                       placeholder="Repeat Password "
                     />
                   </div>

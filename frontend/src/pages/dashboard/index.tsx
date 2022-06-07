@@ -10,16 +10,20 @@ import { getCookie } from "store/action-creators";
 
 const Dashboard: NextPage = () => {
   const { LoadUser } = useActions();
-  const { isAuthenticated, loading } = useTypedSelector(
+  const { isAuthenticated, loading, user } = useTypedSelector(
     (state) => state.authReducer
   );
   const router = useRouter();
+
   useEffect(() => {
     LoadUser();
+    if (!loading && !user) {
+      router.push("/login");
+    }
     if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [loading, isAuthenticated]);
+  }, [loading, user, isAuthenticated, router]);
 
   return (
     <>

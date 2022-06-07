@@ -126,6 +126,10 @@ interface SetSuccessAction {
   success: boolean;
 }
 
+interface ClearErrorAction {
+  type: ActionType.CLEAR_ERROR;
+}
+
 interface SendConfirmationEmailSuccessAction {
   type: ActionType.SEND_CONFIRMITION_EMAIL_SUCCESS;
   message: string;
@@ -418,6 +422,7 @@ interface DeleteOrderMobileFailureAction {
 
 export type Action =
   | RegisterSuccessAction
+  | ClearErrorAction
   | RegisterFailureAction
   | LoginSuccessAction
   | LoginFailureAction

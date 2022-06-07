@@ -223,7 +223,7 @@ export const LogoutUser = () => {
 };
 
 //UPDATE USER
-export const UpdateUserProfile = (user: User) => {
+export const UpdateUserProfile = (user: any) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -257,7 +257,7 @@ export const UpdateUserProfile = (user: User) => {
     } catch (error: any) {
       dispatch({
         type: ActionType.UPDATE_USER_PROFILE_FAILURE,
-        error: error.response.data.error,
+        error: error.response.data.message,
       });
     }
   };
@@ -289,7 +289,7 @@ export const SendConfirmationEmail = (email: string) => {
     } catch (error: any) {
       dispatch({
         type: ActionType.SEND_CONFIRMITION_EMAIL_FAILURE,
-        error: error.response.data.error,
+        error: error.response.data.message,
       });
     }
   };
@@ -323,7 +323,7 @@ export const ResetPassword = (password: string, token: string) => {
     } catch (error: any) {
       dispatch({
         type: ActionType.RESET_PASSWORD_FAILURE,
-        error: error.response.data.error,
+        error: error.response.data.message,
       });
     }
   };
@@ -680,7 +680,7 @@ export const GetMyOrdersWeb = () => {
     } catch (error: any) {
       dispatch({
         type: ActionType.GET_ORDERWEB_FAILURE,
-        error: error.response.data.message,
+        error: error.response,
       });
     }
   };
@@ -702,7 +702,7 @@ export const GetMyOrdersDesign = () => {
     } catch (error: any) {
       dispatch({
         type: ActionType.GET_ORDERDESIGN_FAILURE,
-        error: error.response.data.message,
+        error: error.response,
       });
     }
   };
@@ -953,3 +953,12 @@ export const DeleteOrderMobile = (id: string) => {
 //     }
 //   };
 // }
+
+//Clear error message
+export const ClearError = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.CLEAR_ERROR,
+    });
+  };
+};

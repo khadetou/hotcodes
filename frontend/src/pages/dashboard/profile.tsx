@@ -1,10 +1,27 @@
-import OrdersScreen from "@/screens/dashboard/ordersScreen";
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 import ProfileScreen from "@/screens/dashboard/profileScreen";
 import jwtDecode from "jwt-decode";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { getCookie } from "store/action-creators";
 
 const Orders = () => {
+  const { LoadUser } = useActions();
+  const { isAuthenticated, loading, user } = useTypedSelector(
+    (state) => state.authReducer
+  );
+  const router = useRouter();
+  useEffect(() => {
+    // LoadUser();
+    if (!loading && !user) {
+      router.push("/login");
+    }
+    if (!loading && !isAuthenticated) {
+      router.push("/login");
+    }
+  }, [loading, user, isAuthenticated, router]);
   return (
     <>
       <ProfileScreen />

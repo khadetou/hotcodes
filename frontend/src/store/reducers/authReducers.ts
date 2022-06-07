@@ -129,6 +129,11 @@ const authReducer = (
         loading: false,
       };
 
+    case ActionType.CLEAR_ERROR:
+      return {
+        ...state,
+        error: "",
+      };
     default:
       return state;
   }

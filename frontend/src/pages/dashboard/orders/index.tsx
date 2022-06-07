@@ -1,9 +1,27 @@
+import { useActions } from "@/hooks/useActions";
 import OrdersScreen from "@/screens/dashboard/ordersScreen";
 import jwtDecode from "jwt-decode";
 import { GetServerSideProps } from "next";
-import { getCookie } from "store/action-creators";
+import { useEffect } from "react";
+import { getCookie, LoadUser } from "store/action-creators";
+import { useRouter } from "next/router";
+import { useTypedSelector } from "@/hooks/useTypeSelector";
 
 const Orders = () => {
+  const { LoadUser } = useActions();
+  const { isAuthenticated, loading, user } = useTypedSelector(
+    (state) => state.authReducer
+  );
+  const router = useRouter();
+  useEffect(() => {
+    LoadUser();
+    if (!loading && !user) {
+      router.push("/login");
+    }
+    if (!loading && !isAuthenticated) {
+      router.push("/login");
+    }
+  }, [loading, user, isAuthenticated, router]);
   return (
     <>
       <OrdersScreen />
