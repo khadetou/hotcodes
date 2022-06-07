@@ -24,6 +24,12 @@ import { User } from 'src/auth/schema/user.schema';
 export class OrderdesignController {
   constructor(private readonly orderdesignService: OrderdesignService) {}
 
+  //GET MY ORDER DESIGNS
+  @Get('/myorder')
+  async getMyOrderDesigns(@GetUser() user: User): Promise<OrderDesign | any> {
+    return await this.orderdesignService.getMyOrderDesigns(user);
+  }
+
   //GET ALL ORDER DESIGN
   @Get()
   @Auth(Role.Admin)
@@ -44,13 +50,6 @@ export class OrderdesignController {
   async delete(@Param('id') id: string): Promise<OrderDesign> {
     console.log(id);
     return await this.orderdesignService.delete(id);
-  }
-
-  //GET MY ORDER DESIGNS
-  @Get('/my')
-  @Auth(Role.User)
-  async getMyOrderDesigns(user: User): Promise<OrderDesign[]> {
-    return await this.orderdesignService.getMyOrderDesigns(user);
   }
 
   //DELETE MY ORDER DESIGN

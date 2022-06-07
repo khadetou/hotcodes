@@ -14,6 +14,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Auth } from 'src/auth/auth.decorator';
 import { GetUser } from 'src/auth/get-user-decorator';
 import { Role } from 'src/auth/roles/role.enum';
+import { User } from 'src/auth/schema/user.schema';
 import { CreateMobiledevDto } from './dto/create-mobiledev.dto';
 import { OrdermobileService } from './ordermobile.service';
 import { OrderMobile } from './schema/ordermobile.schema';
@@ -23,6 +24,11 @@ import { OrderMobile } from './schema/ordermobile.schema';
 export class OrdermobileController {
   constructor(private readonly ordermobileService: OrdermobileService) {}
 
+  //GET MY ORDERMOBILE
+  @Get('/myorder')
+  async getMyOrderMobile(@GetUser() user: User): Promise<OrderMobile | any> {
+    return await this.ordermobileService.findMyOrder(user);
+  }
   //GET ALL ORDERMOBILE
   @Get()
   @Auth(Role.Admin)
@@ -44,12 +50,6 @@ export class OrdermobileController {
     return await this.ordermobileService.delete(id);
   }
 
-  //GET MY ORDERMOBILE
-  @Get('/my')
-  @Auth(Role.User)
-  async getMyOrderMobile(user: any): Promise<OrderMobile[]> {
-    return await this.ordermobileService.findMyOrder(user);
-  }
   //CREATE ORDERMOBILE
   @Post()
   @UseInterceptors(FileInterceptor('file'))

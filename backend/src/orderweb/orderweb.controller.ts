@@ -15,6 +15,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Auth } from 'src/auth/auth.decorator';
 import { GetUser } from 'src/auth/get-user-decorator';
 import { Role } from 'src/auth/roles/role.enum';
+import { User } from 'src/auth/schema/user.schema';
 import { CreateWebdevDto } from './dto/create-webdev.dto';
 import { OrderwebService } from './orderweb.service';
 import { OrderWeb } from './schema/orderweb.schema';
@@ -24,6 +25,11 @@ import { OrderWeb } from './schema/orderweb.schema';
 export class OrderwebController {
   constructor(private readonly orderwebService: OrderwebService) {}
 
+  //GET MY ORDERWEB
+  @Get('/myorder')
+  async getMyOrderWeb(@GetUser() user: User): Promise<OrderWeb | any> {
+    return await this.orderwebService.getMyOrderWeb(user);
+  }
   //GET ALL ORDERWEB
   @Get()
   @Auth(Role.Admin)
@@ -36,12 +42,6 @@ export class OrderwebController {
   @Auth(Role.Admin)
   async getOrderWebById(@Param('id') id: string): Promise<OrderWeb> {
     return await this.orderwebService.getOrderWebById(id);
-  }
-
-  //GET MY ORDERWEB
-  @Get('/my')
-  async getMyOrderWeb(user: any): Promise<OrderWeb[]> {
-    return await this.orderwebService.getMyOrderWeb(user);
   }
 
   //DELETE ORDERWEB
