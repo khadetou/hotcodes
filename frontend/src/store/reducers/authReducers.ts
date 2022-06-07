@@ -53,6 +53,7 @@ const authReducer = (
         token: "",
         user: null,
         isAuthenticated: false,
+        loading: false,
         error: action.error,
       };
 

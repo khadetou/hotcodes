@@ -9,9 +9,11 @@ import { FaUserAlt, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import GoogleLogin from "react-google-login";
-import jwtDecode from "jwt-decode";
-import Placeholder from "react-select/dist/declarations/src/components/Placeholder";
 import CountryDropdown from "@/components/Countrycodes";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const RegisterScreen = () => {
   const router = useRouter();
@@ -39,16 +41,36 @@ const RegisterScreen = () => {
   );
 
   useEffect(() => {
+    if (error) {
+      MySwal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 3000,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+        icon: "error",
+        title: "Oops...",
+        text: error,
+      });
+    }
     LoadUser();
     if (user) {
       router.push("/");
     }
-  }, [router, user]);
+  }, [router, user, error]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (countrycode && !formData.phone.includes(countrycode)) {
+      formData.phone = countrycode + formData.phone;
+    }
+
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       return alert("Passwords don't match");

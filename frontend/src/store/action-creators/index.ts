@@ -107,12 +107,13 @@ export const RegisterUser = ({
         body,
         config
       );
-
+      console.log(data);
       dispatch({
         type: ActionType.REGISTER_SUCCESS,
         success: true,
       });
     } catch (error: any) {
+      console.log({ error });
       dispatch({
         type: ActionType.REGISTER_FAILURE,
         error: error.response.data.error,
@@ -667,7 +668,9 @@ export const GetAllOrdersMobile = () => {
 export const GetMyOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/orderweb/my`);
+      const { data } = await axios.get(
+        `http://localhost:5000/orderweb/myorder`
+      );
       dispatch({
         type: ActionType.GET_ORDERWEB_SUCCESS,
         payload: {
@@ -676,7 +679,7 @@ export const GetMyOrdersWeb = () => {
       });
     } catch (error: any) {
       dispatch({
-        type: ActionType.GET_ALL_ORDERWEB_FAILURE,
+        type: ActionType.GET_ORDERWEB_FAILURE,
         error: error.response.data.message,
       });
     }
@@ -687,7 +690,9 @@ export const GetMyOrdersWeb = () => {
 export const GetMyOrdersDesign = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/ordersdesign/my`);
+      const { data } = await axios.get(
+        `http://localhost:5000/orderdesign/myorder`
+      );
       dispatch({
         type: ActionType.GET_ORDERDESIGN_SUCCESS,
         payload: {
@@ -696,7 +701,7 @@ export const GetMyOrdersDesign = () => {
       });
     } catch (error: any) {
       dispatch({
-        type: ActionType.GET_ALL_ORDERDESIGN_FAILURE,
+        type: ActionType.GET_ORDERDESIGN_FAILURE,
         error: error.response.data.message,
       });
     }
@@ -707,7 +712,9 @@ export const GetMyOrdersDesign = () => {
 export const GetMyOrdersMobile = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/ordersmobile/my`);
+      const { data } = await axios.get(
+        `http://localhost:5000/ordermobile/myorder`
+      );
       dispatch({
         type: ActionType.GET_ORDERMOBILE_SUCCESS,
         payload: {
@@ -717,7 +724,7 @@ export const GetMyOrdersMobile = () => {
     } catch (error: any) {
       console.log({ error });
       dispatch({
-        type: ActionType.GET_ALL_ORDERMOBILE_FAILURE,
+        type: ActionType.GET_ORDERMOBILE_FAILURE,
         error: error,
       });
     }

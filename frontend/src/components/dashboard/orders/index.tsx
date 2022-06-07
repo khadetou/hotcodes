@@ -170,12 +170,10 @@ const Orders = () => {
       GetAllOrdersWeb();
       GetAllOrdersDesign();
       GetAllOrdersMobile();
-    } else if (user?.roles.includes("user")) {
+    } else {
       GetMyOrdersDesign();
       GetMyOrdersMobile();
       GetMyOrdersWeb();
-    } else {
-      Router.push("/login");
     }
   }, [user]);
 
