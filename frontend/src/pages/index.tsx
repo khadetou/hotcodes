@@ -14,6 +14,7 @@ import Process from "screens/landing/process";
 import Contact from "@/components/Contact";
 import Header from "@/components/header";
 import Footer from "@/components/footer/Footer";
+import WhatsAppFloating from "@/components/Whatsapp";
 typeof localStorage !== "undefined" && setAuthToken(localStorage.token);
 
 interface IProps {
@@ -39,13 +40,12 @@ const Home: NextPage<IProps> = ({ token }) => {
     <>
       <Header />
       <SEO title="Home" />
-
       <Banner play={play} setPlay={setPlay} />
       <Services />
       <Presentation />
       <Process />
       <Contact />
-
+      <WhatsAppFloating />
       <Footer />
     </>
   );

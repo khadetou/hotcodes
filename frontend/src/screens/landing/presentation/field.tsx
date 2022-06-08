@@ -13,6 +13,8 @@ interface FieldProps {
   style?: string;
   fsrcStyle?: string;
   flip?: string;
+  data?: string;
+  dataos?: string;
 }
 
 const Field: FC<FieldProps> = ({
@@ -25,6 +27,8 @@ const Field: FC<FieldProps> = ({
   button,
   fsrcStyle,
   flip,
+  data,
+  dataos,
 }) => {
   const { locale } = useRouter();
   const styles =
@@ -37,7 +41,7 @@ const Field: FC<FieldProps> = ({
     <div
       className={`flex ${style} justify-between mb-[30px] xs:mb-[160px] flex-col-reverse`}
     >
-      <div className="relative">
+      <div data-aos={data} data-aos-duration="1000" className="relative">
         <div className={`${fsrcStyle} w-1/2 xxs:w-[69%] `}>
           <Image src={fsrc} />
         </div>
@@ -51,7 +55,7 @@ const Field: FC<FieldProps> = ({
           <Image src={src} />
         </div>
       </div>
-      <div className="max-w-[651px]">
+      <div data-aos={dataos} data-aos-duration="2500" className="max-w-[651px]">
         <span className="uppercase font-semibold text-[17px] xxs:text-xl text-black">
           {title}
         </span>

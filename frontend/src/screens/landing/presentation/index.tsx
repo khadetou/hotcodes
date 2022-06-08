@@ -25,6 +25,8 @@ const Presentation = () => {
         "absolute z-10 left-[0%] -translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row",
       flip: "",
+      data: "fade-right",
+      dataos: "fade-left",
     },
     {
       title: t("presentation.dev.title"),
@@ -37,6 +39,8 @@ const Presentation = () => {
         "absolute z-10 left-[0] 2xl:right-[0] -translate-x-1/2 lg:top-[45%] lg:right-[18%] lg:left-[inherit]  2xl:translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row-reverse",
       flip: "flip-y",
+      data: "fade-left",
+      dataos: "fade-right",
     },
     {
       title: t("presentation.marketing.title"),
@@ -49,6 +53,8 @@ const Presentation = () => {
         "absolute z-10 left-[0%] -translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row",
       flip: "",
+      data: "fade-right",
+      dataos: "fade-left",
     },
   ];
 
@@ -57,7 +63,19 @@ const Presentation = () => {
       <div className="containers">
         {presentations.map(
           (
-            { title, h1, paragraph, src, fsrc, button, style, fsrcStyle, flip },
+            {
+              title,
+              h1,
+              paragraph,
+              src,
+              fsrc,
+              button,
+              style,
+              fsrcStyle,
+              flip,
+              data,
+              dataos,
+            },
             idx
           ) => (
             <Field
@@ -71,6 +89,8 @@ const Presentation = () => {
               style={style}
               fsrcStyle={fsrcStyle}
               flip={flip}
+              data={data}
+              dataos={dataos}
             />
           )
         )}
