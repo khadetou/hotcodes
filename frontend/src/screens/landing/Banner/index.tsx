@@ -18,6 +18,7 @@ const Banner: FC<{ play?: boolean; setPlay?: any }> = ({ play, setPlay }) => {
           play ? "block" : "hidden"
         }`}
       />
+
       <section className="h-[890px] flex items-center bg-grad-back blend relative ">
         <div className="flex  flex-col items-center lg:flex-row translate-y-[-50%] md:mb-[75px] xsm:mb-[103px] lg:transform-none containers -mt-9">
           <div className="max-w-[734px] mb-4 lg:mb-[-9.5rem]">

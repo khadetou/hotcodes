@@ -116,6 +116,9 @@ body {
   background-color: black !important;
   border-radius: 0 !important;
 }
+.tippy-box[data-theme~="grad"] {
+  @apply bg-grad-text-2 text-white font-bold !important;
+}
 
 @tailwind base;
 @tailwind components;

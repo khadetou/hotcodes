@@ -12,6 +12,7 @@ const Card: FC<CardProps> = ({ title, paragraph, src, data }) => {
   return (
     <div
       data-aos={data}
+      data-aos-duration="1000"
       className="max-w-[408px] py-6 xxs:py-0 h-[235] xxs:h-[345px]  cursor-pointer hover:shadow-shadow hover:!scale-105 transition-all duration-700 ease-in-out shadow-shadow-sm rounded-[40px] xxs:mt-[124px] mt-[90px] px-6 relative"
     >
       <div className="absolute  left-[50%] -translate-x-[50%] -top-[25%] md:-top-[29%] ">

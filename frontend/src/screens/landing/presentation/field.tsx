@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
 import { FaPlay } from "react-icons/fa";
+import { IoIosPlay } from "react-icons/io";
 import { useRouter } from "next/router";
 
 interface FieldProps {
@@ -45,12 +46,11 @@ const Field: FC<FieldProps> = ({
         <div className={`${fsrcStyle} w-1/2 xxs:w-[69%] `}>
           <Image src={fsrc} />
         </div>
-        <span className="absolute z-10 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-dark-pink rounded-full  w-16 h-16 xxs:w-28 xxs:h-28 flex items-center justify-center bg-opacity-50 ">
-          <FaPlay
-            color="#fff"
-            className="h-[28px] w-[28px] xxs:h-[55px] xxs:w-[55px] "
-          />
-        </span>
+        <button className="z-10 absolute left-2/4 top-2/4 -translate-x-1/2 -translate-y-1/2 w-[60px] sm:w-20 lg:w-[100px] h-[60px] sm:h-20 lg:h-[100px] p-0 bg-transparent before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:block before:w-[60px] before:sm:w-[80px] before:lg:w-[100px]  before:h-[60px] before:sm:h-[80px] before:lg:h-[100px] before:bg-dark-pink before:rounded-full before:animate-pulsePlay before:opacity-50">
+          <span className="bg-white/50 w-[inherit] h-[inherit] text-center rounded-full opacity-100 cursor-pointer transition-all duration-[0.5s] flex justify-center items-center relative z-10 text-white text-[40px] lg:text-[62px] sm:text-[48px] ">
+            <IoIosPlay />
+          </span>
+        </button>
         <div className={flip}>
           <Image src={src} />
         </div>

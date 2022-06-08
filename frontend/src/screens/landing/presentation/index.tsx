@@ -25,8 +25,8 @@ const Presentation = () => {
         "absolute z-10 left-[0%] -translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row",
       flip: "",
-      data: "fade-right",
-      dataos: "fade-left",
+      data: "fade-up",
+      dataos: "fade-down",
     },
     {
       title: t("presentation.dev.title"),
@@ -39,8 +39,8 @@ const Presentation = () => {
         "absolute z-10 left-[0] 2xl:right-[0] -translate-x-1/2 lg:top-[45%] lg:right-[18%] lg:left-[inherit]  2xl:translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row-reverse",
       flip: "flip-y",
-      data: "fade-left",
-      dataos: "fade-right",
+      data: "fade-down",
+      dataos: "fade-top",
     },
     {
       title: t("presentation.marketing.title"),
@@ -53,8 +53,8 @@ const Presentation = () => {
         "absolute z-10 left-[0%] -translate-x-1/2 top-1/2 -translate-y-1/2",
       style: "lg:flex-row",
       flip: "",
-      data: "fade-right",
-      dataos: "fade-left",
+      data: "fade-up",
+      dataos: "fade-down",
     },
   ];
 

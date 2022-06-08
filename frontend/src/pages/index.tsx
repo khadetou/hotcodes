@@ -44,8 +44,8 @@ const Home: NextPage<IProps> = ({ token }) => {
       <Services />
       <Presentation />
       <Process />
-      <Contact />
       <WhatsAppFloating />
+      <Contact />
       <Footer />
     </>
   );
