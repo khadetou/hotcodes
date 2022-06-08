@@ -39,22 +39,18 @@ const Home: NextPage<IProps> = ({ token }) => {
     <>
       <Header />
       <SEO title="Home" />
-      <div
-        onClick={() => setPlay(false)}
-        className={`bg-black opacity-70 z-20 absolute w-full h-full top-0 left-0 right-0 bottom-0 ${
-          play ? "block" : "hidden"
-        }`}
-      />
+
       <Banner play={play} setPlay={setPlay} />
       <Services />
       <Presentation />
       <Process />
       <Contact />
+
       <Footer />
     </>
   );
 };
-
+//germany
 export default Home;
 
 export const getServerSideProps: GetServerSideProps =

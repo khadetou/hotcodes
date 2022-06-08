@@ -15,7 +15,7 @@ const Layout: FC<LayoutProp> = ({ children, isOpen, setIsOpen }) => {
   }, []);
   return (
     <>
-      <main className="relative">{children}</main>
+      <main>{children}</main>
     </>
   );
 };
