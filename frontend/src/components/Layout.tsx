@@ -1,6 +1,6 @@
-import { FC } from "react";
-import Footer from "./footer/Footer";
-import Header from "./header/index";
+import { FC, useEffect } from "react";
+import Aos from "aos";
+import Scroll from "./smoothScroll";
 
 interface LayoutProp {
   children: React.ReactNode;
@@ -9,9 +9,13 @@ interface LayoutProp {
 }
 
 const Layout: FC<LayoutProp> = ({ children, isOpen, setIsOpen }) => {
+  useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
   return (
     <>
-      <main>{children}</main>
+      <main className="relative">{children}</main>
     </>
   );
 };

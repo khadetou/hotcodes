@@ -5,7 +5,7 @@ import { setAuthToken } from "@/utils/setAuthToken";
 import { wrapper } from "store/index";
 import { getCookie, LoadUserSsr } from "store/action-creators";
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SEO from "@/components/Seo";
 import Banner from "screens/landing/Banner";
 import Services from "screens/landing/Services";
@@ -23,17 +23,29 @@ interface IProps {
 const Home: NextPage<IProps> = ({ token }) => {
   const { LogoutUser } = useActions();
   const logout = () => LogoutUser();
+  const [play, setPlay] = useState(false);
 
   useEffect(() => {
     if (token) {
       LogoutUser();
     }
-  }, [token]);
+
+    play
+      ? (document.querySelector("html")!.style.overflow = "hidden")
+      : (document.querySelector("html")!.style.overflow = "visible");
+  }, [token, play]);
+
   return (
     <>
       <Header />
-      <SEO />
-      <Banner />
+      <SEO title="Home" />
+      <div
+        onClick={() => setPlay(false)}
+        className={`bg-black opacity-70 z-20 absolute w-full h-full top-0 left-0 right-0 bottom-0 ${
+          play ? "block" : "hidden"
+        }`}
+      />
+      <Banner play={play} setPlay={setPlay} />
       <Services />
       <Presentation />
       <Process />

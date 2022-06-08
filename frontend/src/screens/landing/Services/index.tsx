@@ -14,16 +14,19 @@ const Service = () => {
       title: t("services.design.title"),
       paragraph: t("services.design.p"),
       src: Design,
+      data: "zoom-out-up",
     },
     {
       title: t("services.dev.title"),
       paragraph: t("services.dev.p"),
       src: Dev,
+      data: "zoom-out-down",
     },
     {
       title: t("services.marketing.title"),
       paragraph: t("services.marketing.p"),
       src: Marketing,
+      data: "zoom-out-up",
     },
   ];
   return (
@@ -35,9 +38,9 @@ const Service = () => {
           className="text-transparent bg-clip-text bg-grad-text-1"
         />
         <div className="flex justify-between items-center  flex-col lg:flex-row">
-          {services.map(({ title, paragraph, src }, idx) => (
+          {services.map(({ title, paragraph, src, data }, idx) => (
             <div key={idx} className="card">
-              <Card src={src} title={title} paragraph={paragraph} />
+              <Card data={data} src={src} title={title} paragraph={paragraph} />
             </div>
           ))}
         </div>
