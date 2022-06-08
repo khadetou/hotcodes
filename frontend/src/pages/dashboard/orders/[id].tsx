@@ -32,7 +32,7 @@ const Invoice = () => {
     } else if (plateforme === "web") {
       GetOrderWebById(id as string);
     }
-  }, [plateforme, id, GetOrderDesignById, GetOrderMobileById, GetOrderWebById]);
+  }, [plateforme, id]);
 
   return (
     <section className="h-screen">

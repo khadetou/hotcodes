@@ -14,7 +14,7 @@ const User: NextPage = () => {
 
   useEffect(() => {
     GetUserById(router.query.id as string);
-  }, [router, GetUserById]);
+  }, [router]);
   return <div>User</div>;
 };
 

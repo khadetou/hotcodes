@@ -11,13 +11,14 @@ import Footer from "@/components/footer/Footer";
 
 const Login: NextPage = () => {
   const { SetSuccess, LoadUser } = useActions();
-  const { success, isAuthenticated } = useTypedSelector(
+  const { success, isAuthenticated, user } = useTypedSelector(
     (state) => state.authReducer
   );
   const router = useRouter();
 
   useEffect(() => {
     LoadUser();
+
     if (success) {
       SetSuccess(false);
     }
@@ -28,7 +29,7 @@ const Login: NextPage = () => {
         router.push("/");
       }
     }
-  }, [router, isAuthenticated, success, LoadUser, SetSuccess]);
+  }, [router, isAuthenticated, success]);
 
   return (
     <>

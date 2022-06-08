@@ -21,7 +21,7 @@ const Orders = () => {
     if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [loading, user, isAuthenticated, router, LoadUser]);
+  }, [loading, user, isAuthenticated, router]);
   return (
     <>
       <UsersScreens />

@@ -7,7 +7,6 @@ import { useTypedSelector } from "@/hooks/useTypeSelector";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Link from "next/link";
-import Router from "next/router";
 
 const MySwal = withReactContent(Swal);
 
@@ -69,17 +68,7 @@ const Actions: FC<ActionProps> = ({ id, plateform }) => {
       }
       SetSuccess(false);
     }
-  }, [
-    success,
-    GetAllOrdersDesign,
-    GetAllOrdersMobile,
-    GetAllOrdersWeb,
-    GetMyOrdersDesign,
-    GetMyOrdersMobile,
-    GetMyOrdersWeb,
-    user,
-    SetSuccess,
-  ]);
+  }, [success, user]);
 
   const setPlateforme = (plateform: string) => {
     localStorage.setItem("plateforme", plateform);
@@ -185,15 +174,7 @@ const Orders = () => {
       GetMyOrdersMobile();
       GetMyOrdersWeb();
     }
-  }, [
-    user,
-    GetMyOrdersDesign,
-    GetMyOrdersMobile,
-    GetMyOrdersWeb,
-    GetAllOrdersDesign,
-    GetAllOrdersMobile,
-    GetAllOrdersWeb,
-  ]);
+  }, [user]);
 
   return (
     <div className="flex flex-wrap">

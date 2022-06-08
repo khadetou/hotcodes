@@ -21,29 +21,15 @@ const Register: NextPage = () => {
     confirmPassword: "",
   });
 
-  const { RegisterUser, GoogleLoginUser, LoadUser } = useActions();
-  const { error, loading, success, user } = useTypedSelector(
-    (state) => state.authReducer
-  );
+  const { LoadUser } = useActions();
+  const { success, user } = useTypedSelector((state) => state.authReducer);
 
   useEffect(() => {
     LoadUser();
     if (user) {
       router.push("/");
     }
-  }, [router, user, LoadUser]);
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      return alert("Passwords don't match");
-    } else {
-      RegisterUser(formData);
-    }
-  };
+  }, [router, user]);
 
   if (success) {
     router.push("/login");

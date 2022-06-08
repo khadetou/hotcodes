@@ -16,14 +16,17 @@ const Dashboard: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    LoadUser();
+    if (!isAuthenticated) {
+      LoadUser();
+    }
+
     if (!loading && !user) {
       router.push("/login");
     }
     if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [loading, user, isAuthenticated, router, LoadUser]);
+  }, [loading, user, isAuthenticated, router]);
 
   return (
     <>

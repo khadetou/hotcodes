@@ -13,7 +13,7 @@ const Users: NextPage = () => {
 
   useEffect(() => {
     GetAllUsers();
-  }, [GetAllUsers]);
+  });
 
   return (
     <div>
