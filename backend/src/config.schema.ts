@@ -1,6 +1,7 @@
 import * as Joi from 'joi';
 
 export const configValidationSchema = Joi.object({
+  PORT: Joi.number().default(5000),
   STAGE: Joi.string().valid('dev', 'prod').required(),
   MONGO_URI: Joi.string().required(),
   JWT_SECRET: Joi.string().required(),
