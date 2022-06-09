@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { getCookie, LoadUser } from "store/action-creators";
 import { useRouter } from "next/router";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
+import SEO from "@/components/Seo";
 
 const Orders = () => {
   const { LoadUser } = useActions();
@@ -23,6 +24,7 @@ const Orders = () => {
   }, [loading, user, isAuthenticated, router]);
   return (
     <>
+      <SEO title="Orders" />
       <OrdersScreen />
     </>
   );

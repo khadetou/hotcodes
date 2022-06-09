@@ -1,3 +1,4 @@
+import SEO from "@/components/Seo";
 import MessagesScreen from "@/screens/dashboard/messagesScreen";
 import jwtDecode from "jwt-decode";
 import { GetServerSideProps } from "next";
@@ -6,9 +7,10 @@ import { getCookie } from "store/action-creators";
 
 const Messages = () => {
   return (
-    <div>
+    <>
+      <SEO title="Messages" />
       <MessagesScreen />
-    </div>
+    </>
   );
 };
 

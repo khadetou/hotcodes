@@ -1,5 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
+import SEO from "@/components/Seo";
 import Banner from "@/screens/web/Banner";
 import Presentation from "@/screens/web/presentation";
 import { GetServerSideProps, NextPage } from "next";
@@ -31,6 +32,7 @@ const OrderWeb: NextPage = () => {
         className="!text-dark "
         buttonClassName="bg-grad-text-2 text-white "
       />
+      <SEO title="Web" />
       <Banner />
       <Presentation />
       <Form

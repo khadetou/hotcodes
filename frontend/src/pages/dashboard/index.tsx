@@ -1,4 +1,5 @@
 import Footer from "@/components/footer/Footer";
+import SEO from "@/components/Seo";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import DashboardScreen from "@/screens/dashboard";
@@ -30,6 +31,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <>
+      <SEO title="Dashboard" />
       <DashboardScreen />
     </>
   );

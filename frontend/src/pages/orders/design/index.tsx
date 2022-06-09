@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import WhatsAppFloating from "@/components/Whatsapp";
+import SEO from "@/components/Seo";
 
 const Design = () => {
   const { CreateOrderDesign } = useActions();
@@ -26,6 +27,7 @@ const Design = () => {
   return (
     <>
       <Header />
+      <SEO title="Design" />
       <Banner />
       {/* <Cards /> */}
       <Form

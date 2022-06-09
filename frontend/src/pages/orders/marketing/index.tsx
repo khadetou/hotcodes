@@ -6,6 +6,7 @@ import Footer from "@/components/footer/Footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps } from "next";
 import Contact from "@/components/Contact";
+import SEO from "@/components/Seo";
 
 const Marketing = () => {
   return (
@@ -15,6 +16,7 @@ const Marketing = () => {
         className="!text-dark"
         buttonClassName="text-white !bg-grad-text-2 !rounded-full !shadow-shadow border-0"
       />
+      <SEO title="Marketing" />
       <Banner />
       <Presentation />
       <Cards />

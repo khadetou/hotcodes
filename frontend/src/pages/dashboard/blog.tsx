@@ -1,3 +1,4 @@
+import SEO from "@/components/Seo";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import BlogScreen from "@/screens/dashboard/blogScreen";
@@ -24,6 +25,7 @@ const Blog = () => {
   }, [loading, user, isAuthenticated, router]);
   return (
     <>
+      <SEO title="Blog" />
       <BlogScreen />
     </>
   );

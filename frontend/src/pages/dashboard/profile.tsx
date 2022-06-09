@@ -1,3 +1,4 @@
+import SEO from "@/components/Seo";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypeSelector";
 import ProfileScreen from "@/screens/dashboard/profileScreen";
@@ -24,6 +25,7 @@ const Orders = () => {
   }, [loading, user, isAuthenticated, router]);
   return (
     <>
+      <SEO title="Profile" />
       <ProfileScreen />
     </>
   );
