@@ -34,7 +34,7 @@ const Banner = () => {
             >
               {t("banner.btn")}
             </button>
-            <div
+            {/* <div
               data-aos="zoom-out-right"
               data-aos-duration="1000"
               className="md:ml-6  xxs:ml-[13px] ml-[7px]"
@@ -43,7 +43,7 @@ const Banner = () => {
               <span className="text-white xxs:text-[14px] md:text-base xs:text-[14px] font-normal ml-[5px] text-[10px] lg:text-lg lg:font-semibold uppercase">
                 {t("banner.video")}
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className=" md:w-[228px] -mb-[65px] mt-[24px] w-[278px] md:mb-0 lg:w-[691px] xxs:w-[370px] xxs:mt-[10px] ">

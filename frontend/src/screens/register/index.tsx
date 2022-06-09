@@ -35,7 +35,7 @@ const RegisterScreen = () => {
   const [passwordfocused, setPasswordFocused] = useState(false);
   const [confirmpasswordfocused, setConfirmpasswordFocused] = useState(false);
 
-  const { RegisterUser, GoogleLoginUser, LoadUser } = useActions();
+  const { RegisterUser, GoogleLoginUser, LoadUser, ClearError } = useActions();
   const { error, loading, success, user } = useTypedSelector(
     (state) => state.authReducer
   );
@@ -56,12 +56,14 @@ const RegisterScreen = () => {
         title: "Oops...",
         text: error,
       });
+      ClearError();
     }
+    console.log("Hello world!");
     LoadUser();
     if (user) {
       router.push("/");
     }
-  }, [router, user, error]);
+  }, [user, router]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
