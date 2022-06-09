@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import WhatsAppFloating from "@/components/Whatsapp";
 
 const Design = () => {
   const { CreateOrderDesign } = useActions();
@@ -33,6 +34,7 @@ const Design = () => {
         setFormData={setFormData}
         Action={CreateOrderDesign}
       />
+      <WhatsAppFloating />
       <Footer />
     </>
   );
