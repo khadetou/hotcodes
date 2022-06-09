@@ -1,16 +1,10 @@
 import { Dispatch } from "redux";
-import {
-  Action,
-  OrderDesign,
-  OrderMarketing,
-  OrderMobile,
-  OrderWeb,
-  User,
-} from "../actions";
+import { Action, OrderDesign, OrderMobile, OrderWeb } from "../actions";
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { setAuthToken } from "../../utils/setAuthToken";
 import cookie from "js-cookie";
+import { API_URL } from "@/utils/index";
 
 interface Data {
   firstName: string;
@@ -30,7 +24,7 @@ export const LoadUser = () => {
   setAuthToken(localStorage.token);
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/auth/user");
+      const { data } = await axios.get(`${API_URL}/auth/user`);
       dispatch({
         type: ActionType.LOAD_USER,
         payload: {
@@ -59,10 +53,7 @@ export const LoadUserSsr = (token: string) => {
     };
 
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/auth/user",
-        config
-      );
+      const { data } = await axios.get(`${API_URL}/auth/user`, config);
 
       dispatch({
         type: ActionType.LOAD_USER,
@@ -102,11 +93,7 @@ export const RegisterUser = ({
       phone,
     });
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/auth/signup",
-        body,
-        config
-      );
+      const { data } = await axios.post(`${API_URL}/auth/signup`, body, config);
       console.log(data);
       dispatch({
         type: ActionType.REGISTER_SUCCESS,
@@ -139,7 +126,7 @@ export const GoogleLoginUser = (googleData: any) => {
       });
 
       const { data } = await axios.post(
-        "http://localhost:5000/auth/google/signin",
+        `${API_URL}/auth/google/signin`,
         body,
         config
       );
@@ -176,11 +163,7 @@ export const LoginUser = ({ email, password }: Login) => {
       password,
     });
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/auth/signin",
-        body,
-        config
-      );
+      const { data } = await axios.post(`${API_URL}/auth/signin`, body, config);
 
       setCookie("token", data.accessToken);
       dispatch({
@@ -244,7 +227,7 @@ export const UpdateUserProfile = (user: any) => {
 
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/auth/update/profile`,
+        `${API_URL}/auth/update/profile`,
         body,
         config
       );
@@ -278,7 +261,7 @@ export const SendConfirmationEmail = (email: string) => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/auth/forgot-password",
+        `${API_URL}/auth/forgot-password`,
         body,
         config
       );
@@ -310,7 +293,7 @@ export const ResetPassword = (password: string, token: string) => {
 
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/auth/confirm-email/${token}`,
+        `${API_URL}/auth/confirm-email/${token}`,
         body,
         config
       );
@@ -336,7 +319,7 @@ export const GetAllUsers = () => {
   }
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/auth/users");
+      const { data } = await axios.get(`${API_URL}/auth/users`);
       dispatch({
         type: ActionType.GET_ALL_USERS_SUCCESS,
         payload: {
@@ -360,7 +343,7 @@ export const GetUserById = (id: string) => {
   }
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/auth/user/${id}`);
+      const { data } = await axios.get(`${API_URL}/auth/user/${id}`);
       dispatch({
         type: ActionType.GET_USER_SUCCESS_BY_ID,
         payload: {
@@ -383,9 +366,7 @@ export const DeleteUser = (id: string) => {
   }
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5000/auth/user/${id}`
-      );
+      const { data } = await axios.delete(`${API_URL}/auth/user/${id}`);
       dispatch({
         type: ActionType.DELETE_USER_SUCCESS,
         payload: {
@@ -477,11 +458,7 @@ export const CreateOrderWeb = (orderWeb: OrderWeb) => {
     });
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/orderweb",
-        body,
-        config
-      );
+      const { data } = await axios.post("${API_URL}/orderweb", body, config);
       dispatch({
         type: ActionType.CREATE_ORDERWEB_SUCCESS,
         payload: {
@@ -530,11 +507,7 @@ export const CreateOrderDesign = (orderDesign: OrderDesign) => {
     });
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/orderdesign",
-        body,
-        config
-      );
+      const { data } = await axios.post("${API_URL}/orderdesign", body, config);
       dispatch({
         type: ActionType.CREATE_ORDERDESIGN_SUCCESS,
         payload: {
@@ -580,11 +553,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
     });
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/ordermobile",
-        body,
-        config
-      );
+      const { data } = await axios.post("${API_URL}/ordermobile", body, config);
       dispatch({
         type: ActionType.CREATE_ORDERMOBILE_SUCCESS,
         payload: {
@@ -605,7 +574,7 @@ export const CreateOrderMobile = (orderMobile: OrderMobile) => {
 export const GetAllOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/orderweb");
+      const { data } = await axios.get("${API_URL}/orderweb");
       dispatch({
         type: ActionType.GET_ALL_ORDERWEB_SUCCESS,
         payload: {
@@ -626,7 +595,7 @@ export const GetAllOrdersWeb = () => {
 export const GetAllOrdersDesign = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/orderdesign");
+      const { data } = await axios.get("${API_URL}/orderdesign");
       dispatch({
         type: ActionType.GET_ALL_ORDERDESIGN_SUCCESS,
         payload: {
@@ -647,7 +616,7 @@ export const GetAllOrdersDesign = () => {
 export const GetAllOrdersMobile = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/ordermobile");
+      const { data } = await axios.get("${API_URL}/ordermobile");
       dispatch({
         type: ActionType.GET_ALL_ORDERMOBILE_SUCCESS,
         payload: {
@@ -668,9 +637,7 @@ export const GetAllOrdersMobile = () => {
 export const GetMyOrdersWeb = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/orderweb/myorder`
-      );
+      const { data } = await axios.get(`${API_URL}/orderweb/myorder`);
       dispatch({
         type: ActionType.GET_ORDERWEB_SUCCESS,
         payload: {
@@ -690,9 +657,7 @@ export const GetMyOrdersWeb = () => {
 export const GetMyOrdersDesign = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/orderdesign/myorder`
-      );
+      const { data } = await axios.get(`${API_URL}/orderdesign/myorder`);
       dispatch({
         type: ActionType.GET_ORDERDESIGN_SUCCESS,
         payload: {
@@ -712,9 +677,7 @@ export const GetMyOrdersDesign = () => {
 export const GetMyOrdersMobile = () => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/ordermobile/myorder`
-      );
+      const { data } = await axios.get(`${API_URL}/ordermobile/myorder`);
       dispatch({
         type: ActionType.GET_ORDERMOBILE_SUCCESS,
         payload: {
@@ -735,7 +698,7 @@ export const GetMyOrdersMobile = () => {
 export const GetOrderWebById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/orderweb/${id}`);
+      const { data } = await axios.get(`${API_URL}/orderweb/${id}`);
       dispatch({
         type: ActionType.GET_ORDERWEB_BY_ID_SUCCESS,
         payload: {
@@ -756,9 +719,7 @@ export const GetOrderWebById = (id: string) => {
 export const GetOrderDesignById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/orderdesign/${id}`
-      );
+      const { data } = await axios.get(`${API_URL}/orderdesign/${id}`);
       dispatch({
         type: ActionType.GET_ORDERDESIGN_BY_ID_SUCCESS,
         payload: {
@@ -779,9 +740,7 @@ export const GetOrderDesignById = (id: string) => {
 export const GetOrderMobileById = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5000/ordermobile/${id}`
-      );
+      const { data } = await axios.get(`${API_URL}/ordermobile/${id}`);
       dispatch({
         type: ActionType.GET_ORDERMOBILE_BY_ID_SUCCESS,
         payload: {
@@ -802,10 +761,7 @@ export const GetOrderMobileById = (id: string) => {
 export const UpdateOrderWeb = (id: string, order: any) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.put(
-        `http://localhost:5000/orders/${id}`,
-        order
-      );
+      const { data } = await axios.put(`${API_URL}/orders/${id}`, order);
       dispatch({
         type: ActionType.UPDATE_ORDERWEB_SUCCESS,
         payload: {
@@ -826,10 +782,7 @@ export const UpdateOrderWeb = (id: string, order: any) => {
 export const UpdateOrderDesign = (id: string, order: any) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.put(
-        `http://localhost:5000/ordersdesign/${id}`,
-        order
-      );
+      const { data } = await axios.put(`${API_URL}/ordersdesign/${id}`, order);
       dispatch({
         type: ActionType.UPDATE_ORDERDESIGN_SUCCESS,
         payload: {
@@ -849,10 +802,7 @@ export const UpdateOrderDesign = (id: string, order: any) => {
 export const UpdateOrderMobile = (id: string, order: any) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.put(
-        `http://localhost:5000/ordersmobile/${id}`,
-        order
-      );
+      const { data } = await axios.put(`${API_URL}/ordersmobile/${id}`, order);
       dispatch({
         type: ActionType.UPDATE_ORDERMOBILE_SUCCESS,
         payload: {
@@ -872,9 +822,7 @@ export const UpdateOrderMobile = (id: string, order: any) => {
 export const DeleteOrderWeb = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5000/orderweb/${id}`
-      );
+      const { data } = await axios.delete(`${API_URL}/orderweb/${id}`);
       dispatch({
         type: ActionType.DELETE_ORDERWEB_SUCCESS,
         payload: {
@@ -894,9 +842,7 @@ export const DeleteOrderWeb = (id: string) => {
 export const DeleteOrderDesign = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5000/orderdesign/${id}`
-      );
+      const { data } = await axios.delete(`${API_URL}/orderdesign/${id}`);
       dispatch({
         type: ActionType.DELETE_ORDERDESIGN_SUCCESS,
         payload: {
@@ -916,9 +862,7 @@ export const DeleteOrderDesign = (id: string) => {
 export const DeleteOrderMobile = (id: string) => {
   return async (dispatch: Dispatch<Action>) => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5000/ordermobile/${id}`
-      );
+      const { data } = await axios.delete(`${API_URL}/ordermobile/${id}`);
       dispatch({
         type: ActionType.DELETE_ORDERMOBILE_SUCCESS,
         payload: {
