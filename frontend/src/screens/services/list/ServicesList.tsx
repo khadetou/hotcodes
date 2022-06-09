@@ -330,7 +330,7 @@ const ServicesList = () => {
               className="w-[83.9%] m-auto align-[initial] object-contain"
             />
           </div>
-          <div className="absolute top-[69%] text-white text-[50px] right-[15%] ">
+          <div className="absolute top-[69%] text-white z-20 text-[50px] right-[15%] ">
             {play ? (
               <IoPlayCircleOutline onClick={setPlayVideo} />
             ) : (

@@ -1,6 +1,7 @@
 import Contact from "@/components/Contact";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
+import SEO from "@/components/Seo";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
@@ -11,6 +12,7 @@ const Services = () => {
   return (
     <>
       <Header />
+      <SEO title="Services" />
       <Banner />
       <ServicesList />
       <Contact />
@@ -25,7 +27,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["service", "header"])),
+      ...(await serverSideTranslations(locale!, [
+        "service",
+        "header",
+        "common",
+        "footer",
+      ])),
     },
   };
 };
