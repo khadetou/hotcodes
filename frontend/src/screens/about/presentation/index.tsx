@@ -19,6 +19,8 @@ const Presentation = () => {
       src: WhoWeAre,
       style: "lg:flex-row-reverse",
       flip: "",
+      data: "fade-right",
+      dataos: "fade-left",
     },
     {
       title: "",
@@ -27,7 +29,9 @@ const Presentation = () => {
       button: "",
       src: Mission,
       style: "lg:flex-row",
-      flip: "flip-y",
+      flip: "",
+      data: "fade-left",
+      dataos: "fade-right",
     },
     {
       title: "",
@@ -37,6 +41,8 @@ const Presentation = () => {
       src: Vision,
       style: "lg:flex-row-reverse",
       flip: "",
+      data: "fade-right",
+      dataos: "fade-left",
     },
   ];
 
@@ -44,7 +50,10 @@ const Presentation = () => {
     <section className="mt-[148px]">
       <div className="containers">
         {presentations.map(
-          ({ title, h1, paragraph, src, button, style, flip }, idx) => (
+          (
+            { title, h1, paragraph, src, button, style, flip, dataos, data },
+            idx
+          ) => (
             <Field
               key={idx}
               src={src}
@@ -54,6 +63,8 @@ const Presentation = () => {
               button={button}
               style={style}
               flip={flip}
+              data={data}
+              dataos={dataos}
             />
           )
         )}

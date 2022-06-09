@@ -2,6 +2,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header";
 import SEO from "@/components/Seo";
+import WhatsAppFloating from "@/components/Whatsapp";
 import Banner from "@/screens/about/Banner";
 import Presentation from "@/screens/about/presentation";
 import Team from "@/screens/about/team";
@@ -17,6 +18,7 @@ const About = () => {
       <Banner />
       <Presentation />
       <Team />
+      <WhatsAppFloating />
       <Contact />
       <Footer />
     </>
@@ -30,7 +32,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale!, ["about", "header"])),
+      ...(await serverSideTranslations(locale!, [
+        "about",
+        "header",
+        "common",
+        "footer",
+      ])),
     },
   };
 };

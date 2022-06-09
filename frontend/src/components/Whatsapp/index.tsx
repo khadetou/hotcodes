@@ -17,6 +17,7 @@ const WhatsAppFloating = () => {
     <a
       href="https://api.whatsapp.com/send/?phone=+221786004564&text&app_absent=0"
       target="_blank"
+      rel="noreferrer"
     >
       <div
         ref={ref}

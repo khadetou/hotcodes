@@ -25,7 +25,7 @@ const Card = () => {
         {Socials.map((Social, index) => (
           <div
             key={index}
-            className="w-full hover:shadow-shadow cursor-pointer flex justify-center items-center max-w-[60px] rounded-[16px] hover:text-dark-pink text-dark h-[60px] shadow-shadow-sm"
+            className="w-full hover:shadow-shadow cursor-pointer flex justify-center items-center max-w-[60px] rounded-[16px] transition-all duration-300  hover:!scale-105 hover:text-dark-pink text-dark h-[60px] shadow-shadow-sm"
           >
             <Social size="25px" />
           </div>
